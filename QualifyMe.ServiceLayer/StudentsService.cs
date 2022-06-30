@@ -100,7 +100,7 @@ namespace QualifyMe.ServiceLayer
 
         public StudentView GetStudentsByUserID(int UserID)
         {
-            Student u = usr.GetStudentsByStudentID(UserID).FirstOrDefault();
+            Student u = usr.GetStudentsByUserID(UserID).FirstOrDefault();
             StudentView uvm = null;
             if (u != null)
             {

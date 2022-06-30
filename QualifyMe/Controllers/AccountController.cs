@@ -157,26 +157,26 @@ namespace QualifyMe.Controllers
 
             int uid = Convert.ToInt32(Session["CurrentUserID"]);
             StudentView uvm = this.ss.GetStudentsByUserID(uid);
-            EditStudent eudvm = new EditStudent() { StudentName = uvm.StudentName, StudentMobile = uvm.StudentMobile, Email = uvm.Email, UserID = uvm.UserID, StudentID = uvm.StudentID };
-            return View(eudvm);
+            EditStudent es = new EditStudent() { StudentName = uvm.StudentName, StudentMobile = uvm.StudentMobile, Email = uvm.Email, UserID = uvm.UserID, StudentID = uvm.StudentID };
+            return View(es);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         
-        public ActionResult ChangeProfile(EditStudent eudvm)
+        public ActionResult ChangeProfile(EditStudent es)
         {
             if (ModelState.IsValid)
             {
-                eudvm.UserID = Convert.ToInt32(Session["CurrentStudentID"]);
-                this.ss.UpdateStudentDetails(eudvm);
-                Session["CurrentStudentName"] = eudvm.StudentName;
+                es.UserID = Convert.ToInt32(Session["CurrentUserID"]);
+                this.ss.UpdateStudentDetails(es);
+                Session["CurrentStudentName"] = es.StudentName;
                 return RedirectToAction("Index", "Home");
             }
             else
             {
                 ModelState.AddModelError("x", "Invalid data");
-                return View(eudvm);
+                return View(es);
             }
         }
 
