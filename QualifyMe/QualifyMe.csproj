@@ -195,6 +195,14 @@
     <Content Include="Areas\Admin\Views\Home\Companies.cshtml" />
     <Content Include="Areas\Admin\Views\Home\Jobs.cshtml" />
     <Content Include="Areas\Admin\Views\Courses\AddCourse.cshtml" />
+    <Content Include="Areas\Company\Views\web.config" />
+    <Content Include="Areas\Company\Views\Shared\CompanyLayoutPage1.cshtml" />
+    <Content Include="Areas\Company\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Company\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Company\Views\Home\About.cshtml" />
+    <Content Include="Areas\Company\Views\Home\Courses.cshtml" />
+    <Content Include="Areas\Company\Views\Home\Jobs.cshtml" />
+    <Content Include="Areas\Company\Views\Jobs\Create.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -233,6 +241,9 @@
     <Compile Include="Areas\Admin\Controllers\CoursesController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\JobsController.cs" />
+    <Compile Include="Areas\Company\CompanyAreaRegistration.cs" />
+    <Compile Include="Areas\Company\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Company\Controllers\JobsController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\JobsController.cs" />
@@ -269,7 +280,9 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
+    <Folder Include="Areas\Company\Data\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\Company\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Q.DomainModels\QualifyMe.DomainModels.csproj">
