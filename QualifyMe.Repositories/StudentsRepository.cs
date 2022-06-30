@@ -16,7 +16,7 @@ namespace QualifyMe.Repositories
         List<Student> GetStudents();
         List<Student> GetStudentsByEmailAndPassword(string Email, string Password);
         List<Student> GetStudentsByEmail(string Email);
-        List<Student> GetStudentsByStudentID(int StudentID);
+        List<Student> GetStudentsByUserID(int UserID);
         int GetLatestStudentID();
     }
     public class StudentsRepository : IStudentsRepository
@@ -83,9 +83,9 @@ namespace QualifyMe.Repositories
             return st;
         }
 
-        public List<Student> GetStudentsByStudentID(int StudentID)
+        public List<Student> GetStudentsByUserID(int UserID)
         {
-            List<Student> st = db.Students.Where(temp => temp.UserID == StudentID).ToList();
+            List<Student> st = db.Students.Where(temp => temp.UserID == UserID).ToList();
             return st;
         }
 

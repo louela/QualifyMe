@@ -34,10 +34,10 @@ namespace QualifyMe.Controllers
                 int uid = this.ss.InsertStudent(rvm);
                 Session["CurrentUserID"] = uid;
                 Session["CurrentStudentID"] = rvm.StudentID;
-                Session["CurrentUserName"] = rvm.StudentName;
-                Session["CurrentUserEmail"] = rvm.Email;
-                Session["CurrentUserPassword"] = rvm.Password;
-                Session["CurrentUserIsAdmin"] = false;
+                Session["CurrentStudentName"] = rvm.StudentName;
+                Session["CurrentStudentEmail"] = rvm.Email;
+                Session["CurrentStudentPassword"] = rvm.Password;
+                Session["CurrentStudentIsAdmin"] = false;
                 return RedirectToAction("Index", "Home");
             }
             else
@@ -157,28 +157,36 @@ namespace QualifyMe.Controllers
 
             int uid = Convert.ToInt32(Session["CurrentUserID"]);
             StudentView uvm = this.ss.GetStudentsByUserID(uid);
-            EditStudent eudvm = new EditStudent() { StudentName = uvm.StudentName, StudentMobile = uvm.StudentMobile, Email = uvm.Email, UserID = uvm.UserID, StudentID = uvm.StudentID };
-            return View(eudvm);
+            EditStudent es = new EditStudent() { StudentName = uvm.StudentName, StudentMobile = uvm.StudentMobile, Email = uvm.Email, UserID = uvm.UserID, StudentID = uvm.StudentID };
+            return View(es);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         
-        public ActionResult ChangeProfile(EditStudent eudvm)
+        public ActionResult ChangeProfile(EditStudent es)
         {
             if (ModelState.IsValid)
             {
-                eudvm.UserID = Convert.ToInt32(Session["CurrentUserID"]);
-                this.ss.UpdateStudentDetails(eudvm);
-                Session["CurrentUserName"] = eudvm.StudentName;
+                es.UserID = Convert.ToInt32(Session["CurrentUserID"]);
+                this.ss.UpdateStudentDetails(es);
+                Session["CurrentUserName"] = es.StudentName;
                 return RedirectToAction("Index", "Home");
             }
             else
             {
                 ModelState.AddModelError("x", "Invalid data");
-                return View(eudvm);
+                return View(es);
             }
         }
+
+        public ActionResult Profile()
+        {
+            StudentView uvm = new StudentView();
+            return View();
+        }
+
+      
 
 
     }
