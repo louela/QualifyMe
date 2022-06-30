@@ -22,10 +22,9 @@
           
             <div class="collapse navbar-collapse" id="collapsibleNavBar">
                 <ul class="navbar-nav">
-                    @if (Session["CurrentStudentName"] != null) { 
-                        <li class="nav-item active">
-                            <a class="nav-link" href="/home/index">Home</a>
-                        </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/home/index">Home</a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/home/about">About</a>
                     </li>
@@ -41,7 +40,8 @@
 
                     }
 
-                    @if (Session["CurrentStudentName"] == null)
+
+                    @if (Session["CurrentUserName"] == null)
                     {
 
                         <li class="nav-item">
@@ -55,25 +55,24 @@
                         </li>
                     }
 
-                    @if (Session["CurrentStudentName"] != null)
+                    @if (Session["CurrentUserName"] != null)
                     {
-                        @*<li class="nav-item">
-                <a class="nav-link" href="/home/courses">Courses</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/alljobs">Jobs</a>
-            </li>*@
+                        <li class="nav-item">
+                            <a class="nav-link" href="/home/courses">Courses</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/alljobs">Jobs</a>
+                        </li>
 
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
                                 <img src="~/Images/user.png" width="20px" />
-                                @Session["CurrentStudentName"]
+                                @Session["CurrentUserName"]
                             </a>
                             <div class="dropdown-menu bg-info">
-                                <a class="dropdown-item" href="/account/profile">View Profile</a>
-                                <a class="dropdown-item" href="/account/settings">Settings</a>
                                 <a class="dropdown-item" href="/account/logout">Logout</a>
-
+                                <a class="dropdown-item" href="/account/changeprofile">Change Profile</a>
+                                <a class="dropdown-item" href="/account/changepassword">Change Password</a>
                             </div>
                         </li>
                     }

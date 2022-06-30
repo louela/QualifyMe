@@ -65,15 +65,15 @@ namespace QualifyMe.Controllers
                 {
                     Session["CurrentUserID"] = uvm.UserID;
                     Session["CurrentStudentID"] = uvm.StudentID;
-                    Session["CurrentStudentName"] = uvm.StudentName;
-                    Session["CurrentStudentEmail"] = uvm.Email;
-                    Session["CurrentStudentMobile"] = uvm.StudentMobile;
-                    Session["CurrentStudentPassword"] = uvm.Password;
-                    Session["CurrentStudentIsAdmin"] = uvm.IsAdmin;
+                    Session["CurrentUserName"] = uvm.StudentName;
+                    Session["CurrentUserEmail"] = uvm.Email;
+                    Session["CurrentUserMobile"] = uvm.StudentMobile;
+                    Session["CurrentUserPassword"] = uvm.Password;
+                    Session["CurrentUserIsAdmin"] = uvm.IsAdmin;
 
                     if (uvm.IsAdmin)
                     {
-                        return RedirectToRoute(new { controller = "Home", action = "Index" });
+                        return RedirectToAction("Index", "Home", new { area = "Admin" });
 
 
                     }
@@ -123,7 +123,7 @@ namespace QualifyMe.Controllers
 
                     if (cvm.IsAdmin)
                     {
-                        return RedirectToRoute(new { controller = "Home", action = "Index" });
+                        return RedirectToAction("Index", "Home", new { area = "Admin" });
 
 
                     }

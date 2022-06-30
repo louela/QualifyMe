@@ -1,0 +1,100 @@
+﻿@{
+    ViewBag.Title = "Add Company";
+}
+
+<div class="row">
+    <div class="col-sm-12">
+        <h1>Add Company</h1>
+        <form novalidate="novalidate" action="/admin/companies/addcompany" method="post" class="needs-validation">
+            @Html.AntiForgeryToken()
+            <div class="form-row">
+                <div class="form-group col-sm-6">
+                    <label for="CompanyName">Company Name</label>
+                    <input type="text" class="form-control" id="CompanyName" placeholder="Enter Company Name" name="CompanyName" required="required" pattern="^[a-zA-Z ]*$" autofocus="autofocus" />
+                    <div class="valid-feedback">
+                        Looks Good!
+                    </div>
+                    <div class="invalid-feedback">
+                        Please Enter the Company Name.
+                    </div>
+                </div>
+                <div class="form-group col-sm-6">
+                    <label for="CompanyMobile">Company Mobile Number</label>
+                    <input type="text" class="form-control" id="CompanyMobile" placeholder="Enter Company Mobile" name="CompanyMobile" required="required" pattern="^[789]\d{9}$" />
+                    <div class="valid-feedback">
+                        Looks Good!
+                    </div>
+                    <div class="invalid-feedback">
+                        Please Enter the Company Mobile Number.
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-sm-12">
+                    <label for="CompanyEmail">Company Email</label>
+                    <input type="email" class="form-control" id="CompanyEmail" placeholder="Enter Company Email" name="Email" required="required" />
+                    <div class="valid-feedback">
+                        Looks Good!
+                    </div>
+                    <div class="invalid-feedback">
+                        Invalid Company Email.
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="form-row">
+                <div class="form-group col-sm-6">
+                    <label for="CompanyPassword">Company Password</label>
+                    <input type="password" class="form-control" id="CompanyPassword" placeholder="Enter Company Password" name="Password" required="required" minlength="6" oninput="form.ConfirmPassword.pattern = escapeRegExp(this.value)" />
+                    <div class="valid-feedback">
+                        Looks Good!
+                    </div>
+                    <div class="invalid-feedback">
+                        Password must contain at least 6 characters.
+                    </div>
+                </div>
+                <div class="form-group col-sm-6">
+                    <label for="CompanyConfirmPassword">Company Confirm Password</label>
+                    <input type="password" class="form-control" id="CompanyConfirmPassword" placeholder="Company Confirm Password" name="CompanyConfirmPassword" required="required" />
+                    <div class="valid-feedback">
+                        Looks Good!
+                    </div>
+                    <div class="invalid-feedback">
+                        Password and Confirm Password do not match.
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-sm-6">
+                    <label for="CompanyAddress">Company Address</label>
+                    <input type="text" class="form-control" id="CompanyAddress" placeholder="Enter Company Address" name="CompanyAddress" required="required" pattern="^[a-zA-Z ]*$" autofocus="autofocus" />
+                    <div class="valid-feedback">
+                        Looks Good!
+                    </div>
+                    <div class="invalid-feedback">
+                        Please Enter the Company Address.
+                    </div>
+                </div>
+
+                <div class="form-group col-sm-6">
+                    <label for="CompanyDescription">Company Description</label>
+                    <input type="text" class="form-control" id="CompanyDescription" placeholder="Enter Company Description" name="CompanyDescription" required="required" pattern="^[a-zA-Z ]*$" autofocus="autofocus" />
+                    <div class="valid-feedback">
+                        Looks Good!
+                    </div>
+                    <div class="invalid-feedback">
+                        Please Enter the Company Description.
+                    </div>
+                </div>
+
+            </div>
+
+            <button type="submit" class="btn btn-primary">Add Company</button>
+
+        </form>
+    </div>
+</div>

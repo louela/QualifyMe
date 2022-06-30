@@ -1,0 +1,81 @@
+﻿@using System.Web.Optimization
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta charset="utf-8">
+    <title>@ViewBag.Title - QualifyMe</title>
+    @Styles.Render("~/Styles/bootstrap")
+    @Styles.Render("~/Styles/site")
+    @Scripts.Render("~/Scripts/bootstrap")
+</head>
+<body>
+    <div class="container-fluid">
+        <nav class="navbar navbar-expand-sm text-light navbar-light">
+            <a class="navbar-brand" href="#">QualifyMe</a>
+
+
+            <button class="navbar-toggler" data-toggle="collapse" data-target="#collapsibleNavBar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+       
+            <div class="collapse navbar-collapse" id="collapsibleNavBar">
+                <ul class="navbar-nav">
+                    @if (Session["CurrentUserName"] != null )
+                    {
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/admin/home/index">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin/home/about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin/home/courses">Courses</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin/home/companies">Companies</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin/home/jobs">Jobs</a>
+                    </li>
+
+
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
+                            <img src="~/Images/user.png" width="20px"/>
+                            @Session["CurrentUserName"]
+                        </a>
+                        <div class="dropdown-menu bg-info">
+                            <a class="dropdown-item" href="/account/logout">Logout</a>
+                        </div>
+                    </li>
+                    }
+
+                    @if (Session["CurrentUserName"] == null)
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" href="/account/login">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/account/register">Register</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/account/companylogin">Company Login</a>
+                        </li>
+                    }
+                </ul>
+            </div>
+
+            <form class="form-inline" action="/home/search">
+                <input type="search" class="form-control mr-sm-2" style="width:150px" placeholder="Search" name="str">
+                <button class="btn btn-success">Search</button>
+            </form>
+        </nav>
+        @RenderBody()
+    </div>
+</body>
+</html>
+
+

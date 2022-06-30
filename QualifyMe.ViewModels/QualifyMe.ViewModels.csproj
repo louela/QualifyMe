@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddCourseView.cs" />
     <Compile Include="ApplicantView.cs" />
     <Compile Include="CompanyLoginView.cs" />
     <Compile Include="CompanyView.cs" />
