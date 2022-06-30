@@ -241,7 +241,6 @@
     <Content Include="Views\Jobs\View.cshtml" />
     <Content Include="Views\Jobs\Create.cshtml" />
     <Content Include="Views\Account\CompanyLogin.cshtml" />
-    <Content Include="Views\Home\test.cshtml" />
     <Content Include="Views\Account\Test.cshtml" />
     <Content Include="Views\Account\Profile.cshtml" />
     <None Include="Web.Debug.config">

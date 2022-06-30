@@ -13,6 +13,7 @@ C:\Users\louel\source\repos\QualifyMe\QualifyMe.Repositories\bin\Debug\EntityFra
 C:\Users\louel\source\repos\QualifyMe\QualifyMe.Repositories\obj\Debug\QualifyMe.Repositories.csproj.CopyComplete
 C:\Users\louel\source\repos\QualifyMe\QualifyMe.Repositories\obj\Debug\QualifyMe.Repositories.dll
 C:\Users\louel\source\repos\QualifyMe\QualifyMe.Repositories\obj\Debug\QualifyMe.Repositories.pdb
+<<<<<<< HEAD
 C:\Users\II\Documents\mvc\CAPSTONE\QualifyMe\QualifyMe.Repositories\bin\Debug\QualifyMe.Repositories.dll.config
 C:\Users\II\Documents\mvc\CAPSTONE\QualifyMe\QualifyMe.Repositories\bin\Debug\QualifyMe.Repositories.dll
 C:\Users\II\Documents\mvc\CAPSTONE\QualifyMe\QualifyMe.Repositories\bin\Debug\QualifyMe.Repositories.pdb
@@ -28,3 +29,20 @@ C:\Users\II\Documents\mvc\CAPSTONE\QualifyMe\QualifyMe.Repositories\obj\Debug\Qu
 C:\Users\II\Documents\mvc\CAPSTONE\QualifyMe\QualifyMe.Repositories\obj\Debug\QualifyMe.Repositories.csproj.CopyComplete
 C:\Users\II\Documents\mvc\CAPSTONE\QualifyMe\QualifyMe.Repositories\obj\Debug\QualifyMe.Repositories.dll
 C:\Users\II\Documents\mvc\CAPSTONE\QualifyMe\QualifyMe.Repositories\obj\Debug\QualifyMe.Repositories.pdb
+=======
+C:\src\projects\Github's\QualifyMe\QualifyMe.Repositories\bin\Debug\QualifyMe.Repositories.dll.config
+C:\src\projects\Github's\QualifyMe\QualifyMe.Repositories\bin\Debug\QualifyMe.Repositories.dll
+C:\src\projects\Github's\QualifyMe\QualifyMe.Repositories\bin\Debug\QualifyMe.Repositories.pdb
+C:\src\projects\Github's\QualifyMe\QualifyMe.Repositories\bin\Debug\EntityFramework.dll
+C:\src\projects\Github's\QualifyMe\QualifyMe.Repositories\bin\Debug\EntityFramework.SqlServer.dll
+C:\src\projects\Github's\QualifyMe\QualifyMe.Repositories\bin\Debug\Q.DomainModels.dll
+C:\src\projects\Github's\QualifyMe\QualifyMe.Repositories\bin\Debug\Q.DomainModels.pdb
+C:\src\projects\Github's\QualifyMe\QualifyMe.Repositories\bin\Debug\Q.DomainModels.dll.config
+C:\src\projects\Github's\QualifyMe\QualifyMe.Repositories\bin\Debug\EntityFramework.xml
+C:\src\projects\Github's\QualifyMe\QualifyMe.Repositories\bin\Debug\EntityFramework.SqlServer.xml
+C:\src\projects\Github's\QualifyMe\QualifyMe.Repositories\obj\Debug\QualifyMe.Repositories.csproj.AssemblyReference.cache
+C:\src\projects\Github's\QualifyMe\QualifyMe.Repositories\obj\Debug\QualifyMe.Repositories.csproj.CoreCompileInputs.cache
+C:\src\projects\Github's\QualifyMe\QualifyMe.Repositories\obj\Debug\QualifyMe.Repositories.csproj.CopyComplete
+C:\src\projects\Github's\QualifyMe\QualifyMe.Repositories\obj\Debug\QualifyMe.Repositories.dll
+C:\src\projects\Github's\QualifyMe\QualifyMe.Repositories\obj\Debug\QualifyMe.Repositories.pdb
+>>>>>>> main

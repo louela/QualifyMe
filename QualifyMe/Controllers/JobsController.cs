@@ -46,7 +46,7 @@ namespace QualifyMe.Controllers
                 qvm.ApplicantsCount = 0;
                
                 qvm.JobDateAndTime = DateTime.Now;
-                qvm.CompanyID = Convert.ToInt32(Session["CurrentUserID"]);
+                qvm.CompanyID = Convert.ToInt32(Session["CurrentCompanyID"]);
                 this.js.InsertJob(qvm);
                 return RedirectToAction("Jobs", "Home");
             }

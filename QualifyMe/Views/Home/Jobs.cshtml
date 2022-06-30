@@ -12,7 +12,7 @@
                 Html.RenderPartial("Job", item);
             }
         </table>
-        @if (Session["CurrentUserName"] != null)
+        @if (Session["CurrentCompanyName"] != null)
         {
             <a href="/jobs/create" class="btn btn-primary">Add Job</a>
         }
