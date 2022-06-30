@@ -1,0 +1,15 @@
+C:\Users\louel\source\repos\QualifyMe\QualifyMe.Repositories\obj\Debug\QualifyMe.Repositories.csproj.AssemblyReference.cache
+C:\Users\louel\source\repos\QualifyMe\QualifyMe.Repositories\obj\Debug\QualifyMe.Repositories.csproj.CoreCompileInputs.cache
+C:\Users\louel\source\repos\QualifyMe\QualifyMe.Repositories\bin\Debug\QualifyMe.Repositories.dll.config
+C:\Users\louel\source\repos\QualifyMe\QualifyMe.Repositories\bin\Debug\QualifyMe.Repositories.dll
+C:\Users\louel\source\repos\QualifyMe\QualifyMe.Repositories\bin\Debug\QualifyMe.Repositories.pdb
+C:\Users\louel\source\repos\QualifyMe\QualifyMe.Repositories\bin\Debug\EntityFramework.dll
+C:\Users\louel\source\repos\QualifyMe\QualifyMe.Repositories\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\louel\source\repos\QualifyMe\QualifyMe.Repositories\bin\Debug\Q.DomainModels.dll
+C:\Users\louel\source\repos\QualifyMe\QualifyMe.Repositories\bin\Debug\Q.DomainModels.pdb
+C:\Users\louel\source\repos\QualifyMe\QualifyMe.Repositories\bin\Debug\Q.DomainModels.dll.config
+C:\Users\louel\source\repos\QualifyMe\QualifyMe.Repositories\bin\Debug\EntityFramework.xml
+C:\Users\louel\source\repos\QualifyMe\QualifyMe.Repositories\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\louel\source\repos\QualifyMe\QualifyMe.Repositories\obj\Debug\QualifyMe.Repositories.csproj.CopyComplete
+C:\Users\louel\source\repos\QualifyMe\QualifyMe.Repositories\obj\Debug\QualifyMe.Repositories.dll
+C:\Users\louel\source\repos\QualifyMe\QualifyMe.Repositories\obj\Debug\QualifyMe.Repositories.pdb
