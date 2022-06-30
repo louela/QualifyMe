@@ -1,0 +1,33 @@
+﻿@model List<QualifyMe.ViewModels.JobView>
+
+@{ 
+    ViewBag.Title = "Home";
+}
+<div class="row">
+    <div class="col-sm-12">
+        <div class="jumbotron">
+            <h1>Work while Studying, QualifyME!</h1>
+            <h3>Each month, over 50 million developers come to Stack Overflow to learn, share their knowledge, and build their careers.</h3>
+            <p class="lead">Get career opportunities on QualifyMe.</p>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12">
+        <table class="table">
+            @foreach(var item in Model)
+            {
+                Html.RenderPartial("Job", item);
+            }
+        </table>
+        @if (Session["CurrentUserName"] != null)
+        {
+            <a href="/jobs/create" class="btn btn-primary">Add Job</a>
+        }
+    </div>
+</div>
+
+<script>
+    $("a[href='/home/index']").attr("id", "active");
+</script>

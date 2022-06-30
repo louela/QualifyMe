@@ -1,0 +1,24 @@
+﻿@model List<QualifyMe.ViewModels.JobView>
+
+@{ 
+    ViewBag.Title = "Jobs";
+}
+
+<div class="row">
+    <div class="col-sm-12">
+        <table class="table">
+            @foreach(var item in Model)
+            {
+                Html.RenderPartial("Job", item);
+            }
+        </table>
+        @if (Session["CurrentUserName"] != null)
+        {
+            <a href="/jobs/create" class="btn btn-primary">Add Job</a>
+        }
+    </div>
+</div>
+
+<script>
+    $("a[href='/alljobs']").attr("id", "active");
+</script>

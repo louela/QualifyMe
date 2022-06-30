@@ -1,0 +1,34 @@
+﻿@model List<QualifyMe.ViewModels.CompanyView>
+
+@{ 
+    ViewBag.Title = "Companies";
+}
+
+<div class="row">
+    <div class="col-sm-12">
+        <h4>List of Companies</h4>
+        <table class="table table-striped table-hover">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Company</th>
+                <th>Email</th>
+            </tr>
+            </thead>
+            @foreach (var item in Model)
+            {
+                <tbody>
+                <tr>
+                    <td>@item.CompanyID</td>
+                    <td>@item.CompanyName</td>
+                    <td>@item.Email</td>
+                </tr>
+                </tbody>
+            }
+        </table>
+    </div>
+</div>
+
+<script>
+    //  $("a[href='/home/categories']").attr("id", "active");
+</script>
