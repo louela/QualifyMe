@@ -10,6 +10,20 @@ C:\Users\louel\source\repos\QualifyMe\Q.DomainModels\bin\Debug\EntityFramework.S
 C:\Users\louel\source\repos\QualifyMe\Q.DomainModels\obj\Debug\QualifyMe.DomainModels.csproj.CopyComplete
 C:\Users\louel\source\repos\QualifyMe\Q.DomainModels\obj\Debug\Q.DomainModels.dll
 C:\Users\louel\source\repos\QualifyMe\Q.DomainModels\obj\Debug\Q.DomainModels.pdb
+<<<<<<< HEAD
+C:\Users\II\Documents\mvc\CAPSTONE\QualifyMe\Q.DomainModels\bin\Debug\Q.DomainModels.dll.config
+C:\Users\II\Documents\mvc\CAPSTONE\QualifyMe\Q.DomainModels\bin\Debug\Q.DomainModels.dll
+C:\Users\II\Documents\mvc\CAPSTONE\QualifyMe\Q.DomainModels\bin\Debug\Q.DomainModels.pdb
+C:\Users\II\Documents\mvc\CAPSTONE\QualifyMe\Q.DomainModels\bin\Debug\EntityFramework.dll
+C:\Users\II\Documents\mvc\CAPSTONE\QualifyMe\Q.DomainModels\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\II\Documents\mvc\CAPSTONE\QualifyMe\Q.DomainModels\bin\Debug\EntityFramework.xml
+C:\Users\II\Documents\mvc\CAPSTONE\QualifyMe\Q.DomainModels\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\II\Documents\mvc\CAPSTONE\QualifyMe\Q.DomainModels\obj\Debug\QualifyMe.DomainModels.csproj.AssemblyReference.cache
+C:\Users\II\Documents\mvc\CAPSTONE\QualifyMe\Q.DomainModels\obj\Debug\QualifyMe.DomainModels.csproj.CoreCompileInputs.cache
+C:\Users\II\Documents\mvc\CAPSTONE\QualifyMe\Q.DomainModels\obj\Debug\QualifyMe.DomainModels.csproj.CopyComplete
+C:\Users\II\Documents\mvc\CAPSTONE\QualifyMe\Q.DomainModels\obj\Debug\Q.DomainModels.dll
+C:\Users\II\Documents\mvc\CAPSTONE\QualifyMe\Q.DomainModels\obj\Debug\Q.DomainModels.pdb
+=======
 C:\src\projects\Github's\QualifyMe\Q.DomainModels\bin\Debug\Q.DomainModels.dll.config
 C:\src\projects\Github's\QualifyMe\Q.DomainModels\bin\Debug\Q.DomainModels.dll
 C:\src\projects\Github's\QualifyMe\Q.DomainModels\bin\Debug\Q.DomainModels.pdb
@@ -22,3 +36,4 @@ C:\src\projects\Github's\QualifyMe\Q.DomainModels\obj\Debug\QualifyMe.DomainMode
 C:\src\projects\Github's\QualifyMe\Q.DomainModels\obj\Debug\QualifyMe.DomainModels.csproj.CopyComplete
 C:\src\projects\Github's\QualifyMe\Q.DomainModels\obj\Debug\Q.DomainModels.dll
 C:\src\projects\Github's\QualifyMe\Q.DomainModels\obj\Debug\Q.DomainModels.pdb
+>>>>>>> main

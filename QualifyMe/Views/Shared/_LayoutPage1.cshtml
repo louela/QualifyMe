@@ -13,34 +13,56 @@
 <body>
     <div class="container-fluid">
         <nav class="navbar navbar-expand-sm text-light navbar-light">
-            <a class="navbar-brand" href="#">QualifyMe</a>
+            <a class="navbar-brand" href="/home/index">QualifyMe</a>
 
 
             <button class="navbar-toggler" data-toggle="collapse" data-target="#collapsibleNavBar">
                 <span class="navbar-toggler-icon"></span>
             </button>
-
+          
             <div class="collapse navbar-collapse" id="collapsibleNavBar">
                 <ul class="navbar-nav">
-                    @if (Session["CurrentUserName"] != null)
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/home/index">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/home/about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/home/courses">Courses</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/home/companies">Companies</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/home/jobs">Jobs</a>
+                    </li>
+
+                    }
+
+
+                    @if (Session["CurrentUserName"] == null)
                     {
-                        <li class="nav-item active">
-                            <a class="nav-link" href="/home/index">Home</a>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="/account/login">Login</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/home/about">About</a>
+                            <a class="nav-link" href="/account/register">Register</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/account/companylogin">Company Login</a>
+                        </li>
+                    }
+
+                    @if (Session["CurrentUserName"] != null)
+                    {
                         <li class="nav-item">
                             <a class="nav-link" href="/home/courses">Courses</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/home/companies">Companies</a>
+                            <a class="nav-link" href="/alljobs">Jobs</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/home/jobs">Jobs</a>
-                        </li>
-
-
 
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
@@ -54,26 +76,14 @@
                             </div>
                         </li>
                     }
-
-                    @if (Session["CurrentUserName"] == null)
-                    {
-                        <li class="nav-item">
-                            <a class="nav-link" href="/account/login">Login</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/account/register">Register</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/account/companylogin">Company Login</a>
-                        </li>
-                    }
                 </ul>
             </div>
 
-            <form class="form-inline" action="/home/search">
-                <input type="search" class="form-control mr-sm-2" style="width:150px" placeholder="Search" name="str">
-                <button class="btn btn-success">Search</button>
-            </form>
+
+            @*<form class="form-inline" action="/home/search">
+            <input type="search" class="form-control mr-sm-2" style="width:150px" placeholder="Search" name="str">
+            <button class="btn btn-success">Search</button>
+        </form>*@
         </nav>
         @RenderBody()
     </div>
