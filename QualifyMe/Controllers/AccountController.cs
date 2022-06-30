@@ -128,7 +128,7 @@ namespace QualifyMe.Controllers
 
                     }
                     else
-                        return RedirectToAction("Index", "Home");
+                        return RedirectToAction("Index", "Home", new { area = "Company" });
                 }
                 else
                 {

@@ -1,0 +1,32 @@
+﻿@model List<QualifyMe.ViewModels.JobView>
+
+@{
+    ViewBag.Title = "Company Home";
+    Layout = "~/Areas/Company/Views/Shared/CompanyLayoutPage1.cshtml";
+}
+
+
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="jumbotron">
+            <h1>Welcome back @Session["CurrentCompanyName"]</h1>
+            <p class="lead">Manage your student and student's opportunities here!'.</p>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12">
+        <table class="table">
+            @foreach (var item in Model)
+            {
+                Html.RenderPartial("Job", item);
+            }
+        </table>
+    </div>
+</div>
+
+<script>
+    $("a[href='/home/index']").attr("id", "active");
+</script>
