@@ -73,7 +73,7 @@ namespace QualifyMe.Controllers
 
                     if (uvm.IsAdmin)
                     {
-                        return RedirectToRoute(new { controller = "Home", action = "Index" });
+                        return RedirectToAction("Index", "Home", new { area = "Admin" });
 
 
                     }
@@ -123,7 +123,7 @@ namespace QualifyMe.Controllers
 
                     if (cvm.IsAdmin)
                     {
-                        return RedirectToRoute(new { controller = "Home", action = "Index" });
+                        return RedirectToAction("Index", "Home", new { area = "Admin" });
 
 
                     }

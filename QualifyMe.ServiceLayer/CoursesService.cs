@@ -12,7 +12,7 @@ namespace QualifyMe.ServiceLayer
 {
     public interface ICoursesService
     {
-        void InsertCourse(CourseView cvm);
+        int InsertCourse(AddCourseView cvm);
         void UpdateCourse(CourseView cvm);
         void DeleteCourse(int cid);
         List<CourseView> GetCourses();
@@ -27,12 +27,14 @@ namespace QualifyMe.ServiceLayer
             cr = new CoursesRepository();
         }
 
-        public void InsertCourse(CourseView cvm)
+        public int InsertCourse(AddCourseView cvm)
         {
-            var config = new MapperConfiguration(cfg => { cfg.CreateMap<CourseView, Course>(); cfg.IgnoreUnmapped(); });
+            var config = new MapperConfiguration(cfg => { cfg.CreateMap<AddCourseView, Course>(); cfg.IgnoreUnmapped(); });
             IMapper mapper = config.CreateMapper();
-            Course c = mapper.Map<CourseView, Course>(cvm);
+            Course c = mapper.Map<AddCourseView, Course>(cvm);
             cr.InsertCourse(c);
+            int cid = cr.GetLatestCourseID();
+            return cid;
         }
 
         public void UpdateCourse(CourseView cvm)

@@ -1,0 +1,29 @@
+﻿@{
+    ViewBag.Title = "Add Courses";
+}
+
+
+<div class="row">
+    <div class="col-sm-12">
+        <h1>Add Course</h1>
+        <form novalidate="novalidate" action="/admin/courses/addcourse" method="post" class="needs-validation">
+            @Html.AntiForgeryToken()
+            <div class="form-row">
+                <div class="form-group col-sm-6">
+                    <label for="CourseName">Course Name</label>
+                    <input type="text" class="form-control" id="CourseName" placeholder="Enter Course" name="CourseName" required="required" pattern="^[a-zA-Z ]*$" autofocus="autofocus" />
+                    <div class="valid-feedback">
+                        Looks Good!
+                    </div>
+                    <div class="invalid-feedback">
+                        Please Enter the Department Name.
+                    </div>
+                </div>
+
+                <div>
+                    <button type="submit" class="btn btn-primary">Add</button>
+                </div>
+
+        </form>
+    </div>
+</div>
