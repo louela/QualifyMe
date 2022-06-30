@@ -34,10 +34,10 @@ namespace QualifyMe.Controllers
                 int uid = this.ss.InsertStudent(rvm);
                 Session["CurrentUserID"] = uid;
                 Session["CurrentStudentID"] = rvm.StudentID;
-                Session["CurrentUserName"] = rvm.StudentName;
-                Session["CurrentUserEmail"] = rvm.Email;
-                Session["CurrentUserPassword"] = rvm.Password;
-                Session["CurrentUserIsAdmin"] = false;
+                Session["CurrentStudentName"] = rvm.StudentName;
+                Session["CurrentStudentEmail"] = rvm.Email;
+                Session["CurrentStudentPassword"] = rvm.Password;
+                Session["CurrentStudentIsAdmin"] = false;
                 return RedirectToAction("Index", "Home");
             }
             else
@@ -65,11 +65,11 @@ namespace QualifyMe.Controllers
                 {
                     Session["CurrentUserID"] = uvm.UserID;
                     Session["CurrentStudentID"] = uvm.StudentID;
-                    Session["CurrentUserName"] = uvm.StudentName;
-                    Session["CurrentUserEmail"] = uvm.Email;
-                    Session["CurrentUserMobile"] = uvm.StudentMobile;
-                    Session["CurrentUserPassword"] = uvm.Password;
-                    Session["CurrentUserIsAdmin"] = uvm.IsAdmin;
+                    Session["CurrentStudentName"] = uvm.StudentName;
+                    Session["CurrentStudentEmail"] = uvm.Email;
+                    Session["CurrentStudentMobile"] = uvm.StudentMobile;
+                    Session["CurrentStudentPassword"] = uvm.Password;
+                    Session["CurrentStudentIsAdmin"] = uvm.IsAdmin;
 
                     if (uvm.IsAdmin)
                     {
@@ -168,9 +168,9 @@ namespace QualifyMe.Controllers
         {
             if (ModelState.IsValid)
             {
-                eudvm.UserID = Convert.ToInt32(Session["CurrentUserID"]);
+                eudvm.UserID = Convert.ToInt32(Session["CurrentStudentID"]);
                 this.ss.UpdateStudentDetails(eudvm);
-                Session["CurrentUserName"] = eudvm.StudentName;
+                Session["CurrentStudentName"] = eudvm.StudentName;
                 return RedirectToAction("Index", "Home");
             }
             else
@@ -179,6 +179,14 @@ namespace QualifyMe.Controllers
                 return View(eudvm);
             }
         }
+
+        public ActionResult Profile()
+        {
+            StudentView uvm = new StudentView();
+            return View();
+        }
+
+      
 
 
     }

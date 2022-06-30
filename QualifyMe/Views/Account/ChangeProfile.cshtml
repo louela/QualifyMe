@@ -1,66 +1,100 @@
 ﻿@model QualifyMe.ViewModels.EditStudent
-
 @{
-    ViewBag.Title = "Change Profile";
+    ViewBag.Title = "Edit Details";
 }
-
-<div class="row">
-    <div class="col-sm-12">
-        <h1>Change Profile</h1>
-        <form novalidate="novalidate" action="/account/changeprofile" method="post" class="needs-validation">
+<form novalidate="novalidate" action="/account/changeprofile" method="post" class="needs-validation">
+    <div class="container">
+        <div class="row gutters">
             @Html.AntiForgeryToken()
-            <div class="form-row">
-                <div class="form-group col-sm-12">
-                    <label for="txtName">Name</label>
-                    <input type="text" class="form-control" id="txtName" placeholder="Enter name" name="Name" required="required" pattern="^[a-zA-Z ]*$" autofocus="autofocus" value="@Model.StudentName" />
-                    <div class="valid-feedback">
-                        Looks good!
-                    </div>
-                    <div class="invalid-feedback">
-                        Please enter name [alphabets only].
-                    </div>
-                </div>
-            </div>
-
-            <div class="form-row">
-                <div class="form-group col-sm-6">
-                    <label for="txtEmail">Email</label>
-                    @Html.HiddenFor(temp => temp.Email)
-                    <span>@Model.Email</span>
-                </div>
-
-                <div class="form-group col-sm-6">
-                    <label for="txtMobile">Mobile</label>
-                    <input type="text" class="form-control" id="txtMobile" placeholder="Mobile" name="Mobile" required="required" pattern="^[789]\d{9}$" value="@Model.StudentMobile" />
-                    <div class="valid-feedback">
-                        Looks good!
-                    </div>
-                    <div class="invalid-feedback">
-                        Invalid mobile Number.
+            <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <div class="account-settings">
+                            <div class="user-profile">
+                                <div id="profile-container">
+                                    <image id="profilepicture" src="~/Images/avatar.png" />
+                                </div>
+                                <h5 class="user-name"> @Session["CurrentStudentName"]</h5>
+                                <h6 class="user-email"> @Session["CurrentStudentEmail"]</h6>
+                            </div>
+                            <div class="about">
+                                <h5>About</h5>
+                                <p>I'm @Model.StudentName. Full Stack Designer I enjoy creating user-centric, delightful and human experiences.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
+            <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <div class="row gutters">
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                <h6 class="mb-2 text-primary">Personal Details</h6>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <label for="StudentName">Name</label>
+                                <input type="text" class="form-control" id="StudentName" placeholder="Enter Name" name="StudentName" required="required" pattern="^[a-zA-Z ]*$" autofocus="autofocus" value="@Model.StudentName" />
+                                <div class="valid-feedback">
+                                    Looks Good!
+                                </div>
+                                <div class="invalid-feedback">
+                                    Please Enter your Name.
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <label for="Email">Email:</label>
+                                <input type="text" class="form-control" id="Email" placeholder="Email" name="Email" required="required" value="@Model.Email" />
+                                <div class="valid-feedback">
+                                    Looks Good!
+                                </div>
+                                <div class="invalid-feedback">
+                                    Password must contain at least 6 characters.
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <label for="StudentMobile">Mobile Number</label>
+                                <input type="text" class="form-control" id="StudentMobile" placeholder="Enter Mobile" name="StudentMobile" required="required" pattern="^[789]\d{9}$" value="@Model.StudentMobile" />
+                                <div class="valid-feedback">
+                                    Looks Good!
+                                </div>
+                                <div class="invalid-feedback">
+                                    Please Enter your Mobile Number.
+                                </div>
+                            </div>
 
-            @Html.ValidationSummary()
-            <button type="submit" class="btn btn-primary">Update Profile</button>
-        </form>
-    </div>
-</div>
+                        </div>
+                        @Html.ValidationSummary()
+                        <div class="row gutters">
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                <div class="text-right">
+                                    <button type="cancel" class="btn btn-secondary">Cancel</button>
+                                    <button type="submit" class="btn btn-primary">Update Profile</button>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+</form>
+
+
 
 <script>
-
     $("a[href='/account/changeprofile']").attr("id", "active");
-
     $(document).on("submit", ".needs-validation", validate);
     $(".needs-validation input").blur(validate);
-    function validate(event)
-    {
-        if ($(".needs-validation")[0].checkValidity() == false)
-        {
+    function validate(event) {
+        if ($(".needs-validation")[0].checkValidity() == false) {
             event.preventDefault();
         }
         $(".needs-validation")[0].classList.add("was-validated");
     }
+    $(".cancel").on("click", function () {
+        $("#target").text(orginalText);
+    });
+
 </script>
-
-
