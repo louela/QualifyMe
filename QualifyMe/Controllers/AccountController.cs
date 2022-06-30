@@ -170,7 +170,7 @@ namespace QualifyMe.Controllers
             {
                 es.UserID = Convert.ToInt32(Session["CurrentUserID"]);
                 this.ss.UpdateStudentDetails(es);
-                Session["CurrentStudentName"] = es.StudentName;
+                Session["CurrentUserName"] = es.StudentName;
                 return RedirectToAction("Index", "Home");
             }
             else
