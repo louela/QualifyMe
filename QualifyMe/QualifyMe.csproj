@@ -189,7 +189,6 @@
     <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Admin\Views\Companies\AddCompany.cshtml" />
     <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\Jobs\View.cshtml" />
     <Content Include="Areas\Admin\Views\Home\About.cshtml" />
     <Content Include="Areas\Admin\Views\Home\Courses.cshtml" />
     <Content Include="Areas\Admin\Views\Home\Companies.cshtml" />
@@ -203,6 +202,12 @@
     <Content Include="Areas\Company\Views\Home\Courses.cshtml" />
     <Content Include="Areas\Company\Views\Home\Jobs.cshtml" />
     <Content Include="Areas\Company\Views\Jobs\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Jobs\View.cshtml" />
+    <Content Include="Areas\Company\Views\Shared\Job.cshtml" />
+    <Content Include="Areas\Company\Views\Jobs\View.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\Job.cshtml" />
+    <Content Include="Areas\Company\Views\Account\Profile.cshtml" />
+    <Content Include="Areas\Company\Views\Account\ChangeProfile.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -242,11 +247,14 @@
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\JobsController.cs" />
     <Compile Include="Areas\Company\CompanyAreaRegistration.cs" />
+    <Compile Include="Areas\Company\Controllers\AccountController.cs" />
     <Compile Include="Areas\Company\Controllers\HomeController.cs" />
     <Compile Include="Areas\Company\Controllers\JobsController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\JobsController.cs" />
+    <Compile Include="CustomFilters\CompanyAuthorizationFilterAttribute.cs" />
+    <Compile Include="CustomFilters\UserAuthorizationFilterAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

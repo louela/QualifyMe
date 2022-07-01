@@ -19,7 +19,7 @@ namespace QualifyMe.ServiceLayer
         List<CompanyView> GetCompanies();
         CompanyView GetCompaniesByEmailAndPassword(string Email, string Password);
         CompanyView GetCompaniesByEmail(string Email);
-        CompanyView GetCompaniesByUserID(int UserID);
+        CompanyView GetCompaniesByCompanyID(int CompanyID);
     }
     public class CompaniesService : ICompaniesService
     {
@@ -97,9 +97,9 @@ namespace QualifyMe.ServiceLayer
             return uvm;
         }
 
-        public CompanyView GetCompaniesByUserID(int UserID)
+        public CompanyView GetCompaniesByCompanyID(int CompanyID)
         {
-            Company u = ucr.GetCompaniesByCompanyID(UserID).FirstOrDefault();
+            Company u = ucr.GetCompaniesByCompanyID(CompanyID).FirstOrDefault();
             CompanyView uvm = null;
             if (u != null)
             {

@@ -1,4 +1,8 @@
-﻿@model QualifyMe.ViewModels.StudentView
+﻿@model QualifyMe.ViewModels.CompanyView
+@{
+    ViewBag.Title = "Profile";
+}
+
 <!DOCTYPE html>
 
 <html>
@@ -21,12 +25,20 @@
 
                     <div class="text-center mt-3">
 
-                        <h5 class="mt-2 mb-0">@Session["CurrentUserName"]</h5>
-                        <label for="StudentID">StudentID:</label>
-                        <span>@Session["CurrentStudentID"]</span>
+                        <h5 class="mt-2 mb-0">@Session["CurrentCompanyName"]</h5>
+                        
+                        <div class="px-4 mt-1">
+                            <span>@Session["CurrentCompanyMobile"]</span>
+
+                        </div>
+                        <div class="px-4 mt-1">
+                            <span>@Session["CurrentCompanyAddress"]</span>
+
+                        </div>
+                      
 
                         <div class="px-4 mt-1">
-                            <p class="fonts">Full Stack Designer I enjoy creating user-centric, delightful and human experiences. </p>
+                            <span>@Session["CurrentCompanyDescription"]</span>
 
                         </div>
 
@@ -34,7 +46,7 @@
 
                         <div class="buttons">
 
-                          
+                           
                             <button class="btn btn-primary px-4 ms-3" id="myEdit">Edit</button>
                         </div>
 
@@ -55,6 +67,6 @@
 </html>
 <script type="text/javascript">
     document.getElementById("myEdit").onclick = function () {
-        location.href ="/account/changeprofile";
+        location.href = "/company/account/changeprofile";
     };
 </script>
