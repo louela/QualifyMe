@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using QualifyMe.CustomFilters;
 using QualifyMe.ServiceLayer;
 using QualifyMe.ViewModels;
 
@@ -16,6 +17,7 @@ namespace QualifyMe.Areas.Admin.Controllers
         {
             this.cs = cs;
         }
+        [UserAuthorizationFilter]
         public ActionResult AddCompany()
         {
 
@@ -26,6 +28,7 @@ namespace QualifyMe.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [UserAuthorizationFilter]
         public ActionResult AddCompany(CompanyRegister acm)
         {
 
@@ -40,7 +43,7 @@ namespace QualifyMe.Areas.Admin.Controllers
                 Session["CurrentCompanyAddress"] = acm.CompanyAddress;
                 Session["CurrentCompanyDescription"] = acm.CompanyDescription;
                 Session["CurrentCompanyIsAdmin"] = false;
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Companies", "Home");
             }
             else
             {
