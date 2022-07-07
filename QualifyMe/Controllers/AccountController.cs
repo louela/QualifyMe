@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using QualifyMe.CustomFilters;
 using QualifyMe.ServiceLayer;
 using QualifyMe.ViewModels;
 
@@ -152,6 +153,8 @@ namespace QualifyMe.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+        [UserAuthorizationFilterAttribute]
+        
         public ActionResult ChangeProfile()
         {
 
@@ -163,7 +166,7 @@ namespace QualifyMe.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        
+        [UserAuthorizationFilterAttribute]
         public ActionResult ChangeProfile(EditStudent es)
         {
             if (ModelState.IsValid)
@@ -180,6 +183,7 @@ namespace QualifyMe.Controllers
             }
         }
 
+        [UserAuthorizationFilterAttribute]
         public ActionResult Profile()
         {
             StudentView uvm = new StudentView();

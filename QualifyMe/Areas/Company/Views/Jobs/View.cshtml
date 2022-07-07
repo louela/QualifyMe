@@ -1,4 +1,5 @@
-﻿@model QualifyMe.ViewModels.JobView
+﻿
+@model QualifyMe.ViewModels.JobView
 
 @{
     ViewBag.Title = "View Job";
@@ -16,7 +17,7 @@
                     </div>
                     <div class="col-sm-2">
                         <span class="text-info">
-                            @if (Convert.ToInt32(Session["CurrentUserID"]) != Model.CompanyID)
+                            @if (Convert.ToInt32(Session["CurrentCompanyID"]) != Model.CompanyID)
                             {
                                 @:by @Model.Company.CompanyName
                             }
@@ -85,8 +86,9 @@
             </div>
         }
 
-       
+     
     </div>
+    @Html.ValidationSummary()
 </div>
 
 <script>
@@ -138,7 +140,8 @@
 </script>
 
 <script>
-    $(".editbutton").click(function () {
+    $(".editbutton").click(function ()
+    {
         $(this).parent().find(".needs-validation").show();
         $(this).hide();
         $(this).parent().find(".answer").hide();

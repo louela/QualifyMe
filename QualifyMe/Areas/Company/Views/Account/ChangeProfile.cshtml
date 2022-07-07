@@ -1,0 +1,118 @@
+﻿@model QualifyMe.ViewModels.EditCompany
+@{
+    ViewBag.Title = "Edit Company";
+}
+<form novalidate="novalidate" action="/company/account/changeprofile" method="post" class="needs-validation">
+    <div class="container">
+        <div class="row gutters">
+            @Html.AntiForgeryToken()
+            <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <div class="account-settings">
+                            <div class="user-profile">
+                                <div id="profile-container">
+                                    <image id="profilepicture" src="~/Images/avatar.png" />
+                                </div>
+                                <h5 class="user-name"> @Session["CurrentCompanyName"]</h5>
+                                <h6 class="user-email"> @Session["CurrentCompanyEmail"]</h6>
+                            </div>
+                            <div class="about">
+                                <h5>About</h5>
+                                <p> @Session["CurrentCompanyName"] </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <div class="row gutters">
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                <h6 class="mb-2 text-primary">Company Details</h6>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <label for="CompanyName">Name</label>
+                                <input type="text" class="form-control" id="CompanyName" placeholder="Enter Name" name="CompanyName" required="required" pattern="^[a-zA-Z ]*$" autofocus="autofocus" value="@Model.CompanyName" />
+                                <div class="valid-feedback">
+                                    Looks Good!
+                                </div>
+                                <div class="invalid-feedback">
+                                    Please Enter Company Name.
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <label for="Email">Email:</label>
+                                <input type="text" class="form-control" id="Email" placeholder="Email" name="Email" required="required" value="@Model.Email" />
+                                <div class="valid-feedback">
+                                    Looks Good!
+                                </div>
+
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <label for="CompanyMobile">Mobile Number</label>
+                                <input type="text" class="form-control" id="CompanyMobile" placeholder="Enter Mobile" name="CompanyMobile" required="required" pattern="^[789]\d{9}$" value="@Model.CompanyMobile" />
+                                <div class="valid-feedback">
+                                    Looks Good!
+                                </div>
+                                <div class="invalid-feedback">
+                                    Please Enter your Mobile Number.
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <label for="CompanyDesciprion">Description</label>
+                                <input type="text" class="form-control" id="CompanyDescription" placeholder="Enter Description" name="CompanyDescription" required="required" pattern="^[a-zA-Z ]*$" value="@Model.CompanyDescription" />
+                                <div class="valid-feedback">
+                                    Looks Good!
+                                </div>
+                                <div class="invalid-feedback">
+                                    Please Enter  Description.
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <label for="CompanyAddress">Address</label>
+                                <input type="text" class="form-control" id="CompanyAddress" placeholder="Enter Address" name="CompanyAddress" required="required" pattern="^[a-zA-Z ]*$" value="@Model.CompanyAddress" />
+                                <div class="valid-feedback">
+                                    Looks Good!
+                                </div>
+                                <div class="invalid-feedback">
+                                    Please Enter  Address.
+                                </div>
+                            </div>
+
+                        </div>
+                        @Html.ValidationSummary()
+                        <div class="row gutters">
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                <div class="text-right">
+                                    <button type="cancel" class="btn btn-secondary">Cancel</button>
+                                    <button type="submit" class="btn btn-primary">Update Profile</button>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+</form>
+
+
+
+<script>
+    $("a[href='/company/account/changeprofile']").attr("id", "active");
+    $(document).on("submit", ".needs-validation", validate);
+    $(".needs-validation input").blur(validate);
+    function validate(event) {
+        if ($(".needs-validation")[0].checkValidity() == false) {
+            event.preventDefault();
+        }
+        $(".needs-validation")[0].classList.add("was-validated");
+    }
+    $(".cancel").on("click", function () {
+        $("#target").text(orginalText);
+    });
+
+</script>
