@@ -56,5 +56,10 @@ namespace QualifyMe.Areas.Company.Controllers
             JobView qvm = this.js.GetJobByJobID(id, uid);
             return View(qvm);
         }
+
+        public ActionResult CreateJob()
+        {
+            return View();
+        }
     }
 }

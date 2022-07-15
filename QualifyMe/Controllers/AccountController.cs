@@ -21,6 +21,8 @@ namespace QualifyMe.Controllers
         }
 
         // GET: Account
+
+       
         public ActionResult Register()
         {
             return View();
@@ -29,16 +31,16 @@ namespace QualifyMe.Controllers
         [ValidateAntiForgeryToken]
         [HttpPost]
         public ActionResult Register(StudentRegister rvm)
-        {
+         {
             if (ModelState.IsValid)
             {
                 int uid = this.ss.InsertStudent(rvm);
                 Session["CurrentUserID"] = uid;
                 Session["CurrentStudentID"] = rvm.StudentID;
-                Session["CurrentStudentName"] = rvm.StudentName;
-                Session["CurrentStudentEmail"] = rvm.Email;
-                Session["CurrentStudentPassword"] = rvm.Password;
-                Session["CurrentStudentIsAdmin"] = false;
+                Session["CurrentUserName"] = rvm.StudentName;
+                Session["CurrentUserEmail"] = rvm.Email;
+                Session["CurrentUserPassword"] = rvm.Password;
+                Session["CurrentUserIsAdmin"] = false;
                 return RedirectToAction("Index", "Home");
             }
             else
@@ -67,6 +69,7 @@ namespace QualifyMe.Controllers
                     Session["CurrentUserID"] = uvm.UserID;
                     Session["CurrentStudentID"] = uvm.StudentID;
                     Session["CurrentUserName"] = uvm.StudentName;
+                    Session["CurrentUserCourse"] = uvm.StudentCourse;
                     Session["CurrentUserEmail"] = uvm.Email;
                     Session["CurrentUserMobile"] = uvm.StudentMobile;
                     Session["CurrentUserPassword"] = uvm.Password;
@@ -79,7 +82,7 @@ namespace QualifyMe.Controllers
 
                     }
                     else
-                        return RedirectToAction("Index", "Home");
+                        return RedirectToAction("Homepage", "Home");
                 }
                 else
                 {

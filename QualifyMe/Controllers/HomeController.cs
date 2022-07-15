@@ -50,5 +50,11 @@ namespace QualifyMe.Controllers
             List<JobView> jobs = this.job.GetJobs().Take(10).ToList();
             return View(jobs);
         }
+
+        public ActionResult Homepage()
+        {
+            List<JobView> jobs = this.js.GetJobs().Take(10).ToList();
+            return View(jobs);
+        }
     }
 }
