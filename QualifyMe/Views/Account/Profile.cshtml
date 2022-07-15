@@ -5,51 +5,114 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Profile</title>
+   
 </head>
 <body>
-    <div class="container mt-5">
-
-        <div class="row d-flex justify-content-center">
-
-            <div class="col-md-7">
-
-                <div class="card p-3 py-4">
-
-                    <div class="text-center">
-                        <img src="~/Images/avatar.png" width="100" class="rounded-circle">
-                    </div>
-
-                    <div class="text-center mt-3">
-
-                        <h5 class="mt-2 mb-0">@Session["CurrentUserName"]</h5>
-                        <label for="StudentID">StudentID:</label>
-                        <span>@Session["CurrentStudentID"]</span>
-
-                        <div class="px-4 mt-1">
-                            <p class="fonts">Full Stack Designer I enjoy creating user-centric, delightful and human experiences. </p>
-
+    <div class="container emp-profile">
+        <form method="post">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="profile-img">
+                        <img src="~/Images/avatar.png" alt="" />
+                        <div class="file btn btn-lg btn-primary">
+                            Change Photo
+                            <input type="file" name="file" />
                         </div>
-
-
-
-                        <div class="buttons">
-
-                          
-                            <button class="btn btn-primary px-4 ms-3" id="myEdit">Edit</button>
-                        </div>
-
-
                     </div>
-
-
-
-
                 </div>
-
+                <div class="col-md-6">
+                    <div class="profile-head">
+                        <h5>
+                           @Session["CurrentUserName"]
+                        </h5>
+                        <h6>
+                            @Session["CurrentUserCourse"]
+                        </h6>
+                        <p class="proile-rating">Student ID : <span>@Session["CurrentStudentID"]</span></p>
+                        <ul class="nav nav-tabs" id="myTab" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Timeline</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile" />
+                </div>
             </div>
-
-        </div>
-
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="profile-work">
+                        <p>SKILLS</p>
+                        <a href="">Web Designer</a><br />
+                        <a href="">Web Developer</a><br />
+                        <a href="">WordPress</a><br />
+                        <a href="">WooCommerce</a><br />
+                        <a href="">PHP, .Net</a><br />
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="tab-content profile-tab" id="myTabContent">
+                        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Student ID</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <p>@Session["CurrentStudentID"]</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Name</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <p>@Session["CurrentUserName"]</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Email</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <p>@Session["CurrentUserEmail"]</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Phone</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <p>@Session["CurrentUserMobile"]</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Course</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <p>@Session["CurrentUserCourse"]</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>My Application</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <p>2</p>
+                                </div>
+                            </div>
+                           
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
     </div>
 </body>
 </html>

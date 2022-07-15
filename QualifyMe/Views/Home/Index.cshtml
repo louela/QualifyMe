@@ -1,30 +1,74 @@
 ﻿@model List<QualifyMe.ViewModels.JobView>
 
-@{ 
+@{
     ViewBag.Title = "Home";
 }
-<div class="row">
-    <div class="col-sm-12">
-        <div class="jumbotron">
-            <h1>Work while Studying, QualifyME!</h1>
-            <h3>Get your career on path with QualifyME!.</h3>
-            <p class="lead">Get career opportunities on QualifyMe.</p>
+
+
+<header class="site-header site-menu-header">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-lg-10 col-12 mx-auto">
+                <h1 class="text-white">Work while Studying, QualifyME!</h1>
+
+                <strong class="text-white">Get your career on path with QualifyME!.</strong>
+                <p class="lead">Get career opportunities on QualifyMe.</p>
+                <div class="d-none d-lg-block">
+                    <div class="d-none d-lg-block">
+                        <a href="/account/login">
+                            <button type="button" class="custom-btn btn btn-danger">Login Here</button>
+                        </a>
+                    </div>
+                    
+                </div>
+            </div>
+            
         </div>
     </div>
-</div>
 
-<div class="row">
-    <div class="col-sm-12">
-        <table class="table">
-            @foreach(var item in Model)
+    <div class="overlay"></div>
+</header>
+
+<section class="menu section-padding">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-12">
+                <h2 class="text-center mb-lg-5 mb-4">Partners</h2>
+            </div>
+
+            @foreach (var item in Model)
             {
-                Html.RenderPartial("Job", item);
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div class="menu-thumb">
+                        <div class="menu-image-wrap">
+                            <img src="~/images/companies/rbt-logo.png" class="img-fluid menu-image" alt="">
+
+                            <span class="menu-tag bg-warning">BSIS</span>
+                        </div>
+
+                        <div class="menu-info d-flex flex-wrap align-items-center">
+                            <h4 class="mb-0">@item.Company.CompanyName</h4>
+
+                            @*<span class="price-tag bg-white shadow-lg ms-4"><small>$</small>12.50</span>*@
+
+                            <div class="d-flex flex-wrap align-items-center w-100 mt-2">
+                                <p class="reviews-text mb-0 me-3">@item.Company.CompanyDescription</p>
+
+                                <div class="reviews-stars">
+                                    <i class="bi-star-fill reviews-icon"></i>
+                                    <i class="bi-star-fill reviews-icon"></i>
+                                    <i class="bi-star-fill reviews-icon"></i>
+                                    <i class="bi-star-fill reviews-icon"></i>
+                                    <i class="bi-star reviews-icon"></i>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
             }
-        </table>
 
-    </div>
-</div>
-
-<script>
-    $("a[href='/home/index']").attr("id", "active");
-</script>
+</section>
