@@ -36,7 +36,6 @@ namespace QualifyMe.Areas.Company.Controllers
             if (ModelState.IsValid)
             {
                 qvm.ApplicantsCount = 0;
-
                 qvm.JobDateAndTime = DateTime.Now;
                 qvm.CompanyID = Convert.ToInt32(Session["CurrentCompanyID"]);
                 this.js.InsertJob(qvm);
@@ -57,6 +56,7 @@ namespace QualifyMe.Areas.Company.Controllers
             return View(qvm);
         }
 
+      
         public ActionResult CreateJob()
         {
             return View();

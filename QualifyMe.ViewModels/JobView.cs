@@ -10,6 +10,10 @@ namespace QualifyMe.ViewModels
     {
         public int JobID { get; set; }
         public string JobTitle { get; set; }
+        public string JobDescription { get; set; }
+        public string JobQualification  { get; set; }
+        public string JobTypes { get; set; }
+        public string JobStatus { get; set; }
         public DateTime JobDateAndTime { get; set; }
         public int CompanyID { get; set; }
         public int CourseID { get; set; }

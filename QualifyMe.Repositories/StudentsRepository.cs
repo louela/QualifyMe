@@ -41,6 +41,7 @@ namespace QualifyMe.Repositories
             {
                 st.StudentName = s.StudentName;
                 st.StudentMobile = s.StudentMobile;
+                st.StudentCourse = s.StudentCourse;
                 db.SaveChanges();
             }
         }
@@ -71,9 +72,9 @@ namespace QualifyMe.Repositories
             return st;
         }
 
-        public List<Student> GetStudentsByEmailAndPassword(string StudentEmail, string Password)
+        public List<Student> GetStudentsByEmailAndPassword(string Email, string Password)
         {
-            List<Student> st = db.Students.Where(temp => temp.Email == StudentEmail && temp.Password == Password).ToList();
+            List<Student> st = db.Students.Where(temp => temp.Email == Email && temp.Password == Password).ToList();
             return st;
         }
 

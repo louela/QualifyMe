@@ -20,11 +20,11 @@
                     <img src="~/images/avatar.png" alt="" height="50px" width="50px">
                     <a>@item.Company.CompanyName</a>
                 </div>
-                <a href="/jobs/view"> @item.JobTitle</a>
+                <a href="/jobs/view/@item.JobID"> @item.JobTitle</a>
                 <p>@item.JobDateAndTime</p>
                 @*<div class="fakeimg" style="height:200px;">Image</div>*@
-                <p>Some text..</p>
-                <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+               
+                <p>@item.JobDescription</p>
             </div>
             }
             </div>

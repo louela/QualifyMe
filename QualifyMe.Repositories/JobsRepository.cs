@@ -39,6 +39,10 @@ namespace QualifyMe.Repositories
             if (jb != null)
             {
                 jb.JobTitle = j.JobTitle;
+                jb.JobDescription = j.JobDescription;
+                jb.JobQualification = j.JobQualification;
+                jb.JobTypes = j.JobTypes;
+                jb.JobStatus = j.JobStatus;
                 jb.JobDateAndTime = j.JobDateAndTime;
                 jb.CourseID = j.CourseID;
                 db.SaveChanges();

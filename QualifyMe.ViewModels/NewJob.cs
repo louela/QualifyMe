@@ -15,6 +15,14 @@ namespace QualifyMe.ViewModels
 
         [Required]
         public DateTime JobDateAndTime { get; set; }
+        [Required]
+        public string JobDescription { get; set; }
+        [Required]
+        public string JobQualification { get; set; }
+        [Required]
+        public String JobTypes { get; set; }
+        [Required]
+        public String JobStatus { get; set; }
 
         [Required]
         public int CompanyID { get; set; }

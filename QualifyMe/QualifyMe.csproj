@@ -156,9 +156,17 @@
     <Content Include="Content\Styles.css" />
     <Content Include="Global.asax" />
     <Content Include="Images\avatar.png" />
+    <Content Include="Images\companies\lexmark-logo.png" />
+    <Content Include="Images\companies\rbt-logo.png" />
+    <Content Include="Images\developers\loren.png" />
+    <Content Include="Images\developers\louela.png" />
     <Content Include="Images\down-color.png" />
     <Content Include="Images\down-empty.png" />
+    <Content Include="Images\laptop-image.jpg" />
     <Content Include="Images\map.svg" />
+    <Content Include="Images\pic1.jpg" />
+    <Content Include="Images\pic4.jpg" />
+    <Content Include="Images\qualifyme-logo.png" />
     <Content Include="Images\up-color.png" />
     <Content Include="Images\up-empty.png" />
     <Content Include="Images\user.png" />
@@ -208,6 +216,8 @@
     <Content Include="Areas\Admin\Views\Shared\Job.cshtml" />
     <Content Include="Areas\Company\Views\Account\Profile.cshtml" />
     <Content Include="Areas\Company\Views\Account\ChangeProfile.cshtml" />
+    <Content Include="Images\companies\accenture-logo.png" />
+    <Content Include="Images\cityy.jpg" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -278,6 +288,8 @@
     <Content Include="Views\Account\CompanyLogin.cshtml" />
     <Content Include="Views\Account\Test.cshtml" />
     <Content Include="Views\Account\Profile.cshtml" />
+    <Content Include="Views\Account\LandingPage.cshtml" />
+    <Content Include="Views\Home\Homepage.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

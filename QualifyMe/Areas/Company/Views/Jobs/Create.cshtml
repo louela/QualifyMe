@@ -9,37 +9,53 @@
         <h1>Create Job</h1>
         <form class="needs-validation" novalidate="novalidate" action="/company/jobs/create" method="post">
             @Html.AntiForgeryToken()
-            <div class="form-row">
-                <div class="form-group col-sm-12">
-                    <label for="JobTitle">Job</label>
-                    <textarea class="form-control" id="JobTitle" placeholder="Enter job title" name="JobTitle" required="required" pattern="^[a-zA-Z ]*$" autofocus="autofocus"></textarea>
-                    <div class="valid-feedback">
-                        Looks good!
-                    </div>
-                    <div class="invalid-feedback">
-                        Please enter question.
+            <div class="col-md-12 latest-job ">
+                <div class="form-group">
+                    <input class="form-control input-lg" type="text" id="jobtitle" name="jobtitle" placeholder="Job Title">
+                </div>
+                <div class="form-group">
+                    <textarea class="form-control input-lg" id="JobDescription" name="JobDescription" placeholder="Job Description"></textarea>
+                </div>
+                <div class="form-group">
+                    <textarea class="form-control input-lg" id="JobQualification" name="JobQualification" placeholder="Job Qualification"></textarea>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-sm-6">
+                        <label for="drpCourses">Courses</label>
+                        <select class="form-control" id="drpCourses" name="CourseID" required="required">
+                            <option value="">Please Select</option>
+                            @foreach (var item in ViewBag.Courses)
+                            {
+                                <option value="@item.CourseID">@item.CourseName</option>
+                            }
+                        </select>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                        <div class="invalid-feedback">
+                            Category can't be empty
+                        </div>
                     </div>
                 </div>
-            </div>
+                <div class="form-row">
+                    <div class="form-group col-sm-6">
+                        <label for="drptypes">Type:</label>
+                        <select class="form-control" id="drptypes" name="JobTypes" required="required">
+                            <option value="">Please Select</option>
+                            <option value="internship">Internship</option>
+                            <option value="parttime">Part-Time</option>
+                        </select>
+                        <label for="drpstatus">Status:</label>
+                        <select class="form-control" id="drpstatus" name="JobStatus" required="required">
+                            <option value="">Please Select</option>
+                            <option value="active">Active</option>
+                            <option value="inactive">InActive</option>
+                        </select>
 
-            <div class="form-row">
-                <div class="form-group col-sm-6">
-                    <label for="drpCourses">Courses</label>
-                    <select class="form-control" id="drpCourses" name="CourseID" required="required">
-                        <option value="">Please Select</option>
-                        @foreach (var item in ViewBag.Courses)
-                        {
-                            <option value="@item.CourseID">@item.CourseName</option>
-                        }
-                    </select>
-                    <div class="valid-feedback">
-                        Looks good!
-                    </div>
-                    <div class="invalid-feedback">
-                        Category can't be empty
                     </div>
                 </div>
             </div>
+         </div>
 
             <button type="submit" class="btn btn-primary">Add Job</button>
             @Html.ValidationSummary()
@@ -57,7 +73,9 @@
             event.preventDefault();
         }
         $(".needs-validation")[0].classList.add("was-validated");
+
     }
+   
 
 </script>
 

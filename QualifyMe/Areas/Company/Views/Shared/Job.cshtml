@@ -1,6 +1,22 @@
 ﻿@model QualifyMe.ViewModels.JobView
 
-<tr>
+
+<div>
+       
+        <div class="card">
+            <div class="profile">
+                <img src="~/images/avatar.png" alt="" height="50px" width="50px">
+
+            </div>
+            <a href="/company/jobs/view/@Model.JobID" class="text-primary">@Model.JobTitle</a>
+            <p>@Model.JobDateAndTime</p>
+            @*<div class="fakeimg" style="height:200px;">Image</div>*@
+            @*<p>@Model.Company.CompanyName</p>*@
+           
+        </div>
+        
+</div>
+@*<tr>
     <td><span class="badge badge-secondary">@Model.JobID</span> Job ID</td>
     <td><span class="badge badge-secondary">@Model.ApplicantsCount</span> Number of views</td>
 
@@ -22,4 +38,4 @@
     <td>
         on @Model.JobDateAndTime
     </td>
-</tr>
+</tr>*@

@@ -6,21 +6,21 @@
 
 <div class="row">
     <div class="col-sm-12">
-        
+        @if (Session["CurrentCompanyName"] != null)
+        {
+            <a href="/company/jobs/create" class="btn btn-primary">Add Job</a>
+        }
         <table class="table">
             @foreach (var item in Model)
             {
                 Html.RenderPartial("Job", item);
             }
         </table>
-        @if (Session["CurrentCompanyName"] != null)
-        {
-            <a href="/company/jobs/create" class="btn btn-primary">Add Job</a>
-        }
-    </div>
-</div>
 
-<script>
-    $("a[href='/alljobs']").attr("id", "active");
-</script>
+    </div>
+    </div>
+
+    <script>
+        $("a[href='/alljobs']").attr("id", "active");
+    </script>
 
