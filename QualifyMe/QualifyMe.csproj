@@ -208,6 +208,10 @@
     <Content Include="Areas\Admin\Views\Shared\Job.cshtml" />
     <Content Include="Areas\Company\Views\Account\Profile.cshtml" />
     <Content Include="Areas\Company\Views\Account\ChangeProfile.cshtml" />
+    <Content Include="Areas\Admin\Views\Departments\AddDepartment.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\Departments.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\Department.cshtml" />
+    <Content Include="Areas\Admin\Views\Departments\ViewDepartment.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -244,6 +248,7 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\CompaniesController.cs" />
     <Compile Include="Areas\Admin\Controllers\CoursesController.cs" />
+    <Compile Include="Areas\Admin\Controllers\DepartmentsController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\JobsController.cs" />
     <Compile Include="Areas\Company\CompanyAreaRegistration.cs" />
@@ -278,6 +283,7 @@
     <Content Include="Views\Account\CompanyLogin.cshtml" />
     <Content Include="Views\Account\Test.cshtml" />
     <Content Include="Views\Account\Profile.cshtml" />
+    <Content Include="Views\Account\CompanyRegister.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

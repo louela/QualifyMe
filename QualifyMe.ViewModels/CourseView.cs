@@ -11,8 +11,12 @@ namespace QualifyMe.ViewModels
     {
         [Required]
         public int CourseID { get; set; }
+        [Required]
+        public int DepartmentID { get; set; }
 
         [Required]
         public string CourseName { get; set; }
+
+        public DepartmentView Department { get; set; }
     }
 }

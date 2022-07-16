@@ -1,0 +1,24 @@
+﻿@model List<QualifyMe.ViewModels.DepartmentView>
+
+@{
+    ViewBag.Title = "Department";
+}
+
+<div class="row">
+    <div class="col-sm-12">
+        <table class="table">
+            @foreach (var item in Model)
+            {
+                Html.RenderPartial("Department", item);
+
+
+            }
+
+        </table>
+        <a href="/admin/departments/adddepartment" class="btn btn-primary">Add Department</a>
+    </div>
+</div>
+
+<script>
+    $("a[href='/alldepartments']").attr("id", "active");
+</script>

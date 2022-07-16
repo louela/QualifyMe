@@ -17,15 +17,15 @@ namespace Q.DomainModels
         public string JobTitle { get; set; }
         public DateTime JobDateAndTime { get; set; }
         public int? CompanyID { get; set; }
-        public int? CourseID { get; set; }
+        public int? DepartmentID { get; set; }
         public int ApplicantsCount { get; set; }
 
 
         [ForeignKey("CompanyID")]
         public virtual Company Company { get; set; }
 
-        [ForeignKey("CourseID")]
-        public virtual Course Course { get; set; }
+        [ForeignKey("DepartmentID")]
+        public virtual Department Department { get; set; }
 
         public virtual List<Applicant> Applicants { get; set; }
     }

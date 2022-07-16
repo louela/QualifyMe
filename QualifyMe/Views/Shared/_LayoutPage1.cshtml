@@ -36,7 +36,7 @@
                         <a class="nav-link" href="/home/about">About</a>
                     </li>
 
-                   
+
 
                     @*if naka login as student accout*@
                     @if (Session["CurrentUserName"] != null)
@@ -45,11 +45,11 @@
                             <a class="nav-link" href="/home/companies">Companies</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="job.html">Job</a>
+                            <a class="nav-link" href="/jobs/view">Job</a>
                         </li>
 
 
-                        
+
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
                                 <img src="~/Images/user.png" width="20px" />
@@ -63,20 +63,20 @@
                         </li>
 
 
-                 
-          
-          
+
+
+
                     }
 
-         </div>
-             
-    </nav>
-    
+            </div>
 
-            @RenderBody()
-            <hr />
-            <footer>
-                <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-            </footer>     
-    </body>
+    </nav>
+
+
+    @RenderBody()
+    <hr />
+    <footer>
+        <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+    </footer>
+</body>
 </html>

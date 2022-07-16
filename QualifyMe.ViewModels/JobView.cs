@@ -12,11 +12,11 @@ namespace QualifyMe.ViewModels
         public string JobTitle { get; set; }
         public DateTime JobDateAndTime { get; set; }
         public int CompanyID { get; set; }
-        public int CourseID { get; set; }
+        public int DepartmentID { get; set; }
         public int ApplicantsCount { get; set; }
 
         public CompanyView Company { get; set; }
-        public CourseView Course { get; set; }
+        public DepartmentView Department { get; set; }
         public virtual List<ApplicantView> Applicants { get; set; }
     }
 }

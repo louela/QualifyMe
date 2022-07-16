@@ -69,7 +69,7 @@ namespace QualifyMe.Controllers
                     Session["CurrentUserID"] = uvm.UserID;
                     Session["CurrentStudentID"] = uvm.StudentID;
                     Session["CurrentUserName"] = uvm.StudentName;
-                    Session["CurrentUserCourse"] = uvm.StudentCourse;
+                   // Session["CurrentUserCourse"] = uvm.StudentCourse;
                     Session["CurrentUserEmail"] = uvm.Email;
                     Session["CurrentUserMobile"] = uvm.StudentMobile;
                     Session["CurrentUserPassword"] = uvm.Password;
@@ -193,7 +193,42 @@ namespace QualifyMe.Controllers
             return View();
         }
 
-      
+    
+        public ActionResult CompanyRegister()
+        {
+
+            CompanyRegister acm = new CompanyRegister();
+            return View(acm);
+        }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        
+        public ActionResult CompanyRegister(CompanyRegister acm)
+        {
+
+
+            if (ModelState.IsValid)
+            {
+                int cid = this.cs.InsertCompany(acm);
+                Session["CurrentCompanyID"] = cid;
+                Session["CurrentCompanyName"] = acm.CompanyName;
+                Session["CurrentCompanyEmail"] = acm.Email;
+                Session["CurrentCompanyPassword"] = acm.Password;
+                Session["CurrentCompanyAddress"] = acm.CompanyAddress;
+                Session["CurrentCompanyDescription"] = acm.CompanyDescription;
+                Session["CurrentCompanyIsAdmin"] = false;
+                return RedirectToAction("Companies", "Home");
+            }
+            else
+            {
+                ModelState.AddModelError("x", "Invalid Data");
+                return View();
+            }
+        }
+
+
 
 
     }

@@ -14,7 +14,12 @@ namespace Q.DomainModels
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int CourseID { get; set; }
         public string CourseName { get; set; }
-      
+        public int DepartmentID { get; set; }
+
+
+        [ForeignKey("DepartmentID")]
+        public virtual Department Department { get; set; }
+
 
     }
 }

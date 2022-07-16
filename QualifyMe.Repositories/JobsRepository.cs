@@ -40,7 +40,7 @@ namespace QualifyMe.Repositories
             {
                 jb.JobTitle = j.JobTitle;
                 jb.JobDateAndTime = j.JobDateAndTime;
-                jb.CourseID = j.CourseID;
+                jb.DepartmentID = j.DepartmentID;
                 db.SaveChanges();
             }
         }
