@@ -12,8 +12,14 @@ namespace QualifyMe.Repositories
         void InsertApplicant(Applicant a);
        
         void DeleteApplicant(int aid);
+        int GetLatestApplicantID();
         List<Applicant> GetApplicantsByJobID(int jid);
         List<Applicant> GetApplicantsByApplicantID(int ApplicantID);
+        //List<Applicant> GetJobByApplicantID(int JobID,int UserID);
+
+        //Applicant GetJob (int JobID);
+        int GetLatestJobID(int JobID);
+
     }
     public class ApplicantsRepository : IApplicantsRepository
     {
@@ -58,5 +64,23 @@ namespace QualifyMe.Repositories
             List<Applicant> ap = db.Applicants.Where(temp => temp.ApplicantID == ApplicantID).ToList();
             return ap;
         }
+
+        public int GetLatestApplicantID()
+        {
+            int aid = db.Applicants.Select(temp => temp.ApplicantID).Max();
+            return aid;
+        }
+
+        public int GetLatestJobID(int JobID)
+        {
+            int jid = db.Jobs.Select(temp => temp.JobID).Max();
+            return jid;
+        }
+
+        //public List<Applicant> GetJobByApplicantID (int JobID,int UserID)
+        //{
+        //    List<Applicant> qt = db.Applicants.Where(temp => temp.JobID == JobID , temp => temp.UserID).ToList();
+        //    return qt;
+        //}
     }
 }

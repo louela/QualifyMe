@@ -38,7 +38,13 @@ namespace QualifyMe.Areas.Company.Controllers
                 qvm.ApplicantsCount = 0;
                 qvm.JobDateAndTime = DateTime.Now;
                 qvm.CompanyID = Convert.ToInt32(Session["CurrentCompanyID"]);
-                this.js.InsertJob(qvm);
+                int jid = js.InsertJob(qvm);
+                Session["CurrentJobID"] = jid;
+                Session["CurrentJobTitle"] = qvm.JobTitle;
+                Session["CurrentJobDescription"] = qvm.JobDescription;
+                Session["JobCurrentQualification"] = qvm.JobQualification;
+                Session["CurretJobTypes"] = qvm.JobTypes;
+                Session["CurrentJobStatus"] = qvm.JobStatus;
                 return RedirectToAction("Jobs", "Home");
             }
             else

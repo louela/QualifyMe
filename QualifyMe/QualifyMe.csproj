@@ -290,6 +290,8 @@
     <Content Include="Views\Account\Profile.cshtml" />
     <Content Include="Views\Account\LandingPage.cshtml" />
     <Content Include="Views\Home\Homepage.cshtml" />
+    <Content Include="Views\Jobs\ApplyJob.cshtml" />
+    <Content Include="Views\Shared\Apply.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

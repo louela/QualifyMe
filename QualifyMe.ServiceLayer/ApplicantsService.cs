@@ -12,10 +12,14 @@ namespace QualifyMe.ServiceLayer
 {
     public interface IApplicantsService
     {
-        void InsertApplicant(NewApplicant avm);
+        int InsertApplicant(NewApplicant avm);
         void DeleteApplicant(int aid);
-        List<ApplicantView> GetApplicantsByQJobID(int jid);
+        List<ApplicantView> GetApplicantsByJobID(int jid);
         ApplicantView GetApplicantByApplicantID(int ApplicantID);
+        //ApplicantView GetJobByApplicantID(int ApplicantID, int UserID, int jobID);
+
+        //int GetLatestJobID(int JobID);
+      
     }
     public class ApplicantsService : IApplicantsService
     {
@@ -25,12 +29,14 @@ namespace QualifyMe.ServiceLayer
         {
             ar = new ApplicantsRepository();
         }
-        public void InsertApplicant(NewApplicant avm)
+        public int InsertApplicant(NewApplicant avm)
         {
             var config = new MapperConfiguration(cfg => { cfg.CreateMap<NewApplicant, Applicant>(); cfg.IgnoreUnmapped(); });
             IMapper mapper = config.CreateMapper();
             Applicant a = mapper.Map<NewApplicant, Applicant>(avm);
             ar.InsertApplicant(a);
+            int aid = ar.GetLatestApplicantID();
+            return aid;
         }
 
         public void DeleteApplicant(int aid)
@@ -38,7 +44,7 @@ namespace QualifyMe.ServiceLayer
             ar.DeleteApplicant(aid);
         }
 
-        public List<ApplicantView> GetApplicantsByQJobID(int jid)
+        public List<ApplicantView> GetApplicantsByJobID(int jid)
         {
             List<Applicant> a = ar.GetApplicantsByJobID(jid);
             var config = new MapperConfiguration(cfg => { cfg.CreateMap<Applicant,ApplicantView>(); cfg.IgnoreUnmapped(); });
@@ -59,5 +65,35 @@ namespace QualifyMe.ServiceLayer
             }
             return avm;
         }
+
+        //public ApplicantView GetLatestJobID(int JobID)
+        //{
+        //    Applicant a = ar.GetLatestJobID(JobID).FirstOrDefault();
+        //    ApplicantView av = null;
+        //    if (a != null)
+        //    {
+        //        var config = new MapperConfiguration(cfg => { cfg.CreateMap<Applicant, ApplicantView>(); cfg.IgnoreUnmapped(); });
+        //        IMapper mapper = config.CreateMapper();
+        //        av = mapper.Map<Applicant, ApplicantView>(a);
+        //    }
+        //    return av;
+        //}
+
+        //public ApplicantView GetJobByApplicantID (int ApplicantID,int UserID, int JobID )
+        //{
+        //    Applicant a = ar.GetJobByApplicantID(JobID,UserID).FirstOrDefault();
+        //    ApplicantView av = null;
+        //    if( a != null)
+        //    {
+        //        var config = new MapperConfiguration(cfg => { cfg.CreateMap<Applicant, ApplicantView>(); cfg.IgnoreUnmapped(); });
+        //        IMapper mapper= config.CreateMapper();
+        //        av = mapper.Map<Applicant, ApplicantView>(a);
+
+        //    }
+        //    return av;
+        //}
+
+
+
     }
 }

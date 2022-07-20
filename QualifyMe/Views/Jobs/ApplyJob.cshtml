@@ -1,0 +1,70 @@
+﻿@model QualifyMe.ViewModels.ApplicantView
+@{
+    ViewBag.Title = "ApplyJob";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+<div class="row">
+    <div class="container">
+        <h5>Application Form</h5>
+        <form novalidate="novalidate" action="/jobs/applyjob" method="post" class="needs-validation">
+            @Html.AntiForgeryToken()
+
+            @*<label for="StudentName">Fullname:</label>
+        <input type="date" id="StudentName" name="StudentName" value="@Model.Student.StudentName">*@
+           <h1>@Session["CurrentJobID"]</h1>
+            <label for="ApplicantGender">Gender:</label>
+            <select id="ApplicantGender" name="ApplicantGender">
+                <option value="">Please select</option>
+                <option value="female">Female</option>
+                <option value="male">Male</option>
+            </select>
+         
+            <div class="form-row">
+                <div class="form-group col-sm-6">
+                    <label for="drpCourses">Courses</label>
+                    <select class="form-control" id="drpCourses" name="CourseID" required="required">
+                        <option value="">Please Select</option>
+                        @foreach (var item in ViewBag.Courses)
+                        {
+                            <option value="@item.CourseID">@item.CourseName</option>
+                        }
+                    </select>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                    <div class="invalid-feedback">
+                        Category can't be empty
+                    </div>
+                </div>
+            </div>
+            <label for="ApplicantBirthday">Birthday:</label>
+            <input type="date" id="ApplicantBirthday" name="ApplicantBirthday">
+            <br />
+            <label for="ApplicantAddress">Address</label>
+            <input type="text" id="ApplicantAddress" name="ApplicantAddress" placeholder="Address">
+
+            <label for="ApplicantQuestion">Question</label>
+            <textarea id="subject" name="ApplicantQuestion" placeholder="Tell me something about yourself." style="height:200px"></textarea>
+
+            <input type="submit" value="Submit">
+            @Html.ValidationSummary()
+        </form>
+    </div>
+</div>
+
+
+<script>
+    $("a[href='/jobs/applyjob']").attr("id", "active");
+    $(document).on("submit", ".needs-validation", validate);
+    $(".needs-validation input").blur(validate);
+    function validate(event) {
+        if ($(".needs-validation")[0].checkValidity() == false) {
+            event.preventDefault();
+        }
+        $(".needs-validation")[0].classList.add("was-validated");
+    }
+    $(".cancel").on("click", function () {
+        $("#target").text(orginalText);
+    });
+
+</script>

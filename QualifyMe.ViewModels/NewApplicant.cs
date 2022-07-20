@@ -10,7 +10,13 @@ namespace QualifyMe.ViewModels
     public class NewApplicant
     {
         [Required]
-        public string ApplicantPurpose { get; set; }
+        public string ApplicantGender { get; set; }
+        [Required]
+        public DateTime ApplicantBirthday { get; set; }
+        [Required]
+        public string ApplicantAddress { get; set; }
+        [Required]
+        public string ApplicantQuestion { get; set; }
 
         [Required]
         public DateTime ApplicantDateAndTime { get; set; }
@@ -20,6 +26,8 @@ namespace QualifyMe.ViewModels
 
         [Required]
         public int JobID { get; set; }
+        [Required]
+        public int CourseID { get; set; }
 
         [Required]
         public int ApplicantsCount { get; set; }

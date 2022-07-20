@@ -12,7 +12,7 @@ namespace QualifyMe.ServiceLayer
 {
     public interface IJobsService
     {
-        void InsertJob(NewJob qvm);
+        int InsertJob(NewJob qvm);
         void UpdateJobDetails(EditJob qvm);
         void UpdateApplicantsCount(int qid, int value);
         void DeleteJob(int qid);
@@ -28,12 +28,14 @@ namespace QualifyMe.ServiceLayer
             jr = new JobsRepository();
         }
 
-        public void InsertJob(NewJob qvm)
+        public int InsertJob(NewJob qvm)
         {
             var config = new MapperConfiguration(cfg => { cfg.CreateMap<NewJob, Job>(); cfg.IgnoreUnmapped(); });
             IMapper mapper = config.CreateMapper();
             Job q = mapper.Map<NewJob, Job>(qvm);
             jr.InsertJob(q);
+            int jid = jr.GetLatestJobID();
+            return jid;
         }
 
         public void UpdateJobDetails(EditJob qvm)

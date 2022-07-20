@@ -14,7 +14,8 @@ namespace QualifyMe.Repositories
        
         void UpdateApplicantsCount(int jid, int value);
         void DeleteJob(int jid);
-       
+
+        int GetLatestJobID();
         List<Job> GetJobs();
         List<Job> GetJobByJobID(int JobID);
     }
@@ -80,5 +81,12 @@ namespace QualifyMe.Repositories
             List<Job> jb = db.Jobs.Where(temp => temp.JobID == JobID).ToList();
             return jb;
         }
+
+        public int GetLatestJobID()
+        {
+            int jid = db.Jobs.Select(temp => temp.JobID).Max();
+            return jid;
+        }
+
     }
 }

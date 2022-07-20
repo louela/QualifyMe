@@ -20,9 +20,9 @@ namespace QualifyMe.ViewModels
         [Required]
         public string JobQualification { get; set; }
         [Required]
-        public String JobTypes { get; set; }
+        public string JobTypes { get; set; }
         [Required]
-        public String JobStatus { get; set; }
+        public string JobStatus { get; set; }
 
         [Required]
         public int CompanyID { get; set; }
