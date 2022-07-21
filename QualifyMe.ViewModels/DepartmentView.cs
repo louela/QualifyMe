@@ -14,7 +14,7 @@ namespace QualifyMe.ViewModels
 
         [Required]
         public string DepartmentName { get; set; }
+        public virtual List<CourseView> Courses { get; set; }
 
-      
     }
 }

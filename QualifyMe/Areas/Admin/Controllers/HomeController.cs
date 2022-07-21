@@ -46,7 +46,7 @@ namespace QualifyMe.Areas.Admin.Controllers
 
         public ActionResult Companies()
         {
-            List<CompanyView> companies = this.com.GetCompanies().Take(10).ToList();
+            List<CompanyView> companies = this.com.GetCompanies().Take(20).ToList();
             return View(companies);
         }
         public ActionResult Departments()

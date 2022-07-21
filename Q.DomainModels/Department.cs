@@ -14,5 +14,6 @@ namespace Q.DomainModels
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int DepartmentID { get; set; }
         public string DepartmentName { get; set; }
+        public virtual List<Course> Courses { get; set; }
     }
 }

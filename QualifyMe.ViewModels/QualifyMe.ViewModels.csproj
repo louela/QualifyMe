@@ -58,6 +58,7 @@
     <Compile Include="CourseView.cs" />
     <Compile Include="DepartmentView.cs" />
     <Compile Include="EditCompany.cs" />
+    <Compile Include="EditCompanyStatusView.cs" />
     <Compile Include="EditJob.cs" />
     <Compile Include="EditPassword.cs" />
     <Compile Include="EditStudent.cs" />

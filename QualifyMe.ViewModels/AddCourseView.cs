@@ -17,3 +17,6 @@ namespace QualifyMe.ViewModels
         public int DepartmentID { get; set; }
     }
 }
+
+
+

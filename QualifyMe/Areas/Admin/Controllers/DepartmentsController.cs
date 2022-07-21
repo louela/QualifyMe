@@ -54,10 +54,29 @@ namespace QualifyMe.Areas.Admin.Controllers
         public ActionResult ViewDepartment(int id )
         {
 
-            int cid = Convert.ToInt32(Session["CurrentDepartmentID"]);
-            CourseView qvm = this.cos.GetCourseByDepartmentID(id,cid);
+            
+            DepartmentView qvm = this.dos.GetDepartmentByDepartmentID(id);
             return View(qvm);
         }
+
+
+        public ActionResult AddCourse(AddCourseView navm)
+        {
+            
+            if (ModelState.IsValid)
+            {
+                this.cos.InsertCourse(navm);
+                return RedirectToAction("ViewDepartment", "Departments", new { id = navm.DepartmentID });
+            }
+            else
+            {
+                ModelState.AddModelError("x", "Invalid Data");
+                
+                return View("ViewDepartment");
+            }
+        }
+
+
 
         public ActionResult DeleteDepartment(int did)
         {
