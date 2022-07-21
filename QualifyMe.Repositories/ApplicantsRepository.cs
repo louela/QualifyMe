@@ -19,6 +19,7 @@ namespace QualifyMe.Repositories
 
         //Applicant GetJob (int JobID);
         int GetLatestJobID(int JobID);
+        //void UpdateApplicantsCount(int aid, int value);
 
     }
     public class ApplicantsRepository : IApplicantsRepository
@@ -38,7 +39,7 @@ namespace QualifyMe.Repositories
         {
             db.Applicants.Add(a);
             db.SaveChanges();
-            jr.UpdateApplicantsCount(a.JobID, 1);
+            //jr.UpdateApplicantsCount(a.JobID, 1);
         }
 
 
@@ -49,7 +50,7 @@ namespace QualifyMe.Repositories
             {
                 db.Applicants.Remove(ap);
                 db.SaveChanges();
-                jr.UpdateApplicantsCount(ap.JobID, -1);
+                //jr.UpdateApplicantsCount(ap.JobID, -1);
             }
         }
 
@@ -77,10 +78,14 @@ namespace QualifyMe.Repositories
             return jid;
         }
 
-        //public List<Applicant> GetJobByApplicantID (int JobID,int UserID)
+        //public void UpdateApplicantsCount(int aid,int value)
         //{
-        //    List<Applicant> qt = db.Applicants.Where(temp => temp.JobID == JobID , temp => temp.UserID).ToList();
-        //    return qt;
+        //    Applicant a = db.Applicants.FirstOrDefault(temp => temp.ApplicantID == aid);
+        //    if(a!= null)
+        //    {
+        //        a.Applicant +=  value;
+        //        db.SaveChanges();
+        //    }
         //}
     }
 }

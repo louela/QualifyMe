@@ -29,11 +29,13 @@
                     </div>
                 </div>
                 <div class="section" style="padding-bottom:20px;">
-                    <a href="/jobs/applyjob" class="btn btn-primary">Apply Job</a>
+                    <a href="/jobs/applyjob/@Model.JobID" class="btn btn-primary">Apply Job</a>
                 </div>
 
 
-                </form>
+
+
+            </form>
         </div>
 
         <div class="col-xs-9">
@@ -53,13 +55,60 @@
     </div>
 </div>
 
+@if (Session["CurrentUsername"] != null)
+{
+    <div class="container">
+        <h5>Application Form</h5>
+        <form novalidate="novalidate" action="/jobs/applyjob" method="post" class="needs-validation">
+            @Html.AntiForgeryToken()
+            <input type="text" name="JobID" value="@Model.JobID" />
+            <label for="StudentName">Fullname:</label>
+            <h5>@Session["CurrentUserName"]</h5>
+            <label for="ApplicantGender">Gender:</label>
+            <select id="ApplicantGender" name="ApplicantGender">
+                <option value="">Please select</option>
+                <option value="female">Female</option>
+                <option value="male">Male</option>
+            </select>
+
+            <div class="form-row">
+                <div class="form-group col-sm-6">
+                    <label for="drpCourses">Courses</label>
+                    <select class="form-control" id="drpCourses" name="CourseID" required="required">
+                        <option value="">Please Select</option>
+                        @foreach (var item in ViewBag.Courses)
+                        {
+                            <option value="@item.CourseID">@item.CourseName</option>
+                        }
+                    </select>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                    <div class="invalid-feedback">
+                        Category can't be empty
+                    </div>
+                </div>
+            </div>
+            <label for="ApplicantBirthday">Birthday:</label>
+            <input type="date" id="ApplicantBirthday" name="ApplicantBirthday">
+            <br />
+            <label for="ApplicantAddress">Address</label>
+            <input type="text" id="ApplicantAddress" name="ApplicantAddress" placeholder="Address">
+
+            <label for="ApplicantQuestion">Question</label>
+            <textarea id="subject" name="ApplicantQuestion" placeholder="Tell me something about yourself." style="height:200px"></textarea>
+
+            <input type="submit" value="Submit">
+            @Html.ValidationSummary()
+        </form>
+    </div>
+}
 
 
-<script>
-    $(".editbutton").click(function () {
-        $(this).parent().find(".needs-validation").show();
-        $(this).hide();
-        $(this).parent().find(".answer").hide();
-    });
-</script>
-
+    <script>
+        $(".editbutton").click(function () {
+            $(this).parent().find(".needs-validation").show();
+            $(this).hide();
+            $(this).parent().find(".answer").hide();
+        });
+    </script>

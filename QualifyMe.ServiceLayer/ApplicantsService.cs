@@ -19,6 +19,7 @@ namespace QualifyMe.ServiceLayer
         //ApplicantView GetJobByApplicantID(int ApplicantID, int UserID, int jobID);
 
         //int GetLatestJobID(int JobID);
+        //void UpdateApplicantsCount(int aid,int value);
       
     }
     public class ApplicantsService : IApplicantsService
@@ -65,6 +66,12 @@ namespace QualifyMe.ServiceLayer
             }
             return avm;
         }
+
+       
+        //public void UpdateApplicantsCount(int aid,int value)
+        //{
+        //    ar.UpdateApplicantsCount(aid,value);
+        //}
 
         //public ApplicantView GetLatestJobID(int JobID)
         //{

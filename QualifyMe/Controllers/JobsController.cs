@@ -23,9 +23,11 @@ namespace QualifyMe.Controllers
         // GET: Jobs
         public ActionResult View(int id)
         {
-            this.js.UpdateApplicantsCount(id, 1);
+            //this.js.UpdateApplicantsCount(id, 1);
             int uid = Convert.ToInt32(Session["CurrentUserID"]);
             JobView jv = this.js.GetJobByJobID(id, uid);
+            List<CourseView> courses = this.cs.GetCourses();
+            ViewBag.courses = courses;
             return View(jv);
         }
 
@@ -58,31 +60,28 @@ namespace QualifyMe.Controllers
             }
         }
 
-        public ActionResult ApplyJob(int id)
-        {
-            
-            List<CourseView> courses = this.cs.GetCourses();
-            ViewBag.courses = courses;
-            Convert.ToInt32(Session["CurrentJobID"]);
-            
-            //ApplicantView av = this.asr.GetJobByApplicantID(id, uid,jid);
-            //ApplicantView job = this.asr.GetJob(id,uid);
-            return View();
-        }
+        //public ActionResult ApplyJob(int id)
+        //{
+        //    int uid = Convert.ToInt32(Session["CurrentUserID"]);
+        //    this.js.GetJobByJobID(id, uid);
+        //    JobView jb = this.c(uid);
+        //    List<CourseView> courses = this.cs.GetCourses();
+        //    ViewBag.courses = courses;  
+        //    return View();
+        //}
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult ApplyJob(NewApplicant na)
+        public ActionResult ApplyJob(NewApplicant na,int JobID)
         {
-
-           
-
             if (ModelState.IsValid)
             {
+               
                 na.ApplicantDateAndTime = DateTime.Now;
                 na.UserID = Convert.ToInt32(Session["CurrentUserID"]);
-                na.JobID = Convert.ToInt32(Session["CurrentJobID"]);                            
+               // int id = 
                 this.asr.InsertApplicant(na);
-                return RedirectToAction("View", "Home",new {id = na.JobID});
+                this.js.UpdateApplicantsCount(JobID, 1);
+                return RedirectToAction("ApplicationMessage", "Jobs");
             }
             else
             {
@@ -90,5 +89,13 @@ namespace QualifyMe.Controllers
                 return View();
             }
         }
+
+        public ActionResult ApplicationMessage()
+        {
+            return View();
+        }
+            
+            
+            
     }
 }

@@ -1,41 +1,49 @@
 ﻿@model QualifyMe.ViewModels.JobView
 
-
-<div>
-       
-        <div class="card">
+<div class="col-sm-12">
+    <div class="card">
+        <div class="row">
             <div class="profile">
                 <img src="~/images/avatar.png" alt="" height="50px" width="50px">
+                <p>@Model.Company.CompanyName</p>
+            </div>
+            <div class="col-5 ">
+                <a href="/company/jobs/view/@Model.JobID" class="text-primary">@Model.JobTitle</a>
+                <p>@Model.JobDateAndTime</p>
+            </div>
+            <a href="/Company/Applicants/List/@Model.JobID">No. of Applicants</a>
+            <h6>@Model.ApplicantsCount</h6>
+            <table class="table">
+                @*@foreach (var item in Model)
+                {
+                    Html.RenderPartial("Applicant", item);
 
+
+                }*@
+
+            </table>
+        </div>       
+    </div>
+</div>
+
+
+
+
+<!--<div class="col-sm-12">
+
+    <div class="card">
+        <div class="row">
+            <div class="profile">
+                <img src="~/images/avatar.png" alt="" height="50px" width="50px">
+                <p>@Model.Company.CompanyName</p>
             </div>
             <a href="/company/jobs/view/@Model.JobID" class="text-primary">@Model.JobTitle</a>
-            <p>@Model.JobDateAndTime</p>
+            <p>@Model.JobDateAndTime</p>-->
             @*<div class="fakeimg" style="height:200px;">Image</div>*@
             @*<p>@Model.Company.CompanyName</p>*@
-           
+            <!--<div>
+                <p>No. of Applicants</p>
+            </div>
         </div>
-        
-</div>
-@*<tr>
-    <td><span class="badge badge-secondary">@Model.JobID</span> Job ID</td>
-    <td><span class="badge badge-secondary">@Model.ApplicantsCount</span> Number of views</td>
-
-    <td class="text-dark">
-        <a href="/company/jobs/view/@Model.JobID" class="text-primary">@Model.JobTitle</a>
-        <br />
-        <span class="badge badge-info">@Model.Course.CourseName</span>
-    </td>
-    <td>
-        @if (Convert.ToInt32(Session["CurrentCompanyID"]) != Model.CompanyID)
-        {
-            @:by @Model.Company.CompanyName
-        }
-        else
-        {
-            @:by you
-        }
-    </td>
-    <td>
-        on @Model.JobDateAndTime
-    </td>
-</tr>*@
+    </div>    
+</div>-->

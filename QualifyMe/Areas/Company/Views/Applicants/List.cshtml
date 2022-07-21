@@ -1,0 +1,32 @@
+﻿@model QualifyMe.ViewModels.JobView
+
+    @{
+        ViewBag.Title = "Applicants";
+    }
+
+    <div class="row">
+        <div class="col-sm-12">
+            @for (int i = 0; i < Model.Applicants.Count; i++)
+            {
+
+
+
+                <div class="col-sm-7">
+                    @if (Convert.ToInt32(Session["CurrentJobID"]) != Model.Applicants[i].JobID)
+                    {
+                        @Model.Applicants[i].Students.StudentName
+                    }
+
+
+            </div>
+
+
+
+
+        }
+        </div>
+    </div>
+
+    <script>
+        $("a[href='/alljobs']").attr("id", "active");
+    </script>

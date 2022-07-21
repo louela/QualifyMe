@@ -8,17 +8,15 @@
         <h5>Application Form</h5>
         <form novalidate="novalidate" action="/jobs/applyjob" method="post" class="needs-validation">
             @Html.AntiForgeryToken()
-
-            @*<label for="StudentName">Fullname:</label>
-        <input type="date" id="StudentName" name="StudentName" value="@Model.Student.StudentName">*@
-           <h1>@Session["CurrentJobID"]</h1>
+            <label for="StudentName">Fullname:</label>          
+           
             <label for="ApplicantGender">Gender:</label>
             <select id="ApplicantGender" name="ApplicantGender">
                 <option value="">Please select</option>
                 <option value="female">Female</option>
                 <option value="male">Male</option>
             </select>
-         
+
             <div class="form-row">
                 <div class="form-group col-sm-6">
                     <label for="drpCourses">Courses</label>

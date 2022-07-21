@@ -20,7 +20,7 @@ namespace Q.DomainModels
         public int UserID { get; set; }
         public int JobID { get; set; }
         public int CourseID { get; set; }
-        public int ApplicantsCount { get; set; }
+      
         public string ApplicantQuestion { get; set; }
         public string ApplicantGender { get; set; }
         public string ApplicantAddress { get; set; }

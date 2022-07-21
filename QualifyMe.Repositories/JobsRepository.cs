@@ -18,6 +18,7 @@ namespace QualifyMe.Repositories
         int GetLatestJobID();
         List<Job> GetJobs();
         List<Job> GetJobByJobID(int JobID);
+        List<Job> GetApplicantsByJobID(int jid);
     }
     public class JobsRepository: IJobsRepository
     {
@@ -87,6 +88,10 @@ namespace QualifyMe.Repositories
             int jid = db.Jobs.Select(temp => temp.JobID).Max();
             return jid;
         }
-
+        public List<Job> GetApplicantsByJobID(int jid)
+        {
+            List<Job> ap = db.Jobs.Where(temp => temp.JobID == jid).OrderByDescending(temp => temp.JobDateAndTime).ToList();
+            return ap;
+        }
     }
 }

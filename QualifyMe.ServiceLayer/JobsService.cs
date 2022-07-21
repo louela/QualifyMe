@@ -18,6 +18,7 @@ namespace QualifyMe.ServiceLayer
         void DeleteJob(int qid);
         List<JobView> GetJobs();
         JobView GetJobByJobID(int JobID, int UserID);
+        List<JobView> GetApplicantsByJobID(int jid);
     }
     public class JobsService : IJobsService
     {
@@ -75,14 +76,24 @@ namespace QualifyMe.ServiceLayer
                 IMapper mapper = config.CreateMapper();
                 qvm = mapper.Map<Job, JobView>(q);
 
-                foreach (var item in qvm.Applicants)
-                {
-                   
-                    ApplicantView applic = item.Applicants.Where(temp => temp.UserID == UserID).FirstOrDefault();
-                    
-                }
+                //foreach (var item in qvm.Applicants)
+                //{
+
+                //    ApplicantView applic = item.Applicants.Where(temp => temp.UserID == UserID).FirstOrDefault();
+
+                //}
             }
             return qvm;
+
+           
+        }
+        public List<JobView> GetApplicantsByJobID(int jid)
+        {
+            List<Job> a = jr.GetApplicantsByJobID(jid);
+            var config = new MapperConfiguration(cfg => { cfg.CreateMap<Job, JobView>(); cfg.IgnoreUnmapped(); });
+            IMapper mapper = config.CreateMapper();
+            List<JobView> jm = mapper.Map<List<Job>, List<JobView>>(a);
+            return jm;
         }
     }
 }
