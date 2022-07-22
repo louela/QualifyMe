@@ -18,9 +18,11 @@ namespace QualifyMe.ViewModels
         public int CompanyID { get; set; }
         public int CourseID { get; set; }
         public int ApplicantsCount { get; set; }
+        public int ApplicantID { get; set; }
 
         public CompanyView Company { get; set; }
         public CourseView Course { get; set; }
+        //public ApplicantView Applicant { get; set; }
         public virtual List<ApplicantView> Applicants { get; set; }
     }
 }

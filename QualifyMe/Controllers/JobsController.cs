@@ -71,14 +71,15 @@ namespace QualifyMe.Controllers
         //}
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult ApplyJob(NewApplicant na,int JobID)
+        public ActionResult ApplyJob(NewApplicant na,int JobID,int ApplicantID)
         {
             if (ModelState.IsValid)
             {
                
                 na.ApplicantDateAndTime = DateTime.Now;
                 na.UserID = Convert.ToInt32(Session["CurrentUserID"]);
-               // int id = 
+                // int id = 
+                this.asr.GetApplicantByApplicantID(ApplicantID);
                 this.asr.InsertApplicant(na);
                 this.js.UpdateApplicantsCount(JobID, 1);
                 return RedirectToAction("ApplicationMessage", "Jobs");

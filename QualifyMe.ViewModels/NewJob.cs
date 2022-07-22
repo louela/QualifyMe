@@ -30,6 +30,9 @@ namespace QualifyMe.ViewModels
         [Required]
         public int CourseID { get; set; }
 
+       
+        public int ApplicantID { get; set; }
+
         [Required]
         public int ApplicantsCount { get; set; }
 

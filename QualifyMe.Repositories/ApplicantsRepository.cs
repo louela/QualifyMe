@@ -13,9 +13,9 @@ namespace QualifyMe.Repositories
        
         void DeleteApplicant(int aid);
         int GetLatestApplicantID();
-        List<Applicant> GetApplicantsByJobID(int jid);
+       
         List<Applicant> GetApplicantsByApplicantID(int ApplicantID);
-        //List<Applicant> GetJobByApplicantID(int JobID,int UserID);
+        List<Applicant> GetApplicantsByJobID(int JobID);
 
         //Applicant GetJob (int JobID);
         int GetLatestJobID(int JobID);
@@ -54,9 +54,9 @@ namespace QualifyMe.Repositories
             }
         }
 
-        public List<Applicant> GetApplicantsByJobID(int jid)
+        public List<Applicant> GetApplicantsByJobID(int JobID)
         {
-            List<Applicant> ap = db.Applicants.Where(temp => temp.JobID == jid).OrderByDescending(temp => temp.ApplicantDateAndTime).ToList();
+            List<Applicant> ap = db.Applicants.Where(temp => temp.JobID == JobID).OrderByDescending(temp => temp.ApplicantDateAndTime).ToList();
             return ap;
         }
 

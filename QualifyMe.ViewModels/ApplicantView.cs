@@ -17,10 +17,12 @@ namespace QualifyMe.ViewModels
         public int UserID { get; set; }
         public int JobID { get; set; }
         public int CourseID { get; set; }
+       
         public int ApplicantsCount { get; set; }
         public  StudentView Student { get; set; }
-        public  JobView Job { get; set; }
-        public  CourseView Course { get; set; }
-        public  virtual List<ApplicantView> Applicants { get; set; }
+        public JobView Job { get; set; }
+        public CourseView Course { get; set; }
+
+        public virtual List<ApplicantView> Applicants { get; set; }
     }
 }

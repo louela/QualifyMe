@@ -61,7 +61,8 @@
         <h5>Application Form</h5>
         <form novalidate="novalidate" action="/jobs/applyjob" method="post" class="needs-validation">
             @Html.AntiForgeryToken()
-            <input type="text" name="JobID" value="@Model.JobID" />
+            <input type="hidden" name="JobID" value="@Model.JobID" />
+            <input type="hidden" id="ApplicantID" name="ApplicantID" value="@Model.ApplicantID"/>
             <label for="StudentName">Fullname:</label>
             <h5>@Session["CurrentUserName"]</h5>
             <label for="ApplicantGender">Gender:</label>

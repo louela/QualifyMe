@@ -6,6 +6,7 @@
 
     <div class="row">
         <div class="col-sm-12">
+            <h4> @Model.JobTitle</h4> 
             @for (int i = 0; i < Model.Applicants.Count; i++)
             {
 
@@ -14,7 +15,7 @@
                 <div class="col-sm-7">
                     @if (Convert.ToInt32(Session["CurrentJobID"]) != Model.Applicants[i].JobID)
                     {
-                        @Model.Applicants[i].Students.StudentName
+                        @Model.Applicants[i].Student.StudentName
                     }
 
 

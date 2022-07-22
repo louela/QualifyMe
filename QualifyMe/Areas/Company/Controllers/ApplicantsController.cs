@@ -21,9 +21,9 @@ namespace QualifyMe.Areas.Company.Controllers
         }
         public ActionResult List(int id)
         {
-
-            List<JobView> applicants = this.js.GetApplicantsByJobID(id).Take(10).ToList();
-            return View(applicants);
+            int uid = Convert.ToInt32(Session["CurrentCompanyID"]);
+            JobView jb = this.js.GetJobByJobID(id,uid);
+            return View(jb);
         }
     }
     }

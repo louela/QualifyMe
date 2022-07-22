@@ -24,8 +24,8 @@ namespace QualifyMe.Controllers
         // GET: Home
         public ActionResult Index()
         {
-            List<JobView> jobs = this.js.GetJobs().Take(10).ToList();
-            return View(jobs);
+            List<CompanyView> companies = this.com.GetCompanies().Take(10).ToList();
+            return View(companies);
         }
 
         public ActionResult About()
