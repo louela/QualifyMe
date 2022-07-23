@@ -22,5 +22,9 @@ namespace QualifyMe.ViewModels
         public string CompanyAddress { get; set; }
         [Required]
         public string CompanyDescription { get; set; }
+        [Required]
+        public int IsApproved { get; set; }
+
+
     }
 }

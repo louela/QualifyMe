@@ -50,12 +50,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AddCourseView.cs" />
+    <Compile Include="AddDepartmentView.cs" />
     <Compile Include="ApplicantView.cs" />
     <Compile Include="CompanyLoginView.cs" />
     <Compile Include="CompanyView.cs" />
     <Compile Include="CompanyRegister.cs" />
     <Compile Include="CourseView.cs" />
+    <Compile Include="DepartmentView.cs" />
     <Compile Include="EditCompany.cs" />
+    <Compile Include="EditCompanyStatusView.cs" />
     <Compile Include="EditJob.cs" />
     <Compile Include="EditPassword.cs" />
     <Compile Include="EditStudent.cs" />

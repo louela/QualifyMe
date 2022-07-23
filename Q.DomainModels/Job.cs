@@ -20,8 +20,13 @@ namespace Q.DomainModels
         public string JobTypes { get; set; }
         public string JobStatus { get; set; }
         public DateTime JobDateAndTime { get; set; }
+<<<<<<< HEAD
         public int CompanyID { get; set; }
         public int CourseID { get; set; }
+=======
+        public int? CompanyID { get; set; }
+        public int? DepartmentID { get; set; }
+>>>>>>> louela
         public int ApplicantsCount { get; set; }
         //public int ApplicantID { get; set; }
       
@@ -31,8 +36,8 @@ namespace Q.DomainModels
         [ForeignKey("CompanyID")]
         public virtual Company Company { get; set; }
 
-        [ForeignKey("CourseID")]
-        public virtual Course Course { get; set; }
+        [ForeignKey("DepartmentID")]
+        public virtual Department Department { get; set; }
 
         //[ForeignKey("ApplicantID")]
         //public virtual Applicant Applicant { get; set; }

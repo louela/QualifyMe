@@ -46,7 +46,7 @@ namespace QualifyMe.Repositories
                 jb.JobTypes = j.JobTypes;
                 jb.JobStatus = j.JobStatus;
                 jb.JobDateAndTime = j.JobDateAndTime;
-                jb.CourseID = j.CourseID;
+                jb.DepartmentID = j.DepartmentID;
                 db.SaveChanges();
             }
         }

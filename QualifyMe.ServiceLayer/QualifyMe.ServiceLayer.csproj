@@ -59,6 +59,7 @@
     <Compile Include="ApplicantsService.cs" />
     <Compile Include="CompaniesService.cs" />
     <Compile Include="CoursesService.cs" />
+    <Compile Include="DepartmentsService.cs" />
     <Compile Include="JobsService.cs" />
     <Compile Include="MapperExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

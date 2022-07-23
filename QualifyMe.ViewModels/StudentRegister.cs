@@ -29,8 +29,8 @@ namespace QualifyMe.ViewModels
         [Compare("Password")]
         public string ConfirmPassword { get; set; }
 
-
         [Required]
         public string StudentMobile { get; set; }
+
     }
 }

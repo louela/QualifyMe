@@ -15,5 +15,6 @@ namespace Q.DomainModels
         public DbSet<Job> Jobs { get; set; }
         public DbSet<Applicant> Applicants { get; set; }
         public DbSet<Course> Courses { get; set; }
+        public DbSet<Department> Departments { get; set; }
     }
 }

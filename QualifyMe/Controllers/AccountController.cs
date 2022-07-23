@@ -22,7 +22,7 @@ namespace QualifyMe.Controllers
 
         // GET: Account
 
-       
+
         public ActionResult Register()
         {
             return View();
@@ -69,7 +69,6 @@ namespace QualifyMe.Controllers
                     Session["CurrentUserID"] = uvm.UserID;
                     Session["CurrentStudentID"] = uvm.StudentID;
                     Session["CurrentUserName"] = uvm.StudentName;
-                    Session["CurrentUserCourse"] = uvm.StudentCourse;
                     Session["CurrentUserEmail"] = uvm.Email;
                     Session["CurrentUserMobile"] = uvm.StudentMobile;
                     Session["CurrentUserPassword"] = uvm.Password;
@@ -110,7 +109,7 @@ namespace QualifyMe.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult CompanyLogin(CompanyLoginView clm)
         {
-
+            string msg = "";
             if (ModelState.IsValid)
             {
                 CompanyView cvm = this.cs.GetCompaniesByEmailAndPassword(clm.Email, clm.Password);
@@ -123,6 +122,7 @@ namespace QualifyMe.Controllers
                     Session["CurrentCompanyMobile"] = cvm.CompanyMobile;
                     Session["CurrentCompanyAddress"] = cvm.CompanyAddress;
                     Session["CurrentCompanyDescription"] = cvm.CompanyDescription;
+                    Session["CurrentCompanyIsApproved"] = 0;
                     Session["CurrentUserIsAdmin"] = cvm.IsAdmin;
 
                     if (cvm.IsAdmin)
@@ -132,7 +132,21 @@ namespace QualifyMe.Controllers
 
                     }
                     else
-                        return RedirectToAction("Index", "Home", new { area = "Company" });
+                    {
+                        if (cvm.IsApproved == 0)
+                        {
+                            return RedirectToAction("Message", "Account", new { msg = "AccountNotVerified"});
+                        }
+                        else if (cvm.IsApproved == 1)
+                        {
+                            return RedirectToAction("Index", "Home", new { area = "Company" });
+                        }
+
+                        return RedirectToAction("CompanyLogin", "Account");
+
+                    }
+
+                   
                 }
                 else
                 {
@@ -193,7 +207,47 @@ namespace QualifyMe.Controllers
             return View();
         }
 
-      
+    
+        public ActionResult CompanyRegister()
+        {
+
+            CompanyRegister acm = new CompanyRegister();
+            return View(acm);
+        }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        
+        public ActionResult CompanyRegister(CompanyRegister acm)
+        {
+
+
+            if (ModelState.IsValid)
+            {
+                int cid = this.cs.InsertCompany(acm);
+                Session["CurrentCompanyID"] = cid;
+                Session["CurrentCompanyName"] = acm.CompanyName;
+                Session["CurrentCompanyEmail"] = acm.Email;
+                Session["CurrentCompanyPassword"] = acm.Password;
+                Session["CurrentCompanyAddress"] = acm.CompanyAddress;
+                Session["CurrentCompanyDescription"] = acm.CompanyDescription;
+                Session["CurrentCompanyIsApproved"] = 0;
+                Session["CurrentCompanyIsAdmin"] = false;
+                return RedirectToAction("Index", "Home" , new { area = "Company" });
+            }
+            else
+            {
+                ModelState.AddModelError("x", "Invalid Data");
+                return View();
+            }
+        }
+
+
+        public ActionResult Message()
+        {
+            return View();
+        }
 
 
     }
