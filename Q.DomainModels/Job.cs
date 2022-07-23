@@ -23,7 +23,7 @@ namespace Q.DomainModels
         public int CompanyID { get; set; }
         public int CourseID { get; set; }
         public int ApplicantsCount { get; set; }
-        public int ApplicantID { get; set; }
+        //public int ApplicantID { get; set; }
       
         
 
@@ -37,6 +37,6 @@ namespace Q.DomainModels
         //[ForeignKey("ApplicantID")]
         //public virtual Applicant Applicant { get; set; }
 
-        public virtual List<Applicant> Applicants { get; set; }
+       // public virtual List<Applicant> Applicants { get; set; }
     }
 }

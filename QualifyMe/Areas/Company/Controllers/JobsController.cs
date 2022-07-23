@@ -57,8 +57,8 @@ namespace QualifyMe.Areas.Company.Controllers
         public ActionResult View(int id)
         {
            
-            int uid = Convert.ToInt32(Session["CurrentCompanyID"]);
-            JobView qvm = this.js.GetJobByJobID(id, uid);
+           // int uid = Convert.ToInt32(Session["CurrentCompanyID"]);
+            JobView qvm = this.js.GetJobByJobID(id/*, uid*/);
             return View(qvm);
         }
 

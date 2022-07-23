@@ -16,5 +16,6 @@ namespace QualifyMe.ViewModels
         public string Password { get; set; }
         public string StudentMobile { get; set; }
         public bool IsAdmin { get; set; }
+      
     }
 }

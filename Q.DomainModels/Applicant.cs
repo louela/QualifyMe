@@ -31,10 +31,12 @@ namespace Q.DomainModels
         public  Course Course { get; set; }
 
         [ForeignKey("UserID")]
-        public  Student Student{ get; set; }
+        public Student Student { get; set; }
 
         [ForeignKey("JobID")]
         public  Job Job { get; set; }
+
+        public virtual List<Student> Students { get; set; }
 
 
     }

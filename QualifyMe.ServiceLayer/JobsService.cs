@@ -17,7 +17,7 @@ namespace QualifyMe.ServiceLayer
         void UpdateApplicantsCount(int qid, int value);
         void DeleteJob(int qid);
         List<JobView> GetJobs();
-        JobView GetJobByJobID(int JobID, int UserID);
+        JobView GetJobByJobID(int JobID /*, int UserID*/);
         List<JobView> GetApplicantsByJobID(int jid);
     }
     public class JobsService : IJobsService
@@ -66,7 +66,7 @@ namespace QualifyMe.ServiceLayer
             return qvm;
         }
 
-        public JobView GetJobByJobID(int JobID, int UserID = 0)
+        public JobView GetJobByJobID(int JobID/*, int UserID = 0*/)
         {
             Job q = jr.GetJobByJobID(JobID).FirstOrDefault();
             JobView qvm = null;
