@@ -42,9 +42,10 @@ namespace QualifyMe.Areas.Company.Controllers
 
        
 
-        public ActionResult Jobs()
+        public ActionResult Jobs(int cid,int id)
         {
-            List<JobView> jobs = this.job.GetJobs().Take(10).ToList();
+            (Session["CurrentCompanyID"]) = id;
+            List<JobView> jobs = this.job.GetJobsByCompanyID(cid,id).Take(10).ToList();
             return View(jobs);
         }
     }

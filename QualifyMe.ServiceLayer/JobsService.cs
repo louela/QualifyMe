@@ -12,12 +12,14 @@ namespace QualifyMe.ServiceLayer
 {
     public interface IJobsService
     {
-        void InsertJob(NewJob qvm);
+        int InsertJob(NewJob qvm);
         void UpdateJobDetails(EditJob qvm);
         void UpdateApplicantsCount(int qid, int value);
         void DeleteJob(int qid);
         List<JobView> GetJobs();
-        JobView GetJobByJobID(int JobID, int UserID);
+        JobView GetJobByJobID(int JobID /*, int UserID*/);
+        List<JobView> GetApplicantsByJobID(int jid);
+        List<JobView> GetJobsByCompanyID(int CompanyID , int id);
     }
     public class JobsService : IJobsService
     {
@@ -28,12 +30,14 @@ namespace QualifyMe.ServiceLayer
             jr = new JobsRepository();
         }
 
-        public void InsertJob(NewJob qvm)
+        public int InsertJob(NewJob qvm)
         {
             var config = new MapperConfiguration(cfg => { cfg.CreateMap<NewJob, Job>(); cfg.IgnoreUnmapped(); });
             IMapper mapper = config.CreateMapper();
             Job q = mapper.Map<NewJob, Job>(qvm);
             jr.InsertJob(q);
+            int jid = jr.GetLatestJobID();
+            return jid;
         }
 
         public void UpdateJobDetails(EditJob qvm)
@@ -63,7 +67,7 @@ namespace QualifyMe.ServiceLayer
             return qvm;
         }
 
-        public JobView GetJobByJobID(int JobID, int UserID = 0)
+        public JobView GetJobByJobID(int JobID/*, int UserID = 0*/)
         {
             Job q = jr.GetJobByJobID(JobID).FirstOrDefault();
             JobView qvm = null;
@@ -73,14 +77,32 @@ namespace QualifyMe.ServiceLayer
                 IMapper mapper = config.CreateMapper();
                 qvm = mapper.Map<Job, JobView>(q);
 
-                foreach (var item in qvm.Applicants)
-                {
-                   
-                    ApplicantView applic = item.Applicants.Where(temp => temp.UserID == UserID).FirstOrDefault();
-                    
-                }
+                //foreach (var item in qvm.Applicants)
+                //{
+
+                //    ApplicantView applic = item.Applicants.Where(temp => temp.UserID == UserID).FirstOrDefault();
+
+                //}
             }
             return qvm;
+
+           
+        }
+        public List<JobView> GetApplicantsByJobID(int jid)
+        {
+            List<Job> j = jr.GetApplicantsByJobID(jid);
+            var config = new MapperConfiguration(cfg => { cfg.CreateMap<Job, JobView>(); cfg.IgnoreUnmapped(); });
+            IMapper mapper = config.CreateMapper();
+            List<JobView> jm = mapper.Map<List<Job>, List<JobView>>(j);
+            return jm;
+        }
+        public List<JobView> GetJobsByCompanyID(int CompanyID, int id)
+        {
+            List<Job> j = jr.GetJobsByCompanyID(CompanyID);
+            var config = new MapperConfiguration(cfg => { cfg.CreateMap<Job, JobView>(); cfg.IgnoreUnmapped(); });
+            IMapper mapper = config.CreateMapper();
+            List<JobView> jm = mapper.Map<List<Job>, List<JobView>>(j);
+            return jm;
         }
     }
 }

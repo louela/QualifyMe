@@ -13,20 +13,24 @@ namespace QualifyMe.Controllers
         IJobsService js;
         IApplicantsService asr;
         ICoursesService cs;
+        IDepartmentsService ds;
 
-        public JobsController(IJobsService js, IApplicantsService asr, ICoursesService cs)
+        public JobsController(IJobsService js, IApplicantsService asr, ICoursesService cs, IDepartmentsService ds)
         {
             this.js = js;
             this.asr = asr;
             this.cs = cs;
+            this.ds = ds;
         }
         // GET: Jobs
         public ActionResult View(int id)
         {
-            this.js.UpdateApplicantsCount(id, 1);
+          
             int uid = Convert.ToInt32(Session["CurrentUserID"]);
-            JobView qvm = this.js.GetJobByJobID(id, uid);
-            return View(qvm);
+            JobView jv = this.js.GetJobByJobID(id/*, uid*/);
+            List<CourseView> courses = this.cs.GetCourses();
+            ViewBag.courses = courses;
+            return View(jv);
         }
 
         public ActionResult Create()
@@ -47,7 +51,8 @@ namespace QualifyMe.Controllers
                
                 qvm.JobDateAndTime = DateTime.Now;
                 qvm.CompanyID = Convert.ToInt32(Session["CurrentCompanyID"]);
-                this.js.InsertJob(qvm);
+                int jid = this.js.InsertJob(qvm);
+                //this.js.InsertJob(qvm);
                 return RedirectToAction("Jobs", "Home");
             }
             else
@@ -56,5 +61,43 @@ namespace QualifyMe.Controllers
                 return View();
             }
         }
+
+        //public ActionResult ApplyJob(int id)
+        //{
+        //    int uid = Convert.ToInt32(Session["CurrentUserID"]);
+        //    this.js.GetJobByJobID(id, uid);
+        //    JobView jb = this.c(uid);
+        //    List<CourseView> courses = this.cs.GetCourses();
+        //    ViewBag.courses = courses;  
+        //    return View();
+        //}
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ApplyJob(NewApplicant na,int JobID/*,int ApplicantID*/)
+        {
+            if (ModelState.IsValid)
+            {
+                na.ApplicantDateAndTime = DateTime.Now;
+                na.UserID = Convert.ToInt32(Session["CurrentUserID"]);
+                // int id = 
+               // this.asr.GetApplicantByApplicantID(ApplicantID);
+                this.asr.InsertApplicant(na);
+                this.js.UpdateApplicantsCount(JobID, 1);
+                return RedirectToAction("ApplicationMessage", "Jobs");
+            }
+            else
+            {
+                ModelState.AddModelError("x", "Invalid data");
+                return View();
+            }
+        }
+
+        public ActionResult ApplicationMessage()
+        {
+            return View();
+        }
+            
+            
+            
     }
 }

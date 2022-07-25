@@ -12,8 +12,15 @@ namespace QualifyMe.Repositories
         void InsertApplicant(Applicant a);
        
         void DeleteApplicant(int aid);
-        List<Applicant> GetApplicantsByJobID(int jid);
+        int GetLatestApplicantID();
+       
         List<Applicant> GetApplicantsByApplicantID(int ApplicantID);
+        List<Applicant> GetApplicantsByJobID(int JobID);
+
+        //Applicant GetJob (int JobID);
+        int GetLatestJobID(int JobID);
+        //void UpdateApplicantsCount(int aid, int value);
+
     }
     public class ApplicantsRepository : IApplicantsRepository
     {
@@ -32,7 +39,7 @@ namespace QualifyMe.Repositories
         {
             db.Applicants.Add(a);
             db.SaveChanges();
-            jr.UpdateApplicantsCount(a.JobID, 1);
+            //jr.UpdateApplicantsCount(a.JobID, 1);
         }
 
 
@@ -43,13 +50,13 @@ namespace QualifyMe.Repositories
             {
                 db.Applicants.Remove(ap);
                 db.SaveChanges();
-                jr.UpdateApplicantsCount(ap.JobID, -1);
+                //jr.UpdateApplicantsCount(ap.JobID, -1);
             }
         }
 
-        public List<Applicant> GetApplicantsByJobID(int jid)
+        public List<Applicant> GetApplicantsByJobID(int JobID)
         {
-            List<Applicant> ap = db.Applicants.Where(temp => temp.JobID == jid).OrderByDescending(temp => temp.ApplicantDateAndTime).ToList();
+            List<Applicant> ap = db.Applicants.Where(temp => temp.JobID == JobID).OrderByDescending(temp => temp.ApplicantDateAndTime).ToList();
             return ap;
         }
 
@@ -58,5 +65,27 @@ namespace QualifyMe.Repositories
             List<Applicant> ap = db.Applicants.Where(temp => temp.ApplicantID == ApplicantID).ToList();
             return ap;
         }
+
+        public int GetLatestApplicantID()
+        {
+            int aid = db.Applicants.Select(temp => temp.ApplicantID).Max();
+            return aid;
+        }
+
+        public int GetLatestJobID(int JobID)
+        {
+            int jid = db.Jobs.Select(temp => temp.JobID).Max();
+            return jid;
+        }
+
+        //public void UpdateApplicantsCount(int aid,int value)
+        //{
+        //    Applicant a = db.Applicants.FirstOrDefault(temp => temp.ApplicantID == aid);
+        //    if(a!= null)
+        //    {
+        //        a.Applicant +=  value;
+        //        db.SaveChanges();
+        //    }
+        //}
     }
 }

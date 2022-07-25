@@ -52,6 +52,7 @@
     <Compile Include="ApplicantsRepository.cs" />
     <Compile Include="CompaniesRepository.cs" />
     <Compile Include="CoursesRepository.cs" />
+    <Compile Include="DepartmentsRepository.cs" />
     <Compile Include="JobsRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StudentsRepository.cs" />

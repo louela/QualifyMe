@@ -14,9 +14,12 @@ namespace QualifyMe.Repositories
        
         void UpdateApplicantsCount(int jid, int value);
         void DeleteJob(int jid);
-       
+
+        int GetLatestJobID();
         List<Job> GetJobs();
         List<Job> GetJobByJobID(int JobID);
+        List<Job> GetApplicantsByJobID(int jid);
+        List<Job> GetJobsByCompanyID(int CompanyID);
     }
     public class JobsRepository: IJobsRepository
     {
@@ -39,8 +42,12 @@ namespace QualifyMe.Repositories
             if (jb != null)
             {
                 jb.JobTitle = j.JobTitle;
+                jb.JobDescription = j.JobDescription;
+                jb.JobQualification = j.JobQualification;
+                jb.JobTypes = j.JobTypes;
+                jb.JobStatus = j.JobStatus;
                 jb.JobDateAndTime = j.JobDateAndTime;
-                jb.CourseID = j.CourseID;
+                jb.DepartmentID = j.DepartmentID;
                 db.SaveChanges();
             }
         }
@@ -75,6 +82,23 @@ namespace QualifyMe.Repositories
         {
             List<Job> jb = db.Jobs.Where(temp => temp.JobID == JobID).ToList();
             return jb;
+        }
+
+        public int GetLatestJobID()
+        {
+            int jid = db.Jobs.Select(temp => temp.JobID).Max();
+            return jid;
+        }
+        public List<Job> GetApplicantsByJobID(int jid)
+        {
+            List<Job> ap = db.Jobs.Where(temp => temp.JobID == jid).OrderByDescending(temp => temp.JobDateAndTime).ToList();
+            return ap;
+        }
+
+        public List<Job> GetJobsByCompanyID(int CompanyID)
+        {
+            List<Job> ap = db.Jobs.Where(temp => temp.CompanyID == CompanyID).OrderByDescending(temp => temp.JobDateAndTime).ToList();
+            return ap;
         }
     }
 }
