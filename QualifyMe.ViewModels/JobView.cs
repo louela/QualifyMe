@@ -22,7 +22,6 @@ namespace QualifyMe.ViewModels
 
         public CompanyView Company { get; set; }
 
-        //public CourseView Course { get; set; }
         // public ApplicantView Applicant { get; set; }
         public virtual List<ApplicantView> Applicants { get; set; }
 

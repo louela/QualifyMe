@@ -21,7 +21,7 @@ namespace Q.DomainModels
         public int JobID { get; set; }
         public int CourseID { get; set; }
      
-        public string ApplicantQuestion { get; set; }
+        public string ApplicantPurpose { get; set; }
         public string ApplicantGender { get; set; }
         public string ApplicantAddress { get; set; }
         public DateTime ApplicantBirthday { get; set; }

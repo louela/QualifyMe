@@ -19,7 +19,7 @@ namespace QualifyMe.ServiceLayer
         List<JobView> GetJobs();
         JobView GetJobByJobID(int JobID /*, int UserID*/);
         List<JobView> GetApplicantsByJobID(int jid);
-        List<JobView> GetJobsByCompanyID(int CompanyID , int id);
+        List<JobView> GetJobsByCompanyID( int CompanyID);
     }
     public class JobsService : IJobsService
     {
@@ -96,13 +96,38 @@ namespace QualifyMe.ServiceLayer
             List<JobView> jm = mapper.Map<List<Job>, List<JobView>>(j);
             return jm;
         }
-        public List<JobView> GetJobsByCompanyID(int CompanyID, int id)
+        public List<JobView> GetJobsByCompanyID( int CompanyID)
         {
             List<Job> j = jr.GetJobsByCompanyID(CompanyID);
             var config = new MapperConfiguration(cfg => { cfg.CreateMap<Job, JobView>(); cfg.IgnoreUnmapped(); });
             IMapper mapper = config.CreateMapper();
             List<JobView> jm = mapper.Map<List<Job>, List<JobView>>(j);
             return jm;
+
+
+            //Job j = jr.GetJobsByCompanyID(JobID);
+            //JobView jvm = null;
+            //if (j != null)
+            //{
+            //    var config = new MapperConfiguration(cfg =>
+            //    {
+            //        cfg.CreateMap<Job, JobView>();
+            //        cfg.IgnoreUnmapped();
+            //    });
+            //    IMapper mapper = config.CreateMapper();
+            //    jvm = mapper.Map<Job, JobView>(j);
+
+
+            //}
+            //return jvm;
+
+
+
+            //List<Job> j = jr.GetJobsByCompanyID(JobID);
+            //var config = new MapperConfiguration(cfg => { cfg.CreateMap<Job, JobView>(); cfg.IgnoreUnmapped(); });
+            //IMapper mapper = config.CreateMapper();
+            //List<JobView> jm = mapper.Map<List<Job>, List<JobView>>(j);
+            //return jm;
         }
-    }
+        }
 }

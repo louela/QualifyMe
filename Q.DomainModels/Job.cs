@@ -23,7 +23,7 @@ namespace Q.DomainModels
         public int? DepartmentID { get; set; }
        // public int? CourseID { get; set; }
 
-        public int? CompanyID { get; set; }
+        public int CompanyID { get; set; }
       
         public int ApplicantsCount { get; set; }
        // public int? ApplicantID { get; set; }

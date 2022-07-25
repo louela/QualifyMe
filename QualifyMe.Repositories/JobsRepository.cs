@@ -97,7 +97,7 @@ namespace QualifyMe.Repositories
 
         public List<Job> GetJobsByCompanyID(int CompanyID)
         {
-            List<Job> ap = db.Jobs.Where(temp => temp.CompanyID == CompanyID).OrderByDescending(temp => temp.JobDateAndTime).ToList();
+            List<Job> ap = db.Jobs.Where(temp => temp.CompanyID ==CompanyID).OrderByDescending(temp => temp.JobDateAndTime).ToList();
             return ap;
         }
     }

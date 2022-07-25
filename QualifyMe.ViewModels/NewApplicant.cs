@@ -18,7 +18,7 @@ namespace QualifyMe.ViewModels
         [Required]
         public string ApplicantAddress { get; set; }
         [Required]
-        public string ApplicantQuestion { get; set; }
+        public string ApplicantPurpose { get; set; }
 
         [Required]
         public DateTime ApplicantDateAndTime { get; set; }
