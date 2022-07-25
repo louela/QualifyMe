@@ -13,17 +13,19 @@ namespace QualifyMe.Controllers
         IJobsService js;
         IApplicantsService asr;
         ICoursesService cs;
+        IDepartmentsService ds;
 
-        public JobsController(IJobsService js, IApplicantsService asr, ICoursesService cs)
+        public JobsController(IJobsService js, IApplicantsService asr, ICoursesService cs, IDepartmentsService ds)
         {
             this.js = js;
             this.asr = asr;
             this.cs = cs;
+            this.ds = ds;
         }
         // GET: Jobs
         public ActionResult View(int id)
         {
-            //this.js.UpdateApplicantsCount(id, 1);
+          
             int uid = Convert.ToInt32(Session["CurrentUserID"]);
             JobView jv = this.js.GetJobByJobID(id/*, uid*/);
             List<CourseView> courses = this.cs.GetCourses();
@@ -71,15 +73,14 @@ namespace QualifyMe.Controllers
         //}
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult ApplyJob(NewApplicant na,int JobID,int ApplicantID)
+        public ActionResult ApplyJob(NewApplicant na,int JobID/*,int ApplicantID*/)
         {
             if (ModelState.IsValid)
             {
-               
                 na.ApplicantDateAndTime = DateTime.Now;
                 na.UserID = Convert.ToInt32(Session["CurrentUserID"]);
                 // int id = 
-                this.asr.GetApplicantByApplicantID(ApplicantID);
+               // this.asr.GetApplicantByApplicantID(ApplicantID);
                 this.asr.InsertApplicant(na);
                 this.js.UpdateApplicantsCount(JobID, 1);
                 return RedirectToAction("ApplicationMessage", "Jobs");

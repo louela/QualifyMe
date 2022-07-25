@@ -13,18 +13,20 @@ namespace QualifyMe.Areas.Company.Controllers
         IJobsService js;
         IApplicantsService asr;
         ICoursesService cs;
+        IDepartmentsService ds;
 
-        public JobsController(IJobsService js, IApplicantsService asr, ICoursesService cs)
+        public JobsController(IJobsService js, IApplicantsService asr, ICoursesService cs, IDepartmentsService ds)
         {
             this.js = js;
             this.asr = asr;
             this.cs = cs;
+            this.ds = ds;
         }
 
         public ActionResult Create()
         {
-            List<CourseView> courses = this.cs.GetCourses();
-            ViewBag.courses = courses;
+            List<DepartmentView> departments = this.ds.GetDepartments();
+            ViewBag.Departments = departments;
             return View();
         }
 

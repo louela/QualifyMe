@@ -217,12 +217,12 @@
     <Content Include="Areas\Admin\Views\Shared\Job.cshtml" />
     <Content Include="Areas\Company\Views\Account\Profile.cshtml" />
     <Content Include="Areas\Company\Views\Account\ChangeProfile.cshtml" />
-<<<<<<< HEAD
+
     <Content Include="Images\companies\accenture-logo.png" />
     <Content Include="Images\cityy.jpg" />
     <Content Include="Areas\Company\Views\Applicants\List.cshtml" />
     <Content Include="Areas\Company\Views\Shared\Applicant.cshtml" />
-=======
+
     <Content Include="Areas\Admin\Views\Departments\AddDepartment.cshtml" />
     <Content Include="Areas\Admin\Views\Home\Departments.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\Department.cshtml" />
@@ -240,7 +240,7 @@
     <Content Include="Areas\Admin\Views\Departments1\Details.cshtml" />
     <Content Include="Areas\Admin\Views\Departments1\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Departments1\Index.cshtml" />
->>>>>>> louela
+
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -316,14 +316,14 @@
     <Content Include="Views\Account\CompanyLogin.cshtml" />
     <Content Include="Views\Account\Test.cshtml" />
     <Content Include="Views\Account\Profile.cshtml" />
-<<<<<<< HEAD
+
     <Content Include="Views\Account\LandingPage.cshtml" />
     <Content Include="Views\Home\Homepage.cshtml" />
     <Content Include="Views\Jobs\ApplyJob.cshtml" />
-=======
+
     <Content Include="Views\Account\CompanyRegister.cshtml" />
     <Content Include="Views\Account\Message.cshtml" />
->>>>>>> louela
+
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

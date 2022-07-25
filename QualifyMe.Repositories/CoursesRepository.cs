@@ -17,8 +17,8 @@ namespace QualifyMe.Repositories
         int GetLatestCourseID();
         List<Course> GetCoursesByCourseName(string CourseName);
         List<Course> GetCoursesByCourseID(int CourseID);
-        List<Course> GetCoursesByDepartmentName(string DepartmentName);
-        List<Course> GetCoursesByDepartmentID(int DepartmentID);
+        //List<Course> GetCoursesByDepartmentName(string DepartmentName);
+        //List<Course> GetCoursesByDepartmentID(int DepartmentID);
     }
     public class CoursesRepository : ICoursesRepository
     {
@@ -85,16 +85,16 @@ namespace QualifyMe.Repositories
             return co;
         }
 
-        public List<Course> GetCoursesByDepartmentName(string DepartmentName)
-        {
-            List<Course> co = db.Courses.Where(temp => temp.Department.DepartmentName == DepartmentName).ToList();
-            return co;
-        }
+        //public List<Course> GetCoursesByDepartmentName(string DepartmentName)
+        //{
+        //    List<Course> co = db.Courses.Where(temp => temp.Department.DepartmentName == DepartmentName).ToList();
+        //    return co;
+        //}
 
-        public List<Course> GetCoursesByDepartmentID(int DepartmentID)
-        {
-            List<Course> co = db.Courses.Where(temp => temp.DepartmentID == DepartmentID).ToList();
-            return co;
-        }
+        //public List<Course> GetCoursesByDepartmentID(int DepartmentID)
+        //{
+        //    List<Course> co = db.Courses.Where(temp => temp.DepartmentID == DepartmentID).ToList();
+        //    return co;
+        //}
     }
 }

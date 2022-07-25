@@ -17,8 +17,8 @@ namespace QualifyMe.ServiceLayer
         void DeleteCourse(int cid);
         List<CourseView> GetCourses();
         CourseView GetCourseByCourseID(int CourseID, int did);
-        CourseView GetCourseByDepartmentID(int DepartmentID, int cid);
-        CourseView GetCourseByDepartmentName(string DepartmentName);
+        //CourseView GetCourseByDepartmentID(int DepartmentID, int cid);
+        //CourseView GetCourseByDepartmentName(string DepartmentName);
     }
     public class CoursesService : ICoursesService
     {
@@ -81,30 +81,30 @@ namespace QualifyMe.ServiceLayer
 
 
 
-public CourseView GetCourseByDepartmentID(int DepartmentID, int cid=0)
-        {
-            Course c = cr.GetCoursesByDepartmentID(DepartmentID).FirstOrDefault();
-            CourseView cvm = null;
-            if (c != null)
-            {
-                var config = new MapperConfiguration(cfg => { cfg.CreateMap<Course, CourseView>(); cfg.IgnoreUnmapped(); });
-                IMapper mapper = config.CreateMapper();
-                cvm = mapper.Map<Course, CourseView>(c);
-            }
-            return cvm;
-        }
+//public CourseView GetCourseByDepartmentID(int DepartmentID, int cid=0)
+//        {
+//            Course c = cr.GetCoursesByDepartmentID(DepartmentID).FirstOrDefault();
+//            CourseView cvm = null;
+//            if (c != null)
+//            {
+//                var config = new MapperConfiguration(cfg => { cfg.CreateMap<Course, CourseView>(); cfg.IgnoreUnmapped(); });
+//                IMapper mapper = config.CreateMapper();
+//                cvm = mapper.Map<Course, CourseView>(c);
+//            }
+//            return cvm;
+//        }
 
-        public CourseView GetCourseByDepartmentName(string DepartmentName)
-        {
-            Course c = cr.GetCoursesByDepartmentName(DepartmentName).FirstOrDefault();
-            CourseView cvm = null;
-            if (c != null)
-            {
-                var config = new MapperConfiguration(cfg => { cfg.CreateMap<Course, CourseView>(); cfg.IgnoreUnmapped(); });
-                IMapper mapper = config.CreateMapper();
-                cvm = mapper.Map<Course, CourseView>(c);
-            }
-            return cvm;
-        }
+        //public CourseView GetCourseByDepartmentName(string DepartmentName)
+        //{
+        //    Course c = cr.GetCoursesByDepartmentName(DepartmentName).FirstOrDefault();
+        //    CourseView cvm = null;
+        //    if (c != null)
+        //    {
+        //        var config = new MapperConfiguration(cfg => { cfg.CreateMap<Course, CourseView>(); cfg.IgnoreUnmapped(); });
+        //        IMapper mapper = config.CreateMapper();
+        //        cvm = mapper.Map<Course, CourseView>(c);
+        //    }
+        //    return cvm;
+        //}
     }
 }

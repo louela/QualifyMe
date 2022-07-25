@@ -20,7 +20,7 @@ namespace Q.DomainModels
         public int UserID { get; set; }
         public int JobID { get; set; }
         public int CourseID { get; set; }
-      
+     
         public string ApplicantQuestion { get; set; }
         public string ApplicantGender { get; set; }
         public string ApplicantAddress { get; set; }
@@ -36,7 +36,7 @@ namespace Q.DomainModels
         [ForeignKey("JobID")]
         public  Job Job { get; set; }
 
-        public virtual List<Student> Students { get; set; }
+        //public virtual List<Student> Students { get; set; }
 
 
     }

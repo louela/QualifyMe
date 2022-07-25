@@ -19,6 +19,7 @@ namespace QualifyMe.ServiceLayer
         List<JobView> GetJobs();
         JobView GetJobByJobID(int JobID /*, int UserID*/);
         List<JobView> GetApplicantsByJobID(int jid);
+        List<JobView> GetJobsByCompanyID(int CompanyID , int id);
     }
     public class JobsService : IJobsService
     {
@@ -89,10 +90,18 @@ namespace QualifyMe.ServiceLayer
         }
         public List<JobView> GetApplicantsByJobID(int jid)
         {
-            List<Job> a = jr.GetApplicantsByJobID(jid);
+            List<Job> j = jr.GetApplicantsByJobID(jid);
             var config = new MapperConfiguration(cfg => { cfg.CreateMap<Job, JobView>(); cfg.IgnoreUnmapped(); });
             IMapper mapper = config.CreateMapper();
-            List<JobView> jm = mapper.Map<List<Job>, List<JobView>>(a);
+            List<JobView> jm = mapper.Map<List<Job>, List<JobView>>(j);
+            return jm;
+        }
+        public List<JobView> GetJobsByCompanyID(int CompanyID, int id)
+        {
+            List<Job> j = jr.GetJobsByCompanyID(CompanyID);
+            var config = new MapperConfiguration(cfg => { cfg.CreateMap<Job, JobView>(); cfg.IgnoreUnmapped(); });
+            IMapper mapper = config.CreateMapper();
+            List<JobView> jm = mapper.Map<List<Job>, List<JobView>>(j);
             return jm;
         }
     }

@@ -4,6 +4,8 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
+
 
 namespace QualifyMe.ViewModels
 {
@@ -20,6 +22,8 @@ namespace QualifyMe.ViewModels
 
         [Required]
         public DateTime ApplicantDateAndTime { get; set; }
+
+       
 
         [Required]
         public int UserID { get; set; }

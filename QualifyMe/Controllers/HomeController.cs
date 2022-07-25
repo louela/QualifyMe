@@ -47,6 +47,7 @@ namespace QualifyMe.Controllers
 
         public ActionResult Jobs()
         {
+          
             List<JobView> jobs = this.job.GetJobs().Take(10).ToList();
             return View(jobs);
         }

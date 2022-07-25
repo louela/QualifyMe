@@ -9,10 +9,9 @@ namespace QualifyMe.ViewModels
 {
     public class DepartmentView
     {
-        [Required]
+  
         public int DepartmentID { get; set; }
-
-        [Required]
+  
         public string DepartmentName { get; set; }
         public virtual List<CourseView> Courses { get; set; }
 

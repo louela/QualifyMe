@@ -20,21 +20,11 @@
                         <div class="attr" style="width:50px; background-color: tomato">@Model.JobTypes</div>
 
                     </div>
-                </div>
-                <div class="section" style="padding-bottom:5px;">
                     <h6 class="title-attr"><small>Status</small></h6>
                     <div>
                         <div class="attr2">@Model.JobStatus</div>
-
                     </div>
-                </div>
-                <div class="section" style="padding-bottom:20px;">
-                    <a href="/jobs/applyjob/@Model.JobID" class="btn btn-primary">Apply Job</a>
-                </div>
-
-
-
-
+                </div>               
             </form>
         </div>
 
@@ -57,59 +47,90 @@
 
 @if (Session["CurrentUsername"] != null)
 {
+    <h5>APPLICATION FORM</h5>
     <div class="container">
-        <h5>Application Form</h5>
         <form novalidate="novalidate" action="/jobs/applyjob" method="post" class="needs-validation">
             @Html.AntiForgeryToken()
             <input type="hidden" name="JobID" value="@Model.JobID" />
-            <input type="hidden" id="ApplicantID" name="ApplicantID" value="@Model.ApplicantID"/>
-            <label for="StudentName">Fullname:</label>
-            <h5>@Session["CurrentUserName"]</h5>
-            <label for="ApplicantGender">Gender:</label>
-            <select id="ApplicantGender" name="ApplicantGender">
-                <option value="">Please select</option>
-                <option value="female">Female</option>
-                <option value="male">Male</option>
-            </select>
-
-            <div class="form-row">
-                <div class="form-group col-sm-6">
-                    <label for="drpCourses">Courses</label>
-                    <select class="form-control" id="drpCourses" name="CourseID" required="required">
+            <div class="row">
+                <div class="col-25">
+                    <label for="StudentName">Name</label>
+                </div>
+                <div class="col-75">
+                    <input type="text" id="StudentName" name="StudentName" value="@Session["CurrentUserName"]" readonly>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-25">
+                    <label for="Email">Email</label>
+                </div>
+                <div class="col-75">
+                    <input type="text" id="Email" name="Email" value="@Session["CurrentUserEmail"]" readonly>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-25">
+                    <label for="ApplicantBirthday">BirthDate</label>
+                </div>
+                <div class="col-75">
+                    <input type="date" id="ApplicantBirthday" name="ApplicantBirthday" placeholder="Your Birthdate..">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-25">
+                    <label for="ApplicantGender">Gender</label>
+                </div>
+                <div class="col-75">
+                    <select id="ApplicantGender" name="ApplicantGender">
+                        <option value="">Please Select..</option>
+                        <option value="female">Female</option>
+                        <option value="male">Male</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-25">
+                    <label for="CourseID">Course</label>
+                </div>
+                <div class="col-75">
+                    <select id="drpCourses" name="CourseID" required="required">
                         <option value="">Please Select</option>
                         @foreach (var item in ViewBag.Courses)
                         {
                             <option value="@item.CourseID">@item.CourseName</option>
                         }
                     </select>
-                    <div class="valid-feedback">
-                        Looks good!
-                    </div>
-                    <div class="invalid-feedback">
-                        Category can't be empty
-                    </div>
                 </div>
             </div>
-            <label for="ApplicantBirthday">Birthday:</label>
-            <input type="date" id="ApplicantBirthday" name="ApplicantBirthday">
-            <br />
-            <label for="ApplicantAddress">Address</label>
-            <input type="text" id="ApplicantAddress" name="ApplicantAddress" placeholder="Address">
-
-            <label for="ApplicantQuestion">Question</label>
-            <textarea id="subject" name="ApplicantQuestion" placeholder="Tell me something about yourself." style="height:200px"></textarea>
-
-            <input type="submit" value="Submit">
-            @Html.ValidationSummary()
+            <div class="row">
+                <div class="col-25">
+                    <label for="ApplicantQuestion">Tell me something about yourself.</label>
+                </div>
+                <div class="col-75">
+                    <textarea id="subject" name="ApplicantQuestion" placeholder="Write something.." style="height:200px"></textarea>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-25">
+                    <label for="ApplicantAddress">Address</label>
+                </div>
+                <div class="col-75">
+                    <input type="text" id="ApplicantAddress" name="ApplicantAddress" placeholder="Your Address..">
+                </div>
+            </div>
+            <div class="row">
+                <input type="submit" value="Submit">
+                @Html.ValidationSummary()
+            </div>
         </form>
     </div>
 }
 
 
-    <script>
-        $(".editbutton").click(function () {
-            $(this).parent().find(".needs-validation").show();
-            $(this).hide();
-            $(this).parent().find(".answer").hide();
-        });
-    </script>
+<script>
+    $(".editbutton").click(function () {
+        $(this).parent().find(".needs-validation").show();
+        $(this).hide();
+        $(this).parent().find(".answer").hide();
+    });
+</script>
