@@ -9,7 +9,7 @@ namespace QualifyMe.ViewModels
     public class ApplicantView
     {
         public int ApplicantID { get; set; }
-        public string ApplicantQuestion { get; set; }
+        public string ApplicantQPurpose{ get; set; }
         public string ApplicantGender { get; set; }
         public string ApplicantAddress { get; set; }
         public DateTime ApplicantBirthday { get; set; }

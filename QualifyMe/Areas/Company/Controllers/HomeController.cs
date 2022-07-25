@@ -42,11 +42,18 @@ namespace QualifyMe.Areas.Company.Controllers
 
        
 
-        public ActionResult Jobs(int cid,int id)
+        public ActionResult Jobs()
         {
-            (Session["CurrentCompanyID"]) = id;
-            List<JobView> jobs = this.job.GetJobsByCompanyID(cid,id).Take(10).ToList();
-            return View(jobs);
+
+
+         
+
+            int cid = Convert.ToInt32(Session["CurrentCompanyID"]);
+            List<JobView> jvm = this.js.GetJobsByCompanyID(cid);
+            return View(jvm);
+
+            //List<JobView> jobs = this.job.GetJobs().Take(10).ToList();
+            //return View(jobs);
         }
     }
 }
