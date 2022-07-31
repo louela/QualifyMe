@@ -27,7 +27,7 @@ namespace QualifyMe.Controllers
         {
           
             int uid = Convert.ToInt32(Session["CurrentUserID"]);
-            JobView jv = this.js.GetJobByJobID(id/*, uid*/);
+            JobView jv = this.js.GetJobByJobID(id);
             List<CourseView> courses = this.cs.GetCourses();
             ViewBag.courses = courses;
             return View(jv);

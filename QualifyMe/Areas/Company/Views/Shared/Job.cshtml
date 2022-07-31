@@ -1,22 +1,21 @@
 ﻿@model QualifyMe.ViewModels.JobView
 
+
 <div class="col-sm-12">
-    
-        
-            <div class="block">
+    <div class="block">
+        <input type="hidden" name="JobID" value="@Model.JobID" />
+        <img src="~/images/avatar.png" alt="" height="50px" width="50px">
+        <div>
+            <p>@Model.Company.CompanyName</p>
 
-                <img src="~/images/avatar.png" alt="" height="50px" width="50px">
-                <div>
-                    <p>@Model.Company.CompanyName</p>
-
-                    <a href="/jobs/view/@Model.CompanyID">@Model.JobTitle</a>
-                </div>
-                <p>@Model.Department.DepartmentName</p>
-                <a href="/company/applicants/list">No. Of Applicants : @Model.ApplicantsCount</a>
-            </div>
+            <a href="/company/jobs/view/@Model.JobID">@Model.JobTitle</a>
         </div>
-   
-   
+        <p>@Model.Department.DepartmentName</p>
+        <a href="/company/applicants/list/@Model.JobID" id="JobID" name="JobID" >No. Of Applicants : @Model.ApplicantsCount</a>
+    </div>
+</div>
+
+
 
 
 

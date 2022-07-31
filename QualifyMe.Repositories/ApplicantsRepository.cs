@@ -16,10 +16,11 @@ namespace QualifyMe.Repositories
        
         List<Applicant> GetApplicantsByApplicantID(int ApplicantID);
         List<Applicant> GetApplicantsByJobID(int JobID);
-
-        //Applicant GetJob (int JobID);
+        List<Applicant> GetApplicantsByCompanyID(int CompanyID);
         int GetLatestJobID(int JobID);
-        //void UpdateApplicantsCount(int aid, int value);
+
+        List<Applicant> GetJobsByUserID(int UserID);
+
 
     }
     public class ApplicantsRepository : IApplicantsRepository
@@ -54,11 +55,11 @@ namespace QualifyMe.Repositories
             }
         }
 
-        public List<Applicant> GetApplicantsByJobID(int JobID)
-        {
-            List<Applicant> ap = db.Applicants.Where(temp => temp.JobID == JobID).OrderByDescending(temp => temp.ApplicantDateAndTime).ToList();
-            return ap;
-        }
+        //public List<Applicant> GetApplicantsByJobID(int JobID)
+        //{
+        //    List<Applicant> ap = db.Applicants.Where(temp => temp.JobID == JobID).OrderByDescending(temp => temp.ApplicantDateAndTime).ToList();
+        //    return ap;
+        //}
 
         public List<Applicant> GetApplicantsByApplicantID(int ApplicantID)
         {
@@ -78,14 +79,22 @@ namespace QualifyMe.Repositories
             return jid;
         }
 
-        //public void UpdateApplicantsCount(int aid,int value)
-        //{
-        //    Applicant a = db.Applicants.FirstOrDefault(temp => temp.ApplicantID == aid);
-        //    if(a!= null)
-        //    {
-        //        a.Applicant +=  value;
-        //        db.SaveChanges();
-        //    }
-        //}
+        public List<Applicant> GetJobsByUserID(int UserID)
+        {
+            List<Applicant> a = db.Applicants.Where(temp => temp.UserID == UserID).ToList();
+            return a;
+        }
+
+        public List<Applicant> GetApplicantsByJobID(int JobID)
+        {
+            List<Applicant> a = db.Applicants.Where(temp => temp.JobID == JobID).ToList();
+            return a;
+        }
+
+        public List<Applicant> GetApplicantsByCompanyID(int CompanyID)
+        {
+            List<Applicant> a = db.Applicants.Where(temp => temp.JobID == CompanyID).ToList();
+            return a;
+        }
     }
 }

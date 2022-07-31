@@ -10,17 +10,18 @@
         {
             <a href="/company/jobs/create" class="btn btn-primary">Add Job</a>
         }
-        <table class="table">
-            @foreach (var item in Model)
-            {
-                Html.RenderPartial("Job", item);
-            }
-        </table>
+    <table class="table">
+        @foreach (var item in Model)
+        {
+            Html.RenderPartial("Job", item);
+
+        }
+    </table>
 
     </div>
-    </div>
+</div>
 
-    <script>
-        $("a[href='/alljobs']").attr("id", "active");
-    </script>
+<script>
+    $("a[href='/alljobs']").attr("id", "active");
+</script>
 

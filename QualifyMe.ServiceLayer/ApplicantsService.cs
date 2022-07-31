@@ -14,14 +14,11 @@ namespace QualifyMe.ServiceLayer
     {
         int InsertApplicant(NewApplicant avm);
         void DeleteApplicant(int aid);
-        List<ApplicantView> GetApplicantsByJobID(int jid);
         ApplicantView GetApplicantByApplicantID(int ApplicantID);
-        ApplicantView GetApplicantsByJobID(int JobID,int uid);
-        //ApplicantView GetJobByApplicantID(int ApplicantID, int UserID, int jobID);
 
-        //int GetLatestJobID(int JobID);
-        //void UpdateApplicantsCount(int aid,int value);
-      
+        List<ApplicantView> GetJobsByUserID(int UserID);
+        List<ApplicantView> GetApplicantsByJobID(int JobID);
+        List<ApplicantView> GetApplicantsByCompanyID(int CompanyID);
     }
     public class ApplicantsService : IApplicantsService
     {
@@ -46,14 +43,14 @@ namespace QualifyMe.ServiceLayer
             ar.DeleteApplicant(aid);
         }
 
-        public List<ApplicantView> GetApplicantsByJobID(int jid)
-        {
-            List<Applicant> a = ar.GetApplicantsByJobID(jid);
-            var config = new MapperConfiguration(cfg => { cfg.CreateMap<Applicant,ApplicantView>(); cfg.IgnoreUnmapped(); });
-            IMapper mapper = config.CreateMapper();
-            List<ApplicantView> avm = mapper.Map<List<Applicant>, List<ApplicantView>>(a);
-            return avm;
-        }
+        //public List<ApplicantView> GetApplicantsByJobID(int jid)
+        //{
+        //    List<Applicant> a = ar.GetApplicantsByJobID(jid);
+        //    var config = new MapperConfiguration(cfg => { cfg.CreateMap<Applicant,ApplicantView>(); cfg.IgnoreUnmapped(); });
+        //    IMapper mapper = config.CreateMapper();
+        //    List<ApplicantView> avm = mapper.Map<List<Applicant>, List<ApplicantView>>(a);
+        //    return avm;
+        //}
 
         public ApplicantView GetApplicantByApplicantID(int ApplicantID)
         {
@@ -68,19 +65,44 @@ namespace QualifyMe.ServiceLayer
             return avm;
         }
 
-        public ApplicantView GetApplicantsByJobID(int JobID, int uid = 0)
+        //public ApplicantView GetApplicantsByJobID(int JobID, int uid = 0)
+        //{
+        //    Applicant a = ar.GetApplicantsByJobID(JobID).FirstOrDefault();
+        //    ApplicantView av = null;
+        //    if (a != null)
+        //    {
+        //        var config = new MapperConfiguration(cfg => { cfg.CreateMap<Applicant, ApplicantView>(); cfg.IgnoreUnmapped(); });
+        //        IMapper mapper = config.CreateMapper();
+        //        av = mapper.Map<Applicant, ApplicantView>(a);
+        //    }
+        //    return av;
+        //}
+
+        public List<ApplicantView> GetJobsByUserID(int UserID)
         {
-            Applicant a = ar.GetApplicantsByJobID(JobID).FirstOrDefault();
-            ApplicantView av = null;
-            if (a != null)
-            {
-                var config = new MapperConfiguration(cfg => { cfg.CreateMap<Applicant, ApplicantView>(); cfg.IgnoreUnmapped(); });
-                IMapper mapper = config.CreateMapper();
-                av = mapper.Map<Applicant, ApplicantView>(a);
-            }
+            List<Applicant> a = ar.GetJobsByUserID(UserID);
+            var config = new MapperConfiguration(cfg => { cfg.CreateMap<Applicant, ApplicantView>(); cfg.IgnoreUnmapped(); });
+            IMapper mapper = config.CreateMapper();
+            List<ApplicantView> avm = mapper.Map<List<Applicant>, List<ApplicantView>>(a);
+            return avm;
+        }
+
+        public List<ApplicantView> GetApplicantsByJobID(int JobID)
+        {
+            List<Applicant> a = ar.GetApplicantsByJobID(JobID);
+            var config = new MapperConfiguration(cfg => { cfg.CreateMap<Applicant, ApplicantView>(); cfg.IgnoreUnmapped(); });
+            IMapper mapper = config.CreateMapper();
+            List<ApplicantView> av = mapper.Map<List<Applicant>, List<ApplicantView>>(a);
             return av;
         }
 
-
+        public List<ApplicantView> GetApplicantsByCompanyID(int CompanyID)
+        {
+            List<Applicant> a = ar.GetApplicantsByCompanyID(CompanyID);
+            var config = new MapperConfiguration(cfg => { cfg.CreateMap<Applicant, ApplicantView>(); cfg.IgnoreUnmapped(); });
+            IMapper mapper = config.CreateMapper();
+            List<ApplicantView> av = mapper.Map<List<Applicant>, List<ApplicantView>>(a);
+            return av;
+        }
     }
 }

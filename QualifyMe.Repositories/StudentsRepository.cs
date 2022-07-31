@@ -41,7 +41,7 @@ namespace QualifyMe.Repositories
             {
                 st.StudentName = s.StudentName;
                 st.StudentMobile = s.StudentMobile;
-             
+
                 db.SaveChanges();
             }
         }

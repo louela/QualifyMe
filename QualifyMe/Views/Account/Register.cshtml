@@ -5,7 +5,7 @@
 }
 
 <div>
-    <div class="split left">
+    <div class="split left" >
         <div class="centered">
             <h4>Welcome</h4>
             <p>create your student account</p>
@@ -24,31 +24,7 @@
                     <div class="valid-feedback">Looks good!</div>
                     <div class="invalid-feedback">Please Enter your Fullname.</div>
                 </div>
-
-            
-
                
-                <div class="form-row">
-                    <div class="form-group col-sm-6">
-                        <label for="drpCourses">Courses</label>
-                        <select class="form-control" id="drpCourses" name="CourseID" required="required">
-                            <option value="">Please Select</option>
-                            @foreach (var item in ViewBag.Courses)
-                            {
-                                <option value="@item.CourseID">@item.CourseName</option>
-                            }
-                        </select>
-                        <div class="valid-feedback">
-                            Looks good!
-                        </div>
-                        <div class="invalid-feedback">
-                            Category can't be empty
-                        </div>
-                    </div>
-                </div>
-                
-                
-                
 
                 <div class="form-group mr-3">
                     <label for="StudentMobile" class="mr-1">Mobile #:</label>

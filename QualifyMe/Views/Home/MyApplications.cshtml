@@ -1,26 +1,35 @@
 ﻿@model  IEnumerable<QualifyMe.ViewModels.Model>
 @{
-    ViewBag.Title = "Applicants";
-    Layout = "~/Areas/Company/Views/Shared/CompanyLayoutPage1.cshtml";
+    ViewBag.Title = "MyApplications";  
 }
 
+
 <div class="table">
-    <div class="col-12">
+    <div class="col-sm-12">
         <div class="layout-inline row th">
-            <div class="col col-pro">Name</div>
-            
-            <div class="col col-qty ">Type</div>
+            <div class="col col-pro">Jobs</div>
+            <div class="col col-price  ">
+                Company
+            </div>
+            <div class="col col-qty">Type</div>
             <div class="col">Status</div>
         </div>
-        <table class="table">
+
+        <table class="col-sm-12">
             @foreach (var item in Model)
             {
+                //Html.RenderPartial("MyApplication", item);
                 <div class="layout-inline row">
 
                     <div class="col col-pro layout-inline">
 
-                        <a href="/account/profile/@item.student.UserID">@item.applicant.Student.StudentName</a>
+                        <p>@item.job.JobTitle</p>
                     </div>
+
+                    <div class="col col-price col-numeric align-center ">
+                        <p>@item.company.CompanyName</p>
+                    </div>
+
                     <div class="col col-qty layout-inline">
                         <p>@item.job.JobTypes</p>
                     </div>
@@ -30,10 +39,13 @@
                     </div>
 
                 </div>
-            }
 
+            }
         </table>
     </div>
-</div>
+</div> 
+<script>
+    $("a[href='/myapplications']").attr("id", "active");
+</script>
 
 

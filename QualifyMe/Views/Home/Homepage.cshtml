@@ -14,16 +14,17 @@
     <div class="card" >
         @foreach (var item in Model)
         {
-            <div class="block">
-                <img src="~/images/avatar.png" alt="" height="50px" width="50px">
-                <div>
-                    <p>@item.Company.CompanyName</p>
-                    <a href="/jobs/view/@item.JobID">@item.JobTitle</a>
-                    <p>@item.JobDateAndTime</p>
-                    <p>@item.JobDescription</p>
-                </div>
-                <p>@item.Department.DepartmentName</p>
+        <div class="block">
+            <img src="~/images/avatar.png" alt="" height="50px" width="50px">
+            <div>
+                <p>@item.Company.CompanyName</p>
+                <a href="/jobs/view/@item.JobID">@item.JobTitle</a>
+                <p>@item.JobDateAndTime</p>
+                <p>@item.JobDescription</p>
             </div>
+            <mark>@item.Department.DepartmentName</mark>
+          
+        </div>
         }
         </div>
 

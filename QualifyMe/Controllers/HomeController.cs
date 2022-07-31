@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Q.DomainModels;
 using QualifyMe.ServiceLayer;
 using QualifyMe.ViewModels;
 
@@ -14,12 +15,14 @@ namespace QualifyMe.Controllers
         ICoursesService cs;
         ICompaniesService com;
         private IJobsService job;
-        public HomeController(IJobsService js, ICoursesService cs, ICompaniesService com, IJobsService job)
+        IApplicantsService aps;
+        public HomeController(IJobsService js, ICoursesService cs, ICompaniesService com, IJobsService job,IApplicantsService aps)
         {
             this.js = js;
             this.cs = cs;
             this.com = com;
             this.job = job;
+            this.aps = aps;
         }
         // GET: Home
         public ActionResult Index()
@@ -56,6 +59,39 @@ namespace QualifyMe.Controllers
         {
             List<JobView> jobs = this.js.GetJobs().Take(10).ToList();
             return View(jobs);
+        }
+        [Route("myapplications")]
+        public ActionResult MyApplications()
+        {
+            //int cid = Convert.ToInt32(Session["CurrentUserID"]);
+            //List<ApplicantView> applicants = this.aps.GetJobsByUserID(cid);
+            //return View(applicants);
+            using (QualifyMeDbContext db = new QualifyMeDbContext())
+            {
+                int cid = Convert.ToInt32(Session["CurrentUserID"]);
+                List<Student> students = db.Students.ToList();
+                List<Applicant> applicants = db.Applicants.ToList();
+                List<Job> jobs = db.Jobs.ToList();
+                List<Company> companies = db.Companies.ToList();
+
+                var AppliedJobsList = from a in applicants
+                                      join s in students on a.UserID equals s.UserID into Applicants
+                                      from s in Applicants.ToList()
+                                      join j in jobs on a.JobID equals j.JobID into Jobs
+                                      from j in Jobs.ToList()
+                                      join c in companies on j.CompanyID equals c.CompanyID into Companies
+                                      from c in Companies.ToList()
+                                      where s.UserID == cid && j.JobID == a.JobID
+                                      select new Model
+                                      {
+                                          applicant = a,
+                                           student = s,
+                                             job = j,
+                                             company = c
+                                      };
+            return View(AppliedJobsList);
+
+            }
         }
     }
 }

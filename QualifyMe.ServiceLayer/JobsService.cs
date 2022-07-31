@@ -17,9 +17,10 @@ namespace QualifyMe.ServiceLayer
         void UpdateApplicantsCount(int qid, int value);
         void DeleteJob(int qid);
         List<JobView> GetJobs();
-        JobView GetJobByJobID(int JobID /*, int UserID*/);
-        List<JobView> GetApplicantsByJobID(int jid);
-        List<JobView> GetJobsByCompanyID( int CompanyID);
+        JobView GetJobByJobID(int JobID);
+       
+        List<JobView> GetJobsByCompanyID(int CompanyID);
+        List<JobView> GetJobsByUserID(int UserID);
     }
     public class JobsService : IJobsService
     {
@@ -86,17 +87,10 @@ namespace QualifyMe.ServiceLayer
             }
             return qvm;
 
-           
+
         }
-        public List<JobView> GetApplicantsByJobID(int jid)
-        {
-            List<Job> j = jr.GetApplicantsByJobID(jid);
-            var config = new MapperConfiguration(cfg => { cfg.CreateMap<Job, JobView>(); cfg.IgnoreUnmapped(); });
-            IMapper mapper = config.CreateMapper();
-            List<JobView> jm = mapper.Map<List<Job>, List<JobView>>(j);
-            return jm;
-        }
-        public List<JobView> GetJobsByCompanyID( int CompanyID)
+      
+        public List<JobView> GetJobsByCompanyID(int CompanyID)
         {
             List<Job> j = jr.GetJobsByCompanyID(CompanyID);
             var config = new MapperConfiguration(cfg => { cfg.CreateMap<Job, JobView>(); cfg.IgnoreUnmapped(); });
@@ -105,29 +99,18 @@ namespace QualifyMe.ServiceLayer
             return jm;
 
 
-            //Job j = jr.GetJobsByCompanyID(JobID);
-            //JobView jvm = null;
-            //if (j != null)
-            //{
-            //    var config = new MapperConfiguration(cfg =>
-            //    {
-            //        cfg.CreateMap<Job, JobView>();
-            //        cfg.IgnoreUnmapped();
-            //    });
-            //    IMapper mapper = config.CreateMapper();
-            //    jvm = mapper.Map<Job, JobView>(j);
-
-
-            //}
-            //return jvm;
-
-
-
-            //List<Job> j = jr.GetJobsByCompanyID(JobID);
-            //var config = new MapperConfiguration(cfg => { cfg.CreateMap<Job, JobView>(); cfg.IgnoreUnmapped(); });
-            //IMapper mapper = config.CreateMapper();
-            //List<JobView> jm = mapper.Map<List<Job>, List<JobView>>(j);
-            //return jm;
         }
+
+        public List<JobView> GetJobsByUserID(int UserID)
+        {
+            List<Job> j = jr.GetJobsByUserID(UserID);
+            var config = new MapperConfiguration(cfg => { cfg.CreateMap<Job, JobView>(); cfg.IgnoreUnmapped(); });
+            IMapper mapper = config.CreateMapper();
+            List<JobView> jm = mapper.Map<List<Job>, List<JobView>>(j);
+            return jm;
+
+
         }
+
+    }
 }

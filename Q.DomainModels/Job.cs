@@ -26,7 +26,7 @@ namespace Q.DomainModels
         public int CompanyID { get; set; }
       
         public int ApplicantsCount { get; set; }
-       // public int? ApplicantID { get; set; }
+        //public int? ApplicantID { get; set; }
 
 
 

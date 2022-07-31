@@ -13,11 +13,15 @@ namespace QualifyMe.Controllers
     {
         private IStudentsService ss;
         private ICompaniesService cs;
+        private IApplicantsService aps;
+        private ICoursesService css;
 
-        public AccountController(StudentsService ss, CompaniesService cs)
+        public AccountController(StudentsService ss, CompaniesService cs,IApplicantsService aps,ICoursesService css)
         {
             this.ss = ss;
             this.cs = cs;
+            this.aps = aps;
+            this.css = css;
         }
 
         // GET: Account
@@ -25,6 +29,7 @@ namespace QualifyMe.Controllers
 
         public ActionResult Register()
         {
+           
             return View();
         }
 
@@ -249,6 +254,11 @@ namespace QualifyMe.Controllers
             return View();
         }
 
+        public ActionResult MyApplications()
+        {
+            return View();
+        }
+      
 
     }
 }

@@ -13,11 +13,11 @@
             
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             @*@Html.HiddenFor(model => model.CompanyID)*@
-            <input type="text" id="CompanyID" name="CompanyID" value="@Model.CompanyID"/>
+            <input type="hidden" id="CompanyID" name="CompanyID" value="@Model.CompanyID"/>
             <div class="form-row">
                 <div class="form-group col-sm-12">
                     <label for="CompanyName"> Company Name</label>
-                    <input type="text" class="form-control" id="CompanyName" placeholder="Enter name" name="CompanyName" required="required" pattern="^[a-zA-Z ]*$" autofocus="autofocus" value="@Model.CompanyName" />
+                    <input type="text" class="form-control" id="CompanyName" placeholder="Enter name" name="CompanyName" required="required" pattern="^[a-zA-Z ]*$" autofocus="autofocus" value="@Model.CompanyName" readonly/>
                     <div class="valid-feedback">
                         Looks good!
                     </div>

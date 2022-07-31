@@ -9,30 +9,7 @@
               
                 <a href="/jobs/view/@Model.JobID">@Model.JobTitle</a>
             </div>
-            <p>@Model.Department.DepartmentName</p>
+            <p><mark>@Model.Department.DepartmentName</mark></p>
         </div>
     
 </div>
-@*<tr>
-        <td><span class="badge badge-secondary">@Model.JobID</span> Job ID</td>
-        <td><span class="badge badge-secondary">@Model.ApplicantsCount</span> Number of views</td>
-
-        <td class="text-dark">
-            <a href="/jobs/view/@Model.JobID" class="text-primary">@Model.JobTitle</a>
-            <br />
-            <span class="badge badge-info">@Model.Course.CourseName</span>
-        </td>
-        <td>
-            @if (Convert.ToInt32(Session["CurrentUserID"]) != Model.CompanyID)
-            {
-                @:by @Model.Company.CompanyName
-            }
-            else
-            {
-                @:by you
-            }
-        </td>
-        <td>
-            on @Model.JobDateAndTime
-        </td>
-    </tr>*@

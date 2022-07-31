@@ -18,8 +18,9 @@ namespace QualifyMe.Repositories
         int GetLatestJobID();
         List<Job> GetJobs();
         List<Job> GetJobByJobID(int JobID);
-        List<Job> GetApplicantsByJobID(int jid);
+       //List<Job> GetApplicantsByJobID(int JobID);
         List<Job> GetJobsByCompanyID(int CompanyID);
+        List<Job>  GetJobsByUserID(int UserID);
     }
     public class JobsRepository: IJobsRepository
     {
@@ -89,15 +90,29 @@ namespace QualifyMe.Repositories
             int jid = db.Jobs.Select(temp => temp.JobID).Max();
             return jid;
         }
-        public List<Job> GetApplicantsByJobID(int jid)
-        {
-            List<Job> ap = db.Jobs.Where(temp => temp.JobID == jid).OrderByDescending(temp => temp.JobDateAndTime).ToList();
-            return ap;
-        }
+        //public List<Job> GetApplicantsByJobID(int JobID)
+        //{
+        //    List<Job> ap = db.Jobs.Where(temp => temp.JobID == JobID).OrderByDescending(temp => temp.JobDateAndTime).ToList();
+        //    return ap;
+        //}
 
         public List<Job> GetJobsByCompanyID(int CompanyID)
         {
+
             List<Job> ap = db.Jobs.Where(temp => temp.CompanyID ==CompanyID).OrderByDescending(temp => temp.JobDateAndTime).ToList();
+
+            return ap;
+        }
+        //public List<Job> GetApplicantsByUserID(int UserID)
+        //{
+        //    List<Job> a = db.Jobs.Where(temp => temp.ApplicantID == UserID).ToList();
+        //    return a;
+        //}
+        public List<Job> GetJobsByUserID(int UserID)
+        {
+
+            List<Job> ap = db.Jobs.Where(temp => temp.JobID == UserID).OrderByDescending(temp => temp.JobDateAndTime).ToList();
+
             return ap;
         }
     }

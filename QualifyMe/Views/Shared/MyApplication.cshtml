@@ -1,11 +1,11 @@
-﻿@model QualifyMe.ViewModels.ApplicantView
+﻿@model QualifyMe.ViewModels.Model
 
 
 <div class="layout-inline row">
-
+   
     <div class="col col-pro layout-inline">
 
-        <p>@Model.Student.StudentName</p>
+        <p>@Model</p>
     </div>
 
     <div class="col col-price col-numeric align-center ">
@@ -13,7 +13,7 @@
     </div>
 
     <div class="col col-qty layout-inline">
-        <p>@Model.Job.JobTitle</p>
+        @*<p>@Model.Job.Company.CompanyName</p>*@
     </div>
 
     <div class="col col-vat col-numeric">
