@@ -52,10 +52,12 @@
     <Compile Include="Applicant.cs" />
     <Compile Include="Company.cs" />
     <Compile Include="Course.cs" />
+    <Compile Include="Department.cs" />
     <Compile Include="Job.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QualifyMeDbContext.cs" />
     <Compile Include="Student.cs" />
+    <Compile Include="StudentDetail.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

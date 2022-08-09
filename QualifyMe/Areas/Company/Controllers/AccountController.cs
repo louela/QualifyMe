@@ -35,9 +35,10 @@ namespace QualifyMe.Areas.Company.Controllers
         {
 
             int uid = Convert.ToInt32(Session["CurrentCompanyID"]);
-            CompanyView uvm = this.cs.GetCompaniesByCompanyID(uid);
-            EditCompany ec = new EditCompany() { CompanyName = uvm.CompanyName, CompanyMobile = uvm.CompanyMobile, Email = uvm.Email, CompanyAddress = uvm.CompanyAddress, CompanyDescription = uvm.CompanyDescription, CompanyID = uvm.CompanyID};
-            return View(ec);
+            //CompanyView uvm = this.cs.GetCompaniesByCompanyID(uid);
+            //EditCompany ec = new EditCompany() { CompanyName = uvm.CompanyName, CompanyMobile = uvm.CompanyMobile, Email = uvm.Email, CompanyAddress = uvm.CompanyAddress, CompanyDescription = uvm.CompanyDescription, CompanyID = uvm.CompanyID};
+            return View();
+           
         }
 
         [HttpPost]

@@ -1,13 +1,15 @@
-﻿@{
+﻿@model QualifyMe.ViewModels.CourseView
+
+@{
     ViewBag.Title = "Register";
 }
 
 <div>
-    <div class="split left">
+    <div class="split left" >
         <div class="centered">
             <h4>Welcome</h4>
             <p>create your student account</p>
-            <form action="/account/login" method="post" class="needs-validation" novalidate="novalidate">
+            <form action="/account/register" method="post" class="needs-validation" novalidate="novalidate">
                 @Html.AntiForgeryToken()
                 <div class="form-group mr-3">
                     <label for="StudentID" class="mr-1">ID:</label>
@@ -23,12 +25,7 @@
                     <div class="invalid-feedback">Please Enter your Fullname.</div>
                 </div>
 
-                <div class="form-group mr-3">
-                    <label for="StudentCourse" class="mr-1">Course #:</label>
-                    <input type="text" class="form-control" id="StudentCourse" name="StudentCourse" required="required" autofocus="autofocus" placeholder="Enter Course">
-                    <div class="valid-feedback">Looks good!</div>
-                    <div class="invalid-feedback">Please Enter your Course.</div>
-                </div>
+
                 <div class="form-group mr-3">
                     <label for="StudentMobile" class="mr-1">Mobile #:</label>
                     <input type="text" class="form-control" id="StudentMobile" name="StudentMobile" required="required" autofocus="autofocus" placeholder="Enter Mobile">
@@ -52,9 +49,19 @@
 
                 <div class="form-group mr-3">
                     <label for="ConfirmPassword" class="mr-1">Confirm Password:</label>
-                    <input type="text" class="form-control" id="ConfirmaPassword" name="ConfirmPassword" required="required" autofocus="autofocus" placeholder="Confirm Password">
+                    <input type="password" class="form-control" id="ConfirmPassword" name="ConfirmPassword" required="required" autofocus="autofocus" placeholder="Confirm Password">
                     <div class="valid-feedback">Looks good!</div>
                     <div class="invalid-feedback"> Password and Confirm Password do not match.</div>
+                </div>
+                <div class="col-75">
+                    <label for="CourseID" class="mr-1">Course:</label>
+                    <select id="drpCourses" name="CourseID" required="required">
+                        <option value="">Please Select</option>
+                        @foreach (var item in ViewBag.Courses)
+                        {
+                            <option value="@item.CourseID">@item.CourseName</option>
+                        }
+                    </select>
                 </div>
 
                 <button class="btn btn-success">Register</button>

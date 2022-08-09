@@ -584,28 +584,28 @@ strong {
     margin-bottom: 10px;
 }
 
-
-/*---------------------------------------
-  BOOKING FORM            
------------------------------------------*/
-/*#BookingModal .modal-content {
+/*
+---------------------------------------
+BOOKING FORM
+-----------------------------------------
+#BookingModal .modal-content {
     border: 0;
     overflow: hidden;
 }
 
-    #BookingModal .modal-content::before {
-        content: "";
-        background-color: var(--white-color);
-        background-image: url('../images/sincerely-media-HoEYgBL_Gcs-unsplash.jpg');
-        background-repeat: no-repeat;
-        background-position: top;
-        background-size: cover;
-        width: 60%;
-        height: 100%;
-        position: absolute;
-        top: 0;
-        right: 0;
-    }
+#BookingModal .modal-content::before {
+    content: "";
+    background-color: var(--white-color);
+    background-image: url('../images/sincerely-media-HoEYgBL_Gcs-unsplash.jpg');
+    background-repeat: no-repeat;
+    background-position: top;
+    background-size: cover;
+    width: 60%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
 
 #BookingModal .modal-header {
     border-bottom: 0;
@@ -650,8 +650,8 @@ strong {
     background-size: cover;
     background-attachment: fixed;
     height: 500px;
-}*/
-
+}
+*/
 
 /*---------------------------------------
   FOOTER              
@@ -952,114 +952,29 @@ strong {
                 color: #ff00ff;
             }
 /*FOR HOMEPAGE*/
-* {
-    box-sizing: border-box;
-}
-
-body {
-    font-family: Arial;
-    padding: 10px;
-    background: #f1f1f1;
-}
-
-/* Header/Blog Title */
-.header {
-    padding: 30px;
-    text-align: center;
-    background: white;
-}
-
-    .header h1 {
-        font-size: 50px;
-    }
-
-/* Style the top navigation bar */
-.topnav {
+.block {
     overflow: hidden;
-    background-color: #333;
+    background: #FFFFFF;
+    padding: 1rem;
+    margin: 0 0 1rem 0;
+    border: groove
+   
 }
 
-    /* Style the topnav links */
-    .topnav a {
+    .block img {
+        width: 75px;
+        height: 75px;
         float: left;
-        display: block;
-        color: #f2f2f2;
-        text-align: center;
-        padding: 14px 16px;
-        text-decoration: none;
+        margin: 0 1rem 0 0;
     }
 
-        /* Change color on hover */
-        .topnav a:hover {
-            background-color: #ddd;
-            color: black;
-        }
-
-/* Create two unequal columns that floats next to each other */
-/* Left column */
-.leftcolumn {
-    float: left;
-    width: 75%;
-}
-
-/* Right column */
-.rightcolumn {
-    float: left;
-    width: 25%;
-    background-color: #f1f1f1;
-    padding-left: 20px;
-    
-}
-
-/* Fake image */
-.fakeimg {
-    background-color: #aaa;
-    width: 100%;
-    padding: 20px;
-}
-
-/* Add a card effect for articles */
-.card {
-    background-color: white;
-    padding: 20px;
-    margin-top: 20px;
-    
-}
-
-/* Clear floats after the columns */
-.row:after {
-    content: "";
-    display: table;
-    clear: both;
-}
-
-/* Footer */
-.footer {
-    padding: 20px;
-    text-align: center;
-    background: #ddd;
-    margin-top: 20px;
-}
-
-/* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other */
-screen and (max-width: 800px) {
-    .leftcolumn, .rightcolumn
-
-{
-    width: 100%;
-    padding: 0;
-}
-
-}
-
-/* Responsive layout - when the screen is less than 400px wide, make the navigation links stack on top of each other instead of next to each other */
-screen and (max-width: 400px) {
-    .topnav a
-
-{
-    float: none;
-    width: 100%;
-}
+    .block h2 {
+        margin: 0 0 0.5rem 0;
+    }
+/*NEW STYLES*/
+.block {
+   /* display: grid;*/
+    grid-template-columns: 100px 1fr 100px;
 }
 
 /*FOR DROPDOWN ACCOUNT*/
@@ -1207,3 +1122,365 @@ screen and (max-width: 400px) {
     font-weight: 600;
     color: #0062cc;
 }
+/*FOR JOB DETAILS*/
+ul > li {
+    margin-right: 25px;
+    font-weight: lighter;
+    cursor: pointer
+}
+
+li.active {
+    border-bottom: 3px solid silver;
+}
+
+.item-photo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-right: 1px solid #f6f6f6;
+}
+
+.menu-items {
+    list-style-type: none;
+    font-size: 11px;
+    display: inline-flex;
+    margin-bottom: 0;
+    margin-top: 20px
+}
+
+.btn-success {
+    width: 100%;
+    border-radius: 0;
+}
+
+.section {
+    width: 100%;
+    margin-left: -15px;
+    padding: 2px;
+    padding-left: 15px;
+    padding-right: 15px;
+    background: #f8f9f9
+}
+
+.title-price {
+    margin-top: 30px;
+    margin-bottom: 0;
+    color: black
+}
+
+.title-attr {
+    margin-top: 0;
+    margin-bottom: 0;
+    color: black;
+}
+
+.btn-minus {
+    cursor: pointer;
+    font-size: 7px;
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border: 1px solid gray;
+    border-radius: 2px;
+    border-right: 0;
+}
+
+.btn-plus {
+    cursor: pointer;
+    font-size: 7px;
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border: 1px solid gray;
+    border-radius: 2px;
+    border-left: 0;
+}
+
+div.section > div {
+    width: 100%;
+    display: inline-flex;
+}
+
+    div.section > div > input {
+        margin: 0;
+        padding-left: 5px;
+        font-size: 10px;
+        padding-right: 5px;
+        max-width: 18%;
+        text-align: center;
+    }
+
+.attr, .attr2 {
+    cursor: pointer;
+    margin-right: 5px;
+    height: 20px;
+    font-size: 10px;
+    padding: 2px;
+    border: 1px solid gray;
+    border-radius: 2px;
+}
+
+    .attr.active, .attr2.active {
+        border: 1px solid orange;
+    }
+
+@media (max-width: 426px) {
+    .container {
+        margin-top: 0px !important;
+    }
+
+        .container > .row {
+            padding: 0 !important;
+        }
+
+            .container > .row > .col-xs-12.col-sm-5 {
+                padding-right: 0;
+            }
+
+            .container > .row > .col-xs-12.col-sm-9 > div > p {
+                padding-left: 0 !important;
+                padding-right: 0 !important;
+            }
+
+            .container > .row > .col-xs-12.col-sm-9 > div > ul {
+                padding-left: 10px !important;
+            }
+
+    .section {
+        width: 104%;
+    }
+
+    .menu-items {
+        padding-left: 0;
+    }
+}   
+/*FOR TYPE BUTTON*/
+p,
+label {
+    font: 1rem 'Fira Sans', sans-serif;
+}
+
+input {
+    margin: .4rem;
+}
+/*FOR APPLY JOB PAGE*/
+    /* Style inputs with type="text", select elements and textareas */
+    input[type=text], select, textarea {
+        width: 100%; /* Full width */
+        padding: 12px; /* Some padding */
+        border: 1px solid #ccc; /* Gray border */
+        border-radius: 4px; /* Rounded borders */
+        box-sizing: border-box; /* Make sure that padding and width stays in place */
+        margin-top: 6px; /* Add a top margin */
+        margin-bottom: 16px; /* Bottom margin */
+        resize: vertical /* Allow the user to vertically resize the textarea (not horizontally) */
+    }
+
+    /* Style the submit button with a specific background color etc */
+    input[type=submit] {
+        background-color: #04AA6D;
+        color: white;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+        /* When moving the mouse over the submit button, add a darker green color */
+        input[type=submit]:hover {
+            background-color: #45a049;
+        }
+
+/* Add a background color and some padding around the form */
+.container {
+    border-radius: 5px;
+   
+    padding: 20px;
+}
+
+/*APPLICATION MESSAGE VIEW*/
+
+
+#card {
+    position: relative;
+    width: 320px;
+    display: block;
+    margin: 40px auto;
+    text-align: center;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+#upper-side {
+    padding: 2em;
+    background-color: #8BC34A;
+    display: block;
+    color: #fff;
+    border-top-right-radius: 8px;
+    border-top-left-radius: 8px;
+}
+
+#checkmark {
+    font-weight: lighter;
+    fill: #fff;
+    margin: -3.5em auto auto 20px;
+}
+
+#status {
+    font-weight: lighter;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 1em;
+    margin-top: -.2em;
+    margin-bottom: 0;
+}
+
+#lower-side {
+    padding: 2em 2em 5em 2em;
+    background: #fff;
+    display: block;
+    border-bottom-right-radius: 8px;
+    border-bottom-left-radius: 8px;
+}
+
+#message {
+    margin-top: -.5em;
+    color: #757575;
+    letter-spacing: 1px;
+}
+
+#contBtn {
+    position: relative;
+    top: 1.5em;
+    text-decoration: none;
+    background: #8bc34a;
+    color: #fff;
+    margin: auto;
+    padding: .8em 3em;
+    -webkit-box-shadow: 0px 15px 30px rgba(50, 50, 50, 0.21);
+    -moz-box-shadow: 0px 15px 30px rgba(50, 50, 50, 0.21);
+    box-shadow: 0px 15px 30px rgba(50, 50, 50, 0.21);
+    border-radius: 25px;
+    -webkit-transition: all .4s ease;
+    -moz-transition: all .4s ease;
+    -o-transition: all .4s ease;
+    transition: all .4s ease;
+}
+
+    #contBtn:hover {
+        -webkit-box-shadow: 0px 15px 30px rgba(50, 50, 50, 0.41);
+        -moz-box-shadow: 0px 15px 30px rgba(50, 50, 50, 0.41);
+        box-shadow: 0px 15px 30px rgba(50, 50, 50, 0.41);
+        -webkit-transition: all .4s ease;
+        -moz-transition: all .4s ease;
+        -o-transition: all .4s ease;
+        transition: all .4s ease;
+    }
+
+
+/*FOR APPLICATION FORM*/
+* {
+    box-sizing: border-box;
+}
+
+input[type=text], select, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+}
+
+label {
+    padding: 12px 12px 12px 0;
+    display: inline-block;
+}
+
+input[type=submit] {
+    background-color: #04AA6D;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    float: right;
+}
+
+    input[type=submit]:hover {
+        background-color: #45a049;
+    }
+
+.container {
+    border-radius: 5px;
+    
+    padding: 20px;
+}
+
+.col-25 {
+    float: left;
+    width: 25%;
+    margin-top: 6px;
+}
+
+.col-75 {
+    float: left;
+    width: 75%;
+    margin-top: 6px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+h5 {
+    text-align: center;
+}
+
+}
+/*FOR MY APPLICATION*/
+.table {
+    background: #ffffff;
+    border-radius: 0.6em;
+    overflow: hidden;
+    clear: both;
+    margin-bottom: 3.8em;
+}
+.layout-inline > * {
+    display: inline-block;
+}
+
+.align-center {
+    text-align: center;
+}
+
+.th {
+    background: #f34d35;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 1.5em;
+}
+.tf {
+    background: #f34d35;
+    text-transform: uppercase;
+    text-align: right;
+    font-size: 1.2em;
+}
+
+    .tf p {
+        color: #fff;
+        font-weight: bold;
+    }
+
+
+
+
+
+
+
+

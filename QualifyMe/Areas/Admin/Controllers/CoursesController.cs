@@ -31,11 +31,11 @@ namespace QualifyMe.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-
-                int cid = this.cos.InsertCourse(acm);
+                acm.DepartmentID = Convert.ToInt32(Session["CurrentDepartmentID"]);
                 Session["CurrentCourseName"] = acm.CourseName;
-
-                return RedirectToAction("Courses", "Home", new { area = "Admin" });
+                this.cos.InsertCourse(acm);
+                return RedirectToAction("ViewDepartment", "Departments", new { id = acm.DepartmentID });
+                
             }
             else
             {

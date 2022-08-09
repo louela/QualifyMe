@@ -1,0 +1,69 @@
+﻿@model QualifyMe.ViewModels.EditCompanyStatusView
+@{
+    ViewBag.Title = "Edit Company Status";
+}
+
+
+
+<div class="row">
+    <div class="col-sm-12">
+        <h1>Company Status</h1>
+        <form novalidate="novalidate" action="/admin/companies/editcompanystatus" method="post" class="needs-validation">
+            @Html.AntiForgeryToken()
+            
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @*@Html.HiddenFor(model => model.CompanyID)*@
+            <input type="hidden" id="CompanyID" name="CompanyID" value="@Model.CompanyID"/>
+            <div class="form-row">
+                <div class="form-group col-sm-12">
+                    <label for="CompanyName"> Company Name</label>
+                    <input type="text" class="form-control" id="CompanyName" placeholder="Enter name" name="CompanyName" required="required" pattern="^[a-zA-Z ]*$" autofocus="autofocus" value="@Model.CompanyName" readonly/>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                    <div class="invalid-feedback">
+                        Please enter name [alphabets only].
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-sm-6">
+                    <label for="Email">Email</label>
+                    @Html.HiddenFor(temp => temp.Email)
+                    <span>@Model.Email</span>
+                </div>
+
+                <div class="form-group col-sm-6">
+                    <label for="IsApproved">Status</label>
+                    <input type="text" class="form-control" id="IsApproved" name="IsApproved" required="required" value="@Model.IsApproved" />
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                    <div class="invalid-feedback">
+                        Invalid mobile Number.
+                    </div>
+                </div>
+            </div>
+
+            @Html.ValidationSummary()
+            <button type="submit" class="btn btn-primary">Update Status</button>
+        </form>
+    </div>
+</div>
+
+<script>
+
+    $("a[href='/admin/companies/editcompanystatus']").attr("id", "active");
+
+    $(document).on("submit", ".needs-validation", validate);
+    $(".needs-validation input").blur(validate);
+    function validate(event) {
+        if ($(".needs-validation")[0].checkValidity() == false) {
+            event.preventDefault();
+        }
+        $(".needs-validation")[0].classList.add("was-validated");
+    }
+</script>
+
+

@@ -14,10 +14,12 @@ namespace QualifyMe
 			var container = new UnityContainer();
 
 			container.RegisterType<IStudentsService, StudentsService>();
+			container.RegisterType<IStudentsDetailService, StudentsDetailService>();
 			container.RegisterType<ICompaniesService, CompaniesService>();
 			container.RegisterType<ICoursesService, CoursesService>();
 			container.RegisterType<IJobsService, JobsService>();
 			container.RegisterType<IApplicantsService, ApplicantsService>();
+			container.RegisterType<IDepartmentsService, DepartmentsService>();
 			DependencyResolver.SetResolver(new Unity.Mvc5.UnityDependencyResolver(container));
 			GlobalConfiguration.Configuration.DependencyResolver = new Unity.WebApi.UnityDependencyResolver(container);
 		}

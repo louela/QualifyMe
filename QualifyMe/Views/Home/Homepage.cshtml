@@ -11,47 +11,53 @@
     </style>
 </head>
 <body>
-    <div class="row">
+    <div class="text-body">
+        <div class="container">
+            <p>-AVAILABLE JOBS FOR YOU-</p>
+            <div class="card-header-tabs">
+                @foreach (var item in Model)
+                {<div class="block">
+
+                        <img src="~/images/avatar.png" alt="" height="50px" width="50px">
+                        <div>
+                            <p>@item.Company.CompanyName</p>
+                            <a href="/jobs/view/@item.JobID">@item.JobTitle</a>
+                            <p>@item.JobDateAndTime</p>
+                            <p>@item.JobDescription</p>
+                        </div>
+
+                        <mark>@item.Department.DepartmentName</mark><br />
+                         <i>Applicants: <strong>@item.ApplicantsCount</strong></i>
+
+                    </div>
+
+                }
+            </div>
+        </div>
+    </div>
+    <!--<div class="row">
         <div class="leftcolumn">
-            @foreach (var item in Model)
-            {
+           
             <div class="card">
                 <div class="profile">
                     <img src="~/images/avatar.png" alt="" height="50px" width="50px">
-                    <a>@item.Company.CompanyName</a>
+                    <a></a>
                 </div>
-                <a href="/jobs/view"> @item.JobTitle</a>
-                <p>@item.JobDateAndTime</p>
+                <a href="/jobs/view/"> </a>
+                <p></p>-->
                 @*<div class="fakeimg" style="height:200px;">Image</div>*@
-                <p>Some text..</p>
-                <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+
+                <!--<p></p>
             </div>
             }
             </div>
-        <div class="rightcolumn">
-            @*<div class="card">
-                <h2>About Me</h2>
-                <div class="fakeimg" style="height:100px;">Image</div>
-                <p>Some text about me in culpa qui officia deserunt mollit anim..</p>
-            </div>*@
-            <div class="card">
-                <h4>Recommended Jobs for you</h4>
-                <p>Job</p>
-                <p>Job</p>
-                <p>Job</p>
-            </div>
-            <div class="card">
-                <h5>Follow Me</h5>
-                <p>Some text..</p>
-            </div>
-        </div>
     </div>
 
     <footer>
         <div class="container-fluid">
             <p class="copyright">&copy; 2022 <a href="#" target="_blank">QuailfyMe</a>. All Rights Reserved.</p>
         </div>
-    </footer>
+    </footer>-->
 
 </body>
 </html>

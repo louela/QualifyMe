@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Q.DomainModels;
 using QualifyMe.ServiceLayer;
 using QualifyMe.ViewModels;
 
@@ -13,20 +14,23 @@ namespace QualifyMe.Controllers
         IJobsService js;
         IApplicantsService asr;
         ICoursesService cs;
+        IDepartmentsService ds;
 
-        public JobsController(IJobsService js, IApplicantsService asr, ICoursesService cs)
+        public JobsController(IJobsService js, IApplicantsService asr, ICoursesService cs, IDepartmentsService ds)
         {
             this.js = js;
             this.asr = asr;
             this.cs = cs;
+            this.ds = ds;
         }
         // GET: Jobs
         public ActionResult View(int id)
         {
-            this.js.UpdateApplicantsCount(id, 1);
+          
             int uid = Convert.ToInt32(Session["CurrentUserID"]);
-            JobView qvm = this.js.GetJobByJobID(id, uid);
-            return View(qvm);
+            JobView jv = this.js.GetJobByJobID(id);
+          
+            return View(jv);
         }
 
         public ActionResult Create()
@@ -47,7 +51,8 @@ namespace QualifyMe.Controllers
                
                 qvm.JobDateAndTime = DateTime.Now;
                 qvm.CompanyID = Convert.ToInt32(Session["CurrentCompanyID"]);
-                this.js.InsertJob(qvm);
+                int jid = this.js.InsertJob(qvm);
+                //this.js.InsertJob(qvm);
                 return RedirectToAction("Jobs", "Home");
             }
             else
@@ -56,5 +61,81 @@ namespace QualifyMe.Controllers
                 return View();
             }
         }
+
+        //public ActionResult ApplyJob(int id)
+        //{
+        //    int uid = Convert.ToInt32(Session["CurrentUserID"]);
+        //    this.js.GetJobByJobID(id, uid);
+        //    JobView jb = this.c(uid);
+        //    List<CourseView> courses = this.cs.GetCourses();
+        //    ViewBag.courses = courses;  
+        //    return View();
+        //}
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ApplyJob(NewApplicant na,int JobID/*,int ApplicantID*/)
+        {
+            if (ModelState.IsValid)
+            {
+                na.ApplicantDateAndTime = DateTime.Now;
+                na.UserID = Convert.ToInt32(Session["CurrentUserID"]);
+                // int id = 
+               // this.asr.GetApplicantByApplicantID(ApplicantID);
+                this.asr.InsertApplicant(na);
+                this.js.UpdateApplicantsCount(JobID, 1);
+                return RedirectToAction("ApplicationMessage", "Jobs");
+            }
+            else
+            {
+                ModelState.AddModelError("x", "Invalid data");
+                return View();
+            }
+        }
+
+        public ActionResult ApplicationMessage()
+        {
+            return View();
+        }
+
+        public ActionResult RecommendedJobs()
+        {
+
+            using (QualifyMeDbContext db = new QualifyMeDbContext())
+            {
+                int uid = Convert.ToInt32(Session["CurrentUserID"]);
+                List<Applicant> applicants = db.Applicants.ToList();
+                List<Course> courses = db.Courses.ToList();
+                List<Job> jobs = db.Jobs.ToList();
+                List<Student> students = db.Students.ToList();
+                List<Department> departments = db.Departments.ToList();
+
+                var recommendedjobs = from s in students
+                                      join c in courses on s.CourseID equals c.CourseID into Courses
+                                      from c in Courses.ToList()
+                                      join j in jobs on c.DepartmentID equals j.DepartmentID into Jobs
+                                      from j in Jobs.ToList()
+                                      join d in departments on j.DepartmentID equals d.DepartmentID into Departments
+                                      from d in Departments.ToList()                                      
+                                      where s.UserID == uid && c.DepartmentID == j.DepartmentID && c.DepartmentID == j.DepartmentID 
+                                      select new Model
+                                      {
+                                          department = d,
+                                          student = s,
+                                          job = j,
+                                          course = c
+                                          
+                                      };
+
+
+
+
+
+                return View(recommendedjobs);
+            }
+
+        }
+
+
+
     }
 }

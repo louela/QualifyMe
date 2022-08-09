@@ -20,5 +20,6 @@ namespace Q.DomainModels
         public string CompanyAddress { get; set; }
         public string CompanyDescription { get; set; }
         public bool IsAdmin { get; set; }
+        public int? IsApproved { get; set; }
     }
 }

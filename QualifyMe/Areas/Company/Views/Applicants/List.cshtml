@@ -1,0 +1,39 @@
+﻿@model  IEnumerable<QualifyMe.ViewModels.Model>
+@{
+    ViewBag.Title = "Applicants";
+    Layout = "~/Areas/Company/Views/Shared/CompanyLayoutPage1.cshtml";
+}
+
+<div class="table">
+    <div class="col-12">
+        <div class="layout-inline row th">
+            <div class="col col-pro">Name</div>
+            
+            <div class="col col-qty ">Type</div>
+            <div class="col">Status</div>
+        </div>
+        <table class="table">
+            @foreach (var item in Model)
+            {
+                <div class="layout-inline row">
+
+                    <div class="col col-pro layout-inline">
+
+                        <a href="/account/profile/@item.student.UserID">@item.applicant.Student.StudentName</a>
+                    </div>
+                    <div class="col col-qty layout-inline">
+                        <p>@item.job.JobTypes</p>
+                    </div>
+
+                    <div class="col col-vat col-numeric">
+                        <p>pending</p>
+                    </div>
+
+                </div>
+            }
+
+        </table>
+    </div>
+</div>
+
+

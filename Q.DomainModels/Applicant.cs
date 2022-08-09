@@ -19,15 +19,21 @@ namespace Q.DomainModels
         public DateTime ApplicantDateAndTime { get; set; }
         public int UserID { get; set; }
         public int JobID { get; set; }
-        public int ApplicantsCount { get; set; }
-        public string ApplicantPurpose { get; set; }
-        
+      
+     
+        public string ApplicantQuestion { get; set; }
+      
+
+
+       
 
         [ForeignKey("UserID")]
-        public virtual Student Student{ get; set; }
+        public Student Student { get; set; }
 
         [ForeignKey("JobID")]
-        public virtual Job Job { get; set; }
+        public  Job Job { get; set; }
+
+        //public virtual List<Student> Students { get; set; }
 
 
     }

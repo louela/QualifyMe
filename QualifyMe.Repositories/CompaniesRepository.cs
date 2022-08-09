@@ -11,6 +11,7 @@ namespace QualifyMe.Repositories
     {
         void InsertCompany(Company c);
         void UpdateCompanyDetails(Company c);
+        void UpdateCompanyStatus(Company c);
         void UpdateCompanyPassword(Company c);
         void DeleteCompany(int cid);
         List<Company> GetCompanies();
@@ -42,6 +43,19 @@ namespace QualifyMe.Repositories
                 cu.CompanyMobile = c.CompanyMobile;
                 cu.CompanyAddress = c.CompanyAddress;
                 cu.CompanyDescription = c.CompanyDescription;
+                db.SaveChanges();
+
+            }
+        }
+
+        public void UpdateCompanyStatus(Company c)
+        {
+            Company cu = db.Companies.Where(temp => temp.CompanyID == c.CompanyID).FirstOrDefault();
+            if (cu != null)
+            {
+                cu.CompanyName = c.CompanyName;
+                cu.Email = c.Email;
+                cu.IsApproved = c.IsApproved;
                 db.SaveChanges();
 
             }

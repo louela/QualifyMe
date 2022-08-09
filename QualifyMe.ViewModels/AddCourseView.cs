@@ -13,5 +13,10 @@ namespace QualifyMe.ViewModels
         [RegularExpression(@"^[a-zA-Z ]*$")]
         [Required]
         public string CourseName { get; set; }
+        [Required]
+        public int DepartmentID { get; set; }
     }
 }
+
+
+

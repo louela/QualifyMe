@@ -9,37 +9,67 @@
         <h1>Create Job</h1>
         <form class="needs-validation" novalidate="novalidate" action="/company/jobs/create" method="post">
             @Html.AntiForgeryToken()
-            <div class="form-row">
-                <div class="form-group col-sm-12">
-                    <label for="JobTitle">Job</label>
-                    <textarea class="form-control" id="JobTitle" placeholder="Enter job title" name="JobTitle" required="required" pattern="^[a-zA-Z ]*$" autofocus="autofocus"></textarea>
-                    <div class="valid-feedback">
-                        Looks good!
-                    </div>
-                    <div class="invalid-feedback">
-                        Please enter question.
-                    </div>
+            <div class="col-md-12 latest-job ">
+                <div class="form-group">
+                    <input class="form-control input-lg" type="text" id="jobtitle" name="jobtitle" placeholder="Job Title">
                 </div>
-            </div>
-
-            <div class="form-row">
-                <div class="form-group col-sm-6">
-                    <label for="drpCourses">Courses</label>
-                    <select class="form-control" id="drpCourses" name="CourseID" required="required">
-                        <option value="">Please Select</option>
-                        @foreach (var item in ViewBag.Courses)
+                <div class="form-group">
+                    <textarea class="form-control input-lg" id="JobDescription" name="JobDescription" placeholder="Job Description"></textarea>
+                </div>
+                <div class="form-group">
+                    <textarea class="form-control input-lg" id="JobQualification" name="JobQualification" placeholder="Job Qualification"></textarea>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-sm-6">
+                        <label for="DepartmentID">Department</label>
+                    </div>
+                    <div class="col-75">
+                        <select id="drpDepartments" name="DepartmentID" required="required">
+                            <option value="">Please Select</option>
+                            @foreach (var item in ViewBag.Departments)
+                            {
+                                <option value="@item.DepartmentID">@item.DepartmentName</option>
+                            }
+                        </select>
+                       
+                    </div>
+                   
+                    <div class="col-75">
+                        <label for="DepartmentID">Course:</label><br />
+                        @foreach (var item in ViewBag.Departments)
                         {
-                            <option value="@item.CourseID">@item.CourseName</option>
+                            @*<option value="@item.DepartmentID">@item.DepartmentName</option>*@
+                            <input type="checkbox" value="@item.CourseID" />@item.CourseName<br />
                         }
-                    </select>
-                    <div class="valid-feedback">
-                        Looks good!
                     </div>
-                    <div class="invalid-feedback">
-                        Category can't be empty
+                    @*<div class="col-75">
+                    @foreach(var item in Model)
+        {
+                <select>
+
+                </select>
+        }
+                </div>*@
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-sm-6">
+                        <label for="drptypes">Type:</label>
+                        <select class="form-control" id="drptypes" name="JobTypes" required="required">
+                            <option value="">Please Select</option>
+                            <option value="internship">Internship</option>
+                            <option value="parttime">Part-Time</option>
+                        </select>
+                        <label for="drpstatus">Status:</label>
+                        <select class="form-control" id="drpstatus" name="JobStatus" required="required">
+                            <option value="">Please Select</option>
+                            <option value="active">Active</option>
+                            <option value="inactive">InActive</option>
+                        </select>
+
                     </div>
                 </div>
             </div>
+         </div>
 
             <button type="submit" class="btn btn-primary">Add Job</button>
             @Html.ValidationSummary()
@@ -57,7 +87,14 @@
             event.preventDefault();
         }
         $(".needs-validation")[0].classList.add("was-validated");
+
     }
+    $(document).ready(function () {
+        $("#drpDepartments").CreateMultiCheckBox({
+            width: '230px',
+            defaultText: 'Select Below', height: '250px'
+        });
+    });
 
 </script>
 

@@ -1,0 +1,48 @@
+﻿@model List<QualifyMe.ViewModels.ApplicantView>
+@{
+    ViewBag.Title = "Applicants";
+    Layout = "~/Areas/Company/Views/Shared/CompanyLayoutPage1.cshtml";
+}
+
+<div class="table">
+    
+    <div class="layout-inline row th">
+        <div class="col col-pro">Name</div>
+        <div class="col col-price align-center ">
+            Company
+        </div>
+        <div class="col col-qty align-center">Type</div>
+        <div class="col">Status</div>
+    </div>
+    <table class="table">
+        @foreach (var item in Model)
+        {
+            Html.RenderPartial("Applicant", item);
+
+            <!--<div class="layout-inline row">
+
+                <div class="col col-pro layout-inline">
+
+                    <p></p>
+                </div>
+
+                <div class="col col-price col-numeric align-center ">
+                    <p></p>
+                </div>
+
+                <div class="col col-qty layout-inline">-->
+                    @*<p>@Model.Job.Company.CompanyName</p>*@
+                <!--</div>
+
+                <div class="col col-vat col-numeric">
+                    <p>pending</p>
+                </div>
+
+            </div>-->
+
+        }
+        </table>
+    
+</div>
+
+
