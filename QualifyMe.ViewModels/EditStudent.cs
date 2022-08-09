@@ -11,6 +11,7 @@ namespace QualifyMe.ViewModels
     {
         public int UserID { get; set; }
         public int StudentID { get; set; }
+        public int CourseID { get; set; }
 
         [Required]
         [RegularExpression(@"^[a-zA-Z ]*$")]
@@ -18,8 +19,9 @@ namespace QualifyMe.ViewModels
         [Required]
         public string StudentCourse { get; set; }
 
-        [Required]
-        public string StudentMobile { get; set; }
+      
+      
+        
 
         [Required]
         [RegularExpression(@"(\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,6})")]

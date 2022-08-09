@@ -19,16 +19,13 @@ namespace Q.DomainModels
         public DateTime ApplicantDateAndTime { get; set; }
         public int UserID { get; set; }
         public int JobID { get; set; }
-        public int CourseID { get; set; }
+      
      
         public string ApplicantQuestion { get; set; }
-        public string ApplicantGender { get; set; }
-        public string ApplicantAddress { get; set; }
-        public DateTime ApplicantBirthday { get; set; }
+      
 
 
-        [ForeignKey("CourseID")]
-        public  Course Course { get; set; }
+       
 
         [ForeignKey("UserID")]
         public Student Student { get; set; }

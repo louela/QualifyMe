@@ -1,4 +1,4 @@
-﻿@model QualifyMe.ViewModels.StudentView
+﻿@model QualifyMe.ViewModels.StudentDetailsView
 <!DOCTYPE html>
 
 <html>
@@ -23,7 +23,7 @@
                 <div class="col-md-6">
                     <div class="profile-head">
                         <h5>
-                           @Session["CurrentUserName"]
+                            @Session["CurrentUserName"]
                         </h5>
                         <h6>
                             @Session["CurrentUserCourse"]
@@ -33,15 +33,11 @@
                             <li class="nav-item">
                                 <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Application</a>
-                            </li>
                         </ul>
                     </div>
+                    <a href="/account/changeprofile" class="btn-outline-secondary">Edit Profile</a>
                 </div>
-                <div class="col-md-2">
-                    <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile" />
-                </div>
+              
             </div>
             <div class="row">
                 <div class="col-md-4">
@@ -54,16 +50,45 @@
                         <a href="">PHP, .Net</a><br />
                     </div>
                 </div>
-                <div class="col-md-8">
-                    <div class="tab-content profile-tab" id="myTabContent">
+                <div class="col-md-6">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-25">
+                                <label for="StudentBirthday">Birthday:</label>
+                            </div>
+                            <div class="col-75">
+                                <input type="text" id="StudentBirthday" name="StudentBirthday" value="@Model.StudentBirthday">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-25">
+                                <label for="StudentEmail">Email:</label>
+                            </div>
+                            <div class="col-75">
+                                <input type="text" id="StudentEmail" name="StudentEmail" value="@Session["CurrentUserEmail"]" readonly>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-25">
+                                <label for="CourseID">Course:</label>
+                            </div>
+                            <div class="col-75">
+                                <input type="text" id="CourseID" name="CourseID" value="@Session["CurrentStudentCourse"]" readonly>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                    @*<div class="tab-content profile-tab" id="myTabContent">
                         <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                            <div class="row">
+                            <div class="col">
                                 <div class="col-md-6">
                                     <label>Student ID</label>
                                 </div>
-                                <div class="col-md-6">
-                                    <p>@Session["CurrentStudentID"]</p>
-                                </div>
+                                <input class="col-6" readonly
+                                   value="@Session["CurrentStudentID"]"
+                             />
                             </div>
                             <div class="row">
                                 <div class="col-md-6">
@@ -98,18 +123,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <label>My Application</label>
-                                </div>
-                                <div class="col-md-6">
-                                    <a href="/Account/MyApplication">count sa giapplyan</a>
-                                </div>
-                            </div>
-                           
-                        </div>
-                    </div>
+                       
+                    </div>*@
                 </div>
             </div>
         </form>

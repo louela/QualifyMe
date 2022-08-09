@@ -1,0 +1,29 @@
+﻿@model  IEnumerable<QualifyMe.ViewModels.Model>
+@{
+    ViewBag.Title = "RecommendedJobs";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+        <div class="text-body">
+            <div class="container">
+                <p>-AVAILABLE JOBS FOR YOU BASED ON YOUR COURSE-</p>
+                <div class="card-header-tabs">
+                    @foreach (var item in Model)
+                    {<div class="block">
+
+                            <img src="~/images/avatar.png" alt="" height="50px" width="50px">
+                            <div>
+                                <a href="/jobs/view/@item.job.JobID">@item.job.JobTitle</a>
+                                <p>@item.job.JobDateAndTime</p>
+                                <p>@item.job.JobDescription</p>
+                            </div>
+                            <mark>@item.department.DepartmentName</mark>
+                            <mark>@item.course.CourseName</mark>
+                            <mark>@item.job.JobTypes</mark>
+                        </div>
+                    }                 
+                </div>
+            </div>
+        </div>
+
+    

@@ -1,49 +1,52 @@
 ﻿@model  IEnumerable<QualifyMe.ViewModels.Model>
 @{
-    ViewBag.Title = "MyApplications";  
+    ViewBag.Title = "MyApplications";
 }
 
-
-<div class="table">
-    <div class="col-sm-12">
-        <div class="layout-inline row th">
-            <div class="col col-pro">Jobs</div>
-            <div class="col col-price  ">
-                Company
-            </div>
-            <div class="col col-qty">Type</div>
-            <div class="col">Status</div>
-        </div>
-
-        <table class="col-sm-12">
-            @foreach (var item in Model)
-            {
-                //Html.RenderPartial("MyApplication", item);
-                <div class="layout-inline row">
-
-                    <div class="col col-pro layout-inline">
-
-                        <p>@item.job.JobTitle</p>
+<div class="container">
+    <div class="card">
+        <div class="table">
+            <div class="col-sm-12">
+                <div class="layout-inline row th">
+                    <div class="col col-pro">Jobs</div>
+                    <div class="col col-price  ">
+                        Company
                     </div>
-
-                    <div class="col col-price col-numeric align-center ">
-                        <p>@item.company.CompanyName</p>
-                    </div>
-
-                    <div class="col col-qty layout-inline">
-                        <p>@item.job.JobTypes</p>
-                    </div>
-
-                    <div class="col col-vat col-numeric">
-                        <p>pending</p>
-                    </div>
-
+                    <div class="col col-qty">Type</div>
+                    <div class="col">Status</div>
                 </div>
 
-            }
-        </table>
+                <table class="col-sm-12">
+                    @foreach (var item in Model)
+                    {
+                        //Html.RenderPartial("MyApplication", item);
+                        <div class="layout-inline row">
+
+                            <div class="col col-pro layout-inline">
+
+                                <p>@item.job.JobTitle</p>
+                            </div>
+
+                            <div class="col col-price col-numeric align-center ">
+                                <p>@item.company.CompanyName</p>
+                            </div>
+
+                            <div class="col col-qty layout-inline">
+                                <p>@item.job.JobTypes</p>
+                            </div>
+
+                            <div class="col col-vat col-numeric">
+                                <p>pending</p>
+                            </div>
+
+                        </div>
+
+                    }
+                </table>
+            </div>
+        </div>
     </div>
-</div> 
+</div>
 <script>
     $("a[href='/myapplications']").attr("id", "active");
 </script>

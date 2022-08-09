@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Q.DomainModels;
 using QualifyMe.ServiceLayer;
 using QualifyMe.ViewModels;
 
@@ -28,8 +29,7 @@ namespace QualifyMe.Controllers
           
             int uid = Convert.ToInt32(Session["CurrentUserID"]);
             JobView jv = this.js.GetJobByJobID(id);
-            List<CourseView> courses = this.cs.GetCourses();
-            ViewBag.courses = courses;
+          
             return View(jv);
         }
 
@@ -96,8 +96,46 @@ namespace QualifyMe.Controllers
         {
             return View();
         }
-            
-            
-            
+
+        public ActionResult RecommendedJobs()
+        {
+
+            using (QualifyMeDbContext db = new QualifyMeDbContext())
+            {
+                int uid = Convert.ToInt32(Session["CurrentUserID"]);
+                List<Applicant> applicants = db.Applicants.ToList();
+                List<Course> courses = db.Courses.ToList();
+                List<Job> jobs = db.Jobs.ToList();
+                List<Student> students = db.Students.ToList();
+                List<Department> departments = db.Departments.ToList();
+
+                var recommendedjobs = from s in students
+                                      join c in courses on s.CourseID equals c.CourseID into Courses
+                                      from c in Courses.ToList()
+                                      join j in jobs on c.DepartmentID equals j.DepartmentID into Jobs
+                                      from j in Jobs.ToList()
+                                      join d in departments on j.DepartmentID equals d.DepartmentID into Departments
+                                      from d in Departments.ToList()                                      
+                                      where s.UserID == uid && c.DepartmentID == j.DepartmentID && c.DepartmentID == j.DepartmentID 
+                                      select new Model
+                                      {
+                                          department = d,
+                                          student = s,
+                                          job = j,
+                                          course = c
+                                          
+                                      };
+
+
+
+
+
+                return View(recommendedjobs);
+            }
+
+        }
+
+
+
     }
 }

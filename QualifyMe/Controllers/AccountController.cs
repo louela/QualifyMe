@@ -12,16 +12,19 @@ namespace QualifyMe.Controllers
     public class AccountController : Controller
     {
         private IStudentsService ss;
+      
         private ICompaniesService cs;
         private IApplicantsService aps;
         private ICoursesService css;
+        private IStudentsDetailService sds;
 
-        public AccountController(StudentsService ss, CompaniesService cs,IApplicantsService aps,ICoursesService css)
+        public AccountController(StudentsService ss, CompaniesService cs,IApplicantsService aps,ICoursesService css,IStudentsDetailService sds)
         {
             this.ss = ss;
             this.cs = cs;
             this.aps = aps;
             this.css = css;
+            this.sds = sds;
         }
 
         // GET: Account
@@ -29,7 +32,8 @@ namespace QualifyMe.Controllers
 
         public ActionResult Register()
         {
-           
+            List<CourseView> courses = this.css.GetCourses();
+            ViewBag.courses = courses;
             return View();
         }
 
@@ -45,6 +49,7 @@ namespace QualifyMe.Controllers
                 Session["CurrentUserName"] = rvm.StudentName;
                 Session["CurrentUserEmail"] = rvm.Email;
                 Session["CurrentUserPassword"] = rvm.Password;
+                Session["CurrentStudentCourse"] = rvm.CourseID;
                 Session["CurrentUserIsAdmin"] = false;
                 return RedirectToAction("Index", "Home");
             }
@@ -74,9 +79,9 @@ namespace QualifyMe.Controllers
                     Session["CurrentUserID"] = uvm.UserID;
                     Session["CurrentStudentID"] = uvm.StudentID;
                     Session["CurrentUserName"] = uvm.StudentName;
-                    Session["CurrentUserEmail"] = uvm.Email;
-                    Session["CurrentUserMobile"] = uvm.StudentMobile;
+                    Session["CurrentUserEmail"] = uvm.Email;                  
                     Session["CurrentUserPassword"] = uvm.Password;
+                    Session["CurrentStudentCourse"] = uvm.Course.CourseName;
                     Session["CurrentUserIsAdmin"] = uvm.IsAdmin;
 
                     if (uvm.IsAdmin)
@@ -176,13 +181,13 @@ namespace QualifyMe.Controllers
         }
 
         [UserAuthorizationFilterAttribute]
-        
+
         public ActionResult ChangeProfile()
         {
 
             int uid = Convert.ToInt32(Session["CurrentUserID"]);
             StudentView uvm = this.ss.GetStudentsByUserID(uid);
-            EditStudent es = new EditStudent() { StudentName = uvm.StudentName, StudentMobile = uvm.StudentMobile, Email = uvm.Email, UserID = uvm.UserID, StudentID = uvm.StudentID };
+            EditStudent es = new EditStudent() { StudentName = uvm.StudentName, Email = uvm.Email, UserID = uvm.UserID, StudentID = uvm.StudentID, CourseID = uvm.CourseID };
             return View(es);
         }
 
@@ -208,8 +213,11 @@ namespace QualifyMe.Controllers
         [UserAuthorizationFilterAttribute]
         public ActionResult Profile()
         {
-            StudentView uvm = new StudentView();
-            return View();
+            //StudentView uvm = new StudentView();
+            StudentDetailsView sdv = new StudentDetailsView();
+            List<CourseView> courses = this.css.GetCourses();
+            ViewBag.courses = courses;
+            return View(sdv);
         }
 
     

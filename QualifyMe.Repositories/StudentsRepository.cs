@@ -11,6 +11,7 @@ namespace QualifyMe.Repositories
     {
         void InsertStudent(Student s);
         void UpdateStudentDetails(Student s);
+      
         void UpdateStudentPassword(Student s);
         void DeleteStudent(int sid);
         List<Student> GetStudents();
@@ -40,11 +41,12 @@ namespace QualifyMe.Repositories
             if (st != null)
             {
                 st.StudentName = s.StudentName;
-                st.StudentMobile = s.StudentMobile;
+               // st.StudentMobile = s.StudentMobile;
 
                 db.SaveChanges();
             }
         }
+      
 
         public void UpdateStudentPassword(Student s)
         {

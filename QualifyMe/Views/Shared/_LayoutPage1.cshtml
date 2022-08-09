@@ -12,18 +12,18 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-lg bg-white shadow-lg">
-        <div class="container">
+       
             <img src="~/images/qualifyme-logo.png" alt="logo" height="50" width="50" />
 
-            <a class="navbar-brand" href="/Home/index">
+            <a class="navbar-brand" href="~/Views/Home/index">
                 QualifyMe
             </a>
-            @*<div class="search-bar">
+            <div class="search-bar">
                 <form>
                     <input type="text" name="search" placeholder="Search...">
                     <button type="submit"><i class="la la-search"></i></button>
                 </form>
-            </div>*@
+            </div>
 
 
             <div class="collapse navbar-collapse" id="navbarNav">
@@ -35,17 +35,13 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/home/about">About</a>
                     </li>
-
-
-
-                    @*if naka login as student accout*@
                     @if (Session["CurrentUserName"] != null)
                     {
                         <li class="nav-item">
                             <a class="nav-link" href="/home/companies">Companies</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/home/jobs">Job</a>
+                            <a class="nav-link" href="/jobs/recommendedjobs">Job</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/home/myapplications">My Applications</a>
@@ -64,22 +60,12 @@
                                 <a class="dropdown-item" href="/account/logout">Logout</a>
                             </div>
                         </li>
-
-
-
-
-
                     }
-
-</div>
-
+                </ul>
+                </div>         
+           
     </nav>
-
-
     @RenderBody()
     <hr />
-    <footer>
-        <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-    </footer>
 </body>
 </html>

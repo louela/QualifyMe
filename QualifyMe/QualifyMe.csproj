@@ -321,6 +321,7 @@
     <Content Include="Views\Shared\MyApplication.cshtml" />
     <Content Include="Views\Home\MyApplications.cshtml" />
     <Content Include="Views\Account\MyApplications.cshtml" />
+    <Content Include="Views\Jobs\RecommendedJobs.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

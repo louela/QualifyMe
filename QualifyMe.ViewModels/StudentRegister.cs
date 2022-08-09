@@ -12,6 +12,8 @@ namespace QualifyMe.ViewModels
         [Required]
         public string StudentID { get; set; }
 
+        public string CourseID { get; set; }
+
         [Required]
         [RegularExpression(@"^[a-zA-Z ]*$")]
         public string StudentName { get; set; }
@@ -28,8 +30,8 @@ namespace QualifyMe.ViewModels
         [Compare("Password")]
         public string ConfirmPassword { get; set; }
 
-        [Required]
-        public string StudentMobile { get; set; }
+        public CourseView Course { get; set; }
+
 
     }
 }

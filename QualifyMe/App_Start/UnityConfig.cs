@@ -14,6 +14,7 @@ namespace QualifyMe
 			var container = new UnityContainer();
 
 			container.RegisterType<IStudentsService, StudentsService>();
+			container.RegisterType<IStudentsDetailService, StudentsDetailService>();
 			container.RegisterType<ICompaniesService, CompaniesService>();
 			container.RegisterType<ICoursesService, CoursesService>();
 			container.RegisterType<IJobsService, JobsService>();

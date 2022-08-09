@@ -67,7 +67,9 @@
     <Compile Include="Model.cs" />
     <Compile Include="NewApplicant.cs" />
     <Compile Include="NewJob.cs" />
+    <Compile Include="NewStudentDetails.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StudentDetailsView.cs" />
     <Compile Include="StudentView.cs" />
     <Compile Include="StudentRegister.cs" />
   </ItemGroup>

@@ -3,19 +3,22 @@
 @{ 
     ViewBag.Title = "Jobs";
 }
+<div class="container">
+    <p>-RECOMMENDED JOBS FOR YOU-</p>
+    @*<div class="card">
+        <div class="row">
+            <div class="col-sm-12">
+                <table class="table">
+                    @foreach (var item in Model)
+                    {
+                        Html.RenderPartial("Job", item);
+                    }
+                </table>
 
-<div class="row">
-    <div class="col-sm-12">
-        <table class="table">
-            @foreach(var item in Model)
-            {
-                Html.RenderPartial("Job", item);
-            }
-        </table>
-
-    </div>
+            </div>
+        </div>
+    </div>*@
 </div>
-
 <script>
     $("a[href='/alljobs']").attr("id", "active");
 </script>

@@ -13,7 +13,7 @@ namespace QualifyMe.ViewModels
         public Student student { get; set; }
         public Job job { get; set; }
         public Company company { get; set; }
-
+        public Department department { get; set; }
         public Course course { get; set; }
     }
 }

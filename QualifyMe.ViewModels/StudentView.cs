@@ -10,12 +10,16 @@ namespace QualifyMe.ViewModels
     {
         public int UserID { get; set; }
         public int StudentID { get; set; }
+        public int CourseID { get; set; }
         public string StudentName { get; set; }
 
         public string Email { get; set; }
         public string Password { get; set; }
-        public string StudentMobile { get; set; }
+    
+       
         public bool IsAdmin { get; set; }
+
+        public CourseView Course { get; set; }
       
     }
 }
