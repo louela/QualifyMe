@@ -1,100 +1,120 @@
 ﻿@model QualifyMe.ViewModels.EditStudent
-@{
-    ViewBag.Title = "Edit Details";
-}
-<form novalidate="novalidate" action="/account/changeprofile" method="post" class="needs-validation">
-    <div class="container">
-        <div class="row gutters">
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <title>Profile</title>
+
+</head>
+<body>
+    <div class="container emp-profile">
+        <form action="/account/changeprofile" novalidate="novalidate" id="changeprofile" method="post" class="needs-validation">
             @Html.AntiForgeryToken()
-            <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <div class="account-settings">
-                            <div class="user-profile">
-                                <div id="profile-container">
-                                    <image id="profilepicture" src="~/Images/avatar.png" />
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="avatar-upload">
+                    <div class="avatar-edit">
+                        <input type='file' id="ImageUpload" name="file" accept=".png, .jpg, .jpeg" />
+                        <label for="ImageUpload"></label>
+                    </div>
+                    @*<div class="avatar-preview">
+                        <div id="imagePreview" style="background-image: url('/Images/@Model.ImagePath');">
+                        </div>
+                    </div>*@
+
+                </div>
+
+                    <input type="text" id="StudentFirstName" name="StudentFirstName" style="font-weight: bold;" value="@Model.StudentFirstName" placeholder="Enter Firstname...">
+                    <input type="text" id="StudentLastName" name="StudentLastName" style="font-weight: bold;" value="@Model.StudentLastName" placeholder="Enter Lastname...">
+                    <div class="col-100">
+                        <select id="drpCourses" name="CourseID" required="required">
+                            <option value="@Model.CourseID"></option>
+                            @foreach (var item in ViewBag.Courses)
+                            {
+                                <option value="@item.CourseID">@item.CourseName</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="container">
+                            <strong>INFORMATION</strong>
+                            <br />
+                            <strong>Student No :</strong>
+                            <input type="text" id="StudentID" name="StudentID" style="font-weight: lighter;" value="@Model.StudentID">
+                            <strong>Email :</strong>
+                            <input type="text" id="Email" name="Email" style="font-weight: lighter;" value="@Model.Email">
+                            <div class="row">
+                                <div class="col-25">
+                                    <label for="Gender">Gender</label>
                                 </div>
-                                <h5 class="user-name"> @Session["CurrentUserName"]</h5>
-                                <h6 class="user-email"> @Session["CurrentUserEmail"]</h6>
+                                <div class="col-75">
+                                    <select id="Gender" name="Gender">
+                                        <option value="">Please Select..</option>
+                                        <option value="female">Female</option>
+                                        <option value="male">Male</option>
+                                    </select>
+                                </div>
                             </div>
-                            <div class="about">
-                                <h5>About</h5>
-                                <p>I'm @Model.StudentName. Full Stack Designer I enjoy creating user-centric, delightful and human experiences.</p>
+                            <strong>Address :</strong>
+                            <input type="text" id="Address" name="Address" style="font-weight: lighter;" value="@Model.Address">
+                            <strong>Mobile :</strong>
+                            <input type="text" id="Mobile" name="Mobile" style="font-weight: lighter;" value="@Model.Mobile">
+
+                            <strong>Resume :</strong>
+                            <br />
+                            @Html.ValidationSummary()
+                            <div class="form-group col-sm-2  float-right">
+                                <button type="submit" class="btn btn-primary" style="background-color:forestgreen">Update</button>
+                            </div>
+                            <div class="form-group col-sm-2  float-right">
+                                <button type="cancel" class="btn btn-primary" style="background-color:forestgreen">Cancel</button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <div class="row gutters">
-                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                                <h6 class="mb-2 text-primary">Personal Details</h6>
-                            </div>
-                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                                <label for="StudentName">Name</label>
-                                <input type="text" class="form-control" id="StudentName" placeholder="Enter Name" name="StudentName" required="required" pattern="^[a-zA-Z ]*$" autofocus="autofocus" value="@Model.StudentName" />
-                                <div class="valid-feedback">
-                                    Looks Good!
-                                </div>
-                                <div class="invalid-feedback">
-                                    Please Enter your Name.
-                                </div>
-                            </div>
-                            <div class="form-group col-sm-6">
-                                <label for="Email">Email:</label>
-                                <input type="text" class="form-control" id="Email" placeholder="Email" name="Email" required="required" value="@Model.Email" />
-                                <div class="valid-feedback">
-                                    Looks Good!
-                                </div>
-                                <div class="invalid-feedback">
-                                    Password must contain at least 6 characters.
-                                </div>
-                            </div>
-                            <div class="form-group col-sm-6">
-                                <label for="StudentMobile">Mobile Number</label>
-                                <input type="text" class="form-control" id="StudentMobile" placeholder="Enter Mobile" name="StudentMobile" required="required" pattern="^[789]\d{9}$" value="@Model.StudentMobile" />
-                                <div class="valid-feedback">
-                                    Looks Good!
-                                </div>
-                                <div class="invalid-feedback">
-                                    Please Enter your Mobile Number.
-                                </div>
-                            </div>
-
-                        </div>
-                        @Html.ValidationSummary()
-                        <div class="row gutters">
-                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                                <div class="text-right">
-                                    <button type="cancel" class="btn btn-secondary">Cancel</button>
-                                    <button type="submit" class="btn btn-primary">Update Profile</button>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-</form>
-
-
-
+        </form>
+    </div>
+</body>
+</html>
 <script>
-    $("a[href='/account/changeprofile']").attr("id", "active");
-    $(document).on("submit", ".needs-validation", validate);
-    $(".needs-validation input").blur(validate);
-    function validate(event) {
-        if ($(".needs-validation")[0].checkValidity() == false) {
-            event.preventDefault();
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('#imagePreview').css('background-image', 'url(' + e.target.result + ')');
+                $('#imagePreview').hide();
+                $('#imagePreview').fadeIn(650);
+            }
+            reader.readAsDataURL(input.files[0]);
         }
-        $(".needs-validation")[0].classList.add("was-validated");
     }
-    $(".cancel").on("click", function () {
-        $("#target").text(orginalText);
+    $("#ImageUpload").change(function () {
+        readURL(this);
     });
 
+    function AjaxPost(formData) {
+        var ajaxConfig = {
+            type: "post",
+            url: "/Account/ChangeProfile",
+            data: new FormData(formData),
+            success: function (result) {
+                alert(result);
+                window.location.href = "/account/changeprofile"
+            }
+        }
+        if ($(formData).attr('enctype') == "multipart/form-data") {
+            ajaxConfig["contentType"] = false;
+            ajaxConfig["processData"] = false;
+        }
+        $.ajax(ajaxConfig);
+        return false;
+    }
 </script>

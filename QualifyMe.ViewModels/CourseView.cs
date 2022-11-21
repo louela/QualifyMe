@@ -9,10 +9,14 @@ namespace QualifyMe.ViewModels
 {
     public class CourseView
     {
-        [Required]
+       
         public int CourseID { get; set; }
+        
+        public int DepartmentID { get; set; }
 
-        [Required]
+        
         public string CourseName { get; set; }
+
+       
     }
 }

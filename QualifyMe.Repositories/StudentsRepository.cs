@@ -1,19 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 using Q.DomainModels;
 
 namespace QualifyMe.Repositories
 {
     public interface IStudentsRepository
     {
+       
         void InsertStudent(Student s);
         void UpdateStudentDetails(Student s);
+      
         void UpdateStudentPassword(Student s);
         void DeleteStudent(int sid);
-        List<Student> GetStudents();
+        //List<Student> GetStudents();
         List<Student> GetStudentsByEmailAndPassword(string Email, string Password);
         List<Student> GetStudentsByEmail(string Email);
         List<Student> GetStudentsByUserID(int UserID);
@@ -22,6 +26,7 @@ namespace QualifyMe.Repositories
     public class StudentsRepository : IStudentsRepository
     {
         QualifyMeDbContext db;
+        
 
         public StudentsRepository()
         {
@@ -30,6 +35,7 @@ namespace QualifyMe.Repositories
 
         public void InsertStudent(Student s)
         {
+           
             db.Students.Add(s);
             db.SaveChanges();
         }
@@ -39,11 +45,32 @@ namespace QualifyMe.Repositories
             Student st = db.Students.Where(temp => temp.UserID == s.UserID).FirstOrDefault();
             if (st != null)
             {
-                st.StudentName = s.StudentName;
-                st.StudentMobile = s.StudentMobile;
+                st.StudentFirstName = s.StudentFirstName;
+                st.StudentLastName = s.StudentLastName;
+                st.StudentID = s.StudentID;
+                st.CourseID = s.CourseID;
+                st.Address = s.Address;
+                st.Mobile = s.Mobile;
+                st.Gender = s.Gender;
+              //  st.Resume = SaveToPhysicalLocation(s.file);
+                //st.ImagePath = s.ImagePath;
                 db.SaveChanges();
             }
         }
+
+        //private string SaveToPhysicalLocation(HttpPostedFileBase file)
+        //{
+        //    if(file.ContentLength > 0)
+        //    {
+        //        var fileName = Path.GetFileName(file.FileName);
+        //        var path = Path.Combine(Server.MapPath("~/AppFile/Images/Student"), fileName);
+        //        file.SaveAs(path);
+        //        return path;
+        //    }
+        //    return string.Empty;
+        //}
+
+
 
         public void UpdateStudentPassword(Student s)
         {
@@ -65,15 +92,15 @@ namespace QualifyMe.Repositories
             }
         }
 
-        public List<Student> GetStudents()
-        {
-            List<Student> st = db.Students.Where(temp => temp.IsAdmin == false).OrderBy(temp => temp.StudentName).ToList();
-            return st;
-        }
+        //public List<Student> GetStudents()
+        //{
+        //    List<Student> st = db.Students.Where(temp => temp.IsAdmin == false).OrderBy(temp => temp.StudentFirstName).ToList();
+        //    return st;
+        //}
 
-        public List<Student> GetStudentsByEmailAndPassword(string StudentEmail, string Password)
+        public List<Student> GetStudentsByEmailAndPassword(string Email, string Password)
         {
-            List<Student> st = db.Students.Where(temp => temp.Email == StudentEmail && temp.Password == Password).ToList();
+            List<Student> st = db.Students.Where(temp => temp.Email == Email && temp.Password == Password).ToList();
             return st;
         }
 

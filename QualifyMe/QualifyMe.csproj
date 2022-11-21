@@ -278,6 +278,15 @@
     <Content Include="Views\Account\CompanyLogin.cshtml" />
     <Content Include="Views\Account\Test.cshtml" />
     <Content Include="Views\Account\Profile.cshtml" />
+    <Content Include="Views\Account\AddSkill.cshtml" />
+    <Content Include="Views\Account\CompanyLoginn.cshtml" />
+    <Content Include="Views\Account\CompanyRegister.cshtml" />
+    <Content Include="Views\Account\DisplayImage.cshtml" />
+    <Content Include="Views\Account\Image.cshtml" />
+    <Content Include="Views\Account\LandingPage.cshtml" />
+    <Content Include="Views\Account\Message.cshtml" />
+    <Content Include="Views\Account\MyApplications.cshtml" />
+    <Content Include="Views\Account\SkillSets.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

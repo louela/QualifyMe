@@ -4,17 +4,28 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
+using System.Web;
 
 namespace QualifyMe.ViewModels
 {
     public class StudentRegister
     {
-        [Required]
-        public string StudentID { get; set; }
+        [Key]
+        public string UserID { get; set; }
 
         [Required]
-        [RegularExpression(@"^[a-zA-Z ]*$")]
-        public string StudentName { get; set; }
+        public int StudentID { get; set; }
+        public int CourseID { get; set; }
+
+        //[Required]
+        //[RegularExpression(@"^[a-zA-Z ]*$")]
+        //public string StudentFirstName { get; set; }
+        //[Required]
+        //[RegularExpression(@"^[a-zA-Z ]*$")]
+        //public string StudentLastName { get; set; }
+        //public string ImagePath { get; set; }
+       // public HttpPostedFileBase ImageUpload { get; set; }
+        //public byte[] ImageUpload { get; set; }
 
         [Required]
         [RegularExpression(@"(\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,6})")]
@@ -27,8 +38,8 @@ namespace QualifyMe.ViewModels
         [Compare("Password")]
         public string ConfirmPassword { get; set; }
 
+        public CourseView Course { get; set; }
 
-        [Required]
-        public string StudentMobile { get; set; }
+
     }
 }

@@ -1,111 +1,37 @@
-﻿@{
-    ViewBag.Title = "Register";
-}
+﻿@model QualifyMe.ViewModels.CourseView
 
-<div>
-    <div class="split left">
-        <div class="centered">
-            <h4>Welcome</h4>
-            <p>create your student account</p>
-            <form action="/account/login" method="post" class="needs-validation" novalidate="novalidate">
-                @Html.AntiForgeryToken()
-                <div class="form-group mr-3">
-                    <label for="StudentID" class="mr-1">ID:</label>
-                    <input type="number" class="form-control" id="StudentID" name="StudentID" required="required" autofocus="autofocus" placeholder="Enter ID">
-                    <div class="valid-feedback">Looks good!</div>
-                    <div class="invalid-feedback">Please Enter your ID Number.</div>
-                </div>
-
-                <div class="form-group mr-3">
-                    <label for="StudentName" class="mr-1">Fullname:</label>
-                    <input type="text" class="form-control" id="StudentName" name="Studentname" required="required" autofocus="autofocus" placeholder="Enter name">
-                    <div class="valid-feedback">Looks good!</div>
-                    <div class="invalid-feedback">Please Enter your Fullname.</div>
-                </div>
-
-                <div class="form-group mr-3">
-                    <label for="StudentCourse" class="mr-1">Course #:</label>
-                    <input type="text" class="form-control" id="StudentCourse" name="StudentCourse" required="required" autofocus="autofocus" placeholder="Enter Course">
-                    <div class="valid-feedback">Looks good!</div>
-                    <div class="invalid-feedback">Please Enter your Course.</div>
-                </div>
-                <div class="form-group mr-3">
-                    <label for="StudentMobile" class="mr-1">Mobile #:</label>
-                    <input type="text" class="form-control" id="StudentMobile" name="StudentMobile" required="required" autofocus="autofocus" placeholder="Enter Mobile">
-                    <div class="valid-feedback">Looks good!</div>
-                    <div class="invalid-feedback">Please Enter your Mobile #.</div>
-                </div>
-
-                <div class="form-group mr-3">
-                    <label for="Email" class="mr-1">Email:</label>
-                    <input type="text" class="form-control" id="Email" name="Email" required="required" autofocus="autofocus" placeholder="Email">
-                    <div class="valid-feedback">Looks good!</div>
-                    <div class="invalid-feedback">Please Enter your email.</div>
-                </div>
-
-                <div class="form-group mr-3">
-                    <label for="pwd" class="mr-1">Password:</label>
-                    <input type="password" class="form-control" id="pwd" name="Password" required="required" minlength="6" placeholder="Password">
-                    <div class="valid-feedback">Looks good!</div>
-                    <div class="invalid-feedback">Password must contain at least 6 characters</div>
-                </div>
-
-                <div class="form-group mr-3">
-                    <label for="ConfirmPassword" class="mr-1">Confirm Password:</label>
-                    <input type="text" class="form-control" id="ConfirmaPassword" name="ConfirmPassword" required="required" autofocus="autofocus" placeholder="Confirm Password">
-                    <div class="valid-feedback">Looks good!</div>
-                    <div class="invalid-feedback"> Password and Confirm Password do not match.</div>
-                </div>
-
-                <button class="btn btn-success">Register</button>
-                <div class="text-danger">
-
-                    <div class="mt-4 text-center body1">
-                        Already have an account?
-                        <a href="/account/login" class="color-Y700">
-                            Log In
-                        </a>
-                    </div>
-                </div>
-            </form>
+<link rel="stylesheet" href="~/content/form.css">
+<main>
+    <div class="wrapper">
+        <div class="heading">
+            <img src="~/Images/qualifyme-logo.png" class="center" />
+            <h5><p>Welcome to QualifyME!</p></h5>
         </div>
-    </div>
-</div>
-<div class="split right">
-    <div class="centered">
-        <img src="~/images/laptop-image.jpg">
-    </div>
-</div>
+       
+        <form action="/account/register" class="form-group" id="register" method="post" class="needs-validation" novalidate="novalidate">
+            @Html.AntiForgeryToken()
+            <h5><p>SIGN UP</p></h5>
+            <input type="number" class="form-control" id="StudentID" name="StudentID" required="required" autofocus="autofocus" placeholder="Enter ID">
+            <input type="text" class="form-control" id="Email" name="Email" required="required" autofocus="autofocus" placeholder="Email">
+            <input type="password" class="form-control" id="pwd" name="Password" required="required" minlength="6" placeholder="Password">
+            <input type="password" class="form-control" id="ConfirmPassword" name="ConfirmPassword" required="required" autofocus="autofocus" placeholder="Confirm Password">
+            <div class="col-100">
+                <select id="drpCourses" name="CourseID" required="required">
+                    <option value="">Choose Course</option>
+                    @foreach (var item in ViewBag.Courses)
+                    {
+                        <option value="@item.CourseID">@item.CourseName</option>
+                    }
+                </select>
+            </div>
+            <a href="#" class="btn btn-forget">Forget your password?</a>
+            <button type="submit" class="btn btn-success">SIGNUP</button>
 
-<script>
-    $("a[href='/account/register']").attr("id", "active");
-    $(document).on("submit", ".needs-validation", validate);
-    $(".needs-validation input").blur(validate);
-    function validate(event) {
-        if ($(".needs-validation")[0].checkValidity() == false || $(".email-exist").text() != "") {
-            event.preventDefault();
-        }
-        $(".needs-validation")[0].classList.add("was-validated");
-    }
-    function escapeRegExp(str) {
-        return str.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
-    }
-    $("#Email").blur(function () {
-        $.ajax({
-            url: "/api/account?email=" + $("#Email").val(), type: "GET", success:
-                function (response) {
-                    if (response == "Not Found") {
-                        $(".email-exist").text("");
-                        $(".email-exist").parent(".form-group").find(".valid-feedback").css("color", "#28a745");
-                    }
-                    else {
-                        $(".email-exist").text("Email already registered");
-                        $(".email-exist").parent(".form-group").find(".valid-feedback").css("color", "white");
-                    }
-                },
-            error: function () {
-                $(".email-exist").text("Error");
-            }
-        });
-    });
-</script>
+            Already have an account?
+            <a href="/account/login">
+                Log In
+            </a>
+
+        </form>
+    </div>
+</main>

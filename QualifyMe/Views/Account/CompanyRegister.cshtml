@@ -1,0 +1,118 @@
+﻿
+@{
+    ViewBag.Title = "CompanyRegister";
+    Layout = "~/Areas/Company/Views/Shared/CompanyLayoutPage1.cshtml";
+}
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-blue-grey.css">
+<div class="w3-container w3-content" style="max-width:1400px;margin-top:80px">
+    <div class="w3-col m12">
+        <div class="w3-container w3-card w3-white w3-round w3-margin">
+            <h5><strong>Welcome</strong></h5>
+            <h5><p>create your company account</p></h5>
+            <form action="/account/companyregister" method="post" class="needs-validation" novalidate="novalidate">
+                @Html.AntiForgeryToken()
+
+                <div class="form-group mr-3">
+                    <label for="CompanyName" class="mr-1">Company name:</label>
+                    <input type="text" class="form-control" id="CompanyName" name="CompanyName" required="required" autofocus="autofocus" placeholder="Enter name">
+                    <div class="valid-feedback">Looks good!</div>
+                    <div class="invalid-feedback">Please Enter your Company Name.</div>
+                </div>
+
+
+
+                <div class="form-group mr-3">
+                    <label for="Email" class="mr-1">Company Email:</label>
+                    <input type="text" class="form-control" id="Email" name="Email" required="required" autofocus="autofocus" placeholder="Email">
+                    <div class="valid-feedback">Looks good!</div>
+                    <div class="invalid-feedback">Please Enter your email.</div>
+                </div>
+
+                <div class="form-group mr-3">
+                    <label for="CompanyMobile" class="mr-1">Mobile #:</label>
+                    <input type="text" class="form-control" id="CompanyMobile" name="CompanyMobile" required="required" autofocus="autofocus" placeholder="Enter Mobile">
+                    <div class="valid-feedback">Looks good!</div>
+                    <div class="invalid-feedback">Please Enter your Company Mobile #.</div>
+                </div>
+
+                <div class="form-group mr-3">
+                    <label for="Password" class="mr-1">Password:</label>
+                    <input type="password" class="form-control" id="Password" name="Password" required="required" minlength="6" placeholder="Password">
+                    <div class="valid-feedback">Looks good!</div>
+                    <div class="invalid-feedback">Password must contain at least 6 characters</div>
+                </div>
+
+                <div class="form-group mr-3">
+                    <label for="CompanyConfirmPassword" class="mr-1">Confirm Password:</label>
+                    <input type="password" class="form-control" id="CompanyConfirmPassword" name="CompanyConfirmPassword" required="required" autofocus="autofocus" placeholder="Confirm Password">
+                    <div class="valid-feedback">Looks good!</div>
+                    <div class="invalid-feedback"> Password and Confirm Password do not match.</div>
+                </div>
+
+
+                <div class="form-group mr-3">
+                    <label for="CompanyAddress" class="mr-1">Company Address:</label>
+                    <input type="text" class="form-control" id="CompanyAddress" name="CompanyAddress" required="required" autofocus="autofocus" placeholder="Enter name">
+                    <div class="valid-feedback">Looks good!</div>
+                    <div class="invalid-feedback">Please Enter your Company Address.</div>
+                </div>
+
+                <div class="form-group mr-3">
+                    <label for="CompanyDescription" class="mr-1">Company Description:</label>
+                    <input type="text" class="form-control" id="CompanyDescription" name="CompanyDescription" required="required" autofocus="autofocus" placeholder="Enter name">
+                    <div class="valid-feedback">Looks good!</div>
+                    <div class="invalid-feedback">Please Enter your Company Description.</div>
+                </div>
+
+
+
+                <button class="btn btn-success">Register</button>
+                <div class="text-danger">
+
+                    <div class="mt-4 text-center body1">
+                        Already have an account?
+                        <a href="/account/login" class="color-Y700">
+                            Log In
+                        </a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    $("a[href='/account/companyregister']").attr("id", "active");
+    $(document).on("submit", ".needs-validation", validate);
+    $(".needs-validation input").blur(validate);
+    function validate(event) {
+        if ($(".needs-validation")[0].checkValidity() == false || $(".email-exist").text() != "") {
+            event.preventDefault();
+        }
+        $(".needs-validation")[0].classList.add("was-validated");
+    }
+    function escapeRegExp(str) {
+        return str.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
+    }
+    $("#Email").blur(function () {
+        $.ajax({
+            url: "/api/account?email=" + $("#Email").val(), type: "GET", success:
+                function (response) {
+                    if (response == "Not Found") {
+                        $(".email-exist").text("");
+                        $(".email-exist").parent(".form-group").find(".valid-feedback").css("color", "#28a745");
+                    }
+                    else {
+                        $(".email-exist").text("Email already registered");
+                        $(".email-exist").parent(".form-group").find(".valid-feedback").css("color", "white");
+                    }
+                },
+            error: function () {
+                $(".email-exist").text("Error");
+            }
+        });
+    });
+</script>

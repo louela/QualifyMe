@@ -25,7 +25,7 @@ namespace QualifyMe.Controllers
         {
             this.js.UpdateApplicantsCount(id, 1);
             int uid = Convert.ToInt32(Session["CurrentUserID"]);
-            JobView qvm = this.js.GetJobByJobID(id, uid);
+            JobView qvm = this.js.GetJobByJobID(id);
             return View(qvm);
         }
 

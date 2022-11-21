@@ -26,7 +26,7 @@ namespace QualifyMe.Areas.Admin.Controllers
         {
            
             int uid = Convert.ToInt32(Session["CurrentUserID"]);
-            JobView qvm = this.js.GetJobByJobID(id, uid);
+            JobView qvm = this.js.GetJobByJobID(id);
             return View(qvm);
         }
     }

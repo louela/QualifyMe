@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Q.DomainModels;
 using QualifyMe.CustomFilters;
 using QualifyMe.ServiceLayer;
 using QualifyMe.ViewModels;
@@ -11,20 +13,32 @@ namespace QualifyMe.Controllers
 {
     public class AccountController : Controller
     {
+        QualifyMeDbContext db = new QualifyMeDbContext();
+      
+      
         private IStudentsService ss;
+        private ISkillService skl;
         private ICompaniesService cs;
+        private IApplicantsService aps;
+        private ICoursesService css;
+     
 
-        public AccountController(StudentsService ss, CompaniesService cs)
+        public AccountController(StudentsService ss, SkillService skl,CompaniesService cs,IApplicantsService aps,ICoursesService css)
         {
             this.ss = ss;
             this.cs = cs;
+            this.aps = aps;
+            this.css = css;        
+            this.skl = skl;
         }
 
         // GET: Account
 
-       
+
         public ActionResult Register()
         {
+            List<CourseView> courses = this.css.GetCourses();
+            ViewBag.courses = courses;
             return View();
         }
 
@@ -32,17 +46,23 @@ namespace QualifyMe.Controllers
         [HttpPost]
         public ActionResult Register(StudentRegister rvm)
          {
+           
             if (ModelState.IsValid)
             {
+
                 int uid = this.ss.InsertStudent(rvm);
                 Session["CurrentUserID"] = uid;
                 Session["CurrentStudentID"] = rvm.StudentID;
-                Session["CurrentUserName"] = rvm.StudentName;
+                //Session["CurrentUserFirstName"] = rvm.StudentFirstName;
+                //Session["CurrentUserLastName"] = rvm.StudentLastName;
                 Session["CurrentUserEmail"] = rvm.Email;
                 Session["CurrentUserPassword"] = rvm.Password;
+                Session["CurrentStudentCourse"] = rvm.CourseID;
                 Session["CurrentUserIsAdmin"] = false;
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Register", "Account");
             }
+
+              
             else
             {
                 ModelState.AddModelError("x", "Invalid Data");
@@ -50,6 +70,36 @@ namespace QualifyMe.Controllers
             }
 
         }
+
+        public ActionResult Image()
+        {
+            return View();
+        }
+
+        public ActionResult AddSkill()
+        {                   
+            AddSkillView akv = new AddSkillView();
+            return View(akv); 
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AddSkill(AddSkillView akv)
+        {
+            if (ModelState.IsValid)
+            {               
+                akv.UserID = Convert.ToInt32(Session["CurrentUserID"]);
+                Session["CurrentSkillNames"] = akv.SkillName;
+                this.skl.InsertSkill(akv);
+                return RedirectToAction("Homepage", "Home" ,new { id = akv.UserID });
+            }
+            else
+            {
+                ModelState.AddModelError("x", "Invalid Data");
+                return View();
+            }
+        }
+
 
         public ActionResult Login()
         {
@@ -68,11 +118,11 @@ namespace QualifyMe.Controllers
                 {
                     Session["CurrentUserID"] = uvm.UserID;
                     Session["CurrentStudentID"] = uvm.StudentID;
-                    Session["CurrentUserName"] = uvm.StudentName;
-                    Session["CurrentUserCourse"] = uvm.StudentCourse;
-                    Session["CurrentUserEmail"] = uvm.Email;
-                    Session["CurrentUserMobile"] = uvm.StudentMobile;
+                    Session["CurrentUserFirstName"] = uvm.StudentFirstName;
+                    Session["CurrentUserLastName"] = uvm.StudentLastName;
+                    Session["CurrentUserEmail"] = uvm.Email;                  
                     Session["CurrentUserPassword"] = uvm.Password;
+                    Session["CurrentStudentCourse"] = uvm.Course.CourseName;
                     Session["CurrentUserIsAdmin"] = uvm.IsAdmin;
 
                     if (uvm.IsAdmin)
@@ -96,8 +146,6 @@ namespace QualifyMe.Controllers
                 ModelState.AddModelError("x", "Invalid Data");
                 return View(lvm);
             }
-
-
         }
 
         public ActionResult CompanyLogin()
@@ -110,7 +158,7 @@ namespace QualifyMe.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult CompanyLogin(CompanyLoginView clm)
         {
-
+            string msg = "";
             if (ModelState.IsValid)
             {
                 CompanyView cvm = this.cs.GetCompaniesByEmailAndPassword(clm.Email, clm.Password);
@@ -123,16 +171,29 @@ namespace QualifyMe.Controllers
                     Session["CurrentCompanyMobile"] = cvm.CompanyMobile;
                     Session["CurrentCompanyAddress"] = cvm.CompanyAddress;
                     Session["CurrentCompanyDescription"] = cvm.CompanyDescription;
+                    Session["CurrentCompanyIsApproved"] = 0;
                     Session["CurrentUserIsAdmin"] = cvm.IsAdmin;
 
                     if (cvm.IsAdmin)
                     {
                         return RedirectToAction("Index", "Home", new { area = "Admin" });
-
-
                     }
                     else
-                        return RedirectToAction("Index", "Home", new { area = "Company" });
+                    {
+                        if (cvm.IsApproved == 0)
+                        {
+                            return RedirectToAction("Message", "Account", new { msg = "AccountNotVerified"});
+                        }
+                        else if (cvm.IsApproved == 1)
+                        {
+                            return RedirectToAction("Index", "Home", new { area = "Company" });
+                        }
+
+                        return RedirectToAction("CompanyLogin", "Account");
+
+                    }
+
+                   
                 }
                 else
                 {
@@ -147,7 +208,6 @@ namespace QualifyMe.Controllers
                 return View(clm);
             }
         }
-
        
 
         public ActionResult Logout()
@@ -156,28 +216,31 @@ namespace QualifyMe.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-        [UserAuthorizationFilterAttribute]
-        
+        //[UserAuthorizationFilterAttribute]
         public ActionResult ChangeProfile()
         {
 
             int uid = Convert.ToInt32(Session["CurrentUserID"]);
+            List<CourseView> courses = this.css.GetCourses();
+            ViewBag.courses = courses;
             StudentView uvm = this.ss.GetStudentsByUserID(uid);
-            EditStudent es = new EditStudent() { StudentName = uvm.StudentName, StudentMobile = uvm.StudentMobile, Email = uvm.Email, UserID = uvm.UserID, StudentID = uvm.StudentID };
+            EditStudent es = new EditStudent() { StudentFirstName = uvm.StudentFirstName,StudentLastName = uvm.StudentLastName,Email = uvm.Email, UserID = uvm.UserID, StudentID = uvm.StudentID, CourseID = uvm.CourseID , /*ImagePath = uvm.ImagePath,*/
+                                                Gender = uvm.Gender, Address = uvm.Address, Mobile = uvm.Mobile, Resume = uvm.Resume};
             return View(es);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [UserAuthorizationFilterAttribute]
+        //[UserAuthorizationFilterAttribute]
         public ActionResult ChangeProfile(EditStudent es)
         {
+            
             if (ModelState.IsValid)
             {
                 es.UserID = Convert.ToInt32(Session["CurrentUserID"]);
                 this.ss.UpdateStudentDetails(es);
-                Session["CurrentUserName"] = es.StudentName;
-                return RedirectToAction("Index", "Home");
+                Session["CurrentUserName"] = es.StudentFirstName;
+                return RedirectToAction("ChangeProfile", "Account");
             }
             else
             {
@@ -186,15 +249,69 @@ namespace QualifyMe.Controllers
             }
         }
 
-        [UserAuthorizationFilterAttribute]
-        public ActionResult Profile()
+       // [UserAuthorizationFilterAttribute]
+        public ActionResult Profile(Student es)
         {
-            StudentView uvm = new StudentView();
+            StudentView sv = new StudentView();                   
+            List<CourseView> courses = this.css.GetCourses();
+            ViewBag.courses = courses;
+
+            return View(sv);
+        }
+
+    
+        public ActionResult CompanyRegister()
+        {
+
+            CompanyRegister acm = new CompanyRegister();
+            return View(acm);
+        }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        
+        public ActionResult CompanyRegister(CompanyRegister acm)
+        {
+
+
+            if (ModelState.IsValid)
+            {
+                int cid = this.cs.InsertCompany(acm);
+                Session["CurrentCompanyID"] = cid;
+                Session["CurrentCompanyName"] = acm.CompanyName;
+                Session["CurrentCompanyEmail"] = acm.Email;
+                Session["CurrentCompanyPassword"] = acm.Password;
+                Session["CurrentCompanyAddress"] = acm.CompanyAddress;
+                Session["CurrentCompanyDescription"] = acm.CompanyDescription;
+                Session["CurrentCompanyIsApproved"] = 0;
+                Session["CurrentCompanyIsAdmin"] = false;
+                return RedirectToAction("Message", "Account");
+            }
+            else
+            {
+                ModelState.AddModelError("x", "Invalid Data");
+                return View();
+            }
+        }
+
+
+        public ActionResult Message()
+        {
             return View();
         }
 
-      
+        public ActionResult MyApplications()
+        {
+            return View();
+        }
 
+        public List<Job> SearchJobs(string JobTitle)
+        {
+            List<Job> jobs = db.Jobs.Where(temp => temp.JobTitle.Contains(JobTitle)).ToList();
+            return jobs;
+        }
+      
 
     }
 }
