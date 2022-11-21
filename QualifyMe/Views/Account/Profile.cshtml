@@ -1,123 +1,65 @@
 ﻿@model QualifyMe.ViewModels.StudentView
+  
 <!DOCTYPE html>
 
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <title>Profile</title>
-   
+
 </head>
 <body>
     <div class="container emp-profile">
         <form method="post">
             <div class="row">
                 <div class="col-md-4">
-                    <div class="profile-img">
-                        <img src="~/Images/avatar.png" alt="" />
-                        <div class="file btn btn-lg btn-primary">
-                            Change Photo
-                            <input type="file" name="file" />
-                        </div>
-                    </div>
+                    @*<div class="profile-img">
+                        <img src="~/AppFile/Images/Student/@Model.ImagePath" width="100" height="100" />
+                    </div>*@
+                   
+                    <h5>
+                        @Session["CurrentUserFirstName"] @Session["CurrentUserLastName"]
+                    </h5>
+
+                    <p>@Session["CurrentStudentCourse"]</p>
+                    <h5><span style="color: white; position: center;"><a href="/account/changeprofile" class="btn btn-primary" style="background-color:forestgreen">Edit Profile</a></span></h5>
                 </div>
                 <div class="col-md-6">
-                    <div class="profile-head">
-                        <h5>
-                           @Session["CurrentUserName"]
-                        </h5>
-                        <h6>
-                            @Session["CurrentUserCourse"]
-                        </h6>
-                        <p class="proile-rating">Student ID : <span>@Session["CurrentStudentID"]</span></p>
-                        <ul class="nav nav-tabs" id="myTab" role="tablist">
-                            <li class="nav-item">
-                                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Timeline</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-md-2">
-                    <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile" />
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="profile-work">
-                        <p>SKILLS</p>
-                        <a href="">Web Designer</a><br />
-                        <a href="">Web Developer</a><br />
-                        <a href="">WordPress</a><br />
-                        <a href="">WooCommerce</a><br />
-                        <a href="">PHP, .Net</a><br />
-                    </div>
-                </div>
-                <div class="col-md-8">
-                    <div class="tab-content profile-tab" id="myTabContent">
-                        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <label>Student ID</label>
-                                </div>
-                                <div class="col-md-6">
-                                    <p>@Session["CurrentStudentID"]</p>
+                    <div class="card">
+                        <div class="container">
+                            <strong>INFORMATION</strong>
+                            <br />
+                            <p>Student No : <strong>@Session["CurrentStudentID"]</strong></p>
+                            <p>Email :<strong> @Session["CurrentUserEmail"]</strong></p>
+                            <p>Resume :</p>
+                            <strong>Skills</strong>
+
+                            <div class="input-box">
+                                <div class="tag-container">
+                                    <input />
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <label>Name</label>
-                                </div>
-                                <div class="col-md-6">
-                                    <p>@Session["CurrentUserName"]</p>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <label>Email</label>
-                                </div>
-                                <div class="col-md-6">
-                                    <p>@Session["CurrentUserEmail"]</p>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <label>Phone</label>
-                                </div>
-                                <div class="col-md-6">
-                                    <p>@Session["CurrentUserMobile"]</p>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <label>Course</label>
-                                </div>
-                                <div class="col-md-6">
-                                    <p>@Session["CurrentUserCourse"]</p>
-                                </div>
-                            </div>
+
+
                         </div>
-                        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <label>My Application</label>
-                                </div>
-                                <div class="col-md-6">
-                                    <p>2</p>
-                                </div>
-                            </div>
-                           
-                        </div>
+
                     </div>
                 </div>
+
+
             </div>
+
         </form>
     </div>
 </body>
 </html>
+
 <script type="text/javascript">
     document.getElementById("myEdit").onclick = function () {
         location.href ="/account/changeprofile";
     };
+
+
 </script>

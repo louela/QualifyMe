@@ -32,7 +32,7 @@ namespace QualifyMe.Areas.Admin.Controllers
             if (ModelState.IsValid)
             {
 
-                int cid = this.cos.InsertCourse(acm);
+                this.cos.InsertCourse(acm);
                 Session["CurrentCourseName"] = acm.CourseName;
 
                 return RedirectToAction("Courses", "Home", new { area = "Admin" });

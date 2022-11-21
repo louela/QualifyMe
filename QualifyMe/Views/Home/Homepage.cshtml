@@ -3,58 +3,109 @@
     ViewBag.Title = "Homepage";
     Layout = "~/Views/Shared/_LayoutPage1.cshtml";
 }
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-blue-grey.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-<!DOCTYPE html>
-<html>
-<head>
-    <style>
-    </style>
-</head>
-<body>
-    <div class="row">
-        <div class="leftcolumn">
+<div class="w3-container w3-content" style="max-width:1400px;margin-top:20px">
+    <form class="example" action="/home/homepage">
+        <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search Job Title..">
+
+    </form>
+    <!-- Right Column -->
+    <div class="w3-col m2 ">
+        <div class="w3-container w3-card w3-white w3-round w3-margin w3-padding-16">
+            <p>Welcome Students!</p>
+            <img src="~/Images/pic4.jpg" alt="Forest" style="width:100%;">
+            <p><strong>"Take risks: If you win, you will be happy. If you lose, you will be wise." </strong></p>
+
+        </div>
+        <br>
+
+        <!-- End Right Column -->
+
+    </div>
+    <table id="myTable">
+        <div class="w3-col m8">
+            <p> -AVAILABLE JOBS FOR YOU-</p>
             @foreach (var item in Model)
             {
-            <div class="card">
-                <div class="profile">
-                    <img src="~/images/avatar.png" alt="" height="50px" width="50px">
-                    <a>@item.Company.CompanyName</a>
+
+                <div class="w3-container w3-card w3-white w3-round w3-margin " >
+                    <br>
+                    <img src="~/Images/avatar.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
+                    <span class="w3-right w3-opacity">@item.JobDateAndTime</span>
+                    <h4>@item.Company.CompanyName</h4><br>
+                    <hr class="w3-clear">
+                    <h3>
+                        <a href="/jobs/view/@item.JobID">@item.JobTitle</a>
+                    </h3>
+                    <p>@item.JobDescription</p>
+                    <span class="w3-round" style="background-color: seagreen; color: white">@item.Course.CourseName</span>
+                    <span class="w3-round" style="background-color: tomato; color: white">@item.JobTypes</span>
+                    <p>Applicants: <strong>@item.ApplicantsCount</strong></p>
+
                 </div>
-                <a href="/jobs/view"> @item.JobTitle</a>
-                <p>@item.JobDateAndTime</p>
-                @*<div class="fakeimg" style="height:200px;">Image</div>*@
-                <p>Some text..</p>
-                <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
-            </div>
             }
-            </div>
-        <div class="rightcolumn">
-            @*<div class="card">
-                <h2>About Me</h2>
-                <div class="fakeimg" style="height:100px;">Image</div>
-                <p>Some text about me in culpa qui officia deserunt mollit anim..</p>
-            </div>*@
-            <div class="card">
-                <h4>Recommended Jobs for you</h4>
-                <p>Job</p>
-                <p>Job</p>
-                <p>Job</p>
-            </div>
-            <div class="card">
-                <h5>Follow Me</h5>
-                <p>Some text..</p>
+
+            <!-- End Middle Column -->
+        </div>
+    </table>
+    <div class="w3-col m2">
+        <div class="w3-container w3-card w3-white w3-round w3-margin w3-padding-1">
+            <div class="w3-container">
+                <p>Welcome Students!</p>
+                <img src="~/Images/pic4.jpg" alt="Forest" style="width:100%;">
+                <p><strong>"Take risks: If you win, you will be happy. If you lose, you will be wise." </strong></p>
+
             </div>
         </div>
+        <br>
+
+        <div class="w3-card w3-round w3-white w3-center w3-padding-16">
+            <div class="w3-container">
+
+                <img src="~/Images/usjr-virtual.png" alt="Avatar" style="width:80%"><br>
+                <span style=" color: forestgreen; font-style:oblique">View Virtual Exhibition!</span>
+            </div>
+        </div>
+        <br>
+
+       
+
+        <!-- End Right Column -->
+
     </div>
-
-    <footer>
-        <div class="container-fluid">
-            <p class="copyright">&copy; 2022 <a href="#" target="_blank">QuailfyMe</a>. All Rights Reserved.</p>
-        </div>
-    </footer>
-
-</body>
-</html>
+</div>
+    
 
 
+    <div class="container-fluid">
+        <p class="copyright">&copy; 2022 <a href="#" target="_blank">QuailfyMe</a>. All Rights Reserved.</p>
+    </div>
+    <script>
+        //function myFunction() {
+        //    // Declare variables
+        //    var input, filter, table, a, h3, i, txtValue;
+        //    input = document.getElementById("myInput");
+        //    filter = input.value.toUpperCase();
+        //    div = document.getElementById("myTable");
+        //    h3 = table.getElementsByTagName("h3");
 
+        //    // Loop through all table rows, and hide those who don't match the search query
+        //    for (i = 0; i < h3.length; i++) {
+        //        a = h3[i].getElementsByTagName("td")[0];
+        //        if (a) {
+        //            txtValue = a.textContent || a.innerText;
+        //            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        //                h3[i].style.display = "";
+        //            } else {
+        //                h3[i].style.display = "none";
+        //            }
+        //        }
+        //    }
+        //}
+
+
+    </script>

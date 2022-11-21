@@ -14,6 +14,7 @@ namespace QualifyMe.ServiceLayer
     {
         int InsertCompany(CompanyRegister cr);
         void UpdateCompanyDetails(EditCompany ec);
+        void UpdateCompanyStatus(EditCompanyStatusView ec);
         void UpdateCompanyPassword(EditPassword ep);
         void DeleteCompany(int cid);
         List<CompanyView> GetCompanies();
@@ -46,6 +47,14 @@ namespace QualifyMe.ServiceLayer
             IMapper mapper = config.CreateMapper();
             Company u = mapper.Map<EditCompany, Company>(ec);
             ucr.UpdateCompanyDetails(u);
+        }
+
+        public void UpdateCompanyStatus(EditCompanyStatusView ec)
+        {
+            var config = new MapperConfiguration(cfg => { cfg.CreateMap<EditCompanyStatusView, Company>(); cfg.IgnoreUnmapped(); });
+            IMapper mapper = config.CreateMapper();
+            Company u = mapper.Map<EditCompanyStatusView, Company>(ec);
+            ucr.UpdateCompanyStatus(u);
         }
 
         public void UpdateCompanyPassword(EditPassword ep)

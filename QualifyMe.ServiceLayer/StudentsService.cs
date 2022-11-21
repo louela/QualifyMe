@@ -14,9 +14,10 @@ namespace QualifyMe.ServiceLayer
     {
         int InsertStudent(StudentRegister sr);
         void UpdateStudentDetails(EditStudent es);
+      
         void UpdateStudentPassword(EditPassword ep);
         void DeleteStudent(int sid);
-        List<StudentView> GetStudents();
+        //List<StudentView> GetStudents();
         StudentView GetStudentsByEmailAndPassword(string Email, string Password);
         StudentView GetStudentsByEmail(string Email);
         StudentView GetStudentsByUserID(int UserID);
@@ -48,7 +49,7 @@ namespace QualifyMe.ServiceLayer
             Student s = mapper.Map<EditStudent, Student>(es);
             usr.UpdateStudentDetails(s);
         }
-
+       
         public void UpdateStudentPassword(EditPassword ep)
         {
             var config = new MapperConfiguration(cfg => { cfg.CreateMap<EditPassword, Student>(); cfg.IgnoreUnmapped(); });
@@ -63,14 +64,14 @@ namespace QualifyMe.ServiceLayer
             usr.DeleteStudent(sid);
         }
 
-        public List<StudentView> GetStudents()
-        {
-            List<Student> s = usr.GetStudents();
-            var config = new MapperConfiguration(cfg => { cfg.CreateMap<Student, StudentView>(); cfg.IgnoreUnmapped(); });
-            IMapper mapper = config.CreateMapper();
-            List<StudentView> sv = mapper.Map<List<Student>, List<StudentView>>(s);
-            return sv;
-        }
+        //public List<StudentView> GetStudents()
+        //{
+        //    List<Student> s = usr.GetStudents();
+        //    var config = new MapperConfiguration(cfg => { cfg.CreateMap<Student, StudentView>(); cfg.IgnoreUnmapped(); });
+        //    IMapper mapper = config.CreateMapper();
+        //    List<StudentView> sv = mapper.Map<List<Student>, List<StudentView>>(s);
+        //    return sv;
+        //}
 
         public StudentView GetStudentsByEmailAndPassword(string Email, string Password)
         {

@@ -12,11 +12,13 @@ namespace QualifyMe.ServiceLayer
 {
     public interface ICoursesService
     {
-        int InsertCourse(AddCourseView cvm);
+        void InsertCourse(AddCourseView cvm);
         void UpdateCourse(CourseView cvm);
         void DeleteCourse(int cid);
         List<CourseView> GetCourses();
-        CourseView GetCourseByCourseID(int CourseID);
+        CourseView GetCourseByCourseID(int CourseID, int did);
+        CourseView GetCourseByDepartmentID(int DepartmentID, int cid);
+       
     }
     public class CoursesService : ICoursesService
     {
@@ -27,15 +29,17 @@ namespace QualifyMe.ServiceLayer
             cr = new CoursesRepository();
         }
 
-        public int InsertCourse(AddCourseView cvm)
+        public void InsertCourse(AddCourseView cvm)
         {
             var config = new MapperConfiguration(cfg => { cfg.CreateMap<AddCourseView, Course>(); cfg.IgnoreUnmapped(); });
             IMapper mapper = config.CreateMapper();
             Course c = mapper.Map<AddCourseView, Course>(cvm);
             cr.InsertCourse(c);
-            int cid = cr.GetLatestCourseID();
-            return cid;
+          
         }
+
+
+
 
         public void UpdateCourse(CourseView cvm)
         {
@@ -59,9 +63,27 @@ namespace QualifyMe.ServiceLayer
             return cvm;
         }
 
-        public CourseView GetCourseByCourseID(int CourseID)
+        public CourseView GetCourseByCourseID(int CourseID,int did=0)
         {
             Course c = cr.GetCoursesByCourseID(CourseID).FirstOrDefault();
+            CourseView cvm = null;
+            if (c != null)
+            {
+                var config = new MapperConfiguration(cfg => { cfg.CreateMap<Course, CourseView>(); cfg.IgnoreUnmapped(); });
+                IMapper mapper = config.CreateMapper();
+                cvm = mapper.Map<Course, CourseView>(c);
+               
+            }
+            return cvm;
+        }
+
+
+
+
+
+        public CourseView GetCourseByDepartmentID(int DepartmentID, int cid = 0)
+        {
+            Course c = cr.GetCoursesByDepartmentID(DepartmentID).FirstOrDefault();
             CourseView cvm = null;
             if (c != null)
             {
@@ -71,5 +93,7 @@ namespace QualifyMe.ServiceLayer
             }
             return cvm;
         }
+
+        
     }
 }

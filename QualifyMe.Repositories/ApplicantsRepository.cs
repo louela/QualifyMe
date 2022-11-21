@@ -12,8 +12,16 @@ namespace QualifyMe.Repositories
         void InsertApplicant(Applicant a);
        
         void DeleteApplicant(int aid);
-        List<Applicant> GetApplicantsByJobID(int jid);
+        int GetLatestApplicantID();
+       
         List<Applicant> GetApplicantsByApplicantID(int ApplicantID);
+        List<Applicant> GetApplicantsByJobID(int JobID);
+        List<Applicant> GetApplicantsByCompanyID(int CompanyID);
+        int GetLatestJobID(int JobID);
+
+        List<Applicant> GetJobsByUserID(int UserID);
+
+
     }
     public class ApplicantsRepository : IApplicantsRepository
     {
@@ -32,7 +40,7 @@ namespace QualifyMe.Repositories
         {
             db.Applicants.Add(a);
             db.SaveChanges();
-            jr.UpdateApplicantsCount(a.JobID, 1);
+            //jr.UpdateApplicantsCount(a.JobID, 1);
         }
 
 
@@ -43,20 +51,50 @@ namespace QualifyMe.Repositories
             {
                 db.Applicants.Remove(ap);
                 db.SaveChanges();
-                jr.UpdateApplicantsCount(ap.JobID, -1);
+                //jr.UpdateApplicantsCount(ap.JobID, -1);
             }
         }
 
-        public List<Applicant> GetApplicantsByJobID(int jid)
-        {
-            List<Applicant> ap = db.Applicants.Where(temp => temp.JobID == jid).OrderByDescending(temp => temp.ApplicantDateAndTime).ToList();
-            return ap;
-        }
+        //public List<Applicant> GetApplicantsByJobID(int JobID)
+        //{
+        //    List<Applicant> ap = db.Applicants.Where(temp => temp.JobID == JobID).OrderByDescending(temp => temp.ApplicantDateAndTime).ToList();
+        //    return ap;
+        //}
 
         public List<Applicant> GetApplicantsByApplicantID(int ApplicantID)
         {
             List<Applicant> ap = db.Applicants.Where(temp => temp.ApplicantID == ApplicantID).ToList();
             return ap;
+        }
+
+        public int GetLatestApplicantID()
+        {
+            int aid = db.Applicants.Select(temp => temp.ApplicantID).Max();
+            return aid;
+        }
+
+        public int GetLatestJobID(int JobID)
+        {
+            int jid = db.Jobs.Select(temp => temp.JobID).Max();
+            return jid;
+        }
+
+        public List<Applicant> GetJobsByUserID(int UserID)
+        {
+            List<Applicant> a = db.Applicants.Where(temp => temp.UserID == UserID).ToList();
+            return a;
+        }
+
+        public List<Applicant> GetApplicantsByJobID(int JobID)
+        {
+            List<Applicant> a = db.Applicants.Where(temp => temp.JobID == JobID).ToList();
+            return a;
+        }
+
+        public List<Applicant> GetApplicantsByCompanyID(int CompanyID)
+        {
+            List<Applicant> a = db.Applicants.Where(temp => temp.JobID == CompanyID).ToList();
+            return a;
         }
     }
 }

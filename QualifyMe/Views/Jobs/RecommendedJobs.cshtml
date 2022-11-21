@@ -1,0 +1,54 @@
+﻿@model  IEnumerable<QualifyMe.ViewModels.Model>
+@{
+    ViewBag.Title = "RecommendedJobs";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-blue-grey.css">
+<div class="w3-container w3-content" style="max-width:2000px;margin-top:80px;margin-left:100px">
+    <div class="w3-col m8">
+        <p>-AVAILABLE JOBS FOR YOU BASED ON YOUR COURSE-</p>
+        @foreach (var item in Model)
+        {
+            <div class="w3-container w3-card w3-white w3-round w3-margin">
+                <br>
+                <img src="~/Images/avatar.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
+                <span class="w3-right w3-opacity">@item.job.JobDateAndTime</span>
+                <h4>@item.company.CompanyName</h4><br>
+                <hr class="w3-clear">
+                <h3>
+                    <a href="/jobs/view/@item.job.JobID">@item.job.JobTitle</a>
+                </h3>
+                <p>@item.job.JobDescription</p>
+                <span style="background-color: tomato">@item.course.CourseName</span>
+                <span class="w3-tag w3-small w3-theme-l2">@item.job.JobTypes</span>
+
+
+            </div>
+        }
+
+        <!-- End Middle Column -->
+    </div>
+    @*<div class="text-body">
+            <div class="container">
+                <p>-AVAILABLE JOBS FOR YOU BASED ON YOUR COURSE-</p>
+                <div class="card-header-tabs">
+                    @foreach (var item in Model)
+                    {<div class="block">
+
+                            <img src="~/images/avatar.png" alt="" height="50px" width="50px">
+                            <div>
+                                <a href="/jobs/view/@item.job.JobID">@item.job.JobTitle</a>
+                                <p>@item.job.JobDateAndTime</p>
+                                <p>@item.job.JobDescription</p>
+                            </div>
+
+                            <mark>@item.course.CourseName</mark>
+                            <mark>@item.job.JobTypes</mark>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>*@
+

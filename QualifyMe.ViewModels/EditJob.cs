@@ -19,6 +19,6 @@ namespace QualifyMe.ViewModels
         public DateTime JobDateAndTime { get; set; }
 
         [Required]
-        public int CourseID { get; set; }
+        public int DepartmentID { get; set; }
     }
 }

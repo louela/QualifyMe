@@ -1,67 +1,48 @@
 ﻿@model QualifyMe.ViewModels.CompanyLoginView
-
 @{
     ViewBag.Title = "Login Company";
 }
+<link rel="stylesheet" href="~/content/form.css">
+<main>
+    <div class="wrapper">
+        <div class="heading">
+            <img src="~/Images/qualifyme-logo.png" class="center" />
+            <h5><p>Welcome to QualifyME!</p></h5>
+        </div>
 
-<div class="split left">
-    <div class="centered">
-        <h4>Welcome</h4>
-        <p>Login to your company account</p>
-        <form action="/account/companylogin" method="post" class="needs-validation" novalidate="novalidate">
+        <form action="/account/companylogin" class="form-group" method="post" class="needs-validation" novalidate="novalidate">
             @Html.AntiForgeryToken()
-            <div class="form-group mr-3">
-                <label for="email" class="mr-1">Email:</label>
-                <input type="email" class="form-control" id="email" name="Email" required="required" autofocus="autofocus" value="@Model.Email">
-                <div class="valid-feedback">Looks good!</div>
-                <div class="invalid-feedback">Invalid Email</div>
-            </div>
-
-            <div class="form-group mr-3">
-                <label for="pwd" class="mr-1">Password:</label>
-                <input type="password" class="form-control" id="pwd" name="Password" required="required" value="@Model.Password" minlength="6">
-                <div class="valid-feedback">Looks good!</div>
-                <div class="invalid-feedback">Password must contain at least 6 characters</div>
-            </div>
-
+            <input type="text" placeholder="email" class="email" id="email" name="Email" value="@Model.Email">
+            <div class="valid-feedback">Looks good!</div>
+            <div class="invalid-feedback">Invalid Email</div>
+            <input type="password" placeholder="password" class="passwd" id="pwd" required="required" name="Password" value="@Model.Password">
+            <div class="valid-feedback">Looks good!</div>
+            <div class="invalid-feedback">Password must contain at least 6 characters</div>
+            <a href="#" class="btn btn-forget">Forget your password?</a>
             <button class="btn btn-success">Login</button>
-            <div class="text-danger">
 
-                <div class="mt-4 text-center body1">
-                    Don't have an account?
-                    <a href="#" class="color-Y700">
-                        Sign up here
-                    </a>
-                </div>
-
-                <div class="my-3">
-                    <span class="separator">
-                        or
-                    </span>
-                </div>
-
-                <p class="text-center body1">
-                    Are you a Student?
-
-                    <a href="/account/login"
-                       class="blue-link">
-                        Login here
-                    </a>
-                </p>
-
+            <a>Don't have an account?</a>
+            <a href="/account/companyregister" class="color-Y700">
+                Sign up here
+            </a>
+            <div class="center">
+                <span class="separator">
+                    or
+                </span>
             </div>
+            <p class="text-center body1">
+                Are you a Student?
+
+                <a href="/account/login"
+                   class="blue-link">
+                    Login here
+                </a>
+            </p>
         </form>
     </div>
-</div>
-
-<div class="split right">
-    <div class="centered">
-        <img src="~/images/cityy.jpg">
-    </div>
-</div>
-
+</main>
 <script>
-    $("a[href='/account/companylogin']").attr("id", "active");
+    $("a[href='/account/login']").attr("id", "active");
 
     $(document).on("submit", ".needs-validation", validate);
     $(".needs-validation input").blur(validate);

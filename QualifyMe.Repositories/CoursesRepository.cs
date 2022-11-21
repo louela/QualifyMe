@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,6 +17,8 @@ namespace QualifyMe.Repositories
         int GetLatestCourseID();
         List<Course> GetCoursesByCourseName(string CourseName);
         List<Course> GetCoursesByCourseID(int CourseID);
+        //List<Course> GetCoursesByDepartmentName(string DepartmentName);
+        List<Course> GetCoursesByDepartmentID(int DepartmentID);
     }
     public class CoursesRepository : ICoursesRepository
     {
@@ -79,6 +82,18 @@ namespace QualifyMe.Repositories
         public List<Course> GetCoursesByCourseID(int CourseID)
         {
             List<Course> co = db.Courses.Where(temp => temp.CourseID == CourseID).ToList();
+            return co;
+        }
+
+        //public List<Course> GetCoursesByDepartmentName(string DepartmentName)
+        //{
+        //    List<Course> co = db.Courses.Where(temp => temp.Department.DepartmentName == DepartmentName).ToList();
+        //    return co;
+        //}
+
+        public List<Course> GetCoursesByDepartmentID(int DepartmentID)
+        {
+            List<Course> co = db.Courses.Where(temp => temp.DepartmentID == DepartmentID).ToList();
             return co;
         }
     }
