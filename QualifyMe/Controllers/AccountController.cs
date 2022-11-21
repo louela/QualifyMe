@@ -69,7 +69,7 @@ namespace QualifyMe.Controllers
                     Session["CurrentUserID"] = uvm.UserID;
                     Session["CurrentStudentID"] = uvm.StudentID;
                     Session["CurrentUserName"] = uvm.StudentName;
-                    Session["CurrentUserCourse"] = uvm.StudentCourse;
+                    
                     Session["CurrentUserEmail"] = uvm.Email;
                     Session["CurrentUserMobile"] = uvm.StudentMobile;
                     Session["CurrentUserPassword"] = uvm.Password;
