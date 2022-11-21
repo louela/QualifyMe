@@ -118,16 +118,16 @@ namespace QualifyMe.Controllers
                 {
                     Session["CurrentUserID"] = uvm.UserID;
                     Session["CurrentStudentID"] = uvm.StudentID;
-<<<<<<< HEAD
-                    Session["CurrentUserName"] = uvm.StudentName;
+
+                   
                     
                     Session["CurrentUserEmail"] = uvm.Email;
-                    Session["CurrentUserMobile"] = uvm.StudentMobile;
-=======
+                   
+
                     Session["CurrentUserFirstName"] = uvm.StudentFirstName;
                     Session["CurrentUserLastName"] = uvm.StudentLastName;
                     Session["CurrentUserEmail"] = uvm.Email;                  
->>>>>>> loren
+
                     Session["CurrentUserPassword"] = uvm.Password;
                     Session["CurrentStudentCourse"] = uvm.Course.CourseName;
                     Session["CurrentUserIsAdmin"] = uvm.IsAdmin;

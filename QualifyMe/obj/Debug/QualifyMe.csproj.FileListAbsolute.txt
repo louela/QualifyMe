@@ -122,3 +122,7 @@ C:\Users\II\Documents\mvc\CAPSTONE\QualifyMe\QualifyMe\obj\Debug\QualifyMe.cspro
 C:\Users\II\Documents\mvc\CAPSTONE\QualifyMe\QualifyMe\obj\Debug\QualifyMe.csproj.CopyComplete
 C:\Users\II\Documents\mvc\CAPSTONE\QualifyMe\QualifyMe\obj\Debug\QualifyMe.dll
 C:\Users\II\Documents\mvc\CAPSTONE\QualifyMe\QualifyMe\obj\Debug\QualifyMe.pdb
+C:\src\projects\Github's\QualifyMe\QualifyMe\obj\Debug\QualifyMe.csproj.AssemblyReference.cache
+C:\src\projects\Github's\QualifyMe\QualifyMe\obj\Debug\QualifyMe.csproj.CoreCompileInputs.cache
+C:\src\projects\Github's\QualifyMe\QualifyMe\obj\Debug\QualifyMe.dll
+C:\src\projects\Github's\QualifyMe\QualifyMe\obj\Debug\QualifyMe.pdb
