@@ -24,7 +24,7 @@ namespace Q.DomainModels
         public string Gender { get; set; }
         public string Address { get; set; }
         public string Mobile { get; set; }
-        public string Resume { get; set; }
+        //public string Resume { get; set; }
        // public HttpPostedFileBase file { get; set; }
      
         public bool IsAdmin { get; set; }
