@@ -2,30 +2,51 @@
 
 @{
     ViewBag.Title = "Admin Home";
-   
+
 }
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Dashboard - Admin</title>
+    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
+    <link href="css/styles.css" rel="stylesheet" />
+    <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+</head>
 
-<div class="row">
-    <div class="col-sm-12">
-        <div class="jumbotron">
-            <h1>Welcome back Admin @Session["CurrentUserName"]</h1>
-            <p class="lead">Manage your student and student's opportunities here!'.</p>
+
+
+@*<div class="row">
+        <div class="col-sm-12">
+            <div class="jumbotron">
+                <h1>Welcome back @Session["CurrentUserFirstName"]</h1>
+                <p class="lead">Manage your student and student's opportunities here!'.</p>
+            </div>
         </div>
     </div>
-</div>
 
-<div class="row">
-    <div class="col-sm-12">
-        <table class="table">
-            @foreach (var item in Model)
-            {
-                Html.RenderPartial("Job", item);
-            }
-        </table>
+
+
+
+    <div class="row">
+        <div class="col-sm-12">
+            <table class="table">
+                @foreach (var item in Model)
+                {
+                    Html.RenderPartial("Job", item);
+                }
+            </table>
+        </div>
     </div>
-</div>
 
-<script>
-    $("a[href='/home/index']").attr("id", "active");
-</script>
+    <script>
+        $("a[href='/home/index']").attr("id", "active");
+    </script>*@
+
+
+
