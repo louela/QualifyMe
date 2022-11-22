@@ -1,5 +1,4 @@
-﻿/* STYLE FOR LANDING PAGE*/
-/*General Styles*/
+﻿/*General Styles*/
 
 * {
     margin: 0;
@@ -89,7 +88,6 @@ section p {
         padding: 50px 20px;
     }
 }
-
 /*Header Styles*/
 
 header {
@@ -134,7 +132,6 @@ header nav {
             margin-bottom: 15px;
         }
 }
-
 /*Hero Styles*/
 
 .hero {
@@ -151,7 +148,7 @@ header nav {
         left: 0;
         width: 100%;
         height: 100%;
-        background-image: url("/Images/pic5.jpg");
+        background-image: url("/Images/School/landing.png");
         background-size: cover;
         z-index: -1;
         background-color: #80a3db;
@@ -205,101 +202,185 @@ header nav {
         }
 }
 
-/*Destinations Section*/
 
-.destinations .grid li {
-    height: 350px;
-    padding: 20px;
-    background-clip: content-box;
-    background-size: cover;
-    background-position: center;
-}
 
-    .destinations .grid li.small {
-        flex-basis: 30%;
+
+@keyframes anim-1 {
+    0%, 2% {
+        left: -100%;
+        opacity: 0;
     }
 
-    .destinations .grid li.large {
-        flex-basis: 70%;
+    4%, 8% {
+        left: 21%;
+        opacity: 1;
     }
 
-@media (max-width: 1100px) {
-    .destinations .grid li.small,
-    .destinations .grid li.large {
-        flex-basis: 50%;
+    10%, 100% {
+        left: 110%;
+        opacity: 0;
     }
 }
 
-@media (max-width: 800px) {
-    .destinations .grid li.small,
-    .destinations .grid li.large {
-        flex-basis: 100%;
+@keyframes anim-2 {
+    0%, 10% {
+        left: -100%;
+        opacity: 0;
+    }
+
+    12%, 18% {
+        left: 21%;
+        opacity: 1;
+    }
+
+    20%, 100% {
+        left: 110%;
+        opacity: 0;
     }
 }
 
-
-
-/*Why Choose QualifyMe! Section*/
-
-.whychoose .quote {
-    font-size: 22px;
-    font-weight: 300;
-    line-height: 1.5;
-    margin: 40px 0 25px;
-}
-
-@media (max-width: 800px) {
-    .whychoose .quote {
-        font-size: 18px;
-        margin: 15px 0;
+@keyframes anim-3 {
+    0%, 20% {
+        left: -100%;
+        opacity: 0;
     }
 
-    .whychoose .author {
-        font-size: 14px;
+    22%, 28% {
+        left: 21%;
+        opacity: 1;
+    }
+
+    30%, 100% {
+        left: 110%;
+        opacity: 0;
     }
 }
 
-/*Footer Section*/
+@keyframes anim-4 {
+    0%, 30% {
+        left: -100%;
+        opacity: 0;
+    }
 
-/*footer {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    background-color: #555;
-    color: #fff;
-    padding: 20px 0;
+    32%, 38% {
+        left: 21%;
+        opacity: 1;
+    }
+
+    40%, 100% {
+        left: 110%;
+        opacity: 0;
+    }
 }
 
-    footer ul {
-        display: flex;
+@keyframes anim-5 {
+    0%, 40% {
+        left: -100%;
+        opacity: 0;
     }
 
-        footer ul li {
-            margin-left: 16px;
-        }
-
-    footer p {
-        text-transform: uppercase;
-        font-size: 14px;
-        opacity: 0.6;
-        align-self: center;
+    42%, 48% {
+        left: 21%;
+        opacity: 1;
     }
 
-@media (max-width: 1100px) {
-    footer {
-        flex-direction: column;
+    50%, 100% {
+        left: 110%;
+        opacity: 0;
     }
-
-        footer p {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        footer ul li {
-            margin: 0 8px;
-        }*/
 }
-/*CAROUSEL SLIDE*/
+
+@keyframes anim-6 {
+    0%, 50% {
+        left: -100%;
+        opacity: 0;
+    }
+
+    52%, 58% {
+        left: 21%;
+        opacity: 1;
+    }
+
+    60%, 100% {
+        left: 110%;
+        opacity: 0;
+    }
+}
+
+@keyframes anim-7 {
+    0%, 60% {
+        left: -100%;
+        opacity: 0;
+    }
+
+    62%, 68% {
+        left: 21%;
+        opacity: 1;
+    }
+
+    70%, 100% {
+        left: 110%;
+        opacity: 0;
+    }
+}
+
+@keyframes anim-8 {
+    0%, 70% {
+        left: -100%;
+        opacity: 0;
+    }
+
+    72%, 78% {
+        left: 21%;
+        opacity: 1;
+    }
+
+    80%, 100% {
+        left: 110%;
+        opacity: 0;
+    }
+}
+
+@keyframes anim-9 {
+    0%, 80% {
+        left: -100%;
+        opacity: 0;
+    }
+
+    82%, 88% {
+        left: 21%;
+        opacity: 1;
+    }
+
+    90%, 100% {
+        left: 110%;
+        opacity: 0;
+    }
+}
+
+@keyframes anim-10 {
+    0%, 90% {
+        left: -100%;
+        opacity: 0;
+    }
+
+    92%, 98% {
+        left: 21%;
+        opacity: 1;
+    }
+
+    100% {
+        left: 110%;
+        opacity: 0;
+    }
+}
+
+/*-----------------------text-ende---------------------  */
+
+/* ----------------slide------------------------------- */
+
+/*----------------------- slick---------------------  */
+
 .slide {
     position: relative;
     display: block;

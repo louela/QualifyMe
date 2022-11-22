@@ -318,6 +318,11 @@ namespace QualifyMe.Controllers
             List<Job> jobs = db.Jobs.Where(temp => temp.JobTitle.Contains(JobTitle)).ToList();
             return jobs;
         }
+
+        public ActionResult Sample()
+        {
+            return View();
+        }
       
 
     }

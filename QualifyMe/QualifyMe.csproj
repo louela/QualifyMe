@@ -153,12 +153,23 @@
     <Content Include="Content\bootstrap-reboot.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\landing.css" />
+    <Content Include="Content\Style.css" />
     <Content Include="Content\Styles.css" />
+    <Content Include="Content\StyleSheet1.css" />
     <Content Include="Global.asax" />
     <Content Include="Images\avatar.png" />
     <Content Include="Images\down-color.png" />
     <Content Include="Images\down-empty.png" />
     <Content Include="Images\map.svg" />
+    <Content Include="Images\School\1.png" />
+    <Content Include="Images\School\2.png" />
+    <Content Include="Images\School\3.png" />
+    <Content Include="Images\School\4.png" />
+    <Content Include="Images\School\5.png" />
+    <Content Include="Images\School\6.png" />
+    <Content Include="Images\School\landing.png" />
+    <Content Include="Images\School\pic4.jpg" />
     <Content Include="Images\up-color.png" />
     <Content Include="Images\up-empty.png" />
     <Content Include="Images\user.png" />
@@ -288,6 +299,7 @@
     <Content Include="Views\Account\MyApplications.cshtml" />
     <Content Include="Views\Account\SkillSets.cshtml" />
     <Content Include="Views\Home\Homepage.cshtml" />
+    <Content Include="Views\Account\Sample.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
