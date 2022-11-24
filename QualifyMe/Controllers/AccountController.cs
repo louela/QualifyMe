@@ -52,9 +52,7 @@ namespace QualifyMe.Controllers
 
                 int uid = this.ss.InsertStudent(rvm);
                 Session["CurrentUserID"] = uid;
-                Session["CurrentStudentID"] = rvm.StudentID;
-                //Session["CurrentUserFirstName"] = rvm.StudentFirstName;
-                //Session["CurrentUserLastName"] = rvm.StudentLastName;
+                Session["CurrentStudentID"] = rvm.StudentID;               
                 Session["CurrentUserEmail"] = rvm.Email;
                 Session["CurrentUserPassword"] = rvm.Password;
                 Session["CurrentStudentCourse"] = rvm.CourseID;
