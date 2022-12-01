@@ -1,0 +1,22 @@
+﻿@model QualifyMe.ViewModels.CompanyView
+
+
+
+    
+
+    <tr>
+
+
+    <td>@Model.CompanyName</td>
+    <td>@Model.Email</td>
+    <td><span class="badge badge-secondary">@Model.IsApproved</span></td>
+    <td class="text-dark">
+
+        <a href="/admin/companies/editcompanystatus/@Model.CompanyID">Edit   ||</a>
+        <a href="/admin/companies/deletecompany/@Model.CompanyID">Delete</a>
+        <br/>
+    </td>
+
+
+
+</tr> 

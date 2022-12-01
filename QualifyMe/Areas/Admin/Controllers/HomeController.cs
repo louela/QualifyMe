@@ -46,11 +46,13 @@ namespace QualifyMe.Areas.Admin.Controllers
             List<CompanyView> companies = this.com.GetCompanies().Take(10).ToList();
             return View(companies);
         }
-
+       
         public ActionResult Jobs()
         {
             List<JobView> jobs = this.job.GetJobs().Take(10).ToList();
             return View(jobs);
         }
+
+       
     }
 }

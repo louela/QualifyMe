@@ -51,5 +51,13 @@ namespace QualifyMe.Areas.Admin.Controllers
                 return View();
             }
         }
+
+        public ActionResult CompanyView(int id)
+        {
+
+
+            CompanyView qvm = this.cs.GetCompaniesByCompanyID(id);
+            return View(qvm);
+        }
     }
 }

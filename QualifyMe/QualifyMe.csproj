@@ -208,6 +208,8 @@
     <Content Include="Areas\Admin\Views\Shared\Job.cshtml" />
     <Content Include="Areas\Company\Views\Account\Profile.cshtml" />
     <Content Include="Areas\Company\Views\Account\ChangeProfile.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\Company.cshtml" />
+    <Content Include="Areas\Admin\Views\Companies\CompanyView.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
