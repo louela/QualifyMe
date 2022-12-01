@@ -1,0 +1,22 @@
+﻿@model QualifyMe.ViewModels.StudentView
+
+
+
+    
+
+<tr>
+
+
+    <td>@Model.StudentFirstName</td>
+    <td>@Model.Email</td>
+    <td><span class="badge badge-secondary">@Model.IsAdmin</span></td>
+    <td class="text-dark">
+
+        <a href="/admin/companies/editcompanystatus/@Model.UserID">Edit   ||</a>
+        <a href="/admin/companies/deletecompany/@Model.UserID">Delete</a>
+        <br />
+    </td>
+
+
+
+</tr>

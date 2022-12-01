@@ -17,7 +17,8 @@ namespace QualifyMe.Repositories
       
         void UpdateStudentPassword(Student s);
         void DeleteStudent(int sid);
-        //List<Student> GetStudents();
+        List<Student> GetStudents();
+      
         List<Student> GetStudentsByEmailAndPassword(string Email, string Password);
         List<Student> GetStudentsByEmail(string Email);
         List<Student> GetStudentsByUserID(int UserID);
@@ -120,6 +121,11 @@ namespace QualifyMe.Repositories
         {
             int sid = db.Students.Select(temp => temp.UserID).Max();
             return sid;
+        }
+        public List<Student> GetStudents()
+        {
+            List<Student> st = db.Students.Where(temp => temp.IsAdmin == false).OrderBy(temp => temp.StudentLastName).ToList();
+            return st;
         }
     }
 }
