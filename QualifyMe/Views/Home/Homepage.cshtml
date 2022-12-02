@@ -7,19 +7,22 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-blue-grey.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+<section class="hero">
+    <div class="background-image"></div>
+    <div class="hero-content-area">
+        <img src="~/Images/School/booth.jpg" alt="Forest" style="width:100%;">
+    </div>
+</section>
 <div class="w3-container w3-content" style="max-width:1400px;margin-top:20px">
     <form class="example" action="/home/homepage">
         <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search Job Title..">
-
     </form>
     <!-- Right Column -->
     <div class="w3-col m2 ">
         <div class="w3-container w3-card w3-white w3-round w3-margin w3-padding-16">
             <p>Welcome Students!</p>
-            <img src="~/Images/pic4.jpg" alt="Forest" style="width:100%;">
+            <img src="~/Images/School/pic4.jpg" alt="Forest" style="width:100%;">
             <p><strong>"Take risks: If you win, you will be happy. If you lose, you will be wise." </strong></p>
-
         </div>
         <br>
 
@@ -29,10 +32,11 @@
     <table id="myTable">
         <div class="w3-col m8">
             <p> -AVAILABLE JOBS FOR YOU-</p>
+
             @foreach (var item in Model)
             {
 
-                <div class="w3-container w3-card w3-white w3-round w3-margin " >
+                <div class="w3-container w3-card w3-white w3-round w3-margin ">
                     <br>
                     <img src="~/Images/avatar.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
                     <span class="w3-right w3-opacity">@item.JobDateAndTime</span>
@@ -56,7 +60,7 @@
         <div class="w3-container w3-card w3-white w3-round w3-margin w3-padding-1">
             <div class="w3-container">
                 <p>Welcome Students!</p>
-                <img src="~/Images/pic4.jpg" alt="Forest" style="width:100%;">
+                <img src="~/Images/School/pic4.jpg" alt="Forest" style="width:100%;">
                 <p><strong>"Take risks: If you win, you will be happy. If you lose, you will be wise." </strong></p>
 
             </div>
@@ -66,46 +70,21 @@
         <div class="w3-card w3-round w3-white w3-center w3-padding-16">
             <div class="w3-container">
 
-                <img src="~/Images/usjr-virtual.png" alt="Avatar" style="width:80%"><br>
+                <img src="~/Images/School/landing.png" alt="Avatar" style="width:80%"><br>
                 <span style=" color: forestgreen; font-style:oblique">View Virtual Exhibition!</span>
             </div>
         </div>
         <br>
 
-       
+
 
         <!-- End Right Column -->
 
     </div>
 </div>
-    
 
 
-    <div class="container-fluid">
-        <p class="copyright">&copy; 2022 <a href="#" target="_blank">QuailfyMe</a>. All Rights Reserved.</p>
-    </div>
-    <script>
-        //function myFunction() {
-        //    // Declare variables
-        //    var input, filter, table, a, h3, i, txtValue;
-        //    input = document.getElementById("myInput");
-        //    filter = input.value.toUpperCase();
-        //    div = document.getElementById("myTable");
-        //    h3 = table.getElementsByTagName("h3");
 
-        //    // Loop through all table rows, and hide those who don't match the search query
-        //    for (i = 0; i < h3.length; i++) {
-        //        a = h3[i].getElementsByTagName("td")[0];
-        //        if (a) {
-        //            txtValue = a.textContent || a.innerText;
-        //            if (txtValue.toUpperCase().indexOf(filter) > -1) {
-        //                h3[i].style.display = "";
-        //            } else {
-        //                h3[i].style.display = "none";
-        //            }
-        //        }
-        //    }
-        //}
-
-
-    </script>
+<div class="container-fluid">
+    <p class="copyright">&copy; 2022 <a href="#" target="_blank">QuailfyMe</a>. All Rights Reserved.</p>
+</div>
