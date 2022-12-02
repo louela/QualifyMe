@@ -14,7 +14,7 @@ namespace QualifyMe.Repositories
        
         void InsertStudent(Student s);
         void UpdateStudentDetails(Student s);
-      
+        void UpdateStudentStatus(Student s);
         void UpdateStudentPassword(Student s);
         void DeleteStudent(int sid);
         List<Student> GetStudents();
@@ -56,6 +56,21 @@ namespace QualifyMe.Repositories
               //  st.Resume = SaveToPhysicalLocation(s.file);
                 //st.ImagePath = s.ImagePath;
                 db.SaveChanges();
+            }
+        }
+
+        public void UpdateStudentStatus(Student s)
+        {
+            Student st = db.Students.Where(temp => temp.UserID == s.UserID).FirstOrDefault();
+            if (st != null)
+            {
+                st.StudentID = s.StudentID;
+                st.StudentFirstName = s.StudentFirstName;
+                st.StudentLastName = s.StudentLastName;
+                st.Email = s.Email;
+                st.IsApproved = s.IsApproved;
+                db.SaveChanges();
+
             }
         }
 

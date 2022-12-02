@@ -22,12 +22,12 @@ namespace QualifyMe.ViewModels
         public string Mobile { get; set; }
         public string Resume { get; set; }
     
-       
+      
         public bool IsAdmin { get; set; }
       //  public string ImagePath { get; set; }
        // public HttpPostedFileBase ImageUpload { get; set; }
         public CourseView Course { get; set; }
         //public virtual List<SkillView> Skills { get; set; }
-      
+        public int IsApproved { get; set; }
     }
 }

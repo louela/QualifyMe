@@ -9,11 +9,19 @@
 
     <td>@Model.StudentFirstName</td>
     <td>@Model.Email</td>
-    <td><span class="badge badge-secondary">@Model.IsAdmin</span></td>
+    @if (Model.IsApproved == 1)
+    {
+        <td><span class="badge badge-secondary">Active</span></td>
+    }
+    else if (Model.IsApproved == 0)
+    {
+        <td><span class="badge badge-secondary">Inactive</span></td>
+    }
+   
     <td class="text-dark">
 
-        <a href="/admin/companies/editcompanystatus/@Model.UserID">Edit   ||</a>
-        <a href="/admin/companies/deletecompany/@Model.UserID">Delete</a>
+        <a href="/admin/students/editstudentstatus/@Model.UserID">Edit   ||</a>
+        <a href="/admin/students/deletestudent/@Model.UserID">Delete</a>
         <br />
     </td>
 

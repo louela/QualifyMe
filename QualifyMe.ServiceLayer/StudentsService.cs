@@ -14,7 +14,8 @@ namespace QualifyMe.ServiceLayer
     {
         int InsertStudent(StudentRegister sr);
         void UpdateStudentDetails(EditStudent es);
-      
+        void UpdateStudentStatus(EditStudentStatusView es);
+
         void UpdateStudentPassword(EditPassword ep);
         void DeleteStudent(int sid);
         List<StudentView> GetStudents();
@@ -49,7 +50,15 @@ namespace QualifyMe.ServiceLayer
             Student s = mapper.Map<EditStudent, Student>(es);
             usr.UpdateStudentDetails(s);
         }
-       
+
+        public void UpdateStudentStatus(EditStudentStatusView es)
+        {
+            var config = new MapperConfiguration(cfg => { cfg.CreateMap<EditStudentStatusView, Student>(); cfg.IgnoreUnmapped(); });
+            IMapper mapper = config.CreateMapper();
+            Student s= mapper.Map<EditStudentStatusView, Student>(es);
+            usr.UpdateStudentStatus(s);
+        }
+
         public void UpdateStudentPassword(EditPassword ep)
         {
             var config = new MapperConfiguration(cfg => { cfg.CreateMap<EditPassword, Student>(); cfg.IgnoreUnmapped(); });

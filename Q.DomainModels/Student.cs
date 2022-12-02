@@ -32,5 +32,7 @@ namespace Q.DomainModels
         [ForeignKey("CourseID")]
         public virtual Course Course { get; set; }
         public virtual List<SkillSet> Skill { get; set; }
+
+        public int IsApproved { get; set; }
     }
 }

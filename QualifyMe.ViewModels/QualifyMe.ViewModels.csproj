@@ -64,6 +64,7 @@
     <Compile Include="EditJob.cs" />
     <Compile Include="EditPassword.cs" />
     <Compile Include="EditStudent.cs" />
+    <Compile Include="EditStudentStatusView.cs" />
     <Compile Include="JobView.cs" />
     <Compile Include="LoginView.cs" />
     <Compile Include="NewApplicant.cs" />
