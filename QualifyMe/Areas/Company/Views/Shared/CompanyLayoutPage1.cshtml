@@ -15,7 +15,7 @@
         <div class="container">
             <img src="~/images/qualifyme-logo.png" alt="logo" height="50" width="50" />
 
-            <a class="navbar-brand" href="/Home/index">
+            <a class="navbar-brand" href="/Company/Home/index">
                 QualifyMe
             </a>
             <div class="search-bar">
@@ -29,11 +29,11 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav mx-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" href="/home/homepage">Home</a>
+                        <a class="nav-link active" href="/company/home/index">Home</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="/home/about">About</a>
+                        <a class="nav-link" href="/company/home/about">About</a>
                     </li>
 
 
@@ -41,13 +41,13 @@
                     @*if naka login as company accout*@
                     @if (Session["CurrentCompanyName"] != null)
                     {
-                        <li class="nav-item">
-                            <a class="nav-link" href="/home/companies">Companies</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="job.html">Job</a>
-                        </li>
 
+                        <li class="nav-item">
+                            <a class="nav-link" href="/company/home/jobs">Job</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/company/applicants/listofapplicants">Applicants</a>
+                        </li>
 
 
                         <li class="nav-item dropdown">
@@ -63,7 +63,7 @@
                         </li>
                     }
 
-            </div>
+</div>
     </nav>
     @RenderBody()
     </div>

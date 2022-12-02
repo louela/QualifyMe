@@ -1,150 +1,65 @@
-﻿
-@model QualifyMe.ViewModels.JobView
+﻿@model QualifyMe.ViewModels.JobView
 
 @{
     ViewBag.Title = "View Job";
+    Layout = "~/Areas/Company/Views/Shared/CompanyLayoutPage1.cshtml";
+    
 }
 
-<div class="row">
-    <div class="col-sm-12">
+<div class="container">
+    <div class="row">
+        <div class="col-xs-4 item-photo">
+        </div>
+        <div class="col-xs-5" style="border:0px solid gray">
+            <h3>@Model.JobTitle</h3>
 
-        <div class="form-group form-row">
-            <div class="col-sm-10 offset-sm-2">
-                <h3>@Model.JobTitle</h3>
-                <div class="row">
-                    <div class="col-sm-2">
-                        <span class="badge badge-info">@Model.Course.CourseName</span>
-                    </div>
-                    <div class="col-sm-2">
-                        <span class="text-info">
-                            @if (Convert.ToInt32(Session["CurrentCompanyID"]) != Model.CompanyID)
-                            {
-                                @:by @Model.Company.CompanyName
-                            }
-                            else
-                            {
-                                @:by you
-                            }
-                        </span>
-                    </div>
-                    <div class="col-sm-3">
-                        <span class="text-success">by @Model.JobDateAndTime</span>
-                    </div>
-                    <div class="col-sm-2">
-                        <span class="badge badge-pill badge-success col-2">
-                            @Model.ApplicantsCount
-                        </span>
-                        Number of Views
-                    </div>
+
+
+            <!-- Details -->
+            <div class="section">
+                <h6 class="title-attr" style="margin-top:15px;"><small>Type</small></h6>
+                <div>
+                    <div class="attr" style="width:50px; background-color: tomato">@Model.JobTypes</div>
+
                 </div>
+            </div>
+            <div class="section" style="padding-bottom:5px;">
+                <h6 class="title-attr"><small>Status</small></h6>
+                <div>
+                    <div class="attr2">@Model.JobStatus</div>
 
-                @if (Model.ApplicantsCount == 0)
-                {
-                    <p class="text-danger">No applicants yet!</p>
-                }
+                </div>
+            </div>
+
+
+            <!-- Botones de compra -->
+            <div class="section" style="padding-bottom:20px;">
+                <button class="btn btn-success"><span style="margin-right:20px" class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Edit</button>
             </div>
         </div>
 
-        @for (int i = 0; i < Model.Applicants.Count; i++)
-        {
-            <div class="form-group form-row">
-                <div class="col-sm-2">
-                    <span class="badge badge-secondary col-2 votescount">
-                        @Model.Applicants[i]
-                    </span>
-                    Applicants
-
-                </div>
-
-                <div class="col-sm-7">
-                    @if (Convert.ToInt32(Session["CurrentUserID"]) != Model.Applicants[i].UserID)
-                    {
-                        @Model.Applicants[i].ApplicantPurpose
-                    }
-                    else
-                    {
-                        <p class="answer">@Model.Applicants[i].ApplicantPurpose</p>
-                        <button class="btn btn-info editbutton">Edit</button>
-
-
-                    }
-                </div>
-
-                <div class="col-sm-1">
-                    @if (Convert.ToInt32(Session["CurrentUserID"]) != Model.Applicants[i].UserID)
-                    {
-                        @:by @Model.Applicants[i].Student.StudentName
-                    }
-                    else
-                    {
-                        @:by you
-                    }
-                </div>
-                <div class="col-sm-2">
-                    on @Model.Applicants[i].ApplicantDateAndTime
-                </div>
+        <div class="col-xs-9">
+            <div style="width:100%;border-top:1px solid silver">
+                <p style="padding:15px;">
+                    <h5>Description</h5>
+                    <small>
+                        @Model.JobDescription
+                    </small>
+                </p>
+                <small>
+                    <h5>Qualification</h5>
+                    @Model.JobQualification
+                </small>
             </div>
-        }
-
-     
+        </div>
     </div>
-    @Html.ValidationSummary()
 </div>
 
-<script>
-    $(".btnUpVote").click(function ()
-    {
-        var UpBtn = $(this);
-        var DownBtn = UpBtn.parent().find(".btnDownVote");
-        if (UpBtn.attr("src") == "/Images/up-empty.png")
-        {
-            var value;
-            if (UpBtn.attr("src") == "/Images/up-empty.png" && DownBtn.attr("src") == "/Images/down-empty.png")
-                value = 1;
-            else
-                value = 2;
-
-            $.ajax({
-                url: "/api/questions?answerid=" + UpBtn.attr("data-answerid") + "&value=" + value + "&UserID=@Session["CurrentUserID"]", type: "POST", success: function ()
-                {
-                    UpBtn.parent().find(".votescount").text(parseInt(UpBtn.parent().find(".votescount").text()) + value);
-                    UpBtn.attr("src", "/Images/up-color.png");
-                    DownBtn.attr("src", "/Images/down-empty.png");
-                }
-            });
-        }
-    });
-
-    $(".btnDownVote").click(function ()
-    {
-        var DownBtn = $(this);
-        var UpBtn = DownBtn.parent().find(".btnUpVote");
-        if (DownBtn.attr("src") == "/Images/down-empty.png")
-        {
-            var value;
-            if (UpBtn.attr("src") == "/Images/up-empty.png" && DownBtn.attr("src") == "/Images/down-empty.png")
-                value = -1;
-            else
-                value = -2;
-
-            $.ajax({
-                url: "/api/questions?answerid=" + UpBtn.attr("data-answerid") + "&value=" + value + "&UserID=@Session["CurrentUserID"]", type: "POST", success: function ()
-                {
-                    DownBtn.parent().find(".votescount").text(parseInt(DownBtn.parent().find(".votescount").text()) + value);
-                    DownBtn.attr("src", "/Images/down-color.png");
-                    UpBtn.attr("src", "/Images/up-empty.png");
-                }
-            });
-        }
-    });
-</script>
 
 <script>
-    $(".editbutton").click(function ()
-    {
+    $(".editbutton").click(function () {
         $(this).parent().find(".needs-validation").show();
         $(this).hide();
         $(this).parent().find(".answer").hide();
     });
 </script>
-

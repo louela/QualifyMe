@@ -29,7 +29,7 @@ namespace QualifyMe.Areas.Company.Controllers
             return View();
         }
 
-     
+        
 
         public ActionResult ChangeProfile()
         {
