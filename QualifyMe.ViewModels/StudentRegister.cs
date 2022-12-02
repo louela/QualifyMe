@@ -16,15 +16,17 @@ namespace QualifyMe.ViewModels
         [Required]
         public int StudentID { get; set; }
         public int CourseID { get; set; }
-
-        //[Required]
-        //[RegularExpression(@"^[a-zA-Z ]*$")]
-        //public string StudentFirstName { get; set; }
-        //[Required]
-        //[RegularExpression(@"^[a-zA-Z ]*$")]
-        //public string StudentLastName { get; set; }
-        //public string ImagePath { get; set; }
-       // public HttpPostedFileBase ImageUpload { get; set; }
+        public string Gender { get; set; }
+        public int Mobile { get; set; }
+        public string Address { get; set; }
+     
+        [RegularExpression(@"^[a-zA-Z ]*$")]
+        public string StudentFirstName { get; set; }
+    
+        [RegularExpression(@"^[a-zA-Z ]*$")]
+        public string StudentLastName { get; set; }
+        public string ImagePath { get; set; }
+        // public HttpPostedFileBase ImageUpload { get; set; }
         //public byte[] ImageUpload { get; set; }
 
         [Required]

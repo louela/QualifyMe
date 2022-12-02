@@ -1,0 +1,38 @@
+﻿@model List<QualifyMe.ViewModels.JobView>
+@{
+    ViewBag.Title = "RecommendedJobs";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-blue-grey.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<div class="w3-container w3-content" style="max-width:1400px;margin-top:20px">
+    <table id="myTable">
+        <div class="w3-col m8">
+            <p> -RECOMMENDED JOBS FOR YOU-</p>
+
+            @foreach (var item in Model)
+            {
+
+                <div class="w3-container w3-card w3-white w3-round w3-margin ">
+                    <br>
+                    <img src="~/Images/avatar.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
+                    <span class="w3-right w3-opacity">@item.JobDateAndTime</span>
+                    <h4>@item.Company.CompanyName</h4><br>
+                    <hr class="w3-clear">
+                    <h3>
+                        <a href="/jobs/view/@item.JobID">@item.JobTitle</a>
+                    </h3>
+                    <p>@item.JobDescription</p>
+                    <span class="w3-round" style="background-color: seagreen; color: white">@item.Course.CourseName</span>
+                    <span class="w3-round" style="background-color: tomato; color: white">@item.JobTypes</span>
+                    <p>Applicants: <strong>@item.ApplicantsCount</strong></p>
+
+                </div>
+            }
+
+            <!-- End Middle Column -->
+        </div>
+    </table>
+</div>

@@ -153,12 +153,14 @@
     <Content Include="Content\bootstrap-reboot.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\companylist.css" />
     <Content Include="Content\landing.css" />
     <Content Include="Content\Style.css" />
     <Content Include="Content\Styles.css" />
     <Content Include="Content\StyleSheet1.css" />
     <Content Include="Global.asax" />
     <Content Include="Images\avatar.png" />
+    <Content Include="Images\Company\accenture.png" />
     <Content Include="Images\down-color.png" />
     <Content Include="Images\down-empty.png" />
     <Content Include="Images\map.svg" />
@@ -168,6 +170,7 @@
     <Content Include="Images\School\4.png" />
     <Content Include="Images\School\5.png" />
     <Content Include="Images\School\6.png" />
+    <Content Include="Images\School\booth.jpg" />
     <Content Include="Images\School\landing.png" />
     <Content Include="Images\School\pic4.jpg" />
     <Content Include="Images\up-color.png" />
@@ -290,7 +293,6 @@
     <Content Include="Views\Account\Test.cshtml" />
     <Content Include="Views\Account\Profile.cshtml" />
     <Content Include="Views\Account\AddSkill.cshtml" />
-    <Content Include="Views\Account\CompanyLoginn.cshtml" />
     <Content Include="Views\Account\CompanyRegister.cshtml" />
     <Content Include="Views\Account\DisplayImage.cshtml" />
     <Content Include="Views\Account\Image.cshtml" />
@@ -300,6 +302,12 @@
     <Content Include="Views\Account\SkillSets.cshtml" />
     <Content Include="Views\Home\Homepage.cshtml" />
     <Content Include="Views\Account\Sample.cshtml" />
+    <Content Include="Views\Home\MyApplications.cshtml" />
+    <Content Include="Views\Home\test.cshtml" />
+    <Content Include="Views\Home\Upload.cshtml" />
+    <Content Include="Views\Jobs\ApplicationMessage.cshtml" />
+    <Content Include="Views\Jobs\RecommendedJobs.cshtml" />
+    <Content Include="Views\Home\RecommendedJobs.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
