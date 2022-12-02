@@ -13,33 +13,23 @@
 </head>
 <body>
     <div class="container emp-profile">
-        <form action="/account/changeprofile" novalidate="novalidate" id="changeprofile" method="post" class="needs-validation">
-            @Html.AntiForgeryToken()
+        <form novalidate="novalidate" id="changeprofile" enctype="multipart/form-data" method="post" class="needs-validation" onsubmit="return AjaxPost(this)">
             <div class="row">
                 <div class="col-md-4">
                     <div class="avatar-upload">
-                    <div class="avatar-edit">
-                        <input type='file' id="ImageUpload" name="file" accept=".png, .jpg, .jpeg" />
-                        <label for="ImageUpload"></label>
-                    </div>
-                    @*<div class="avatar-preview">
-                        <div id="imagePreview" style="background-image: url('/Images/@Model.ImagePath');">
+                        <div class="avatar-edit">
+                            <input type='file' id="ImageUpload" name="ImageUpload" accept=".png, .jpg, .jpeg" />
+                            <label for="ImageUpload"></label>
                         </div>
-                    </div>*@
+                        <div class="avatar-preview">
+                            <div id="imagePreview" style="background-image: url('/Images/@Model.ImagePath');">
+                            </div>
+                        </div>
 
-                </div>
-
-                    <input type="text" id="StudentFirstName" name="StudentFirstName" style="font-weight: bold;" value="@Model.StudentFirstName" placeholder="Enter Firstname...">
-                    <input type="text" id="StudentLastName" name="StudentLastName" style="font-weight: bold;" value="@Model.StudentLastName" placeholder="Enter Lastname...">
-                    <div class="col-100">
-                        <select id="drpCourses" name="CourseID" required="required">
-                            <option value="@Model.CourseID"></option>
-                            @foreach (var item in ViewBag.Courses)
-                            {
-                                <option value="@item.CourseID">@item.CourseName</option>
-                            }
-                        </select>
                     </div>
+                    <input type="text" id="StudentFirstName" name="StudentFirstName" style="font-weight: bold;" value="@Model.StudentFirstName">
+                    <input type="text" id="StudentLastName" name="StudentLastName" style="font-weight: bold;" value="@Model.StudentLastName">
+                    <input type="text" id="CourseID" name="CourseID" style="font-weight: lighter;" value="@Session["CurrentStudentCourse"]">
                 </div>
                 <div class="col-md-6">
                     <div class="card">
@@ -50,36 +40,29 @@
                             <input type="text" id="StudentID" name="StudentID" style="font-weight: lighter;" value="@Model.StudentID">
                             <strong>Email :</strong>
                             <input type="text" id="Email" name="Email" style="font-weight: lighter;" value="@Model.Email">
-                            <div class="row">
-                                <div class="col-25">
-                                    <label for="Gender">Gender</label>
-                                </div>
-                                <div class="col-75">
-                                    <select id="Gender" name="Gender">
-                                        <option value="">Please Select..</option>
-                                        <option value="female">Female</option>
-                                        <option value="male">Male</option>
-                                    </select>
-                                </div>
-                            </div>
+                            <strong>Gender :</strong>
+                            <input type="text" id="Gender" name="Gender" style="font-weight: lighter;" value="@Model.Gender">
                             <strong>Address :</strong>
                             <input type="text" id="Address" name="Address" style="font-weight: lighter;" value="@Model.Address">
-                            <strong>Mobile :</strong>
-                            <input type="text" id="Mobile" name="Mobile" style="font-weight: lighter;" value="@Model.Mobile">
-
-                            <strong>Resume :</strong>
                             <br />
                             @Html.ValidationSummary()
                             <div class="form-group col-sm-2  float-right">
-                                <button type="submit" class="btn btn-primary" style="background-color:forestgreen">Update</button>
+                                <button type="submit" class="btn btn-primary" style="background-color:forestgreen">Save</button>
                             </div>
                             <div class="form-group col-sm-2  float-right">
                                 <button type="cancel" class="btn btn-primary" style="background-color:forestgreen">Cancel</button>
                             </div>
+
+
+
                         </div>
+
                     </div>
                 </div>
+
+
             </div>
+
         </form>
     </div>
 </body>

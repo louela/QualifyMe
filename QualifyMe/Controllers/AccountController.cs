@@ -52,10 +52,11 @@ namespace QualifyMe.Controllers
 
                 int uid = this.ss.InsertStudent(rvm);
                 Session["CurrentUserID"] = uid;
-                Session["CurrentStudentID"] = rvm.StudentID;
-                //Session["CurrentUserFirstName"] = rvm.StudentFirstName;
-                //Session["CurrentUserLastName"] = rvm.StudentLastName;
+                Session["CurrentStudentID"] = rvm.StudentID;               
                 Session["CurrentUserEmail"] = rvm.Email;
+                Session["CurrentUserGender"] = rvm.Gender;
+                Session["CurrentUserAddress"] = rvm.Address;
+                Session["CurrentUserMobile"] = rvm.Mobile;
                 Session["CurrentUserPassword"] = rvm.Password;
                 Session["CurrentStudentCourse"] = rvm.CourseID;
                 Session["CurrentUserIsAdmin"] = false;
@@ -117,17 +118,11 @@ namespace QualifyMe.Controllers
                 if (uvm != null)
                 {
                     Session["CurrentUserID"] = uvm.UserID;
-                    Session["CurrentStudentID"] = uvm.StudentID;
-
-                   
-                    
-                    Session["CurrentUserEmail"] = uvm.Email;
-                   
-
+                    Session["CurrentStudentID"] = uvm.StudentID;                    
+                    Session["CurrentUserEmail"] = uvm.Email;                   
                     Session["CurrentUserFirstName"] = uvm.StudentFirstName;
                     Session["CurrentUserLastName"] = uvm.StudentLastName;
                     Session["CurrentUserEmail"] = uvm.Email;                  
-
                     Session["CurrentUserPassword"] = uvm.Password;
                     Session["CurrentStudentCourse"] = uvm.Course.CourseName;
                     Session["CurrentUserIsAdmin"] = uvm.IsAdmin;
@@ -231,8 +226,9 @@ namespace QualifyMe.Controllers
             List<CourseView> courses = this.css.GetCourses();
             ViewBag.courses = courses;
             StudentView uvm = this.ss.GetStudentsByUserID(uid);
-            EditStudent es = new EditStudent() { StudentFirstName = uvm.StudentFirstName,StudentLastName = uvm.StudentLastName,Email = uvm.Email, UserID = uvm.UserID, StudentID = uvm.StudentID, CourseID = uvm.CourseID , /*ImagePath = uvm.ImagePath,*/
-                                                Gender = uvm.Gender, Address = uvm.Address, Mobile = uvm.Mobile, Resume = uvm.Resume};
+            EditStudent es = new EditStudent() { StudentFirstName = uvm.StudentFirstName,StudentLastName = uvm.StudentLastName,Email = uvm.Email, UserID = uvm.UserID, StudentID = uvm.StudentID, CourseID = uvm.CourseID ,
+                ImagePath = uvm.ImagePath,
+                Gender = uvm.Gender, Address = uvm.Address, Mobile = uvm.Mobile};
             return View(es);
         }
 
@@ -317,6 +313,11 @@ namespace QualifyMe.Controllers
         {
             List<Job> jobs = db.Jobs.Where(temp => temp.JobTitle.Contains(JobTitle)).ToList();
             return jobs;
+        }
+
+        public ActionResult Sample()
+        {
+            return View();
         }
       
 

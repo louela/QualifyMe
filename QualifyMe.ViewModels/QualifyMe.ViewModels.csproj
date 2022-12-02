@@ -67,6 +67,7 @@
     <Compile Include="EditStudentStatusView.cs" />
     <Compile Include="JobView.cs" />
     <Compile Include="LoginView.cs" />
+    <Compile Include="Model.cs" />
     <Compile Include="NewApplicant.cs" />
     <Compile Include="NewJob.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
