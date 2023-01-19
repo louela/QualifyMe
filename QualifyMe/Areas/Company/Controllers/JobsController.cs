@@ -13,34 +13,42 @@ namespace QualifyMe.Areas.Company.Controllers
         IJobsService js;
         IApplicantsService asr;
         ICoursesService cs;
+        IDepartmentsService ds;
 
-        public JobsController(IJobsService js, IApplicantsService asr, ICoursesService cs)
+        public JobsController(IJobsService js, IApplicantsService asr, ICoursesService cs,IDepartmentsService ds)
         {
             this.js = js;
             this.asr = asr;
             this.cs = cs;
+            this.ds = ds;
         }
 
         public ActionResult Create()
         {
             List<CourseView> courses = this.cs.GetCourses();
             ViewBag.courses = courses;
+            List<DepartmentView> departments = this.ds.GetDepartments();
+            ViewBag.departments = departments;
             return View();
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-
         public ActionResult Create(NewJob qvm)
         {
             if (ModelState.IsValid)
             {
                 qvm.ApplicantsCount = 0;
-
                 qvm.JobDateAndTime = DateTime.Now;
                 qvm.CompanyID = Convert.ToInt32(Session["CurrentCompanyID"]);
-                this.js.InsertJob(qvm);
-                return RedirectToAction("Jobs", "Home");
+                int jid = js.InsertJob(qvm);
+                Session["CurrentJobID"] = jid;
+                Session["CurrentJobTitle"] = qvm.JobTitle;
+                Session["CurrentJobDescription"] = qvm.JobDescription;
+                Session["JobCurrentQualification"] = qvm.JobQualification;
+                Session["CurrentJobTypes"] = qvm.JobTypes;
+                Session["CurrentJobStatus"] = qvm.JobStatus;
+                return RedirectToAction("AddTag", "Tags");
             }
             else
             {
@@ -51,8 +59,8 @@ namespace QualifyMe.Areas.Company.Controllers
 
         public ActionResult View(int id)
         {
-           
-            int uid = Convert.ToInt32(Session["CurrentCompanyID"]);
+
+        
             JobView qvm = this.js.GetJobByJobID(id);
             return View(qvm);
         }

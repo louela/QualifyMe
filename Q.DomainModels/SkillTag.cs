@@ -8,12 +8,18 @@ using System.Threading.Tasks;
 
 namespace Q.DomainModels
 {
-    public class SkillSet
+    public class SkillTag
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int ID { get; set; }
-        public string SkillName { get; set; }
-       
+        public int SkillTagID { get; set; }
+        public int SkillID { get; set; }
+        public int TagID { get; set; }
+
+
+        [ForeignKey("SkillID")]
+        public virtual StudentSkillSet StudentSkillSet { get; set; }
+        [ForeignKey("TagID")]
+        public virtual Tag Tag { get; set; }
     }
 }

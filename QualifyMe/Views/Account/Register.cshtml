@@ -11,7 +11,9 @@
         <form action="/account/register" class="form-group" id="register" method="post" class="needs-validation" novalidate="novalidate">
             @Html.AntiForgeryToken()
             <h5><p>SIGN UP</p></h5>
-            <input type="number" class="form-control" id="StudentID" name="StudentID" required="required" autofocus="autofocus" placeholder="Enter ID">
+            <input type="number" class="form-control" id="StudentID" name="StudentID" required="required" autofocus="autofocus" placeholder="School ID">
+            <input type="text" class="form-control" id="StudentFirstName" name="StudentFirstName" required="required" autofocus="autofocus" placeholder="Firstname">
+            <input type="text" class="form-control" id="StudentLastName" name="StudentLastName" required="required" autofocus="autofocus" placeholder="Lastname">
             <input type="text" class="form-control" id="Email" name="Email" required="required" autofocus="autofocus" placeholder="Email">
             <input type="password" class="form-control" id="pwd" name="Password" required="required" minlength="6" placeholder="Password">
             <input type="password" class="form-control" id="ConfirmPassword" name="ConfirmPassword" required="required" autofocus="autofocus" placeholder="Confirm Password">

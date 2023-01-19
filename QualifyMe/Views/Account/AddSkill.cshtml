@@ -1,87 +1,48 @@
-﻿
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-blue-grey.css">
-<div class="w3-container w3-content" style="max-width:1000px;margin-top:80px">
-    <div class="w3-col m12">
-        <div class="w3-container w3-card w3-white w3-round w3-margin">
-            <form action="/account/addskill" method="post" novalidate="novalidate">
-                @Html.AntiForgeryToken()
- 
-                <div class="container">
-                    <div class="title">
-                        <img src="~/Images/tag.svg" alt="icon">
-                        <h2>Add Skill Tags</h2>
+﻿@model QualifyMe.ViewModels.AddSkillView
+@{
+    Layout = null;
+}
+
+
+<meta name="viewport" content="width=device-width" />
+<title>AddSkill</title>
+
+<link rel="stylesheet" href="~/content/form.css">
+
+<main>
+    <div class="wrapper">
+      
+        <form class="needs-validation" novalidate="novalidate" action="/account/addskill" method="post">
+            <h5><h3>Add Skill</h3></h5>
+            <div class="form-group form-row">
+                <div class="col-sm-12">
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-row">
+                        <div class="form-group col-sm-7">
+                            <input class="form-control" id="SkillName" placeholder="Add Skill" name="SkillName" required="required" data-pattern="[A-z0-9 ,-]{1,}">
+                        </div>
                     </div>
-                    <div class="content">
-                        <p>Press enter or add a comma after each skill</p>
-                        <ul><input type="text" id="SkillName" name="SkillName" spellcheck="false"></ul>
-                        <li></li>
-                    </div>
-                    <div class="details">
-                        <p><span>10</span> tags are remaining</p>
-                        <button>Remove All</button>
-                        <button type="submit" class="btn btn-primary">Add</button>
-                        <a href="/account/homepage"><button>Next</button></a>
+
+                    <button type="submit" class="btn btn-primary">Add Skill</button>
+                    <button type="submit" class="btn btn-primary"><a href="/account/popupmessage">Done</a></button>
+                    <div class="text-danger">
+                        @Html.ValidationSummary()
                     </div>
                 </div>
-            </form>
-        </div>
+            </div>
+        </form>
     </div>
-</div>
+</main>
 <script>
-    const ul = document.querySelector("li"),
-        input = document.querySelector("input"),
-        tagNumb = document.querySelector(".details span");
+        $("a[href='/account/login']").attr("id", "active");
 
-    let maxTags = 10,
-        tags = [];
-
-    countTags();
-    createTag();
-
-    function countTags() {
-        input.focus();
-        tagNumb.innerText = maxTags - tags.length;
-    }
-
-    function createTag() {
-        ul.querySelectorAll("li").forEach(li => li.remove());
-        tags.slice().reverse().forEach(tag => {
-            let liTag = `<li>${tag} <i class="uit uit-multiply" onclick="remove(this, '${tag}')"></i></li>`;
-            ul.insertAdjacentHTML("afterbegin", liTag);
-        });
-        countTags();
-    }
-
-    function remove(element, tag) {
-        let index = tags.indexOf(tag);
-        tags = [...tags.slice(0, index), ...tags.slice(index + 1)];
-        element.parentElement.remove();
-        countTags();
-    }
-
-    function addTag(e) {
-        if (e.key == "Enter") {
-            let tag = e.target.value.replace(/\s+/g, ' ');
-            if (tag.length > 1 && !tags.includes(tag)) {
-                if (tags.length < 10) {
-                    tag.split(',').forEach(tag => {
-                        tags.push(tag);
-                        createTag();
-                    });
-                }
+        $(document).on("submit", ".needs-validation", validate);
+        $(".needs-validation input").blur(validate);
+        function validate(event) {
+            if ($(".needs-validation")[0].checkValidity() == false) {
+                event.preventDefault();
             }
-            e.target.value = "";
+            $(".needs-validation")[0].classList.add("was-validated");
         }
-    }
-
-    input.addEventListener("keyup", addTag);
-
-    const removeBtn = document.querySelector(".details button");
-    removeBtn.addEventListener("click", () => {
-        tags.length = 0;
-        ul.querySelectorAll("li").forEach(li => li.remove());
-        countTags();
-    });
 </script>

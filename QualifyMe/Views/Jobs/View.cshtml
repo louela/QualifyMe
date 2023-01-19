@@ -1,11 +1,15 @@
-﻿@model QualifyMe.ViewModels.JobView
+﻿
+@model QualifyMe.ViewModels.JobView
 
 @{
     ViewBag.Title = "View Job";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+
 }
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-blue-grey.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <div class="w3-container w3-content" style="max-width:1400px;margin-top:80px">
 
     <div class="w3-col m20">
@@ -35,72 +39,71 @@
                         <div class="attr2" style="width:50px; background-color: tomato">@Model.JobStatus</div>
                     </div>
                 </div>
-                <span style="background-color: tomato">@Model.Course.CourseName</span>
-            </div>
-            <!-- End Middle Column -->
-            <br />
-            <br />
-            <br />
-            <br />
-
-
-            <div class="w3-container w3-card w3-white w3-round w3-margin">
-
-
-                @if (Session["CurrentUserID"] != null)
-                {
-                    <h5><strong>APPLICATION FORM</strong></h5>
-                    <div class="container">
-                        <form novalidate="novalidate" action="/jobs/applyjob" method="post" class="needs-validation">
-                            @Html.AntiForgeryToken()
-                            <input type="hidden" name="JobID" value="@Model.JobID" />
-                            <div class="row">
-                                <div class="col-25">
-                                    <label for="StudentName">Name</label>
-                                </div>
-                                <div class="col-75">
-                                    <input type="text" id="StudentName" name="StudentName" value="@Session["CurrentUserFirstName"]" readonly>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-25">
-                                    <label for="Email">Email</label>
-                                </div>
-                                <div class="col-75">
-                                    <input type="text" id="Email" name="Email" value="@Session["CurrentUserEmail"]" readonly>
-                                </div>
-                            </div>
-
-
-
-                            <div class="row">
-                                <div class="col-25">
-                                    <label for="ApplicantQuestion">Tell me something about yourself.</label>
-                                </div>
-                                <div class="col-75">
-                                    <textarea id="subject" name="ApplicantQuestion" placeholder="Write something.." style="height:200px"></textarea>
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-25">
-                                    <label for="ApplicantResume">Upload your resume.</label>
-                                </div>
-                                <div class="col-75">
-                                    <input type="file" id="subject" name="ApplicantResume" placeholder="resume here.." style="height:200px">
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <input type="submit" value="Submit">
-                                @Html.ValidationSummary()
-                            </div>
-                        </form>
-                    </div>
-                }
+                <span class="w3-tag w3-small w3-theme-12">@Model.Department.DepartmentName</span>
             </div>
         </div>
+        <div class="w3-container w3-card w3-white w3-round w3-margin">
+
+
+            @if (Session["CurrentUserID"] != null)
+            {
+                <h5><strong>APPLICATION FORM</strong></h5>
+                <div class="container">
+                    <form novalidate="novalidate" action="/jobs/applyjob" method="post" class="needs-validation">
+                        @Html.AntiForgeryToken()
+                        <input type="hidden" name="JobID" value="@Model.JobID" />
+                        <div class="row">
+                            <div class="col-25">
+                                <label for="StudentName">Name</label>
+                            </div>
+                            <div class="col-75">
+                                <input type="text" id="StudentName" name="StudentName" value="@Session["CurrentUserFirstName"] @Session["CurrentUserLastName"]" readonly>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-25">
+                                <label for="Email">Email</label>
+                            </div>
+                            <div class="col-75">
+                                <input type="text" id="Email" name="Email" value="@Session["CurrentUserEmail"]" readonly>
+                            </div>
+                        </div>
+
+
+
+                        <div class="row">
+                            <div class="col-25">
+                                <label for="ApplicantPurpose">Tell me something about yourself.</label>
+                            </div>
+                            <div class="col-75">
+                                <textarea id="subject" name="ApplicantPurpose" placeholder="Write something.." style="height:200px"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-25">
+                                <label for="ApplicantResume">Upload your resume.</label>
+                            </div>
+                            <div class="col-75">
+                                <input type="file" id="subject" name="ApplicantResume" placeholder="resume here.." style="height:200px">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <input type="submit" value="Submit">
+                            @Html.ValidationSummary()
+                        </div>
+                    </form>
+                </div>
+            }
         </div>
+    </div>
+
+</div>
+
+
+
+
 
 <script>
     $(".editbutton").click(function () {
@@ -109,3 +112,4 @@
         $(this).parent().find(".answer").hide();
     });
 </script>
+

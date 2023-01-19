@@ -8,9 +8,8 @@ namespace QualifyMe.ViewModels
 {
     public class StudentSkillSetView
     {
-        public int SkillSetID { get; set; }
         public int UserID { get; set; }
-
-
+        public int SkillID { get; set; }
+        public string SkillName { get; set; }
     }
 }

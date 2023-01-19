@@ -1,0 +1,33 @@
+﻿@model List<QualifyMe.ViewModels.ApplicantView>
+
+@{
+    ViewBag.Title = "Applicant";
+}
+@*<div class="addbutton" style="position: center">
+        @if (Session["CurrentCompanyName"] != null)
+        {
+            <a href="/company/jobs/create" class="btn btn-primary">Add Job</a>
+        }
+    </div>*@
+
+
+<div class="row">
+    <div class="col-sm-12">
+
+        <table class="table">
+            @foreach (var item in Model)
+            {
+                Html.RenderPartial("Applicant", item);
+            }
+        </table>
+
+    </div>
+</div>
+
+<script>
+    $("a[href='/allapplicants']").attr("id", "active");
+</script>
+
+
+
+\

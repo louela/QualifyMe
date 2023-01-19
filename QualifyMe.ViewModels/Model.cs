@@ -15,5 +15,8 @@ namespace QualifyMe.ViewModels
         public Company company { get; set; }
         public Department department { get; set; }
         public Course course { get; set; }
+        public Tag tag { get; set; }
+        public StudentSkillSet StudentSkillSet { get; set; }
+        public SkillTag skilltag { get; set; }
     }
 }

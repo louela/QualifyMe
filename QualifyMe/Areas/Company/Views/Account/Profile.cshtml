@@ -13,7 +13,7 @@
 
 </head>
 <body>
-    <div class="container emp-profile">
+    <!--<div class="container emp-profile">
         <form method="post">
             <div class="row">
                 <div class="col-md-4">
@@ -23,6 +23,9 @@
                             Change Photo
                             <input type="file" name="file" />
                         </div>
+                    </div>
+                    <div class="profile-btn">
+                        <h5><span style="color: white; position: center;"><a href="/company/account/changeprofile" class="btn btn-primary" style="background-color:forestgreen">Edit Profile</a></span></h5>
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -37,89 +40,133 @@
                         <ul class="nav nav-tabs" id="myTab" role="tablist">
                             <li class="nav-item">
                                 <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Posted Job</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-md-2">
-                    <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile" />
-                </div>
+                            </li>-->
+    @*<li class="nav-item">
+            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Posted Job</a>
+        </li>*@
+    <!--</ul>
             </div>
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="profile-work">
-                        <p>SKILLS</p>
-                        <a href="">Web Designer</a><br />
-                        <a href="">Web Developer</a><br />
-                        <a href="">WordPress</a><br />
-                        <a href="">WooCommerce</a><br />
-                        <a href="">PHP, .Net</a><br />
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="profile-work">
+                <p>SKILLS</p>
+                <a href="">Web Designer</a><br />
+                <a href="">Web Developer</a><br />
+                <a href="">WordPress</a><br />
+                <a href="">WooCommerce</a><br />
+                <a href="">PHP, .Net</a><br />
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="tab-content profile-tab" id="myTabContent">
+                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Company ID</label>
+                        </div>
+                        <div class="col-md-6">
+                            <p>@Session["CurrentCompanyID"]</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Name</label>
+                        </div>
+                        <div class="col-md-6">
+                            <p>@Session["CurrentCompanyName"]</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Email</label>
+                        </div>
+                        <div class="col-md-6">
+                            <p>@Session["CurrentCompanyEmail"]</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Phone</label>
+                        </div>
+                        <div class="col-md-6">
+                            <p>@Session["CurrentCompanyMobile"]</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Description</label>
+                        </div>
+                        <div class="col-md-6">
+                            <p>@Session["CurrentCompanyDescription"]</p>
+                        </div>
                     </div>
                 </div>
-                <div class="col-md-8">
-                    <div class="tab-content profile-tab" id="myTabContent">
-                        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <label>Company ID</label>
-                                </div>
-                                <div class="col-md-6">
-                                    <p>@Session["CurrentCompanyID"]</p>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <label>Name</label>
-                                </div>
-                                <div class="col-md-6">
-                                    <p>@Session["CurrentCompanyName"]</p>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <label>Email</label>
-                                </div>
-                                <div class="col-md-6">
-                                    <p>@Session["CurrentCompanyEmail"]</p>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <label>Phone</label>
-                                </div>
-                                <div class="col-md-6">
-                                    <p>@Session["CurrentCompanyMobile"]</p>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <label>Description</label>
-                                </div>
-                                <div class="col-md-6">
-                                    <p>@Session["CurrentCompanyDescription"]</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                           
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <p>List of job posted</p>
-                                    </div>
-                                    @*<div class="col-md-6">
-                                            <p>2</p>
-                                        </div>*@
-                                </div>
-                            
+                <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p>List of job posted</p>
+                            </div>-->
+    @*<div class="col-md-6">
+            <p>2</p>
+        </div>*@
+    <!--</div>
+
                         </div>
                     </div>
                 </div>
             </div>
         </form>
-    </div>
+    </div>-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/content/viewprofile.css">
+    <div class="container">
+        <div class="profile-header">
+            <div class="profile-img">
+                <img src="~/Images/user.png" width="200" alt="Profile Image">..
+            </div>
+            <div class="profile-nav-info">
+                <h3 class="user-name">@Session["CurrentCompanyName"]</h3>
+                <div class="address">
+                    <p id="state" class="state">@Session["CurrentCompanyAddress"]</p>
+                    @*<span id="country" class="country">USA.</span>*@
+                </div>.
+
+            </div>
+            @*<div class="profile-option">
+                    <div class="notification">
+                        <i class="fa fa-bell"></i>
+                        <span class="alert-message">3</span>
+                    </div>
+                </div>*@
+        </div>
+
+        <div class="main-bd">
+            <div class="left-side">
+                <div class="profile-side">
+                    <p class="mobile-no"><i class="fa fa-phone"></i> @Session["CurrentCompanyMobile"]</p>
+                    <p class="user-mail"><i class="fa fa-envelope"></i> @Session["CurrentCompanyEmail"]</p>
+                    <div class="user-bio">
+                        <h3>Description</h3>
+                        <p class="bio">
+                            @Session["CurrentCompanyDescription"]
+                        </p>
+                    </div>
+
+                    <div class="profile-btn">
+                        <h5><span style="color: white; position: center;"><a href="/company/account/changeprofile" class="btn btn-primary" style="background-color:forestgreen">Edit Profile</a></span></h5>
+                    </div>
+
+
+                </div>
+
+            </div>
+           
+        </div>
+    </div>>
 </body>
 </html>
 <script type="text/javascript">

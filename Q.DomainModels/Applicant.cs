@@ -22,7 +22,7 @@ namespace Q.DomainModels
       
         public string ApplicantResume { get; set; }
         public string ApplicantPurpose { get; set; }
-      
+        public int? ApplicantStatus { get; set; }
 
 
        

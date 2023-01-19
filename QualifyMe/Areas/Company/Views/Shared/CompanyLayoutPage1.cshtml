@@ -15,26 +15,22 @@
         <div class="container">
             <img src="~/images/qualifyme-logo.png" alt="logo" height="50" width="50" />
 
-            <a class="navbar-brand" href="/Home/index">
+            <a class="navbar-brand" href="/Company/Home/index">
                 QualifyMe
             </a>
-            <div class="search-bar">
+            @*<div class="search-bar">
                 <form>
                     <input type="text" name="search" placeholder="Search...">
                     <button type="submit"><i class="la la-search"></i></button>
                 </form>
-            </div>
+            </div>*@
 
 
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav mx-auto">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="/home/homepage">Home</a>
-                    </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="/home/about">About</a>
-                    </li>
+
+
 
 
 
@@ -42,13 +38,18 @@
                     @if (Session["CurrentCompanyName"] != null)
                     {
                         <li class="nav-item">
-                            <a class="nav-link" href="/home/companies">Companies</a>
+                            <a class="nav-link active" href="/company/home/index">Home</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="/company/home/jobs">My Jobs</a>
+                        </li>
+                        @*<li class="nav-item">
+                            <a class="nav-link" href="/company/home/applicants">Applicants</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="job.html">Job</a>
-                        </li>
-
-
+                            <a class="nav-link" href="/company/home/applicante">Applicante</a>
+                        </li>*@
 
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
@@ -62,11 +63,11 @@
                             </div>
                         </li>
                     }
-
-            </div>
+                </ul>
+</div>
     </nav>
     @RenderBody()
-    </div>
+    
 
 </body>
 </html>

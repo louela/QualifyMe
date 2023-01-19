@@ -1,0 +1,104 @@
+﻿@model  IEnumerable<QualifyMe.ViewModels.Model>
+@{
+    ViewBag.Title = "Applicants";
+    Layout = "~/Areas/Company/Views/Shared/CompanyLayoutPage1.cshtml";
+}
+@*<link rel="stylesheet" href="/Content/list.css">
+<div class="table">
+    <div class="col-12">
+        <div class="layout-inline row th">
+            <div class="col col-pro">Name</div>
+
+            <div class="col col-qty ">Type</div>
+            <div class="col">Status</div>
+        </div>
+        <table class="table">
+            @foreach (var item in Model)
+            {
+                <div class="layout-inline row">
+
+                    <div class="col col-pro layout-inline">
+
+                        <a href="/account/profile/@item.student.UserID">@item.applicant.Student.StudentFirstName</a>
+                    </div>
+
+                    <p>@item.job.JobTypes</p>
+
+
+
+                    <div class="attr2" style="width:50px; background-color: tomato">@item.applicant.ApplicantStatus</div>
+
+
+                </div>
+            }
+
+        </table>
+    </div>
+</div>*@
+
+
+<h3 style="text-align: center">Applicants</h3>
+
+@foreach (var item in Model)
+{
+    <!-- Jobs Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+
+            <div class="tab-class text-center wow fadeInUp" data-wow-delay="0.3s">
+
+                <div class="tab-content">
+                    <div id="tab-1" class="tab-pane fade show p-0 active">
+                        <div class="job-item p-4 mb-4">
+                            <div class="row g-4">
+                                <div class="col-sm-12 col-md-8 d-flex align-items-center">
+                                    <img class="flex-shrink-0 img-fluid border rounded" src="img/com-logo-1.jpg" alt="" style="width: 80px; height: 80px;">
+                                    <div class="text-start ps-4">
+
+
+                                        <h5 class="mb-3"><a href="/account/profile/@item.student.UserID">@item.applicant.Student.StudentFirstName</a></h5>
+                                        <span class="text-truncate me-3"><i class="fa fa-map-marker-alt text-primary me-2"></i>@item.student.Course.CourseName</span>
+                                        <span class="text-truncate me-3"><i class="far fa-clock text-primary me-2"></i>@item.job.JobTypes</span>
+                                        <span class="text-truncate me-3"><i class="far fa-clock text-primary me-2"></i>@item.applicant.ApplicantStatus</span>
+                                        @*<span class="text-truncate me-0"><i class="far fa-money-bill-alt text-primary me-2"></i>$123 - $456</span>*@
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 col-md-4 d-flex flex-column align-items-start align-items-md-end justify-content-center">
+                                    <div class="d-flex mb-3">
+                                        <a class="btn btn-light btn-square me-3" href=""><i class="far fa-heart text-primary"></i></a>
+                                        <a class="btn btn-primary" href="">Accept</a>
+                                        <label class="switch">
+                                            <input type="checkbox">
+                                            <span class="slider round"></span>
+                                        </label>
+                                    </div>
+                                    <small class="text-truncate"><i class="far fa-calendar-alt text-primary me-2"></i>@item.applicant.ApplicantDateAndTime</small>
+                                </div>
+
+                                @*trial*@
+                                <form name="myform" method="POST" onsubmit="onSubmit()" ;>
+                                    <input type="submit" name="accept" id="accept" value="Accept" onclick="acceptFunction()">
+                                    <input type="submit" name="reject" id="reject" value="Accept" onclick="rejectFunction()">
+                                </form>
+
+                                function acceptFunction(){
+                                document.myform.accept.value  = "Accepted";
+                                }
+                                function rejectFunction(){
+                                document.myform.accept.value  = "Rejected";
+                                }
+
+                            </div>
+                        </div>
+
+
+
+
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+}

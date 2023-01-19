@@ -3,145 +3,59 @@
 
 @{
     ViewBag.Title = "View Job";
+    Layout = "~/Areas/Company/Views/Shared/CompanyLayoutPage1.cshtml";
+
 }
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-blue-grey.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<div class="w3-container w3-content" style="max-width:1400px;margin-top:80px">
 
-<div class="row">
-    <div class="col-sm-12">
+    <div class="w3-col m20">
+        <div class="w3-container w3-card w3-white w3-round w3-margin">
+            <br>
+            <h3><strong>@Model.JobTitle</strong></h3>
+            <span class="w3-right w3-opacity"></span>
+            <p>by: @Model.Company.CompanyName</p>
+            <hr class="w3-clear">
 
-        <div class="form-group form-row">
-            <div class="col-sm-10 offset-sm-2">
-                <h3>@Model.JobTitle</h3>
-                <div class="row">
-                    <div class="col-sm-2">
-                        <span class="badge badge-info">@Model.Course.CourseName</span>
+            <div class="w3-third w3-left">
+                <h1>Description</h1>
+                <p>@Model.JobDescription</p>
+            </div>
+            <div class="w3-third w3-left">
+                <h1>Qualifications</h1>
+                <p>@Model.JobQualification</p>
+            </div>
+            <div class="card">
+                <div class="container">
+                    <h6 class="title-attr" style="margin-top:15px;"><small>Type</small></h6>
+                    <div>
+                        <div class="attr" style="width:50px; background-color: sandybrown">@Model.JobTypes</div>
                     </div>
-                    <div class="col-sm-2">
-                        <span class="text-info">
-                            @if (Convert.ToInt32(Session["CurrentCompanyID"]) != Model.CompanyID)
-                            {
-                                @:by @Model.Company.CompanyName
-                            }
-                            else
-                            {
-                                @:by you
-                            }
-                        </span>
-                    </div>
-                    <div class="col-sm-3">
-                        <span class="text-success">by @Model.JobDateAndTime</span>
-                    </div>
-                    <div class="col-sm-2">
-                        <span class="badge badge-pill badge-success col-2">
-                            @Model.ApplicantsCount
-                        </span>
-                        Number of Views
+                    <h6 class="title-attr"><small>Status</small></h6>
+                    <div>
+                        <div class="attr2" style="width:50px; background-color: tomato">@Model.JobStatus</div>
                     </div>
                 </div>
-
-                @if (Model.ApplicantsCount == 0)
-                {
-                    <p class="text-danger">No applicants yet!</p>
-                }
+                <span class="w3-tag w3-small w3-theme-12">@Model.Department.DepartmentName</span>
             </div>
         </div>
-
-        @for (int i = 0; i < Model.Applicants.Count; i++)
-        {
-            <div class="form-group form-row">
-                <div class="col-sm-2">
-                    <span class="badge badge-secondary col-2 votescount">
-                        @Model.Applicants[i]
-                    </span>
-                    Applicants
-
-                </div>
-
-                <div class="col-sm-7">
-                    @if (Convert.ToInt32(Session["CurrentUserID"]) != Model.Applicants[i].UserID)
-                    {
-                        @Model.Applicants[i].ApplicantPurpose
-                    }
-                    else
-                    {
-                        <p class="answer">@Model.Applicants[i].ApplicantPurpose</p>
-                        <button class="btn btn-info editbutton">Edit</button>
+        <div class="w3-container w3-card w3-white w3-round w3-margin">
 
 
-                    }
-                </div>
-
-                <div class="col-sm-1">
-                    @if (Convert.ToInt32(Session["CurrentUserID"]) != Model.Applicants[i].UserID)
-                    {
-                        @:by @Model.Applicants[i].Student.StudentName
-                    }
-                    else
-                    {
-                        @:by you
-                    }
-                </div>
-                <div class="col-sm-2">
-                    on @Model.Applicants[i].ApplicantDateAndTime
-                </div>
-            </div>
-        }
-
-     
+        </div>
     </div>
-    @Html.ValidationSummary()
+
 </div>
 
-<script>
-    $(".btnUpVote").click(function ()
-    {
-        var UpBtn = $(this);
-        var DownBtn = UpBtn.parent().find(".btnDownVote");
-        if (UpBtn.attr("src") == "/Images/up-empty.png")
-        {
-            var value;
-            if (UpBtn.attr("src") == "/Images/up-empty.png" && DownBtn.attr("src") == "/Images/down-empty.png")
-                value = 1;
-            else
-                value = 2;
 
-            $.ajax({
-                url: "/api/questions?answerid=" + UpBtn.attr("data-answerid") + "&value=" + value + "&UserID=@Session["CurrentUserID"]", type: "POST", success: function ()
-                {
-                    UpBtn.parent().find(".votescount").text(parseInt(UpBtn.parent().find(".votescount").text()) + value);
-                    UpBtn.attr("src", "/Images/up-color.png");
-                    DownBtn.attr("src", "/Images/down-empty.png");
-                }
-            });
-        }
-    });
 
-    $(".btnDownVote").click(function ()
-    {
-        var DownBtn = $(this);
-        var UpBtn = DownBtn.parent().find(".btnUpVote");
-        if (DownBtn.attr("src") == "/Images/down-empty.png")
-        {
-            var value;
-            if (UpBtn.attr("src") == "/Images/up-empty.png" && DownBtn.attr("src") == "/Images/down-empty.png")
-                value = -1;
-            else
-                value = -2;
 
-            $.ajax({
-                url: "/api/questions?answerid=" + UpBtn.attr("data-answerid") + "&value=" + value + "&UserID=@Session["CurrentUserID"]", type: "POST", success: function ()
-                {
-                    DownBtn.parent().find(".votescount").text(parseInt(DownBtn.parent().find(".votescount").text()) + value);
-                    DownBtn.attr("src", "/Images/down-color.png");
-                    UpBtn.attr("src", "/Images/up-empty.png");
-                }
-            });
-        }
-    });
-</script>
 
 <script>
-    $(".editbutton").click(function ()
-    {
+    $(".editbutton").click(function () {
         $(this).parent().find(".needs-validation").show();
         $(this).hide();
         $(this).parent().find(".answer").hide();

@@ -9,11 +9,12 @@ using System.Web;
 
 namespace QualifyMe.ViewModels
 {
-    public class NewApplicant
+    
+public class NewApplicant
     {
-       
+
         [Required]
-        public string ApplicantQuestion { get; set; }
+        public string ApplicantPurpose { get; set; }
 
         [Required]
         public DateTime ApplicantDateAndTime { get; set; }
@@ -25,11 +26,12 @@ namespace QualifyMe.ViewModels
 
         [Required]
         public int JobID { get; set; }
-     
 
-       
 
-        //[Required]
-        //public int ApplicantsCount { get; set; }
+        public int ApplicantStatus { get; set; }
+
+        //[Required]//public int ApplicantsCount { get; set; }
     }
+
+
 }

@@ -28,9 +28,10 @@ namespace Q.DomainModels
        // public HttpPostedFileBase file { get; set; }
      
         public bool IsAdmin { get; set; }
+        public int IsApproved { get; set; }
 
         [ForeignKey("CourseID")]
         public virtual Course Course { get; set; }
-        public virtual List<SkillSet> Skill { get; set; }
+        public virtual List<StudentSkillSet> Skills { get; set; }
     }
 }

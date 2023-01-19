@@ -10,7 +10,7 @@
 <section class="hero">
     <div class="background-image"></div>
     <div class="hero-content-area">
-        <img src="~/Images/School/booth.jpg" alt="Forest" style="width:100%;">
+        <img src="~/Images/School/booth.jpg" alt="Forest" style="width:100%; height:20%">
     </div>
 </section>
 <div class="w3-container w3-content" style="max-width:1400px;margin-top:20px">
@@ -40,14 +40,14 @@
                     <br>
                     <img src="~/Images/avatar.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
                     <span class="w3-right w3-opacity">@item.JobDateAndTime</span>
-                    <h4>@item.Company.CompanyName</h4><br>
+                    <span><h4><a>@item.Company.CompanyName</a></h4><br></span>
                     <hr class="w3-clear">
                     <h3>
                         <a href="/jobs/view/@item.JobID">@item.JobTitle</a>
                     </h3>
                     <p>@item.JobDescription</p>
-                    <span class="w3-round" style="background-color: seagreen; color: white">@item.Course.CourseName</span>
-                    <span class="w3-round" style="background-color: tomato; color: white">@item.JobTypes</span>
+                    <span class="w3-round" style="background-color: seagreen; color: white"><a>@item.Department.DepartmentName</a></span>
+                    <span class="w3-round" style="background-color: tomato; color: white"><a>@item.JobTypes</a></span>
                     <p>Applicants: <strong>@item.ApplicantsCount</strong></p>
 
                 </div>

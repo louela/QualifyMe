@@ -23,15 +23,17 @@ namespace QualifyMe.ViewModels
         public string JobTypes { get; set; }
         [Required]
         public string JobStatus { get; set; }
+        //[Required]
+        //public float JobSalary { get; set; }
 
         [Required]
         public int CompanyID { get; set; }
 
         [Required]
-        //public int DepartmentID { get; set; }
-       public int CourseID { get; set; }
+        public int DepartmentID { get; set; }
+         public int Ranking { get; set; }
 
-       
+
         public int ApplicantID { get; set; }
 
         [Required]

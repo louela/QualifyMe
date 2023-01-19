@@ -12,15 +12,15 @@ namespace Q.DomainModels
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int SkillID { get; set; }
         public int UserID { get; set; }
-        public int SkillSetID { get; set; }
         public string SkillName { get; set; }
 
 
 
         [ForeignKey("UserID")]
         public virtual Student Student { get; set; }
-        [ForeignKey("SkillSetID")]
-        public virtual SkillSet SkillSet { get; set; }
+        //[ForeignKey("SkillSetID")]
+        //public virtual StudentSkillSet studentSkillSet { get; set; }
     }
 }

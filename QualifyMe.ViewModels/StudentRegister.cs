@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 using System.Web;
+using Q.DomainModels;
 
 namespace QualifyMe.ViewModels
 {
@@ -26,6 +27,7 @@ namespace QualifyMe.ViewModels
         [RegularExpression(@"^[a-zA-Z ]*$")]
         public string StudentLastName { get; set; }
         public string ImagePath { get; set; }
+        public int IsApproved { get; set; }
         // public HttpPostedFileBase ImageUpload { get; set; }
         //public byte[] ImageUpload { get; set; }
 
@@ -41,7 +43,7 @@ namespace QualifyMe.ViewModels
         public string ConfirmPassword { get; set; }
 
         public CourseView Course { get; set; }
-
+        public StudentSkillSet StudentSkillSets { get; set; }
 
     }
 }

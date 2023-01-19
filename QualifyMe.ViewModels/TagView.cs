@@ -6,9 +6,12 @@ using System.Threading.Tasks;
 
 namespace QualifyMe.ViewModels
 {
-    public class SkillSetView
+    public class TagView
     {
-        public int ID { get; set; }
-        public string SkillName { get; set; }
+        public int TagID { get; set; }
+
+        public int JobID { get; set; }
+
+        public string TagName { get; set; }
     }
 }

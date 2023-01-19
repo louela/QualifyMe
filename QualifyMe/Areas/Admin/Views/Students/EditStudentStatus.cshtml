@@ -1,0 +1,118 @@
+﻿@using System.Net.Configuration
+@model QualifyMe.ViewModels.EditStudentStatusView
+@{
+    ViewBag.Title = "Edit Student Status";
+}
+
+<div id="layoutSidenav_content">
+    <main>
+
+        <div class="container">
+
+            <form novalidate="novalidate" action="/admin/students/editstudentstatus" method="post" class="needs-validation">
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                <input type="hidden" id="UserID" name="UserID" value="@Model.UserID" />
+                <input type="hidden" id="StudentLastName" name="StudentLastName" value="@Model.StudentLastName" />
+                <fieldset>
+
+                    <!-- Form Name -->
+                    <legend>Student Status!</legend>
+
+                    <!-- Text input-->
+
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">First Name</label>
+                        <div class="col-md-4 inputGroupContainer">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                <input name="StudentFirstName" placeholder="StudentFirstName" class="form-control" type="text" value="@Model.StudentFirstName" readonly>
+                            </div>
+                        </div>
+                    </div>
+                   
+
+                    <!-- Text input-->
+                    <!-- Text input-->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">E-Mail</label>
+                        <div class="col-md-4 inputGroupContainer">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                                <input name="Email" placeholder="Email" class="form-control" type="text" value="@Model.Email" readonly>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- Text input-->
+
+
+
+
+
+
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">Status</label>
+                        <div class="col-md-4 selectContainer">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+                                <select name="IsApproved" id="IsApproved" class="form-control selectpicker">
+
+                                    @if (Model.IsApproved == 1)
+                                    {
+                                        <option value="@Model.IsApproved">Active</option>
+                                        <option value="0">Disabled</option>
+                                    }
+                                    else if (Model.IsApproved == 0)
+                                    {
+                                        <option value="@Model.IsApproved">Disabled</option>
+                                        <option value="1">Active</option>
+                                    }
+
+
+
+
+
+
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Text input-->
+                    <!-- Button -->
+                    @Html.ValidationSummary()
+                    <div class="form-group">
+                        <label class="col-md-4 control-label"></label>
+                        <div class="col-md-4">
+                            <button type="submit" class="btn btn-warning">Update<span class="glyphicon glyphicon-send"></span></button>
+                        </div>
+                    </div>
+
+                </fieldset>
+            </form>
+        </div>
+
+
+    </main>
+</div>
+
+<script>
+
+    $("a[href='/admin/companies/editcompanystatus']").attr("id", "active");
+
+    $(document).on("submit", ".needs-validation", validate);
+    $(".needs-validation input").blur(validate);
+    function validate(event) {
+        if ($(".needs-validation")[0].checkValidity() == false) {
+            event.preventDefault();
+        }
+        $(".needs-validation")[0].classList.add("was-validated");
+
+    }
+</script>
+
+
+

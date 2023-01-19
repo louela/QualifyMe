@@ -1,0 +1,30 @@
+﻿@model QualifyMe.ViewModels.StudentView
+
+
+
+    
+
+<tr>
+
+
+    <td>@Model.StudentFirstName</td>
+    <td>@Model.Email</td>
+    @if (Model.IsApproved == 1)
+    {
+        <td><span class="badge badge-secondary">Active</span></td>
+    }
+    else if (Model.IsApproved == 0)
+    {
+        <td><span class="badge badge-secondary">Inactive</span></td>
+    }
+   
+    <td class="text-dark">
+
+        <a href="/admin/students/editstudentstatus/@Model.UserID">Edit   ||</a>
+        <a href="/admin/students/deletestudent/@Model.UserID">Delete</a>
+        <br />
+    </td>
+
+
+
+</tr>

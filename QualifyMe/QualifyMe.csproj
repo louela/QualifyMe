@@ -155,9 +155,12 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\companylist.css" />
     <Content Include="Content\landing.css" />
+    <Content Include="Content\popupmessage.css" />
     <Content Include="Content\Style.css" />
     <Content Include="Content\Styles.css" />
     <Content Include="Content\StyleSheet1.css" />
+    <Content Include="Content\types.css" />
+    <Content Include="Content\viewprofile.css" />
     <Content Include="Global.asax" />
     <Content Include="Images\avatar.png" />
     <Content Include="Images\Company\accenture.png" />
@@ -173,6 +176,7 @@
     <Content Include="Images\School\booth.jpg" />
     <Content Include="Images\School\landing.png" />
     <Content Include="Images\School\pic4.jpg" />
+    <Content Include="Images\School\usjr.jpg" />
     <Content Include="Images\up-color.png" />
     <Content Include="Images\up-empty.png" />
     <Content Include="Images\user.png" />
@@ -222,6 +226,19 @@
     <Content Include="Areas\Admin\Views\Shared\Job.cshtml" />
     <Content Include="Areas\Company\Views\Account\Profile.cshtml" />
     <Content Include="Areas\Company\Views\Account\ChangeProfile.cshtml" />
+    <Content Include="Areas\Company\Views\Applicants\List.cshtml" />
+    <Content Include="Areas\Company\Views\Applicants\ListofApplicants.cshtml" />
+    <Content Include="Areas\Company\Views\Applicants\ViewApplicant.cshtml" />
+    <Content Include="Areas\Company\Views\Home\Applicants.cshtml" />
+    <Content Include="Areas\Company\Views\Jobs\CreateJob.cshtml" />
+    <Content Include="Areas\Company\Views\Shared\Applicant.cshtml" />
+    <Content Include="Areas\Company\Views\Tags\AddTag.cshtml" />
+    <Content Include="Areas\Admin\Views\Companies\CompanyView.cshtml" />
+    <Content Include="Areas\Admin\Views\Companies\EditCompanyStatus.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\Students.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\Company.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\Student.cshtml" />
+    <Content Include="Areas\Admin\Views\Students\EditStudentStatus.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -260,11 +277,15 @@
     <Compile Include="Areas\Admin\Controllers\CoursesController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\JobsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\StudentsController.cs" />
     <Compile Include="Areas\Company\CompanyAreaRegistration.cs" />
     <Compile Include="Areas\Company\Controllers\AccountController.cs" />
+    <Compile Include="Areas\Company\Controllers\ApplicantsController.cs" />
     <Compile Include="Areas\Company\Controllers\HomeController.cs" />
     <Compile Include="Areas\Company\Controllers\JobsController.cs" />
+    <Compile Include="Areas\Company\Controllers\TagsController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CompaniesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\JobsController.cs" />
     <Compile Include="CustomFilters\CompanyAuthorizationFilterAttribute.cs" />
@@ -292,14 +313,12 @@
     <Content Include="Views\Account\CompanyLogin.cshtml" />
     <Content Include="Views\Account\Test.cshtml" />
     <Content Include="Views\Account\Profile.cshtml" />
-    <Content Include="Views\Account\AddSkill.cshtml" />
     <Content Include="Views\Account\CompanyRegister.cshtml" />
     <Content Include="Views\Account\DisplayImage.cshtml" />
     <Content Include="Views\Account\Image.cshtml" />
     <Content Include="Views\Account\LandingPage.cshtml" />
     <Content Include="Views\Account\Message.cshtml" />
     <Content Include="Views\Account\MyApplications.cshtml" />
-    <Content Include="Views\Account\SkillSets.cshtml" />
     <Content Include="Views\Home\Homepage.cshtml" />
     <Content Include="Views\Account\Sample.cshtml" />
     <Content Include="Views\Home\MyApplications.cshtml" />
@@ -308,6 +327,11 @@
     <Content Include="Views\Jobs\ApplicationMessage.cshtml" />
     <Content Include="Views\Jobs\RecommendedJobs.cshtml" />
     <Content Include="Views\Home\RecommendedJobs.cshtml" />
+    <Content Include="Views\Account\PopupMessage.cshtml" />
+    <Content Include="Views\Companies\ViewProfile.cshtml" />
+    <Content Include="Views\Account\Indexx.cshtml" />
+    <Content Include="Views\Account\AddSkill.cshtml" />
+    <Content Include="Views\Home\Types.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -318,6 +342,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
+    <Folder Include="Areas\Admin\Views\Departments\" />
     <Folder Include="Areas\Company\Data\" />
     <Folder Include="Models\" />
     <Folder Include="Views\Company\" />

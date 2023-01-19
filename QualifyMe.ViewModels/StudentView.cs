@@ -24,10 +24,11 @@ namespace QualifyMe.ViewModels
     
        
         public bool IsAdmin { get; set; }
+        public int IsApproved { get; set; }
         public string ImagePath { get; set; }
         // public HttpPostedFileBase ImageUpload { get; set; }
         public CourseView Course { get; set; }
-        //public virtual List<SkillView> Skills { get; set; }
-      
+        public virtual List<StudentSkillSetView> Skills { get; set; }
+
     }
 }

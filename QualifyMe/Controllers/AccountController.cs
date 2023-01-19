@@ -52,17 +52,21 @@ namespace QualifyMe.Controllers
 
                 int uid = this.ss.InsertStudent(rvm);
                 Session["CurrentUserID"] = uid;
-                Session["CurrentStudentID"] = rvm.StudentID;               
+                Session["CurrentStudentID"] = rvm.StudentID;
+                Session["CurrentStudentFirstName"] = rvm.StudentFirstName;
+                Session["CurrentStudentLastName"] = rvm.StudentLastName;
                 Session["CurrentUserEmail"] = rvm.Email;
                 Session["CurrentUserGender"] = rvm.Gender;
                 Session["CurrentUserAddress"] = rvm.Address;
                 Session["CurrentUserMobile"] = rvm.Mobile;
                 Session["CurrentUserPassword"] = rvm.Password;
                 Session["CurrentStudentCourse"] = rvm.CourseID;
+                //Session["CurrentUserSkills"] = rvm.StudentSkillSets;
+                Session["CurrentUserIsApproved"] = 0;
                 Session["CurrentUserIsAdmin"] = false;
-                return RedirectToAction("Register", "Account");
+                return RedirectToAction("AddSkill", "Account");
             }
-
+                
               
             else
             {
@@ -72,15 +76,10 @@ namespace QualifyMe.Controllers
 
         }
 
-        public ActionResult Image()
-        {
-            return View();
-        }
-
         public ActionResult AddSkill()
-        {                   
-            AddSkillView akv = new AddSkillView();
-            return View(akv); 
+        {
+           AddSkillView ask = new AddSkillView();
+            return View(ask);
         }
 
         [HttpPost]
@@ -92,7 +91,7 @@ namespace QualifyMe.Controllers
                 akv.UserID = Convert.ToInt32(Session["CurrentUserID"]);
                 Session["CurrentSkillNames"] = akv.SkillName;
                 this.skl.InsertSkill(akv);
-                return RedirectToAction("Homepage", "Home" ,new { id = akv.UserID });
+                return RedirectToAction("AddSkill", "Account" ,new { id = akv.UserID });
             }
             else
             {
@@ -106,6 +105,11 @@ namespace QualifyMe.Controllers
         {
             LoginView lvm = new LoginView();
             return View(lvm);
+        }
+
+        public ActionResult PopupMessage()
+        {
+            return View();
         }
 
         [HttpPost]
@@ -122,7 +126,9 @@ namespace QualifyMe.Controllers
                     Session["CurrentUserEmail"] = uvm.Email;                   
                     Session["CurrentUserFirstName"] = uvm.StudentFirstName;
                     Session["CurrentUserLastName"] = uvm.StudentLastName;
-                    Session["CurrentUserEmail"] = uvm.Email;                  
+                    Session["CurrentUserGender"] = uvm.Gender;
+                    Session["CurrentUserAddress"] = uvm.Address;
+                    Session["CurrentUserMobile"] = uvm.Mobile;                  
                     Session["CurrentUserPassword"] = uvm.Password;
                     Session["CurrentStudentCourse"] = uvm.Course.CourseName;
                     Session["CurrentUserIsAdmin"] = uvm.IsAdmin;
@@ -130,11 +136,21 @@ namespace QualifyMe.Controllers
                     if (uvm.IsAdmin)
                     {
                         return RedirectToAction("Index", "Home", new { area = "Admin" });
-
-
                     }
                     else
-                        return RedirectToAction("Homepage", "Home");
+                    {
+                        if (uvm.IsApproved == 0)
+                        {
+                            return RedirectToAction("Message", "Account", new { msg = "AccountNotVerified" });
+                        }
+                        else if (uvm.IsApproved == 1)
+                        {
+                            return RedirectToAction("Homepage", "Home");
+                        }
+
+                        return RedirectToAction("Login", "Account");
+
+                    }
                 }
                 else
                 {
@@ -226,9 +242,9 @@ namespace QualifyMe.Controllers
             List<CourseView> courses = this.css.GetCourses();
             ViewBag.courses = courses;
             StudentView uvm = this.ss.GetStudentsByUserID(uid);
-            EditStudent es = new EditStudent() { StudentFirstName = uvm.StudentFirstName,StudentLastName = uvm.StudentLastName,Email = uvm.Email, UserID = uvm.UserID, StudentID = uvm.StudentID, CourseID = uvm.CourseID ,
-                ImagePath = uvm.ImagePath,
-                Gender = uvm.Gender, Address = uvm.Address, Mobile = uvm.Mobile};
+            EditStudent es = new EditStudent() { StudentFirstName = uvm.StudentFirstName,StudentLastName = uvm.StudentLastName,Email = uvm.Email, UserID = uvm.UserID, StudentID = uvm.StudentID, CourseID = uvm.CourseID , Gender = uvm.Gender, Address = uvm.Address, Mobile = uvm.Mobile ,ImagePath = uvm.ImagePath};
+
+
             return View(es);
         }
 
@@ -242,8 +258,8 @@ namespace QualifyMe.Controllers
             {
                 es.UserID = Convert.ToInt32(Session["CurrentUserID"]);
                 this.ss.UpdateStudentDetails(es);
-                Session["CurrentUserName"] = es.StudentFirstName;
-                return RedirectToAction("ChangeProfile", "Account");
+                Session["CurrentUserFirstName"] = es.StudentFirstName;
+                return RedirectToAction("Profile", "Account");
             }
             else
             {
@@ -257,8 +273,7 @@ namespace QualifyMe.Controllers
         {
             StudentView sv = new StudentView();                   
             List<CourseView> courses = this.css.GetCourses();
-            ViewBag.courses = courses;
-
+            ViewBag.courses = courses;           
             return View(sv);
         }
 
@@ -315,11 +330,7 @@ namespace QualifyMe.Controllers
             return jobs;
         }
 
-        public ActionResult Sample()
-        {
-            return View();
-        }
-      
+       
 
     }
 }

@@ -78,6 +78,7 @@
     <Compile Include="SkillRepository.cs" />
     <Compile Include="StudentsDetailRepository.cs" />
     <Compile Include="StudentsRepository.cs" />
+    <Compile Include="TagsRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

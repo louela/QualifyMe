@@ -1,0 +1,121 @@
+﻿@model QualifyMe.ViewModels.ApplicantView
+
+
+
+@{
+    ViewBag.Title = "Applicant View";
+    Layout = "~/Areas/Company/Views/Shared/CompanyLayoutPage1.cshtml";
+
+
+
+}
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-blue-grey.css">
+<div class="w3-container w3-content" style="max-width:1400px;margin-top:80px">
+
+
+
+    <div class="w3-col m20">
+        <div class="w3-container w3-card w3-white w3-round w3-margin">
+            <br>
+            <h3><strong>@Model.ApplicantID</strong></h3>
+            <span class="w3-right w3-opacity"></span>
+            <p>by: @Model.ApplicantPurpose</p>
+            <hr class="w3-clear">
+
+
+
+            @*<div class="w3-third w3-left">
+                <h1>Description</h1>
+                <p>@Model.JobDescription</p>
+            </div>
+            <div class="w3-third w3-left">
+                <h1>Qualifications</h1>
+                <p>@Model.JobQualification</p>
+            </div>
+            <div class="card">
+                <div class="container">
+                    <h6 class="title-attr" style="margin-top:15px;"><small>Type</small></h6>
+                    <div>
+                        <div class="attr" style="width:50px; background-color: sandybrown">@Model.JobTypes</div>
+                    </div>
+                    <h6 class="title-attr"><small>Status</small></h6>
+                    <div>
+                        <div class="attr2" style="width:50px; background-color: tomato">@Model.JobStatus</div>
+                    </div>
+                </div>
+                <span class="w3-tag w3-small w3-theme-12">@Model.Course.CourseName</span>
+            </div>*@
+        </div>
+    </div>
+</div>
+
+
+
+<!--<meta name="viewport" content="width=device-width, initial-scale=1">
+ <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+ <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-blue-grey.css">
+ <div class="w3-container w3-content" style="max-width:1400px;margin-top:80px">
+     <div class="w3-col m12">
+         <div class="w3-container w3-card w3-white w3-round w3-margin">
+
+
+
+
+                
+<!-- Details -->
+<!--<div class="section">
+    <h6 class="title-attr" style="margin-top:15px;"><small>Type</small></h6>
+    <div>
+        <div class="attr" style="width:50px; background-color: tomato"></div>
+
+
+
+   </div>
+</div>
+<div class="section" style="padding-bottom:5px;">
+    <h6 class="title-attr"><small>Status</small></h6>
+    <div>
+        <div class="attr2"></div>
+
+
+
+   </div>
+</div>-->
+<!-- Botones de compra -->
+<!--<div class="section" style="padding-bottom:20px;">
+                <button class="btn btn-success"><span style="margin-right:20px" class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Edit</button>
+            </div>
+        </div>
+
+
+
+       <div class="col-xs-9">
+            <div style="width:100%;border-top:1px solid silver">
+                <p style="padding:15px;">
+                    <h5>Description</h5>
+                    <small>
+                       
+                    </small>
+                </p>
+                <small>
+                    <h5>Qualification</h5>
+                   
+                </small>
+            </div>
+        </div>
+    </div>
+</div>-->
+
+
+
+
+
+<script>
+    $(".editbutton").click(function () {
+        $(this).parent().find(".needs-validation").show();
+        $(this).hide();
+        $(this).parent().find(".answer").hide();
+    });
+</script>

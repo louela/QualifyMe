@@ -13,7 +13,6 @@ namespace QualifyMe.ViewModels
         public int CourseID { get; set; }
         
         public int DepartmentID { get; set; }
-
         
         public string CourseName { get; set; }
 

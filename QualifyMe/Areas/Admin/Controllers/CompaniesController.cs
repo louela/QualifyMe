@@ -51,5 +51,53 @@ namespace QualifyMe.Areas.Admin.Controllers
                 return View();
             }
         }
+
+        public ActionResult CompanyView(int id)
+        {
+
+
+            CompanyView qvm = this.cs.GetCompaniesByCompanyID(id);
+            return View(qvm);
+        }
+
+
+
+        public ActionResult EditCompanyStatus(int id)
+        {
+
+            CompanyView uvm = this.cs.GetCompaniesByCompanyID(id);
+            EditCompanyStatusView eudvm = new EditCompanyStatusView() { CompanyName = uvm.CompanyName, Email = uvm.Email, IsApproved = uvm.IsApproved, CompanyID = uvm.CompanyID };
+            return View(eudvm);
+
+        }
+
+
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+
+        public ActionResult EditCompanyStatus(EditCompanyStatusView ecm)
+        {
+
+
+            if (ModelState.IsValid)
+            {
+
+                this.cs.UpdateCompanyStatus(ecm);
+                Session["CurrentCompanyName"] = ecm.CompanyName;
+                Session["CurrentCompanyEmail"] = ecm.Email;
+                Session["CurrentCompanyIsApproved"] = ecm.IsApproved;
+                return RedirectToAction("Companies", "Home");
+            }
+            else
+            {
+                ModelState.AddModelError("x", "Invalid data");
+                return View(ecm);
+            }
+
+
+        }
+
     }
 }

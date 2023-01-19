@@ -12,8 +12,7 @@ namespace QualifyMe.ViewModels
         [RegularExpression(@"^[a-zA-Z ]*$")]
         [Required]
         public string SkillName { get; set; }
-
+        [Required]
         public int UserID { get; set; }
-
     }
 }

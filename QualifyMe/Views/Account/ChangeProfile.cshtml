@@ -13,7 +13,8 @@
 </head>
 <body>
     <div class="container emp-profile">
-        <form novalidate="novalidate" id="changeprofile" enctype="multipart/form-data" method="post" class="needs-validation" onsubmit="return AjaxPost(this)">
+        <form novalidate="novalidate" id="changeprofile" action="/account/changeprofile" method="post" class="needs-validation" ">
+            @Html.AntiForgeryToken()
             <div class="row">
                 <div class="col-md-4">
                     <div class="avatar-upload">
@@ -29,7 +30,15 @@
                     </div>
                     <input type="text" id="StudentFirstName" name="StudentFirstName" style="font-weight: bold;" value="@Model.StudentFirstName">
                     <input type="text" id="StudentLastName" name="StudentLastName" style="font-weight: bold;" value="@Model.StudentLastName">
-                    <input type="text" id="CourseID" name="CourseID" style="font-weight: lighter;" value="@Session["CurrentStudentCourse"]">
+                    <div class="col-100">
+                        <select id="drpCourses" name="CourseID" required="required">
+                            <option value="@Model.CourseID">@Session["CurrentStudentCourse"]</option>
+                            @foreach (var item in ViewBag.Courses)
+                            {
+                                <option value="@item.CourseID">@item.CourseName</option>
+                            }
+                        </select>
+                    </div>
                 </div>
                 <div class="col-md-6">
                     <div class="card">
@@ -40,10 +49,21 @@
                             <input type="text" id="StudentID" name="StudentID" style="font-weight: lighter;" value="@Model.StudentID">
                             <strong>Email :</strong>
                             <input type="text" id="Email" name="Email" style="font-weight: lighter;" value="@Model.Email">
+                            <strong>Mobile :</strong>
+                            <input type="text" id="Mobile" name="Mobile" style="font-weight: lighter;" value="@Model.Mobile">
                             <strong>Gender :</strong>
-                            <input type="text" id="Gender" name="Gender" style="font-weight: lighter;" value="@Model.Gender">
+                            <div class="row">
+                               
+                                <div class="col-75">
+                                    <select id="Gender" name="Gender">
+                                        <option value="">Please Select..</option>
+                                        <option value="female">Female</option>
+                                        <option value="male">Male</option>
+                                    </select>
+                                </div>
+                            </div>
                             <strong>Address :</strong>
-                            <input type="text" id="Address" name="Address" style="font-weight: lighter;" value="@Model.Address">
+                            <input type="text" id="Address" name="Address" style="font-weight: lighter;" value="@Model.Address" placeholder="add address...">
                             <br />
                             @Html.ValidationSummary()
                             <div class="form-group col-sm-2  float-right">

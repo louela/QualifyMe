@@ -14,8 +14,11 @@ namespace QualifyMe.ServiceLayer
     {
         void InsertSkill(AddSkillView ass);
 
-        //AddSkill GetSkillByUserID (int userId);
-        
+        //List<StudentSkillSetView> GetSkillsByUserID (int UserId);
+        StudentSkillSetView GetStudentsBySkillName(string SkillName);
+        List<StudentSkillSetView> GetSkills();
+
+
     }
 
 
@@ -35,21 +38,36 @@ namespace QualifyMe.ServiceLayer
             sr.InsertSkill(s);
         }
 
-      //public AddSkill GetSkillByUserID(int UserID)
-      //  {
-      //      SkillSet s = sr.GetSkillByUserID(UserID).FirstOrDefault();
-      //      AddSkill skv = null;
-      //      if(s != null)
-      //      {
-      //          var config = new MapperConfiguration(cfg => { cfg.CreateMap<SkillSet, AddSkill>(); cfg.IgnoreUnmapped(); });
-      //          IMapper mapper = config.CreateMapper();
-      //          skv = mapper.Map<SkillSet, AddSkill>(s);
-      //      }
-      //      return skv;
-      //  } 
-   
+        //public List<StudentSkillSetView> GetSkillsByUserID(int UserID)
+        //{
+        //    List<StudentSkillSet> sss = sr.GetSkillsByUserID(UserID);
+        //    var config = new MapperConfiguration(cfg => { cfg.CreateMap<StudentSkillSet,StudentSkillSetView(); cfg.IgnoreUnmapped(); });
+        //    IMapper mapper = config.CreateMapper();
+        //    List<StudentSkillSetView> ss = mapper.Map<List<StudentSkillSet>, List<StudentSkillSetView>>(sss);
+        //    return ss;
 
+
+        //}
+
+        public StudentSkillSetView GetStudentsBySkillName(string SkillName)
+        { StudentSkillSet s = sr.GetStudentSkillSetsBySkillName(SkillName).FirstOrDefault();
+            StudentSkillSetView cvm = null; if (s != null)
+            { var config = new MapperConfiguration(cfg => 
+            { cfg.CreateMap<StudentSkillSet, StudentSkillSetView>(); 
+                cfg.IgnoreUnmapped(); }); IMapper mapper = config.CreateMapper();
+                cvm = mapper.Map<StudentSkillSet, StudentSkillSetView>(s); 
+            } 
+            return cvm; }
+
+        public List<StudentSkillSetView> GetSkills()
+        {
+            List<StudentSkillSet> s = sr.GetSkills();
+            var config = new MapperConfiguration(cfg => { cfg.CreateMap<StudentSkillSet, StudentSkillSetView>(); cfg.IgnoreUnmapped(); });
+            IMapper mapper = config.CreateMapper();
+            List<StudentSkillSetView> sssv = mapper.Map<List<StudentSkillSet>, List<StudentSkillSetView>>(s);
+            return sssv;
+        }
     }
 
-   
+
 }

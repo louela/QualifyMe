@@ -14,10 +14,10 @@ namespace QualifyMe.Repositories
        
         void InsertStudent(Student s);
         void UpdateStudentDetails(Student s);
-      
+        void UpdateStudentStatus(Student s);
         void UpdateStudentPassword(Student s);
         void DeleteStudent(int sid);
-        //List<Student> GetStudents();
+        List<Student> GetStudents();
         List<Student> GetStudentsByEmailAndPassword(string Email, string Password);
         List<Student> GetStudentsByEmail(string Email);
         List<Student> GetStudentsByUserID(int UserID);
@@ -40,6 +40,20 @@ namespace QualifyMe.Repositories
             db.SaveChanges();
         }
 
+        public void UpdateStudentStatus(Student s)
+        {
+            Student st = db.Students.Where(temp => temp.UserID == s.UserID).FirstOrDefault();
+            if (st != null)
+            {
+                st.StudentID = s.StudentID;
+                st.StudentFirstName = s.StudentFirstName;
+                st.StudentLastName = s.StudentLastName;
+                st.Email = s.Email;
+                st.IsApproved = s.IsApproved;
+                db.SaveChanges();
+
+            }
+        }
         public void UpdateStudentDetails(Student s)
         {
             Student st = db.Students.Where(temp => temp.UserID == s.UserID).FirstOrDefault();
@@ -92,11 +106,11 @@ namespace QualifyMe.Repositories
             }
         }
 
-        //public List<Student> GetStudents()
-        //{
-        //    List<Student> st = db.Students.Where(temp => temp.IsAdmin == false).OrderBy(temp => temp.StudentFirstName).ToList();
-        //    return st;
-        //}
+        public List<Student> GetStudents()
+        {
+            List<Student> st = db.Students.Where(temp => temp.IsAdmin == false).OrderBy(temp => temp.StudentFirstName).ToList();
+            return st;
+        }
 
         public List<Student> GetStudentsByEmailAndPassword(string Email, string Password)
         {

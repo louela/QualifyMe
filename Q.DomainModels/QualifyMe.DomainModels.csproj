@@ -55,12 +55,14 @@
     <Compile Include="Course.cs" />
     <Compile Include="Department.cs" />
     <Compile Include="Job.cs" />
+    <Compile Include="JobCategory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QualifyMeDbContext.cs" />
-    <Compile Include="SkillSet.cs" />
+    <Compile Include="SkillTag.cs" />
     <Compile Include="Student.cs" />
     <Compile Include="StudentDetail.cs" />
     <Compile Include="StudentSkillSet.cs" />
+    <Compile Include="Tag.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

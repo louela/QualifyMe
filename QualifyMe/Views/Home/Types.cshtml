@@ -1,0 +1,84 @@
+﻿@model List<QualifyMe.ViewModels.JobView>
+@{
+    ViewBag.Title = "Types";
+}
+<link rel="stylesheet" href="~/Content/types.css">
+<div class="container">
+    <div class="tabs">
+        <button class="btn btn1 active" id="1">All Jobs</button>
+        <button class="btn btn2" id="2">Internship</button>
+        <button class="btn btn3" id="3">Employment</button>
+    </div>
+    <div class="sections">
+        <div class="content content1 active">
+            <h2>All Jobs</h2>
+
+            @foreach (var item in Model)
+            {
+
+                <div class="w3-container w3-card w3-white w3-round w3-margin ">
+                    <br>
+                    <img src="~/Images/avatar.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
+                    <span class="w3-right w3-opacity">@item.JobDateAndTime</span>
+                    <h4>@item.Company.CompanyName</h4><br>
+                    <hr class="w3-clear">
+                    <h3>
+                        <a href="/jobs/view/@item.JobID">@item.JobTitle</a>
+                    </h3>
+                    <p>@item.JobDescription</p>
+                    <span class="w3-round" style="background-color: seagreen; color: white">@item.Course.CourseName</span>
+                    <span class="w3-round" style="background-color: tomato; color: white">@item.JobTypes</span>
+                    <p>Applicants: <strong>@item.ApplicantsCount</strong></p>
+
+                </div>
+            }
+
+        </div>
+        <div class="content content2">
+            <h2>Internship</h2>
+
+            @foreach (var item in Model)
+                {
+                <div class="w3-container w3-card w3-white w3-round w3-margin ">
+                    <br>
+                    <img src = "~/Images/avatar.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
+                    <span class="w3-right w3-opacity">@item.JobDateAndTime</span>
+                    <h4>@item.Company.CompanyName</h4><br>
+                    <hr class="w3-clear">
+                    <h3>
+                        <a href = "/jobs/view/@item.JobID" > @item.JobTitle </a>
+                    </h3>
+                    <p> @item.JobDescription </p>
+                    <span class="w3-round" style="background-color: seagreen; color: white">@item.Course.CourseName</span>
+                    <span class="w3-round" style="background-color: tomato; color: white">@item.JobTypes</span>
+                    <p>Applicants: <strong>@item.ApplicantsCount</strong></p>
+                </div>
+            }
+
+        </div>
+        <div class="content content3">
+            <h2>Employment</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.Sit adipisci laborum labore iure eligendi autem et! Modi sequi, error consectetur pariatur dolores porro quibusdam quaerat tempora eligendi ex, molestias voluptatum at maiores nostrum et, voluptas culpa veniam omnis officia dicta.</p>
+        </div>
+    </div>
+</div>
+<script>
+    const buttons = document.querySelectorAll("button");
+            const sections = document.querySelectorAll(".content");
+
+
+            buttons.forEach((btn) => {
+            btn.addEventListener("click", () => {
+            buttons.forEach((btn) => {
+            btn.classList.remove("active");
+            });
+            btn.classList.add("active");
+            const id = btn.id;
+            sections.forEach((section) => {
+            section.classList.remove("active");
+            });
+            const req = document.getElementsByClassName(`content${id}`);
+            req[0].classList.add("active");
+            })
+            })
+            </script>

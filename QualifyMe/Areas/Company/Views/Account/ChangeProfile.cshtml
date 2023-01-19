@@ -11,16 +11,16 @@
                     <div class="card-body">
                         <div class="account-settings">
                             <div class="user-profile">
-                                <div id="profile-container">
-                                    <image id="profilepicture" src="~/Images/avatar.png" />
+                                <div class="avatar-upload">
+                                    <div class="avatar-edit">
+                                        <input type='file' id="ImageUpload" name="ImageUpload" accept=".png, .jpg, .jpeg" />
+                                        <label for="ImageUpload"></label>
+                                    </div>                                  
                                 </div>
                                 <h5 class="user-name"> @Session["CurrentCompanyName"]</h5>
                                 <h6 class="user-email"> @Session["CurrentCompanyEmail"]</h6>
                             </div>
-                            <div class="about">
-                                <h5>About</h5>
-                                <p> @Session["CurrentCompanyName"] </p>
-                            </div>
+                            
                         </div>
                     </div>
                 </div>

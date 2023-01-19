@@ -15,15 +15,17 @@ namespace QualifyMe.Areas.Admin.Controllers
         ICoursesService cs;
         ICompaniesService com;
         IJobsService job;
+        IStudentsService students;
 
-        public HomeController(IJobsService js, ICoursesService cs, ICompaniesService com, IJobsService job)
+        public HomeController(IJobsService js, ICoursesService cs, ICompaniesService com, IJobsService job, IStudentsService students)
         {
             this.js = js;
             this.cs = cs;
             this.com = com;
             this.job = job;
+            this.students = students;
         }
-      
+
         public ActionResult Index()
         {
             List<JobView> jobs = this.js.GetJobs().Take(10).ToList();
@@ -46,11 +48,18 @@ namespace QualifyMe.Areas.Admin.Controllers
             List<CompanyView> companies = this.com.GetCompanies().Take(10).ToList();
             return View(companies);
         }
-
+       
         public ActionResult Jobs()
         {
             List<JobView> jobs = this.job.GetJobs().Take(10).ToList();
             return View(jobs);
         }
+
+        public ActionResult Students()
+        {
+            List<StudentView> students = this.students.GetStudents().Take(10).ToList();
+            return View(students);
+        }
+
     }
 }
