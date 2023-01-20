@@ -33,8 +33,8 @@ namespace QualifyMe.Repositories
 
         public void InsertJob(Job j)
         {
-            int[] arr = Job.Select(x => int.Parse(x.GetProperty("Ranking"))).ToArray();
-            InsertionSort(arr);
+            //int[] arr = Job.Select(x => int.Parse(x.GetProperty("Ranking"))).ToArray();
+            //InsertionSort(arr);
             db.Jobs.Add(j);
             db.SaveChanges();
         }
@@ -65,8 +65,8 @@ namespace QualifyMe.Repositories
                 jb.JobStatus = j.JobStatus;
                 jb.JobDateAndTime = j.JobDateAndTime;
               //  jb.JobSalary = j.JobSalary;
-                 jb.DepartmentID = j.DepartmentID;
-               // jb.CourseID = j.CourseID;
+                // jb.DepartmentID = j.DepartmentID;
+                jb.CourseID = j.CourseID;
                 db.SaveChanges();
             }
         }

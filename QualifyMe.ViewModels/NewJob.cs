@@ -30,9 +30,8 @@ namespace QualifyMe.ViewModels
         public int CompanyID { get; set; }
 
         [Required]
-        public int DepartmentID { get; set; }
-         public int Ranking { get; set; }
-
+        public int CourseID { get; set; }
+        
 
         public int ApplicantID { get; set; }
 

@@ -22,3 +22,15 @@ C:\Users\II\Documents\mvc\CAPSTONE\QualifyMe\Q.DomainModels\obj\Debug\QualifyMe.
 C:\Users\II\Documents\mvc\CAPSTONE\QualifyMe\Q.DomainModels\obj\Debug\QualifyMe.DomainModels.csproj.CopyComplete
 C:\Users\II\Documents\mvc\CAPSTONE\QualifyMe\Q.DomainModels\obj\Debug\Q.DomainModels.dll
 C:\Users\II\Documents\mvc\CAPSTONE\QualifyMe\Q.DomainModels\obj\Debug\Q.DomainModels.pdb
+C:\Users\II\Desktop\CAPSTONE BACKUP\QualifyMe\Q.DomainModels\bin\Debug\Q.DomainModels.dll.config
+C:\Users\II\Desktop\CAPSTONE BACKUP\QualifyMe\Q.DomainModels\bin\Debug\Q.DomainModels.dll
+C:\Users\II\Desktop\CAPSTONE BACKUP\QualifyMe\Q.DomainModels\bin\Debug\Q.DomainModels.pdb
+C:\Users\II\Desktop\CAPSTONE BACKUP\QualifyMe\Q.DomainModels\bin\Debug\EntityFramework.dll
+C:\Users\II\Desktop\CAPSTONE BACKUP\QualifyMe\Q.DomainModels\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\II\Desktop\CAPSTONE BACKUP\QualifyMe\Q.DomainModels\bin\Debug\EntityFramework.xml
+C:\Users\II\Desktop\CAPSTONE BACKUP\QualifyMe\Q.DomainModels\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\II\Desktop\CAPSTONE BACKUP\QualifyMe\Q.DomainModels\obj\Debug\QualifyMe.DomainModels.csproj.AssemblyReference.cache
+C:\Users\II\Desktop\CAPSTONE BACKUP\QualifyMe\Q.DomainModels\obj\Debug\QualifyMe.DomainModels.csproj.CoreCompileInputs.cache
+C:\Users\II\Desktop\CAPSTONE BACKUP\QualifyMe\Q.DomainModels\obj\Debug\QualifyMe.DomainModels.csproj.CopyComplete
+C:\Users\II\Desktop\CAPSTONE BACKUP\QualifyMe\Q.DomainModels\obj\Debug\Q.DomainModels.dll
+C:\Users\II\Desktop\CAPSTONE BACKUP\QualifyMe\Q.DomainModels\obj\Debug\Q.DomainModels.pdb

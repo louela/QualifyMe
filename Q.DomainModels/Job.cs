@@ -21,10 +21,10 @@ namespace Q.DomainModels
         public string JobStatus { get; set; }
         public DateTime JobDateAndTime { get; set; }
         //public float JobSalary { get; set; }
-        public int DepartmentID { get; set; }       
+        public int CourseID { get; set; }       
         public int CompanyID { get; set; }      
         public int ApplicantsCount { get; set; }
-        public int Ranking { get; set; }
+       
 
         public object Select(Func<object, int> p)
         {
@@ -34,8 +34,8 @@ namespace Q.DomainModels
         [ForeignKey("CompanyID")]
         public virtual Company Company { get; set; }
 
-        [ForeignKey("DepartmentID")]
-        public virtual Department Department { get; set; }
+        [ForeignKey("CourseID")]
+        public virtual Course course { get; set; }
         public virtual List<Tag> Tags { get; set; }
         public virtual List<Applicant> Applicants { get; set; }
         public virtual List<JobCategory> JobCategories { get; set; }

@@ -48,3 +48,28 @@ C:\Users\II\Documents\mvc\CAPSTONE\QualifyMe\QualifyMe.Repositories\obj\Debug\Qu
 C:\Users\II\Documents\mvc\CAPSTONE\QualifyMe\QualifyMe.Repositories\obj\Debug\QualifyMe.Repositories.csproj.CopyComplete
 C:\Users\II\Documents\mvc\CAPSTONE\QualifyMe\QualifyMe.Repositories\obj\Debug\QualifyMe.Repositories.dll
 C:\Users\II\Documents\mvc\CAPSTONE\QualifyMe\QualifyMe.Repositories\obj\Debug\QualifyMe.Repositories.pdb
+C:\Users\II\Desktop\CAPSTONE BACKUP\QualifyMe\QualifyMe.Repositories\bin\Debug\QualifyMe.Repositories.dll.config
+C:\Users\II\Desktop\CAPSTONE BACKUP\QualifyMe\QualifyMe.Repositories\bin\Debug\QualifyMe.Repositories.dll
+C:\Users\II\Desktop\CAPSTONE BACKUP\QualifyMe\QualifyMe.Repositories\bin\Debug\QualifyMe.Repositories.pdb
+C:\Users\II\Desktop\CAPSTONE BACKUP\QualifyMe\QualifyMe.Repositories\bin\Debug\EntityFramework.dll
+C:\Users\II\Desktop\CAPSTONE BACKUP\QualifyMe\QualifyMe.Repositories\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\II\Desktop\CAPSTONE BACKUP\QualifyMe\QualifyMe.Repositories\bin\Debug\Newtonsoft.Json.dll
+C:\Users\II\Desktop\CAPSTONE BACKUP\QualifyMe\QualifyMe.Repositories\bin\Debug\Q.DomainModels.dll
+C:\Users\II\Desktop\CAPSTONE BACKUP\QualifyMe\QualifyMe.Repositories\bin\Debug\System.Buffers.dll
+C:\Users\II\Desktop\CAPSTONE BACKUP\QualifyMe\QualifyMe.Repositories\bin\Debug\System.Memory.dll
+C:\Users\II\Desktop\CAPSTONE BACKUP\QualifyMe\QualifyMe.Repositories\bin\Debug\System.Numerics.Vectors.dll
+C:\Users\II\Desktop\CAPSTONE BACKUP\QualifyMe\QualifyMe.Repositories\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\II\Desktop\CAPSTONE BACKUP\QualifyMe\QualifyMe.Repositories\bin\Debug\Q.DomainModels.pdb
+C:\Users\II\Desktop\CAPSTONE BACKUP\QualifyMe\QualifyMe.Repositories\bin\Debug\Q.DomainModels.dll.config
+C:\Users\II\Desktop\CAPSTONE BACKUP\QualifyMe\QualifyMe.Repositories\bin\Debug\EntityFramework.xml
+C:\Users\II\Desktop\CAPSTONE BACKUP\QualifyMe\QualifyMe.Repositories\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\II\Desktop\CAPSTONE BACKUP\QualifyMe\QualifyMe.Repositories\bin\Debug\Newtonsoft.Json.xml
+C:\Users\II\Desktop\CAPSTONE BACKUP\QualifyMe\QualifyMe.Repositories\bin\Debug\System.Buffers.xml
+C:\Users\II\Desktop\CAPSTONE BACKUP\QualifyMe\QualifyMe.Repositories\bin\Debug\System.Memory.xml
+C:\Users\II\Desktop\CAPSTONE BACKUP\QualifyMe\QualifyMe.Repositories\bin\Debug\System.Numerics.Vectors.xml
+C:\Users\II\Desktop\CAPSTONE BACKUP\QualifyMe\QualifyMe.Repositories\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\II\Desktop\CAPSTONE BACKUP\QualifyMe\QualifyMe.Repositories\obj\Debug\QualifyMe.Repositories.csproj.AssemblyReference.cache
+C:\Users\II\Desktop\CAPSTONE BACKUP\QualifyMe\QualifyMe.Repositories\obj\Debug\QualifyMe.Repositories.csproj.CoreCompileInputs.cache
+C:\Users\II\Desktop\CAPSTONE BACKUP\QualifyMe\QualifyMe.Repositories\obj\Debug\QualifyMe.Repositories.csproj.CopyComplete
+C:\Users\II\Desktop\CAPSTONE BACKUP\QualifyMe\QualifyMe.Repositories\obj\Debug\QualifyMe.Repositories.dll
+C:\Users\II\Desktop\CAPSTONE BACKUP\QualifyMe\QualifyMe.Repositories\obj\Debug\QualifyMe.Repositories.pdb
